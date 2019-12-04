@@ -1,0 +1,194 @@
+                BLUE HUSKY LICENSE 2 - PUBLIC COMMERCIAL - OPUS 1
+
+0: LAYMAN'S TERMS
+   This section is meant to explain the purpose of this license in Layman's
+terms, and should thusly never be seen as legally binding. This disclaimer does
+not apply to further sections of this license.
+
+If you made this:
+
+ 1. This is your product and you can do what you want with it
+   a. You must make sure that if you use anyone else's stuff in it, you do so
+      with their permission, or under Fair Use
+   b. If you do include someone else's stuff, you can't claim you made that
+   c. You can charge whatever you want for this, in any way you want
+ 2. You must let others do what they want with it
+   a. They still have to say you made it in the first place
+   b. They still have to pay for it however you want
+   c. You have to include this license along with your product for it to count
+   d. They have to include this license when they redistribute your product
+ 3. This license is overridden by governmental laws
+ 4. You're not responsible for bad things that might happen because someone
+    used your product
+
+If you got this:
+
+ 1. This is not your product, and you need to respect that
+   a. If you see anyone else's stuff in it, that was put there with their
+      permission, or under Fair Use
+   b. You agree that it's OK to pay what the creator asks for this
+ 2. You can do what you want with this
+   a. You still have to say who made it in the first place
+   b. You still have to pay for it however the creator wants
+   c. You can't just turn around and re-sell it, but if you use it to make
+      something truly new, you can sell that
+   d. You get all the freedoms in this license along with this product
+   e. You have to include this license when you redistribute this product, or
+      your truly new product based on this, unless the creator says otherwise
+   f. You can edit this license as long as you let other editors know,
+      especially the original author
+   g. You must make sure that if you use anyone else's stuff in it, you do so
+      with their permission, or under Fair Use
+   h. If you do include someone else's stuff, you can't claim you made that
+ 3. This license is overridden by governmental laws
+ 4. The original creator is not responsible for bad things that might happen
+    because you used this product
+
+
+1: DECLARATION OF COPYRIGHT
+   This Product is copyright Ben Leggiero (c) 2019 BH-2-PC
+
+   Ben Leggiero may be reached at BenLeggiero@Gmail.com
+
+
+2: DEFINITIONS
+ - "License": this text.
+ - "Product": the product with which this License was distributed, and any
+   assets necessary for its use.
+ - "Creator": any entity or entities who originally invented the Product,
+   withstanding related and contributing parties.
+ - "Licensee": any entity or entities involved in consumption of the Product.
+ - "Licensor": any entity or entities involved in distribution of the Product
+   and of this License. The Creator is always a Licensor, but a Licensor is not
+   always the Creator.
+ - "Distributor": any entity or entities, or subsidiaries thereof, involved in
+   the distribution of the Product. A Distributor may not wish to be considered
+   a Licensor.
+ - "Compensation": any form of payment given to the Creator, Licensor, and/or
+   Distributor in exchange for the Product, and/or for access to the Product.
+
+
+3: NOTICE OF PERMISSIONS
+   Permission is hereby granted to any entity obtaining a copy of the Product,
+to use, copy, modify, host, redistribute, sublicense, sell copies of, and/or
+otherwise handle the Product, and to permit Licensors and Distributors to also
+do so, given the following conditions are obeyed:
+
+ 1. The Creator shall be granted Compensation for the Product, for any copies
+    of the Product, and/or for any copies of any substantial portions of the
+    Product, in the manner specified by the Creator.
+   a. Modifications to the Product which significantly transform the Product,
+      in such a way that the modified Product can then be considered a new
+      product, and which are therefore considered entirely separate from this
+      Product, are therefore exempt from this restriction.
+ 2. The above copyright notice and this permission notice shall be included in
+    all copies and/or substantial portions of the Product.
+ 3. This License shall be blatantly provided, unmodified, along with all copies
+    and/or substantial portions of the Product.
+ 4. Attribution to the Creator must be blatantly stated.
+
+
+4: DECLARATION OF OWNERSHIP
+   The Creator hereby declares that everything which makes up the Product is
+the intellectual property solely of the Creator and of no other party,
+notwithstanding any intellectual property which is included under Fair Use Laws
+as described in § 5.4 of this License, or within the restrictions of the
+licenses thereof. Such intellectual property falls under § 5.1 of this License.
+
+
+5: THE RIGHTS OF THE CREATOR AND FURTHER LICENSORS
+ 1. The Creator reserves no rights to any previously-established intellectual
+    property which is implicitly or explicitly owned by any other entity or
+    entities.
+   a. If any such intellectual property is contained within or bundled
+      alongside the Product, or is otherwise distributed with or appears
+      covered under this License, the Creator forfeits any and all claims on
+      said property, and said property shall not be covered by this License and
+      shall not be considered a part of the Product.
+ 2. The Creator reserves the right to Compensation for the redistribution of
+    the Product.
+   a. The Creator reserves the right to request Compensation for any use of the
+      Product.
+   b. This License places no restrictions on how the Creator can request
+      Compensation.
+   c. Any Licensee who completes Compensation to the Creator, in the way in
+      which the Creator specifies, gains all rights of a Licensor.
+   d. The Creator may choose to share with the Distributor a portion or the
+      whole of any Compensation.
+ 3. The Creator reserves the right to freely create, edit, distribute, destroy,
+    or otherwise interact with the whole of, or any part of, the Product.
+ 4. In the case that any entity other than the Creator claims to own
+    intellectual property contained within the Product and requests
+    Compensation for the use of such intellectual property, the Creator
+    reserves the right to refuse such Compensation as allowed by the following
+    legal documents (collectively, "Fair Use Laws"):
+   a. Amendment I of the United States Constitution.
+   b. Article 19 of the Universal Declaration of Human Rights.
+   c. 17 USC § 107 - Limitations on exclusive rights: Fair use.
+ 5. In cases where all of the documents listed under § 5.4 of this
+    License are not legally recognized or do not apply to the Compensation
+    request, the Creator agrees to pay the owner of the disputed intellectual
+    property a sum which equals the proportion of the prevalence that the
+    disputed intellectual property maintains in the Product out of the total
+    sum of profits garnered by the Creator for creating the Product.
+ 6. The Creator reserves the right to waive any conditions of this License at
+    the Creator's discretion.
+ 7. The Licensor reserves the right to edit this License at any time under the
+    terms of BH-1-PS.
+   a. The Licensor agrees to increment the Opus number of this License to
+      correspond with version changes.
+   b. The Licensor agrees to never publish two or more versions of this License
+      under the same Opus number.
+   c. The Licensor agrees to notify the License's original author of any
+      changes made to the License. If such author is not reasonably accessible,
+      the Licensor agrees to notify any known authors which have previously
+      contributed to the License.
+ 8. In no way are any of the Creator's moral rights affected by this License.
+ 9. The Creator allows the Distributor to enforce the terms of this License.
+
+
+6: RIGHTS AND RESTRICTIONS OF LICENSEES AND LICENSORS ("YOU")
+ 1. You maintain the following rights and restrictions:
+   a. You are free to copy, distribute and transmit the Product.
+     i.  For any reuse or distribution, You must make clear to others the
+         License terms of the License.
+     ii. You must not seek Compensation for this Product unmodified, nor for
+         trivial modifications to this Product, pursuant to § 3.1 of this
+         license.
+   b. You are free to adapt the Product.
+     i.  If You alter, transform, or build upon the Product, You may distribute
+         the resulting Product only under this License.
+     ii. If you alter, transform, or build upon this License, You must do so
+         pursuant to § 5.7 of this License.
+   c. You are free to make commercial use of significant modifications to
+      the Product which are made by You, pursuant to § 3.1 and § 5.2 of this
+      License.
+   d. You must attribute the Product in the manner specified by the Creator (but
+      not in any way that suggests that the Creator endorses You or such use of
+      the Product).
+   e. The Creator and any Licensors or Licensees previous to You are not
+      responsible for any changes made to the Product by You, or any effects
+      arising thereof.
+   f. You can be granted special rights by the Creator as described in § 5.6 of
+      this License.
+ 2. In no way are any of the following rights affected by the License:
+   a. The fair dealing or fair use rights afforded to You, or other applicable
+      copyright exceptions and limitations, including but not limited to those
+      enumerated in § 5.4 of this License.
+   b. Rights another entity may have, either in the Product itself or in how
+      the Product is used, such as publicity or privacy rights.
+ 3. You allow the Distributor to enforce the terms of this License.
+
+
+7: ACCORDANCE WITH THE LAW
+   The terms that make up the whole and parts of this License shall not apply
+where local, state, provincial, federal, national, or any other law prohibits
+such terms.
+
+
+8: DISCLAIMER
+   THE PRODUCT IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED. IN NO EVENT SHALL THE CREATORS, LICENSEES, LICENSORS, OR DISTRIBUTORS
+BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE
+PRODUCT OR THE USE OR OTHER DEALINGS IN OR WITH THE PRODUCT.
