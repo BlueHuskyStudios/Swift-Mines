@@ -22,7 +22,7 @@ struct BoardView: View {
                 HStack(alignment: .center, spacing: 0) {
                     ForEach(row) { square in
                         BoardSquareView(
-                            color: self.color(for: square),
+                            style: self.style(for: square),
                             model: square
                         )
                     }
@@ -35,8 +35,10 @@ struct BoardView: View {
 
 
 private extension BoardView {
-    func color(for square: BoardSquare) -> NSColor {
-        <#function body#>
+    func style(for square: BoardSquare.Annotated) -> BoardSquareView.Style {
+        .init(
+            actualColor: board.style.baseColor
+        )
     }
 }
 
@@ -44,7 +46,7 @@ private extension BoardView {
 
 struct BoardView_Previews: PreviewProvider {
     
-    static let test10x10Board = Board.random(size: UIntSize(width: 10, height: 10))
+    static let test10x10Board = Board.random(size: UIntSize(width: 10, height: 10)).annotated(baseStyle: .default)
     
     static var previews: some View {
         BoardView(board: test10x10Board)

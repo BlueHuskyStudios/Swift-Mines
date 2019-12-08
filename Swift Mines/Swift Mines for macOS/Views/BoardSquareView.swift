@@ -8,16 +8,17 @@
 
 import SwiftUI
 import Cocoa
+import CrossKitTypes
 
 
 
 struct BoardSquareView: View {
     
     @State
-    var color: NSColor
+    var style: Style?
     
     @State
-    var model: BoardSquare
+    var model: BoardSquare.Annotated
     
     
     var body: some View {
@@ -28,7 +29,7 @@ struct BoardSquareView: View {
             .frame(minWidth: 8, idealWidth: 16, minHeight: 8, idealHeight: 16, alignment: .center)
             .aspectRatio(1, contentMode: .fit)
 //            .padding(1)
-            .background(Color(model.appropriateBackgroundColor(basedOn: color)))
+            .background(Color(model.appropriateBackgroundColor()))
     }
 }
 
@@ -36,30 +37,30 @@ struct BoardSquareView: View {
 
 private extension BoardSquareView {
     var currentImageName: String {
-        switch model.externalRepresentation {
-        case .blank,
-             .revealed(content: .farFromMine):
+        switch (model.base.externalRepresentation, model.mineContext) {
+        case (.blank, _),
+             (.revealed(reason: _), .clear(.farFromMine)):
             return ""
             
-        case .revealed(content: .closeTo1Mine),
-             .revealed(content: .closeTo2Mines),
-             .revealed(content: .closeTo3Mines),
-             .revealed(content: .closeTo4Mines),
-             .revealed(content: .closeTo5Mines),
-             .revealed(content: .closeTo6Mines),
-             .revealed(content: .closeTo7Mines),
-             .revealed(content: .closeTo8Mines):
+        case (.revealed(reason: _), .clear(distance: .closeTo1Mine)),
+             (.revealed(reason: _), .clear(distance: .closeTo2Mines)),
+             (.revealed(reason: _), .clear(distance: .closeTo3Mines)),
+             (.revealed(reason: _), .clear(distance: .closeTo4Mines)),
+             (.revealed(reason: _), .clear(distance: .closeTo5Mines)),
+             (.revealed(reason: _), .clear(distance: .closeTo6Mines)),
+             (.revealed(reason: _), .clear(distance: .closeTo7Mines)),
+             (.revealed(reason: _), .clear(distance: .closeTo8Mines)):
             return "" // TODO
             
-        case .flagged(style: .sure):
+        case (.flagged(style: .sure), _):
             return "Flag"
             
-        case .flagged(style: .unsure):
+        case (.flagged(style: .unsure), _):
             return "Question Mark"
             
-        case .revealed(content: .mine(revealReason: .manuallyTriggered)),
-             .revealed(content: .mine(revealReason: .chainReaction)):
-            switch model.content {
+        case (.revealed(reason: .manuallyTriggered), .mine),
+             (.revealed(reason: .chainReaction), .mine):
+            switch model.base.content {
             case .mine:
                 return "Mine (Detonated)"
                 
@@ -68,8 +69,8 @@ private extension BoardSquareView {
                 return ""
             }
             
-        case .revealed(content: .mine(revealReason: .safelyDiscoveredAfterWin)):
-            switch model.content {
+        case (.revealed(reason: .safelyRevealedAfterWin), .mine):
+            switch model.base.content {
             case .mine:
                 return "Mine (Revealed)"
                 
@@ -83,16 +84,24 @@ private extension BoardSquareView {
 
 
 
-private extension BoardSquare {
-    func appropriateBackgroundColor(basedOn defaultColor: NSColor) -> NSColor {
-        switch self.externalRepresentation {
+private extension BoardSquare.Annotated {
+    func appropriateBackgroundColor() -> NSColor {
+        switch self.base.externalRepresentation {
         case .blank,
              .flagged(style: _):
-            return defaultColor
+            return inheritedStyle.baseColor
             
-        case .revealed(content: _):
-            return defaultColor.withSystemEffect(.pressed)
+        case .revealed:
+            return inheritedStyle.baseColor.withSystemEffect(.pressed)
         }
+    }
+}
+
+
+
+extension BoardSquareView {
+    struct Style {
+        let actualColor: NativeColor
     }
 }
 
@@ -102,16 +111,20 @@ struct BoardSquareView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             BoardSquareView(
-                color: NSColor(calibratedHue: (210/360), saturation: 0.74, brightness: 0.64, alpha: 1),
-                model: BoardSquare(id: UUID(),
-                                   content: .mine,
-                                   externalRepresentation: .blank)
+                style: nil,
+                model: .init(base: BoardSquare(id: UUID(),
+                                               content: .mine,
+                                               externalRepresentation: .blank),
+                             inheritedStyle: .default,
+                             mineContext: .mine)
             )
             BoardSquareView(
-                color: NSColor(calibratedHue: (210/360), saturation: 0.74, brightness: 0.64, alpha: 1),
-                model: BoardSquare(id: UUID(),
-                                   content: .mine,
-                                   externalRepresentation: .flagged(style: .sure))
+                style: nil,
+                model: .init(base: BoardSquare(id: UUID(),
+                                               content: .mine,
+                                               externalRepresentation: .flagged(style: .sure)),
+                             inheritedStyle: .default,
+                             mineContext: .mine)
             )
         }
     }

@@ -24,6 +24,7 @@
 		A3C69F712397A1A500520B2F /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C69F702397A1A500520B2F /* BoardView.swift */; };
 		A3C69F742397A1CF00520B2F /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C69F732397A1CF00520B2F /* Board.swift */; };
 		A3C69F782397A26400520B2F /* RectangleTools in Frameworks */ = {isa = PBXBuildFile; productRef = A3C69F772397A26400520B2F /* RectangleTools */; };
+		A3E49229239BAE5A00394FC4 /* SafeCollectionAccess in Frameworks */ = {isa = PBXBuildFile; productRef = A3E49228239BAE5A00394FC4 /* SafeCollectionAccess */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3B33011239A1E560034F236 /* CrossKitTypes in Frameworks */,
+				A3E49229239BAE5A00394FC4 /* SafeCollectionAccess in Frameworks */,
 				A3B33008239A05C20034F236 /* NonEmpty in Frameworks */,
 				A3C69F782397A26400520B2F /* RectangleTools in Frameworks */,
 			);
@@ -220,6 +222,7 @@
 				A3C69F772397A26400520B2F /* RectangleTools */,
 				A3B33007239A05C20034F236 /* NonEmpty */,
 				A3B33010239A1E560034F236 /* CrossKitTypes */,
+				A3E49228239BAE5A00394FC4 /* SafeCollectionAccess */,
 			);
 			productName = "Swift Mines";
 			productReference = A3C69F4B2397A13F00520B2F /* Swift Mines.app */;
@@ -275,6 +278,7 @@
 				A3C69F762397A26400520B2F /* XCRemoteSwiftPackageReference "Swift-Rectangle-Tools" */,
 				A3B33006239A05C20034F236 /* XCRemoteSwiftPackageReference "swift-nonempty" */,
 				A3B3300F239A1E560034F236 /* XCRemoteSwiftPackageReference "Swift-Cross-Kit-Types" */,
+				A3E49227239BAE5A00394FC4 /* XCRemoteSwiftPackageReference "Swift-Safe-Collection-Access" */,
 			);
 			productRefGroup = A3C69F4C2397A13F00520B2F /* Products */;
 			projectDirPath = "";
@@ -614,6 +618,14 @@
 				minimumVersion = 1.3.0;
 			};
 		};
+		A3E49227239BAE5A00394FC4 /* XCRemoteSwiftPackageReference "Swift-Safe-Collection-Access" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RougeWare/Swift-Safe-Collection-Access.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -631,6 +643,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A3C69F762397A26400520B2F /* XCRemoteSwiftPackageReference "Swift-Rectangle-Tools" */;
 			productName = RectangleTools;
+		};
+		A3E49228239BAE5A00394FC4 /* SafeCollectionAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3E49227239BAE5A00394FC4 /* XCRemoteSwiftPackageReference "Swift-Safe-Collection-Access" */;
+			productName = SafeCollectionAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

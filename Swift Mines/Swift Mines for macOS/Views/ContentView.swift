@@ -14,16 +14,20 @@ import RectangleTools
 struct ContentView: View {
     
     @State
+    var baseStyle: Board.Style
+    
+    @State
     var game: Game
     
     var body: some View {
-        BoardView(board: game.board)
+        BoardView(board: game.board.annotated(baseStyle: baseStyle))
     }
 }
 
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(game: Game(board: Board(content: UIntSize(width: 10, height: 10).map2D { _ in .random() })))
+        ContentView(baseStyle: .default,
+                    game: Game(board: Board(content: UIntSize(width: 10, height: 10).map2D { _ in .random() })))
     }
 }

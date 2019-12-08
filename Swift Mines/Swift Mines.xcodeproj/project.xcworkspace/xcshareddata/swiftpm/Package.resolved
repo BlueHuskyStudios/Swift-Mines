@@ -36,6 +36,15 @@
           "revision": "33adc02bdd4a1b0bbbc1460dcf4450629140c6ed",
           "version": "1.4.0"
         }
+      },
+      {
+        "package": "SafeCollectionAccess",
+        "repositoryURL": "https://github.com/RougeWare/Swift-Safe-Collection-Access.git",
+        "state": {
+          "branch": null,
+          "revision": "2c4fa83b05e74129247e3fcd616af6aad8472505",
+          "version": "1.0.0"
+        }
       }
     ]
   },

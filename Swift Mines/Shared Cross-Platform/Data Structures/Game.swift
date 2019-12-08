@@ -10,6 +10,7 @@ import Foundation
 
 
 
+/// Everything we need to know in order to display a game of Mines while it's being played
 public struct Game {
     var board: Board
 }

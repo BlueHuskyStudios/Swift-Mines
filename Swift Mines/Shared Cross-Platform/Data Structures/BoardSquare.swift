@@ -56,7 +56,7 @@ public extension BoardSquare {
         
         /// The square has been revealed
         /// - Parameter content: The revealed content of the square
-        case revealed
+        case revealed(reason: RevealReason)
     }
 }
 
@@ -97,7 +97,13 @@ public extension BoardSquare {
 
 
 
-public extension BoardSquare.Annotated {
+extension BoardSquare.Annotated: Identifiable {
+    public var id: UUID { base.id }
+}
+
+
+
+public extension BoardSquare {
     
     /// How the board square appears to the user
     enum MineContext {
@@ -106,14 +112,14 @@ public extension BoardSquare.Annotated {
         case clear(distance: MineDistance)
         
         /// The square houses a mine
-        /// - Parameter revealReason: The reason why this mine was revealed
-        case mine(revealReason: MineRevealReason)
+        /// - Parameter revealReason: The reason why this mine was revealed, or `nil` if it has not been revealed
+        case mine
     }
 }
 
 
 
-public extension BoardSquare.Annotated.MineContext {
+public extension BoardSquare {
     
     /// Describes the distance of this square from a mine, assuming it does not contain a mine
     enum MineDistance: UInt8 {
@@ -149,10 +155,10 @@ public extension BoardSquare.Annotated.MineContext {
 
 
 
-public extension BoardSquare.Annotated.MineContext {
+public extension BoardSquare {
     
     /// The reason why a square with a mine has its mine revealed
-    enum MineRevealReason: String {
+    enum RevealReason: String {
         
         /// The player manually triggered the mine
         case manuallyTriggered
@@ -161,7 +167,7 @@ public extension BoardSquare.Annotated.MineContext {
         case chainReaction
         
         /// The player successfully completed the game without triggering any mines, so it's being displayed
-        case safelyDiscoveredAfterWin
+        case safelyRevealedAfterWin
     }
 }
 
@@ -174,14 +180,14 @@ extension BoardSquare.Content: Hashable {}
 extension BoardSquare.ExternalRepresentation: Hashable {}
 extension BoardSquare.ExternalRepresentation.FlagStyle: Hashable {}
 extension BoardSquare.Annotated: Hashable {}
-extension BoardSquare.Annotated.MineContext: Hashable {}
-extension BoardSquare.Annotated.MineContext.MineDistance: Hashable {}
-extension BoardSquare.Annotated.MineContext.MineRevealReason: Hashable {}
+extension BoardSquare.MineContext: Hashable {}
+extension BoardSquare.RevealReason: Hashable {}
+extension BoardSquare.MineDistance: Hashable {}
 
 extension BoardSquare.Content: CaseIterable {}
 extension BoardSquare.ExternalRepresentation.FlagStyle: CaseIterable {}
-extension BoardSquare.Annotated.MineContext.MineDistance: CaseIterable {}
-extension BoardSquare.Annotated.MineContext.MineRevealReason: CaseIterable {}
+extension BoardSquare.RevealReason: CaseIterable {}
+extension BoardSquare.MineDistance: CaseIterable {}
 
 
 

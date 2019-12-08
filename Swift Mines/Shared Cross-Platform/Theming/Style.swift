@@ -32,3 +32,13 @@ public extension Board.Style {
 // MARK: - Conformances
 
 extension Board.Style: Hashable {}
+
+
+
+// MARK: - Default
+
+public extension Board.Style {
+    
+    static let `default` = Self.init(baseColor: .init(hue: (210/360), saturation: 0.74, brightness: 0.64, alpha: 1),
+                                     pattern: .checkerboard)
+}
