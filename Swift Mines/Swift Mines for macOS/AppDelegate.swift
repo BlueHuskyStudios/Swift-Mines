@@ -20,8 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView(baseStyle: .default,
-                                      game: Game(board: .random(size: UIntSize(width: 10, height: 10))))
+        let contentView = ContentView(game: Game(board: Board.random(size: UIntSize(width: 10, height: 10)).annotated(baseStyle: .default)))
 
         // Create the window and set the content view. 
         window = NSWindow(

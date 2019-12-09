@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/RougeWare/Swift-Cross-Kit-Types.git",
         "state": {
           "branch": null,
-          "revision": "e0fc7edb56ea6efe6ea0546c5985f7f25e0b0bf8",
-          "version": "0.2.0"
+          "revision": "d64faa8d5e988352dff45e03a13da4f90c3a70e5",
+          "version": "1.0.0"
         }
       },
       {
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/RougeWare/Swift-Rectangle-Tools.git",
         "state": {
           "branch": null,
-          "revision": "33adc02bdd4a1b0bbbc1460dcf4450629140c6ed",
-          "version": "1.4.0"
+          "revision": "367a3b3e6520c5132e50170577c97e85b7c04a05",
+          "version": "2.0.1"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/RougeWare/Swift-Safe-Collection-Access.git",
         "state": {
           "branch": null,
-          "revision": "2c4fa83b05e74129247e3fcd616af6aad8472505",
-          "version": "1.0.0"
+          "revision": "b99bb75f4481d2b080d01ebfacee0fec50abe6c0",
+          "version": "1.0.1"
         }
       }
     ]

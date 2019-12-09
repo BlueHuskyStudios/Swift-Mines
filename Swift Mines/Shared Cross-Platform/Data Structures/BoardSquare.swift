@@ -155,6 +155,15 @@ public extension BoardSquare {
 
 
 
+public extension BoardSquare.MineDistance {
+    @inline(__always)
+    var numberObMinesNearby: UInt8 {
+        return rawValue
+    }
+}
+
+
+
 public extension BoardSquare {
     
     /// The reason why a square with a mine has its mine revealed

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A37D06D9239DDBE200C88026 /* NativeImage Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */; };
+		A37D06DC239DECD800C88026 /* Clear Square with Number Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D06DB239DECD800C88026 /* Clear Square with Number Image.swift */; };
 		A3B32FF8239868130034F236 /* BoardSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B32FF7239868130034F236 /* BoardSquareView.swift */; };
 		A3B32FFA239868320034F236 /* BoardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B32FF9239868320034F236 /* BoardSquare.swift */; };
 		A3B32FFC2398CE050034F236 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B32FFB2398CE050034F236 /* Game.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NativeImage Extensions.swift"; sourceTree = "<group>"; };
+		A37D06DB239DECD800C88026 /* Clear Square with Number Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clear Square with Number Image.swift"; sourceTree = "<group>"; };
 		A3B32FF7239868130034F236 /* BoardSquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSquareView.swift; sourceTree = "<group>"; };
 		A3B32FF9239868320034F236 /* BoardSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSquare.swift; sourceTree = "<group>"; };
 		A3B32FFB2398CE050034F236 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -81,6 +85,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A37D06D7239DDBD100C88026 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A37D06DA239DECB000C88026 /* Image Generation */ = {
+			isa = PBXGroup;
+			children = (
+				A37D06DB239DECD800C88026 /* Clear Square with Number Image.swift */,
+			);
+			path = "Image Generation";
+			sourceTree = "<group>";
+		};
 		A3B32FFD2398D5CA0034F236 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +216,8 @@
 		A3C69F752397A1DC00520B2F /* Shared Cross-Platform */ = {
 			isa = PBXGroup;
 			children = (
+				A37D06DA239DECB000C88026 /* Image Generation */,
+				A37D06D7239DDBD100C88026 /* Utilities */,
 				A3B3300C239A1CFD0034F236 /* Theming */,
 				A3C69F722397A1BF00520B2F /* Data Structures */,
 			);
@@ -318,6 +340,8 @@
 				A3C69F712397A1A500520B2F /* BoardView.swift in Sources */,
 				A3C69F512397A13F00520B2F /* ContentView.swift in Sources */,
 				A3B32FFC2398CE050034F236 /* Game.swift in Sources */,
+				A37D06DC239DECD800C88026 /* Clear Square with Number Image.swift in Sources */,
+				A37D06D9239DDBE200C88026 /* NativeImage Extensions.swift in Sources */,
 				A3B32FF8239868130034F236 /* BoardSquareView.swift in Sources */,
 				A3B32FFA239868320034F236 /* BoardSquare.swift in Sources */,
 				A3B3300B239A0D9A0034F236 /* BoardSquare + random.swift in Sources */,
@@ -598,7 +622,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-nonempty.git";
 			requirement = {
-				kind = upToNextMajorVersion;
+				kind = versionRange;
+				maximumVersion = 2.0.0;
 				minimumVersion = 0.2.0;
 			};
 		};
@@ -607,7 +632,7 @@
 			repositoryURL = "https://github.com/RougeWare/Swift-Cross-Kit-Types.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.0;
+				minimumVersion = 1.0.0;
 			};
 		};
 		A3C69F762397A26400520B2F /* XCRemoteSwiftPackageReference "Swift-Rectangle-Tools" */ = {
@@ -615,7 +640,7 @@
 			repositoryURL = "https://github.com/RougeWare/Swift-Rectangle-Tools.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.3.0;
+				minimumVersion = 2.0.0;
 			};
 		};
 		A3E49227239BAE5A00394FC4 /* XCRemoteSwiftPackageReference "Swift-Safe-Collection-Access" */ = {
