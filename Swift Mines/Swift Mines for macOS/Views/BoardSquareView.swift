@@ -9,6 +9,7 @@
 import SwiftUI
 import Cocoa
 import CrossKitTypes
+import RectangleTools
 
 
 
@@ -40,60 +41,47 @@ struct BoardSquareView: View {
 private extension BoardSquareView {
     
     func currentImage(size: CGSize) -> NativeImage {
-        let image = currentImageWithoutResize
-        image.size = size
-        return image
-    }
-    
-    
-    var currentImageWithoutResize: NativeImage {
-        currentImageName.flatMap(NativeImage.init(named:)) ?? .blank()
-    }
-    
-    
-    var currentImageName: NativeImage.Name? {
+        
+        let imageWhichNeedsToBeResized: NativeImage
+        
         switch (model.base.externalRepresentation, model.mineContext) {
         case (.blank, _),
              (.revealed(reason: _), .clear(.farFromMine)):
-            return nil
+            return .blank()
             
-        case (.revealed(reason: _), .clear(distance: .closeTo1Mine)),
-             (.revealed(reason: _), .clear(distance: .closeTo2Mines)),
-             (.revealed(reason: _), .clear(distance: .closeTo3Mines)),
-             (.revealed(reason: _), .clear(distance: .closeTo4Mines)),
-             (.revealed(reason: _), .clear(distance: .closeTo5Mines)),
-             (.revealed(reason: _), .clear(distance: .closeTo6Mines)),
-             (.revealed(reason: _), .clear(distance: .closeTo7Mines)),
-             (.revealed(reason: _), .clear(distance: .closeTo8Mines)):
-            return nil // TODO
+        case (.revealed(reason: _), .clear(let distance)):
+            return .number(forClearSquareAtDistance: distance, size: UIntSize(size))
             
         case (.flagged(style: .sure), _):
-            return "Flag"
+            imageWhichNeedsToBeResized = .minesIcon(.flag)
             
         case (.flagged(style: .unsure), _):
-            return "Question Mark"
+            imageWhichNeedsToBeResized = .minesIcon(.questionMark)
             
         case (.revealed(reason: .manuallyTriggered), .mine):
             switch model.base.content {
             case .mine:
-                return "Mine (Detonated)"
+                imageWhichNeedsToBeResized = .minesIcon(.detonatedMine)
                 
             case .clear:
                 assertionFailure("Clear square with revealed mine")
-                return nil
+                return .blank()
             }
             
         case (.revealed(reason: .safelyRevealedAfterWin), .mine),
              (.revealed(reason: .chainReaction), .mine):
             switch model.base.content {
             case .mine:
-                return "Mine (Revealed)"
+                imageWhichNeedsToBeResized = .minesIcon(.revealedMine)
                 
             case .clear:
                 assertionFailure("Clear square with revealed mine")
-                return nil
+                return .blank()
             }
         }
+        
+        imageWhichNeedsToBeResized.size = size
+        return imageWhichNeedsToBeResized
     }
 }
 
@@ -138,9 +126,6 @@ struct BoardSquareView_Previews: PreviewProvider {
                         representation: .revealed(reason: .manuallyTriggered))
                 preview(name: "Clear (2)",
                         context: .clear(distance: .closeTo2Mines),
-                        representation: .revealed(reason: .manuallyTriggered))
-                preview(name: "Clear (3)",
-                        context: .clear(distance: .closeTo3Mines),
                         representation: .revealed(reason: .manuallyTriggered))
                 preview(name: "Clear (3)",
                         context: .clear(distance: .closeTo3Mines),

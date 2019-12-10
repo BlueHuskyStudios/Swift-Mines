@@ -74,23 +74,23 @@ public extension Board {
                           column columnIndex: Int,
                           style: Style
     ) -> BoardSquare.Annotated {
-        BoardSquare.Annotated(base: square,
-                              inheritedStyle: style,
-                              mineContext: findMineContext(atRow: rowIndex,
-                                                           column: columnIndex))
+        BoardSquare.Annotated(
+            base: square,
+            inheritedStyle: style,
+            mineContext: findMineContext(
+                ofSquare: square,
+                atRow: rowIndex,
+                column: columnIndex
+            )
+        )
     }
     
     
-    private func findMineContext(atRow rowIndex: Int, column columnIndex: Int) -> BoardSquare.MineContext {
+    private func findMineContext(ofSquare square: BoardSquare,
+                                 atRow rowIndex: Int,
+                                 column columnIndex: Int
+    ) -> BoardSquare.MineContext {
         let neighbors = self.neighbors(ofSquareAtRow: rowIndex, column: columnIndex)
-        
-        guard
-            let row = content[orNil: rowIndex],
-            let square = row[orNil: columnIndex]
-            else
-        {
-            return neighbors.mineContextAssumingCenterIsClear()
-        }
         
         switch square.content {
         case .mine:

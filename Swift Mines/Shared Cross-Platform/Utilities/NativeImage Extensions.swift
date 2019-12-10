@@ -22,25 +22,6 @@ import AppKit
 
 public extension NativeImage {
     
-    /// Generates a blank (transparent) image of the given size
-    ///
-    /// - Parameter size: The size of the resulting image
-    /// - Returns: A clear/transparent/blank image
-    static func blank(size: UIntSize = UIntSize(width: 1, height: 1)) -> NativeImage {
-        let size = CGSize(width: Int(size.width), height: Int(size.height))
-        let blank = NativeImage(size: size)
-        blank.withFocus { blank in
-            guard let context = CGContext.current else {
-                return
-            }
-
-            context.setFillColor(.clear)
-            context.clear(CGRect(origin: .zero, size: size))
-        }
-        return blank
-    }
-    
-    
     /// Executes the given function while this image has draw context focus,
     /// and automatically unlocks that focus after the block is done
     ///
