@@ -35,6 +35,8 @@
 		A3C69F782397A26400520B2F /* RectangleTools in Frameworks */ = {isa = PBXBuildFile; productRef = A3C69F772397A26400520B2F /* RectangleTools */; };
 		A3E49229239BAE5A00394FC4 /* SafeCollectionAccess in Frameworks */ = {isa = PBXBuildFile; productRef = A3E49228239BAE5A00394FC4 /* SafeCollectionAccess */; };
 		A3FE565423A07E0200309B2D /* Collection Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE565323A07E0200309B2D /* Collection Extensions.swift */; };
+		A3FE565D23A0AF1200309B2D /* RandomAccessCollection Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE565C23A0AF1200309B2D /* RandomAccessCollection Extensions.swift */; };
+		A3FE566023A0C0DA00309B2D /* SafePointer in Frameworks */ = {isa = PBXBuildFile; productRef = A3FE565F23A0C0DA00309B2D /* SafePointer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,7 @@
 		A3C69F702397A1A500520B2F /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		A3C69F732397A1CF00520B2F /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		A3FE565323A07E0200309B2D /* Collection Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection Extensions.swift"; sourceTree = "<group>"; };
+		A3FE565C23A0AF1200309B2D /* RandomAccessCollection Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomAccessCollection Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,7 @@
 				A3B33008239A05C20034F236 /* NonEmpty in Frameworks */,
 				A3C69F782397A26400520B2F /* RectangleTools in Frameworks */,
 				A35D2856239F81DC0006B72B /* OptionalTools in Frameworks */,
+				A3FE566023A0C0DA00309B2D /* SafePointer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,15 +105,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A37D06D7239DDBD100C88026 /* Utilities */ = {
+		A37D06D7239DDBD100C88026 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */,
-				A39B86CB239F06E800579A89 /* Size2D Extensions.swift */,
-				A39B86CD239F07B000579A89 /* TwoDimensional Extensions.swift */,
-				A3FE565323A07E0200309B2D /* Collection Extensions.swift */,
+				A3FE565923A0AED900309B2D /* UIKit & AppKit */,
+				A3FE565823A0AED000309B2D /* Foundation */,
+				A3FE565A23A0AEF500309B2D /* RectangleTools */,
 			);
-			path = Utilities;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A37D06DA239DECB000C88026 /* Image Conveniences */ = {
@@ -246,13 +249,39 @@
 		A3C69F752397A1DC00520B2F /* Shared Cross-Platform */ = {
 			isa = PBXGroup;
 			children = (
+				A3C69F722397A1BF00520B2F /* Data Structures */,
 				A39B86C4239EE55300579A89 /* Debugging */,
 				A37D06DA239DECB000C88026 /* Image Conveniences */,
-				A37D06D7239DDBD100C88026 /* Utilities */,
 				A3B3300C239A1CFD0034F236 /* Theming */,
-				A3C69F722397A1BF00520B2F /* Data Structures */,
+				A37D06D7239DDBD100C88026 /* Extensions */,
 			);
 			path = "Shared Cross-Platform";
+			sourceTree = "<group>";
+		};
+		A3FE565823A0AED000309B2D /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				A3FE565323A07E0200309B2D /* Collection Extensions.swift */,
+				A3FE565C23A0AF1200309B2D /* RandomAccessCollection Extensions.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		A3FE565923A0AED900309B2D /* UIKit & AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */,
+			);
+			path = "UIKit & AppKit";
+			sourceTree = "<group>";
+		};
+		A3FE565A23A0AEF500309B2D /* RectangleTools */ = {
+			isa = PBXGroup;
+			children = (
+				A39B86CB239F06E800579A89 /* Size2D Extensions.swift */,
+				A39B86CD239F07B000579A89 /* TwoDimensional Extensions.swift */,
+			);
+			path = RectangleTools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +306,7 @@
 				A3B33010239A1E560034F236 /* CrossKitTypes */,
 				A3E49228239BAE5A00394FC4 /* SafeCollectionAccess */,
 				A35D2855239F81DC0006B72B /* OptionalTools */,
+				A3FE565F23A0C0DA00309B2D /* SafePointer */,
 			);
 			productName = "Swift Mines";
 			productReference = A3C69F4B2397A13F00520B2F /* Swift Mines.app */;
@@ -334,6 +364,7 @@
 				A3B3300F239A1E560034F236 /* XCRemoteSwiftPackageReference "Swift-Cross-Kit-Types" */,
 				A3E49227239BAE5A00394FC4 /* XCRemoteSwiftPackageReference "Swift-Safe-Collection-Access" */,
 				A35D2854239F81DC0006B72B /* XCRemoteSwiftPackageReference "Swift-Optional-Tools" */,
+				A3FE565E23A0C0DA00309B2D /* XCRemoteSwiftPackageReference "Swift-Safe-Pointer" */,
 			);
 			productRefGroup = A3C69F4C2397A13F00520B2F /* Products */;
 			projectDirPath = "";
@@ -379,6 +410,7 @@
 				A3FE565423A07E0200309B2D /* Collection Extensions.swift in Sources */,
 				A37D06DC239DECD800C88026 /* Clear Square with Number Image.swift in Sources */,
 				A37D06D9239DDBE200C88026 /* NativeImage Extensions.swift in Sources */,
+				A3FE565D23A0AF1200309B2D /* RandomAccessCollection Extensions.swift in Sources */,
 				A3B32FF8239868130034F236 /* BoardSquareView.swift in Sources */,
 				A39B86C8239EE95E00579A89 /* Swatches.swift in Sources */,
 				A3B32FFA239868320034F236 /* BoardSquare.swift in Sources */,
@@ -699,6 +731,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		A3FE565E23A0C0DA00309B2D /* XCRemoteSwiftPackageReference "Swift-Safe-Pointer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RougeWare/Swift-Safe-Pointer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -726,6 +766,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A3E49227239BAE5A00394FC4 /* XCRemoteSwiftPackageReference "Swift-Safe-Collection-Access" */;
 			productName = SafeCollectionAccess;
+		};
+		A3FE565F23A0C0DA00309B2D /* SafePointer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3FE565E23A0C0DA00309B2D /* XCRemoteSwiftPackageReference "Swift-Safe-Pointer" */;
+			productName = SafePointer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

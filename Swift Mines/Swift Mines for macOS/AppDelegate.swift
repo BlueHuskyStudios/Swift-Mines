@@ -24,8 +24,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             game: Game(
                 board: Board.generateNewBoard(size: UIntSize(width: 10, height: 10),
                                               totalNumberOfMines: 10)
-                    .annotated(baseStyle: .default)
-                    .allRevealed()
+                    .annotated(baseStyle: .default),
+                playState: .playing
             )
         )
 

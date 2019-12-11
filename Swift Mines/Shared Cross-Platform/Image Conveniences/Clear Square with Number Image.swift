@@ -60,7 +60,7 @@ public extension NativeImage {
                         .paragraphStyle : paragraphStyle,
                         .foregroundColor : distance.numberFillColor,
                         .strokeColor : NativeColor.white,
-                        .strokeWidth : fontSize / 16
+                        .strokeWidth : NSNumber(value: (fontSize / 4).native)
                     ]
                 )
             

@@ -8,13 +8,27 @@
 
 import SwiftUI
 import RectangleTools
+import SafePointer
 
 
 
-struct BoardView: View {
+internal struct BoardView: View {
     
     @State
     public var board: Board.Annotated
+    
+    private var onSquareTapped = MutableSafePointer<OnSquareTapped?>(to: nil)
+    
+    
+    internal init(board: Board.Annotated) {
+        self._board = State(wrappedValue: board)
+    }
+    
+    
+    internal init(board: State<Board.Annotated>) {
+        self._board = board
+    }
+    
     
     var body: some View {
         GeometryReader { geometry in
@@ -26,6 +40,8 @@ struct BoardView: View {
                                 style: self.style(for: square),
                                 model: square
                             )
+                            .gesture(TapGesture().modifiers(.control).onEnded(self.handleUserDidAltTap(square)))
+                            .gesture(TapGesture().onEnded(self.handleUserDidTap(square)))
                         }
                     }
                 }
@@ -33,16 +49,47 @@ struct BoardView: View {
             .background(Color(self.board.style.baseColor))
         }
     }
+    
+    
+    
+    public typealias OnSquareTapped = (_ square: BoardSquare.Annotated, _ action: Game.UserAction) -> Void
+}
+
+
+
+internal extension BoardView {
+    
+    func onSquareTapped(perform action: @escaping OnSquareTapped) -> BoardView {
+        self.onSquareTapped.pointee = action
+        return self
+    }
 }
 
 
 
 private extension BoardView {
+    
+    func handleUserDidTap(_ square: BoardSquare.Annotated) -> OnGestureDidEnd {{
+        print("Tap")
+        self.onSquareTapped.pointee?(square, .dig)
+    }}
+    
+    
+    func handleUserDidAltTap(_ square: BoardSquare.Annotated) -> OnGestureDidEnd {{
+        print("Tap2")
+        self.onSquareTapped.pointee?(square, .placeFlag(style: nil))
+    }}
+    
+    
     func style(for square: BoardSquare.Annotated) -> BoardSquareView.Style {
         .init(
             actualColor: board.style.baseColor
         )
     }
+    
+    
+    
+    typealias OnGestureDidEnd = () -> Void
 }
 
 
@@ -53,7 +100,7 @@ struct BoardView_Previews: PreviewProvider {
         .generateNewBoard(size: UIntSize(width: 10, height: 10),
                           totalNumberOfMines: 10)
         .annotated(baseStyle: .default)
-        .allRevealed()
+        .allRevealed(reason: .safelyRevealedAfterWin)
     
     static var previews: some View {
         BoardView(board: test10x10Board)

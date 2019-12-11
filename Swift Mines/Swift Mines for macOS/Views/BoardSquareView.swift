@@ -13,7 +13,7 @@ import RectangleTools
 
 
 
-struct BoardSquareView: View {
+internal struct BoardSquareView: View {
     
     @State
     var style: Style?
@@ -104,7 +104,7 @@ private extension BoardSquare.Annotated {
 
 
 
-extension BoardSquareView {
+internal extension BoardSquareView {
     struct Style {
         let actualColor: NativeColor
     }
@@ -185,8 +185,10 @@ struct BoardSquareView_Previews: PreviewProvider {
                                            content: content(from: context),
                                            externalRepresentation: representation),
                          inheritedStyle: .default,
-                         mineContext: context))
-        .previewDisplayName(name)
+                         mineContext: context,
+                         cachedLocation: .zero))
+            .previewDisplayName(name)
+            .frame(width: 16, height: 16, alignment: .center)
     }
     
     

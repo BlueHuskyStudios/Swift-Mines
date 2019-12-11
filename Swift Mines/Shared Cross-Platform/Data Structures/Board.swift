@@ -29,12 +29,21 @@ public extension Board {
     }
     
     
-    /// Finds the square at the given point, or the one on the wall closest to it
+    /// Finds the square at the given location, or the one on the wall closest to it
     ///
-    /// - Parameter point: The point of the square on the board
-    func square(at point: UIntPoint) -> BoardSquare {
-        return content[clamping: Int(point.y)]?[clamping: Int(point.x)]
+    /// - Parameter location: The location of the square on the board
+    func square(at location: UIntPoint) -> BoardSquare {
+        return content[clamping: Int(location.y)]?[clamping: Int(location.x)]
             ?? assertionFailure("Empty board?", backupValue: BoardSquare.empty)
+    }
+    
+    
+    /// Determines whether there is a mine at the given location
+    ///
+    /// - Parameter location: The location of a potential mine
+    @inlinable
+    func hasMine(at location: UIntPoint) -> Bool {
+        square(at: location).hasMine
     }
 }
 
@@ -44,9 +53,22 @@ public extension Board {
 
 public extension Board {
     
+    /// A board after additional info has been annotated upon it
     struct Annotated {
-        let content: [[BoardSquare.Annotated]]
-        let style: Style
+        
+        /// The content of this board; all of the squares and info annotated upon them
+        var content: [[BoardSquare.Annotated]]
+        
+        /// How this board and its squares are styled
+        var style: Style {
+            didSet {
+                content.enumerated().forEach { (rowIndex, row) in
+                    row.enumerated().forEach { (boardSquareIndex, _) in
+                        content[rowIndex][boardSquareIndex].inheritedStyle = style
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -54,15 +76,63 @@ public extension Board {
 
 public extension Board.Annotated {
     /// Returns a copy of this board, with all the squares revealed
-    func allRevealed() -> Self {
+    func allRevealed(reason: BoardSquare.RevealReason) -> Self {
         Self.init(
             content: self.content.map { row in
                 row.map { square in
-                    square.revealed(reason: .safelyRevealedAfterWin)
+                    square.revealed(reason: reason)
                 }
             },
             style: self.style
         )
+    }
+    
+    
+    /// Mutates this board so that all the squares revealed
+    mutating func revealAll(reason: BoardSquare.RevealReason) {
+        self = allRevealed(reason: reason)
+    }
+    
+    
+    /// Finds the square at the given location, or the one on the wall closest to it
+    ///
+    /// - Parameter location: The location of the square on the board
+    func square(at location: UIntPoint) -> BoardSquare.Annotated {
+        guard let square = content[clamping: Int(location.y)]?[clamping: Int(location.x)] else {
+            fatalError("Empty board?")
+        }
+        return square
+    }
+    
+    
+    /// Finds the square at the given location, or the one on the wall closest to it
+    ///
+    /// - Parameter location: The location of the square on the board
+    mutating func mutateSquare(at location: UIntPoint, with mutator: (inout BoardSquare.Annotated) -> Void) {
+        guard var square = content[clamping: Int(location.y)]?[clamping: Int(location.x)] else {
+            assertionFailure("Empty board?")
+            return
+        }
+        
+        mutator(&square)
+        
+        content[location] = square
+    }
+    
+    
+    /// Determines whether there is a mine at the given location
+    ///
+    /// - Parameter location: The location of a potential mine
+    func hasMine(at location: UIntPoint) -> Bool {
+        square(at: location).hasMine
+    }
+    
+    
+    /// Mutates this board so that the square at the given location is revealed
+    ///
+    /// - Parameter location: The location of the square to be revealed
+    internal mutating func revealSquare(at location: UIntPoint, reason: BoardSquare.RevealReason) {
+        content[location].reveal(reason: reason)
     }
 }
 
@@ -106,7 +176,8 @@ public extension Board {
                 ofSquare: square,
                 atRow: rowIndex,
                 column: columnIndex
-            )
+            ),
+            cachedLocation: UIntPoint(x: UInt(columnIndex), y: UInt(rowIndex))
         )
     }
     

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RectangleTools
 
 
 
@@ -27,6 +28,77 @@ public struct BoardSquare {
 
 
 
+// MARK: Functionality
+
+public extension BoardSquare {
+    
+    /// `true` iff this square’s content indicates a mine
+    @inline(__always)
+    var hasMine: Bool { content.hasMine }
+    
+    
+    /// If this square does not contain a mine, then it is made to have one
+    @inline(__always)
+    mutating func giveMine() {
+        content.giveMine()
+    }
+    
+    
+    /// Mutates this square so that it's represented with a flag
+    ///
+    /// - Parameter style: The style of the flag to place
+    mutating func placeFlag(style: ExternalRepresentation.FlagStyle) {
+        switch externalRepresentation {
+        case .blank,
+             .flagged(style: _):
+            self.externalRepresentation = .flagged(style: style)
+            
+        case .revealed(reason: _):
+            assertionFailure("Attempted to place a flag on a square whose content was already revealed")
+        }
+    }
+    
+    
+    /// Mutates this square so that its flag is the next flag style
+    mutating func cycleFlag() {
+        switch externalRepresentation {
+        case .blank:
+            self.externalRepresentation = .flagged(style: .sure)
+            
+        case .flagged(style: .sure):
+            self.externalRepresentation = .flagged(style: .unsure)
+            
+        case .flagged(style: .unsure):
+            self.externalRepresentation = .blank
+            
+        case .revealed(reason: _):
+            assertionFailure("Attempted to place a flag on a square whose content was already revealed")
+        }
+    }
+    
+    
+    /// Mutates this board square so its contents are revealed
+    ///
+    /// - Parameter reason: The reason why you want to reveal the contents
+    mutating func reveal(reason: RevealReason) {
+        self.externalRepresentation = .revealed(reason: reason)
+    }
+    
+    
+    /// Returns a copy of this board square with its contents revealed
+    ///
+    /// - Parameter reason: The reason why you want to reveal the contents
+    func revealed(reason: RevealReason) -> Self {
+        var copy = self
+        copy.reveal(reason: reason)
+        return copy
+    }
+}
+
+
+
+// MARK: - Content
+
 public extension BoardSquare {
     
     /// The content of a board square
@@ -41,6 +113,31 @@ public extension BoardSquare {
 }
 
 
+
+// MARK: Functionality
+
+public extension BoardSquare.Content {
+    /// `true` iff this square's content indicates a mine
+    var hasMine: Bool {
+        switch self {
+        case .clear: return false
+        case .mine: return true
+        }
+    }
+    
+    
+    /// If this content does not have a mine, then it is made to have one
+    mutating func giveMine() {
+        switch self {
+        case .clear: self = .mine
+        case .mine: return
+        }
+    }
+}
+
+
+
+// MARK: - ExternalRepresentation
 
 public extension BoardSquare {
     
@@ -62,6 +159,8 @@ public extension BoardSquare {
 
 
 
+// MARK: - FlagStyle
+
 public extension BoardSquare.ExternalRepresentation {
     
     /// The style of a flag on a square
@@ -77,24 +176,6 @@ public extension BoardSquare.ExternalRepresentation {
 
 
 
-// MARK: - Functionality
-
-public extension BoardSquare {
-    
-    /// `true` iff this square’s content indicates a mine
-    @inline(__always)
-    var hasMine: Bool { content.hasMine }
-    
-    
-    /// If this square does not contain a mine, then it is made to have one
-    @inline(__always)
-    mutating func giveMine() {
-        content.giveMine()
-    }
-}
-
-
-
 // MARK: - Annotated
 
 public extension BoardSquare {
@@ -103,23 +184,73 @@ public extension BoardSquare {
     struct Annotated {
         
         /// The square without any annotations
-        var base: BoardSquare
+        public var base: BoardSquare
         
         /// The style that was inherited from this square's board
-        var inheritedStyle: Board.Style
+        public var inheritedStyle: Board.Style
         
         /// The context of the mine (or lack thereof) in this square
-        var mineContext: MineContext
+        public var mineContext: MineContext
+        
+        /// The last known location of this square on the board
+        public var cachedLocation: UIntPoint
     }
 }
 
 
+// MARK: Identifiable
 
 extension BoardSquare.Annotated: Identifiable {
     public var id: UUID { base.id }
 }
 
 
+// MARK: Functionality
+
+public extension BoardSquare.Annotated {
+    
+    /// `true` iff this square’s content indicates a mine
+    @inlinable
+    var hasMine: Bool {
+        self.base.hasMine
+    }
+    
+    
+    /// Mutates this board square so its contents are revealed
+    ///
+    /// - Parameter reason: The reason why you want to reveal the contents
+    mutating func reveal(reason: BoardSquare.RevealReason) {
+        self.base.reveal(reason: reason)
+    }
+    
+    
+    /// Returns a copy of this board square with its contents revealed
+    ///
+    /// - Parameter reason: The reason why you want to reveal the contents
+    func revealed(reason: BoardSquare.RevealReason) -> Self {
+        var copy = self
+        copy.reveal(reason: reason)
+        return copy
+    }
+    
+    
+    /// Mutates this square so that it's represented with a flag
+    ///
+    /// - Parameter style: The style of the flag to place
+    mutating func placeFlag(style: BoardSquare.ExternalRepresentation.FlagStyle) {
+        self.base.placeFlag(style: style)
+    }
+    
+    
+    /// Mutates this square so that its flag is the next flag style
+    mutating func cycleFlag() {
+        self.base.cycleFlag()
+    }
+}
+
+
+
+// MARK: - MineContext
 
 public extension BoardSquare {
     
@@ -136,6 +267,8 @@ public extension BoardSquare {
 }
 
 
+
+// MARK: - MineDistance
 
 public extension BoardSquare {
     
@@ -182,6 +315,8 @@ public extension BoardSquare.MineDistance {
 
 
 
+// MARK: - RevealReason
+
 public extension BoardSquare {
     
     /// The reason why a square with a mine has its mine revealed
@@ -215,70 +350,3 @@ extension BoardSquare.Content: CaseIterable {}
 extension BoardSquare.ExternalRepresentation.FlagStyle: CaseIterable {}
 extension BoardSquare.RevealReason: CaseIterable {}
 extension BoardSquare.MineDistance: CaseIterable {}
-
-
-
-// MARK: - Functionality
-
-public extension BoardSquare.Content {
-    /// `true` iff this square's content indicates a mine
-    var hasMine: Bool {
-        switch self {
-        case .clear: return false
-        case .mine: return true
-        }
-    }
-    
-    
-    /// If this content does not have a mine, then it is made to have one
-    mutating func giveMine() {
-        switch self {
-        case .clear: self = .mine
-        case .mine: return
-        }
-    }
-}
-
-
-
-public extension BoardSquare {
-    
-    /// Mutates this board square so its contents are revealed
-    ///
-    /// - Parameter reason: The reason why you want to reveal the contents
-    mutating func reveal(reason: RevealReason) {
-        self.externalRepresentation = .revealed(reason: reason)
-    }
-    
-    
-    /// Returns a copy of this board square with its contents revealed
-    ///
-    /// - Parameter reason: The reason why you want to reveal the contents
-    func revealed(reason: RevealReason) -> Self {
-        var copy = self
-        copy.reveal(reason: reason)
-        return copy
-    }
-}
-
-
-
-public extension BoardSquare.Annotated {
-    
-    /// Mutates this board square so its contents are revealed
-    ///
-    /// - Parameter reason: The reason why you want to reveal the contents
-    mutating func reveal(reason: BoardSquare.RevealReason) {
-        self.base.reveal(reason: reason)
-    }
-    
-    
-    /// Returns a copy of this board square with its contents revealed
-    ///
-    /// - Parameter reason: The reason why you want to reveal the contents
-    func revealed(reason: BoardSquare.RevealReason) -> Self {
-        var copy = self
-        copy.reveal(reason: reason)
-        return copy
-    }
-}

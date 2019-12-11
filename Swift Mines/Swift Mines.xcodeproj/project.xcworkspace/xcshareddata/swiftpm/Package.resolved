@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/RougeWare/Swift-Rectangle-Tools.git",
         "state": {
           "branch": null,
-          "revision": "b3a291dcd36bcd3e768e86f5048af1d2022ffb33",
-          "version": "2.1.1"
+          "revision": "7888250c2cd3f16e2e3a14da6fc27567a4bc27ce",
+          "version": "2.2.0"
         }
       },
       {
@@ -53,6 +53,15 @@
           "branch": null,
           "revision": "990d5d0d1d61d44cf24604ad69e926d1dbea51d7",
           "version": "1.1.0"
+        }
+      },
+      {
+        "package": "SafePointer",
+        "repositoryURL": "https://github.com/RougeWare/Swift-Safe-Pointer.git",
+        "state": {
+          "branch": null,
+          "revision": "18faa4b850a9b8ebc9a23e2801b5abff752bd90c",
+          "version": "2.0.0"
         }
       }
     ]
