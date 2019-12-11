@@ -27,6 +27,15 @@ public extension Board {
     var size: UIntSize {
         UIntSize(width: UInt(content[0].count), height: UInt(content.count))
     }
+    
+    
+    /// Finds the square at the given point, or the one on the wall closest to it
+    ///
+    /// - Parameter point: The point of the square on the board
+    func square(at point: UIntPoint) -> BoardSquare {
+        return content[clamping: Int(point.y)]?[clamping: Int(point.x)]
+            ?? assertionFailure("Empty board?", backupValue: BoardSquare.empty)
+    }
 }
 
 
@@ -38,6 +47,22 @@ public extension Board {
     struct Annotated {
         let content: [[BoardSquare.Annotated]]
         let style: Style
+    }
+}
+
+
+
+public extension Board.Annotated {
+    /// Returns a copy of this board, with all the squares revealed
+    func allRevealed() -> Self {
+        Self.init(
+            content: self.content.map { row in
+                row.map { square in
+                    square.revealed(reason: .safelyRevealedAfterWin)
+                }
+            },
+            style: self.style
+        )
     }
 }
 

@@ -29,12 +29,21 @@
         }
       },
       {
+        "package": "OptionalTools",
+        "repositoryURL": "https://github.com/RougeWare/Swift-Optional-Tools.git",
+        "state": {
+          "branch": null,
+          "revision": "1b20da886944b9d258064c9a0deaecc1843e9fe0",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "RectangleTools",
         "repositoryURL": "https://github.com/RougeWare/Swift-Rectangle-Tools.git",
         "state": {
           "branch": null,
-          "revision": "367a3b3e6520c5132e50170577c97e85b7c04a05",
-          "version": "2.0.1"
+          "revision": "b3a291dcd36bcd3e768e86f5048af1d2022ffb33",
+          "version": "2.1.1"
         }
       },
       {
@@ -42,8 +51,8 @@
         "repositoryURL": "https://github.com/RougeWare/Swift-Safe-Collection-Access.git",
         "state": {
           "branch": null,
-          "revision": "b99bb75f4481d2b080d01ebfacee0fec50abe6c0",
-          "version": "1.0.1"
+          "revision": "990d5d0d1d61d44cf24604ad69e926d1dbea51d7",
+          "version": "1.1.0"
         }
       }
     ]

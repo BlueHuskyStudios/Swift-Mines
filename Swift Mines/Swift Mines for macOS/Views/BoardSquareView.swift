@@ -32,7 +32,9 @@ struct BoardSquareView: View {
                 .aspectRatio(1, contentMode: .fit)
     //            .padding(1)
                 .background(Color(self.model.appropriateBackgroundColor()))
-            }
+        }
+            .frame(minWidth: 8, idealWidth: 16, minHeight: 8, idealHeight: 16, alignment: .center)
+            .aspectRatio(1, contentMode: .fit)
     }
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A35D2853239F791B0006B72B /* Board + random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D2852239F791B0006B72B /* Board + random.swift */; };
+		A35D2856239F81DC0006B72B /* OptionalTools in Frameworks */ = {isa = PBXBuildFile; productRef = A35D2855239F81DC0006B72B /* OptionalTools */; };
 		A37D06D9239DDBE200C88026 /* NativeImage Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */; };
 		A37D06DC239DECD800C88026 /* Clear Square with Number Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D06DB239DECD800C88026 /* Clear Square with Number Image.swift */; };
 		A39B86C6239EE56B00579A89 /* Assertion Debuggin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B86C5239EE56B00579A89 /* Assertion Debuggin.swift */; };
@@ -32,6 +34,7 @@
 		A3C69F742397A1CF00520B2F /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C69F732397A1CF00520B2F /* Board.swift */; };
 		A3C69F782397A26400520B2F /* RectangleTools in Frameworks */ = {isa = PBXBuildFile; productRef = A3C69F772397A26400520B2F /* RectangleTools */; };
 		A3E49229239BAE5A00394FC4 /* SafeCollectionAccess in Frameworks */ = {isa = PBXBuildFile; productRef = A3E49228239BAE5A00394FC4 /* SafeCollectionAccess */; };
+		A3FE565423A07E0200309B2D /* Collection Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE565323A07E0200309B2D /* Collection Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A35D2852239F791B0006B72B /* Board + random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board + random.swift"; sourceTree = "<group>"; };
 		A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NativeImage Extensions.swift"; sourceTree = "<group>"; };
 		A37D06DB239DECD800C88026 /* Clear Square with Number Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clear Square with Number Image.swift"; sourceTree = "<group>"; };
 		A39B86C5239EE56B00579A89 /* Assertion Debuggin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assertion Debuggin.swift"; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 		A3C69F662397A14100520B2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3C69F702397A1A500520B2F /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		A3C69F732397A1CF00520B2F /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		A3FE565323A07E0200309B2D /* Collection Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +87,7 @@
 				A3E49229239BAE5A00394FC4 /* SafeCollectionAccess in Frameworks */,
 				A3B33008239A05C20034F236 /* NonEmpty in Frameworks */,
 				A3C69F782397A26400520B2F /* RectangleTools in Frameworks */,
+				A35D2856239F81DC0006B72B /* OptionalTools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +107,7 @@
 				A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */,
 				A39B86CB239F06E800579A89 /* Size2D Extensions.swift */,
 				A39B86CD239F07B000579A89 /* TwoDimensional Extensions.swift */,
+				A3FE565323A07E0200309B2D /* Collection Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -151,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				A3B3300A239A0D9A0034F236 /* BoardSquare + random.swift */,
+				A35D2852239F791B0006B72B /* Board + random.swift */,
 			);
 			path = Generation;
 			sourceTree = "<group>";
@@ -268,6 +276,7 @@
 				A3B33007239A05C20034F236 /* NonEmpty */,
 				A3B33010239A1E560034F236 /* CrossKitTypes */,
 				A3E49228239BAE5A00394FC4 /* SafeCollectionAccess */,
+				A35D2855239F81DC0006B72B /* OptionalTools */,
 			);
 			productName = "Swift Mines";
 			productReference = A3C69F4B2397A13F00520B2F /* Swift Mines.app */;
@@ -324,6 +333,7 @@
 				A3B33006239A05C20034F236 /* XCRemoteSwiftPackageReference "swift-nonempty" */,
 				A3B3300F239A1E560034F236 /* XCRemoteSwiftPackageReference "Swift-Cross-Kit-Types" */,
 				A3E49227239BAE5A00394FC4 /* XCRemoteSwiftPackageReference "Swift-Safe-Collection-Access" */,
+				A35D2854239F81DC0006B72B /* XCRemoteSwiftPackageReference "Swift-Optional-Tools" */,
 			);
 			productRefGroup = A3C69F4C2397A13F00520B2F /* Products */;
 			projectDirPath = "";
@@ -363,8 +373,10 @@
 				A39B86C6239EE56B00579A89 /* Assertion Debuggin.swift in Sources */,
 				A3C69F712397A1A500520B2F /* BoardView.swift in Sources */,
 				A3C69F512397A13F00520B2F /* ContentView.swift in Sources */,
+				A35D2853239F791B0006B72B /* Board + random.swift in Sources */,
 				A39B86CC239F06E800579A89 /* Size2D Extensions.swift in Sources */,
 				A3B32FFC2398CE050034F236 /* Game.swift in Sources */,
+				A3FE565423A07E0200309B2D /* Collection Extensions.swift in Sources */,
 				A37D06DC239DECD800C88026 /* Clear Square with Number Image.swift in Sources */,
 				A37D06D9239DDBE200C88026 /* NativeImage Extensions.swift in Sources */,
 				A3B32FF8239868130034F236 /* BoardSquareView.swift in Sources */,
@@ -646,6 +658,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A35D2854239F81DC0006B72B /* XCRemoteSwiftPackageReference "Swift-Optional-Tools" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RougeWare/Swift-Optional-Tools.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		A3B33006239A05C20034F236 /* XCRemoteSwiftPackageReference "swift-nonempty" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-nonempty.git";
@@ -682,6 +702,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A35D2855239F81DC0006B72B /* OptionalTools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A35D2854239F81DC0006B72B /* XCRemoteSwiftPackageReference "Swift-Optional-Tools" */;
+			productName = OptionalTools;
+		};
 		A3B33007239A05C20034F236 /* NonEmpty */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A3B33006239A05C20034F236 /* XCRemoteSwiftPackageReference "swift-nonempty" */;

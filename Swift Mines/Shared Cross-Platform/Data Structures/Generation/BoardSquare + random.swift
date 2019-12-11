@@ -17,6 +17,16 @@ public extension BoardSquare {
                          content: internalContent,
                          externalRepresentation: .random())
     }
+    
+    
+    /// Generates a new, clear, and blank board square
+    static var empty: BoardSquare {
+        return BoardSquare(
+            id: UUID(),
+            content: .clear,
+            externalRepresentation: .blank
+        )
+    }
 }
 
 

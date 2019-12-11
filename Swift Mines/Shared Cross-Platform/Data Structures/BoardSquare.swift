@@ -19,7 +19,7 @@ public struct BoardSquare {
     public let id: UUID
     
     /// The content of the board square, whether or not the square has been revealed
-    public let content: Content
+    public var content: Content
     
     /// The way the square is currently represented to the user
     public var externalRepresentation: ExternalRepresentation
@@ -77,6 +77,24 @@ public extension BoardSquare.ExternalRepresentation {
 
 
 
+// MARK: - Functionality
+
+public extension BoardSquare {
+    
+    /// `true` iff this square’s content indicates a mine
+    @inline(__always)
+    var hasMine: Bool { content.hasMine }
+    
+    
+    /// If this square does not contain a mine, then it is made to have one
+    @inline(__always)
+    mutating func giveMine() {
+        content.giveMine()
+    }
+}
+
+
+
 // MARK: - Annotated
 
 public extension BoardSquare {
@@ -85,7 +103,7 @@ public extension BoardSquare {
     struct Annotated {
         
         /// The square without any annotations
-        let base: BoardSquare
+        var base: BoardSquare
         
         /// The style that was inherited from this square's board
         var inheritedStyle: Board.Style
@@ -209,5 +227,58 @@ public extension BoardSquare.Content {
         case .clear: return false
         case .mine: return true
         }
+    }
+    
+    
+    /// If this content does not have a mine, then it is made to have one
+    mutating func giveMine() {
+        switch self {
+        case .clear: self = .mine
+        case .mine: return
+        }
+    }
+}
+
+
+
+public extension BoardSquare {
+    
+    /// Mutates this board square so its contents are revealed
+    ///
+    /// - Parameter reason: The reason why you want to reveal the contents
+    mutating func reveal(reason: RevealReason) {
+        self.externalRepresentation = .revealed(reason: reason)
+    }
+    
+    
+    /// Returns a copy of this board square with its contents revealed
+    ///
+    /// - Parameter reason: The reason why you want to reveal the contents
+    func revealed(reason: RevealReason) -> Self {
+        var copy = self
+        copy.reveal(reason: reason)
+        return copy
+    }
+}
+
+
+
+public extension BoardSquare.Annotated {
+    
+    /// Mutates this board square so its contents are revealed
+    ///
+    /// - Parameter reason: The reason why you want to reveal the contents
+    mutating func reveal(reason: BoardSquare.RevealReason) {
+        self.base.reveal(reason: reason)
+    }
+    
+    
+    /// Returns a copy of this board square with its contents revealed
+    ///
+    /// - Parameter reason: The reason why you want to reveal the contents
+    func revealed(reason: BoardSquare.RevealReason) -> Self {
+        var copy = self
+        copy.reveal(reason: reason)
+        return copy
     }
 }
