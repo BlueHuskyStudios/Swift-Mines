@@ -13,17 +13,22 @@ import RectangleTools
 
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject {
 
     var window: NSWindow!
+}
 
+
+
+extension AppDelegate: NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView(
             game: Game(
-                board: Board.generateNewBoard(size: UIntSize(width: 10, height: 10),
-                                              totalNumberOfMines: 10)
+                id: UUID(),
+                board: Board.generateNewBoard(size: UIntSize(width: 2, height: 2),
+                                              totalNumberOfMines: 4)
                     .annotated(baseStyle: .default),
                 playState: .playing
             )
@@ -39,11 +44,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.contentView = NSHostingView(rootView: contentView)
         window.makeKeyAndOrderFront(nil)
     }
-
+    
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
-
+    
+    
+    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool { true }
 }
 

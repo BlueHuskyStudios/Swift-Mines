@@ -14,17 +14,30 @@ import RectangleTools
 struct ContentView: View {
     
     @State
-    var game: Game
+    var game: Game {
+        didSet {
+            print("ContentView did set game")
+        }
+    }
+    
     
     var body: some View {
         BoardView(board: game.board)
-            .onSquareTapped { (square, action) in self.game.updateBoard(after: action, at: square.cachedLocation) }
+            .onSquareTapped { (square, action) in
+                print("Square tapped -", action)
+                self.game = Game(id: UUID(),
+                                 board: self.game.board.allRevealed(reason: .manuallyTriggered),
+                                 playState: .playing)
+                //self.game.updateBoard(after: action, at: square.cachedLocation)
+            }
+            .alsoForView { print("ContentView Did regenerate view") }
     }
 }
 
 
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(game: Game(board: Board(content: UIntSize(width: 10, height: 10).map2D { _ in .random() }).annotated(baseStyle: .default), playState: .notStarted))
+        ContentView(game: Game(id: UUID(), board: Board(content: UIntSize(width: 10, height: 10).map2D { _ in .random() }).annotated(baseStyle: .default), playState: .notStarted))
     }
 }

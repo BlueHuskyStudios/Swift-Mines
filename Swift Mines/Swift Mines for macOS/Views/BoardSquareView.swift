@@ -19,22 +19,52 @@ internal struct BoardSquareView: View {
     var style: Style?
     
     @State
-    var model: BoardSquare.Annotated
+    var model: Model {
+        didSet {
+            print("BoardSquareView did set square")
+        }
+    }
     
     
     var body: some View {
-        GeometryReader { geometryProxy in
-            Image.init(nsImage: self.currentImage(size: geometryProxy.size))
-    //            .renderingMode(.original)
-                .resizable(resizingMode: .stretch)
-    //            .scaledToFit()
-                .frame(minWidth: 8, idealWidth: 16, minHeight: 8, idealHeight: 16, alignment: .center)
-                .aspectRatio(1, contentMode: .fit)
-    //            .padding(1)
-                .background(Color(self.model.appropriateBackgroundColor()))
-        }
+        print("BoardSquareView setting up at \(model.cachedLocation)...")
+        let x = GeometryReader { geometryProxy in
+                Image(nsImage: self.currentImage(size: geometryProxy.size))
+                    .resizable(resizingMode: .stretch)
+                    .frame(minWidth: 8, idealWidth: 16, minHeight: 8, idealHeight: 16, alignment: .center)
+                    .aspectRatio(1, contentMode: .fit)
+                    .background(Color(self.model.appropriateBackgroundColor()))
+            }
+            .border(SeparatorShapeStyle(), width: 1)
+            .alsoForView { print("\tBoardSquareView Did regenerate view") }
             .frame(minWidth: 8, idealWidth: 16, minHeight: 8, idealHeight: 16, alignment: .center)
             .aspectRatio(1, contentMode: .fit)
+            .alsoForView { print("\tBoardSquareView Did set up view") }
+        return x
+    }
+    
+    
+    
+    typealias Model = BoardSquare.Annotated
+}
+
+
+
+extension BoardSquareView: Identifiable {
+    @inlinable
+    var id: UUID { model.id }
+}
+
+
+
+extension BoardSquareView: Hashable {
+    static func == (lhs: BoardSquareView, rhs: BoardSquareView) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    
+    func hash(into hasher: inout Hasher) {
+        model.hash(into: &hasher)
     }
 }
 
@@ -104,6 +134,8 @@ private extension BoardSquare.Annotated {
 
 
 
+// MARK: - Style
+
 internal extension BoardSquareView {
     struct Style {
         let actualColor: NativeColor
@@ -111,6 +143,16 @@ internal extension BoardSquareView {
 }
 
 
+
+extension BoardSquareView.Style: Equatable {}
+
+
+
+extension BoardSquareView.Style: Hashable {}
+
+
+
+// MARK: - Preview
 
 struct BoardSquareView_Previews: PreviewProvider {
     static var previews: some View {

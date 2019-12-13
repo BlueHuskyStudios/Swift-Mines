@@ -15,13 +15,17 @@ import SafePointer
 internal struct BoardView: View {
     
     @State
-    public var board: Board.Annotated
+    public var board: Board.Annotated {
+        didSet {
+            print("BoardView did update board")
+        }
+    }
     
     private var onSquareTapped = MutableSafePointer<OnSquareTapped?>(to: nil)
     
     
     internal init(board: Board.Annotated) {
-        self._board = State(wrappedValue: board)
+        self.init(board: State(wrappedValue: board))
     }
     
     
@@ -40,14 +44,17 @@ internal struct BoardView: View {
                                 style: self.style(for: square),
                                 model: square
                             )
-                            .gesture(TapGesture().modifiers(.control).onEnded(self.handleUserDidAltTap(square)))
-                            .gesture(TapGesture().onEnded(self.handleUserDidTap(square)))
+                                .alsoForView { print("BoardView Did regenerate board square view at", square.cachedLocation) }
+                                .gesture(TapGesture().modifiers(.control).onEnded({ self.onSquareTapped.pointee?(square, .placeFlag(style: nil)) }))
+                                .gesture(TapGesture().onEnded({ self.onSquareTapped.pointee?(square, .dig) }))
+                                .alsoForView { print("\tBoardView Did attach listeners to board square view at", square.cachedLocation) }
                         }
                     }
                 }
             }
             .background(Color(self.board.style.baseColor))
         }
+        .alsoForView { print("BoardView Did regenerate view with \(board.content.count * (board.content[orNil: 0]?.count ?? 1)) squares") }
     }
     
     
@@ -59,8 +66,10 @@ internal struct BoardView: View {
 
 internal extension BoardView {
     
-    func onSquareTapped(perform action: @escaping OnSquareTapped) -> BoardView {
-        self.onSquareTapped.pointee = action
+    func onSquareTapped(perform responder: @escaping OnSquareTapped) -> BoardView {
+        self.onSquareTapped.pointee = { square, action in
+            responder(square, action)
+        }
         return self
     }
 }

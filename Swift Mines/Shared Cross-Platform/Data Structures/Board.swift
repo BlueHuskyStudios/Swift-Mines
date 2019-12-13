@@ -132,9 +132,14 @@ public extension Board.Annotated {
     ///
     /// - Parameter location: The location of the square to be revealed
     internal mutating func revealSquare(at location: UIntPoint, reason: BoardSquare.RevealReason) {
+        print("Revealing that the square at", location, content[location].hasMine ? "has a mine" : "is clear", "(was previously \(content[location].base.externalRepresentation))")
         content[location].reveal(reason: reason)
     }
 }
+
+
+
+extension Board.Annotated: Hashable {}
 
 
 

@@ -48,6 +48,7 @@ public extension BoardSquare {
     ///
     /// - Parameter style: The style of the flag to place
     mutating func placeFlag(style: ExternalRepresentation.FlagStyle) {
+        print("Placing a", style, "flag")
         switch externalRepresentation {
         case .blank,
              .flagged(style: _):
@@ -61,14 +62,18 @@ public extension BoardSquare {
     
     /// Mutates this square so that its flag is the next flag style
     mutating func cycleFlag() {
+        print("Cycling flag...")
         switch externalRepresentation {
         case .blank:
+            print("    Cycling to a Flag")
             self.externalRepresentation = .flagged(style: .sure)
             
         case .flagged(style: .sure):
+            print("    Cycling to a Question Mark")
             self.externalRepresentation = .flagged(style: .unsure)
             
         case .flagged(style: .unsure):
+            print("    Cycling to a Blank")
             self.externalRepresentation = .blank
             
         case .revealed(reason: _):

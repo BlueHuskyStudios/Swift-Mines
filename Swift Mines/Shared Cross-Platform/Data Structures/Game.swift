@@ -13,11 +13,71 @@ import RectangleTools
 
 /// Everything we need to know in order to display a game of Mines while it's being played
 public struct Game {
-    var board: Board.Annotated
-    var playState: PlayState
+    public let id: UUID
+    public var board: Board.Annotated
+    public var playState: PlayState
 }
 
 
+
+extension Game: Identifiable {}
+extension Game: Hashable {}
+
+
+// MARK: Functionality
+
+public extension Game {
+    /// Mutates the game board to reflect the result of the user taking the given action at the given location
+    ///
+    /// - Parameters:
+    ///   - action:   The action the user took
+    ///   - location: The location of the action
+    mutating func updateBoard(after action: UserAction, at location: UIntPoint) {
+        switch action {
+        case .dig: dig(at: location)
+        case .placeFlag(let style): placeFlag(style: style, at: location)
+        }
+    }
+    
+    
+    /// "Dig" up the square at the given location. If it's a mine, the game is lost. If it's clear, then more info
+    /// about the mines is revealed.
+    ///
+    /// - Parameter location: The location where to dig
+    private mutating func dig(at location: UIntPoint) {
+        print("Digging at", location)
+        if board.hasMine(at: location) {
+            loseGame(detonatedMineLocation: location)
+        }
+        else {
+            print("Revealing square")
+            board.revealSquare(at: location, reason: .manuallyTriggered)
+        }
+    }
+    
+    
+    
+    private mutating func loseGame(detonatedMineLocation: UIntPoint) {
+        print("Board has a mine at \(detonatedMineLocation)! Game over")
+        board.revealAll(reason: .chainReaction)
+        board.content[detonatedMineLocation].base.reveal(reason: BoardSquare.RevealReason.manuallyTriggered)
+        playState = .loss
+    }
+    
+    
+    private mutating func placeFlag(style: FlagStyle?, at location: UIntPoint) {
+        if let style = style {
+            board.content[location].placeFlag(style: style)
+        }
+        else {
+            board.content[location].cycleFlag()
+        }
+    }
+}
+
+
+
+// MARK: - PlayState
 
 public extension Game {
     enum PlayState {
@@ -29,6 +89,12 @@ public extension Game {
 }
 
 
+
+extension Game.PlayState: Hashable {}
+
+
+
+// MARK: - UserAction
 
 public extension Game {
     /// An action the user took while playing
@@ -46,48 +112,4 @@ public extension Game {
     
     
     typealias FlagStyle = BoardSquare.ExternalRepresentation.FlagStyle
-}
-
-
-
-public extension Game {
-    /// Mutates the game board to reflect the result of the user taking the given action at the given location
-    ///
-    /// - Parameters:
-    ///   - action:   The action the user took
-    ///   - location: The location of the action
-    mutating func updateBoard(after action: UserAction, at location: UIntPoint) {
-        switch action {
-        case .dig: dig(at: location)
-        case .placeFlag(let style): placeFlag(style: style, at: location)
-        }
-    }
-    
-    
-    private mutating func dig(at location: UIntPoint) {
-        if board.hasMine(at: location) {
-            loseGame(detonatedMineLocation: location)
-        }
-        else {
-            board.revealSquare(at: location, reason: .manuallyTriggered)
-        }
-    }
-    
-    
-    
-    private mutating func loseGame(detonatedMineLocation: UIntPoint) {
-        board.revealAll(reason: .chainReaction)
-        board.content[detonatedMineLocation].base.reveal(reason: BoardSquare.RevealReason.manuallyTriggered)
-        playState = .loss
-    }
-    
-    
-    private mutating func placeFlag(style: FlagStyle?, at location: UIntPoint) {
-        if let style = style {
-            board.content[location].placeFlag(style: style)
-        }
-        else {
-            board.content[location].cycleFlag()
-        }
-    }
 }
