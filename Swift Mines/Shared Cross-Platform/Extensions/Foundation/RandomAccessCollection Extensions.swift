@@ -8,14 +8,21 @@
 
 import Foundation
 import RectangleTools
+import SafeCollectionAccess
 
 
 
 public extension RandomAccessCollection where Index: SignedInteger {
+    
+    @inlinable
     subscript(_ index: UInt) -> Element {
-        get {
-            return self[.init(index)]
-        }
+        return self[Index.init(index)]
+    }
+    
+    
+    @inlinable
+    subscript(orNil index: UInt) -> Element? {
+        return self[orNil: Index.init(index)]
     }
 }
 
@@ -26,6 +33,7 @@ public extension RandomAccessCollection
         Self: MutableCollection,
         Index: SignedInteger
 {
+    @inlinable
     subscript(_ index: UInt) -> Element {
         get {
             return self[.init(index)]
@@ -44,8 +52,32 @@ public extension RandomAccessCollection
         Element: RandomAccessCollection,
         Element.Index == Self.Index
 {
+    @inlinable
     subscript(_ indices: BinaryIntegerPoint<Index>) -> Element.Element {
         return self[indices.y][indices.x]
+    }
+    
+    
+    @inlinable
+    subscript(orNil indices: BinaryIntegerPoint<Index>) -> Element.Element? {
+        return self[orNil: indices.y]?[orNil: indices.x]
+    }
+    
+    
+    @inline(__always)
+    var count2d: UIntSize { size }
+    
+    
+    var size: UIntSize {
+        if isEmpty {
+            return .zero
+        }
+        else {
+            return UIntSize(
+                width: UInt(self.lazy.map { $0.count }.reduce(0, Swift.max)),
+                height: UInt(count)
+            )
+        }
     }
 }
 
@@ -59,6 +91,7 @@ public extension RandomAccessCollection
         Element: MutableCollection,
         Element.Index == Self.Index
 {
+    @inlinable
     subscript(_ indices: BinaryIntegerPoint<Index>) -> Element.Element {
         get {
             return self[indices.y][indices.x]
@@ -77,8 +110,15 @@ public extension RandomAccessCollection
         Element: RandomAccessCollection,
         Element.Index == Self.Index
 {
+    @inlinable
     subscript(_ indices: UIntPoint) -> Element.Element {
         return self[indices.y][indices.x]
+    }
+    
+    
+    @inlinable
+    subscript(orNil indices: UIntPoint) -> Element.Element? {
+        return self[orNil: indices.y]?[orNil: indices.x]
     }
 }
 
@@ -92,6 +132,7 @@ public extension RandomAccessCollection
         Element: MutableCollection,
         Element.Index == Self.Index
 {
+    @inlinable
     subscript(_ indices: UIntPoint) -> Element.Element {
         get {
             return self[indices.y][indices.x]
