@@ -408,7 +408,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Ben Leggiero";
 				TargetAttributes = {
 					A3C69F4A2397A13F00520B2F = {
@@ -488,7 +488,6 @@
 				A3EFDC8723A71EB900D439A5 /* Sequence Extensions.swift in Sources */,
 				A3FE565D23A0AF1200309B2D /* RandomAccessCollection Extensions.swift in Sources */,
 				A38CC46B23A4B04700D42F69 /* HasTransform + SwiftUI.swift in Sources */,
-				A3B32FF8239868130034F236 /* BoardSquareView.swift in Sources */,
 				A39B86C8239EE95E00579A89 /* Swatches.swift in Sources */,
 				A3EFDC8523A6DD0A00D439A5 /* BoardSquareView.swift in Sources */,
 				A3B32FFA239868320034F236 /* BoardSquare.swift in Sources */,
@@ -653,6 +652,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Swift Mines for macOS/Swift_Mines.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Swift Mines for macOS/Preview Content\"";
@@ -676,6 +676,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Swift Mines for macOS/Swift_Mines.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Swift Mines for macOS/Preview Content\"";
@@ -699,6 +700,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 26V9MK8TGP;
@@ -721,6 +723,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 26V9MK8TGP;
