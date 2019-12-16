@@ -258,7 +258,7 @@ private extension Board.SquareNeighbors {
     private func numberOfNeighborsWithMines() -> UInt8 {
         return self                             // Given all neighbors of a particular cell on the game board
             .lazy                               // Evaluate all the following steps in only 1 loop
-            .compactMap { $0 }                  // Discard any neighbors which are off the board
+            .discardingNilElements()            // Discard any neighbors which are off the board
             .map { $0.content.hasMine ? 1 : 0 } // If it has a mine, treat it as a `1`, otherwise a `0`
             .reduce(into: 0, +=)                // Add them all up!
     }

@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/RougeWare/Swift-Safe-Pointer.git",
         "state": {
           "branch": null,
-          "revision": "18faa4b850a9b8ebc9a23e2801b5abff752bd90c",
-          "version": "2.0.0"
+          "revision": "35a96bd9d1dd42ae1101341424c76c88a14da3f2",
+          "version": "2.0.1"
         }
       }
     ]

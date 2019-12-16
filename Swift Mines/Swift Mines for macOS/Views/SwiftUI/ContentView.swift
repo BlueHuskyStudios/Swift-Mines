@@ -30,7 +30,8 @@ struct ContentView: View {
                                  playState: .playing)
                 //self.game.updateBoard(after: action, at: square.cachedLocation)
             }
-            .alsoForView { print("ContentView Did regenerate view") }
+            .forSwiftUi()
+            .also { print("ContentView Did regenerate view") }
     }
 }
 

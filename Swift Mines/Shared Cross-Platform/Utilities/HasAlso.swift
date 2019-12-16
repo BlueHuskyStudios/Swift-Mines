@@ -54,4 +54,4 @@ extension Array: HasAlso {}
 extension Dictionary: HasAlso {}
 extension Set: HasAlso {}
 
-extension Never: HasAlso {}
+//extension Never: HasAlso {}
