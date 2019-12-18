@@ -63,6 +63,15 @@
           "revision": "35a96bd9d1dd42ae1101341424c76c88a14da3f2",
           "version": "2.0.1"
         }
+      },
+      {
+        "package": "TODO",
+        "repositoryURL": "https://github.com/RougeWare/Swift-TODO",
+        "state": {
+          "branch": null,
+          "revision": "8d227a03c493f1382a638bb7573510be24f789a3",
+          "version": "1.0.0"
+        }
       }
     ]
   },

@@ -22,13 +22,16 @@ struct ContentView: View {
     
     
     var body: some View {
-        BoardView(board: game.board)
+        var boardView = BoardView(board: game.board)
+        
+        return boardView
             .onSquareTapped { (square, action) in
                 print("Square tapped -", action)
                 self.game = Game(id: UUID(),
                                  board: self.game.board.allRevealed(reason: .manuallyTriggered),
                                  playState: .playing)
                 //self.game.updateBoard(after: action, at: square.cachedLocation)
+                boardView.board = self.game.board
             }
             .forSwiftUi()
             .also { print("ContentView Did regenerate view") }

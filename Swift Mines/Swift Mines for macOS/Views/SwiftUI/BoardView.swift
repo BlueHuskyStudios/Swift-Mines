@@ -44,17 +44,17 @@ internal struct BoardView: View {
                                 style: self.style(for: square),
                                 model: square
                             )
-                                .alsoForView { print("BoardView Did regenerate board square view at", square.cachedLocation) }
+                                .also { print("BoardView Did regenerate board square view at", square.cachedLocation) }
                                 .gesture(TapGesture().modifiers(.control).onEnded({ self.onSquareTapped.pointee?(square, .placeFlag(style: nil)) }))
                                 .gesture(TapGesture().onEnded({ self.onSquareTapped.pointee?(square, .dig) }))
-                                .alsoForView { print("\tBoardView Did attach listeners to board square view at", square.cachedLocation) }
+                                .also { print("\tBoardView Did attach listeners to board square view at", square.cachedLocation) }
                         }
                     }
                 }
             }
             .background(Color(self.board.style.baseColor))
         }
-        .alsoForView { print("BoardView Did regenerate view with \(board.content.count * (board.content[orNil: 0]?.count ?? 1)) squares") }
+        .also { print("BoardView Did regenerate view with \(board.content.count * (board.content[orNil: 0]?.count ?? 1)) squares") }
     }
     
     

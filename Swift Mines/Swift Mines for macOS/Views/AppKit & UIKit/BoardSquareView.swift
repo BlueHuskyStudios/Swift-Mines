@@ -21,17 +21,18 @@ internal class BoardSquareView: NSView {
         }
     }
     
-    var onUserDidClickSquare: OnUserDidPressSquare?
+    var onUserDidPressSquare: OnUserDidPressSquare?
     
     
     
-    init(square: BoardSquare.Annotated, onUserDidClickSquare: OnUserDidPressSquare? = nil) {
+    init(square: BoardSquare.Annotated, onUserDidPressSquare: OnUserDidPressSquare? = nil) {
         self.square = square
-        self.onUserDidClickSquare = onUserDidClickSquare
+        self.onUserDidPressSquare = onUserDidPressSquare
         
         super.init(frame: .zero)
         
         updateUi()
+        attachPressListeners()
     }
     
     
@@ -48,6 +49,22 @@ internal class BoardSquareView: NSView {
 
 private extension BoardSquareView {
     func updateUi() {
-        print("TODO: Update UI")
+        self.wantsLayer = true
+        self.layer?.backgroundColor = NSColor.controlAccentColor.cgColor
+        self.layer?.borderColor = NSColor.quaternaryLabelColor.cgColor
+        self.layer?.borderWidth = 1
+    }
+    
+    
+    func attachPressListeners() {
+        let digGestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(userDidPressSquare_digGesture))
+        digGestureRecognizer.buttonMask = 0b0001
+        self.addGestureRecognizer(digGestureRecognizer)
+    }
+    
+    
+    @IBAction
+    func userDidPressSquare_digGesture(sender: Any?) {
+        onUserDidPressSquare?(square, .dig)
     }
 }

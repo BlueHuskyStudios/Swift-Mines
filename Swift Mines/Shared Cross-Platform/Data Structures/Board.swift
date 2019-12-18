@@ -9,6 +9,7 @@
 import Foundation
 import RectangleTools
 import SafeCollectionAccess
+import SafePointer
 
 
 
@@ -57,7 +58,14 @@ public extension Board {
     struct Annotated {
         
         /// The content of this board; all of the squares and info annotated upon them
-        var content: [[BoardSquare.Annotated]]
+        var content: [[BoardSquare.Annotated]] {
+            didSet {
+                self.size = content.size
+            }
+        }
+        
+        /// The size of the board
+        var size: UIntSize
         
         /// How this board and its squares are styled
         var style: Style {
@@ -68,6 +76,13 @@ public extension Board {
                     }
                 }
             }
+        }
+        
+        
+        init(content: [[BoardSquare.Annotated]], style: Style) {
+            self.content = content
+            self.style = style
+            self.size = content.size
         }
     }
 }

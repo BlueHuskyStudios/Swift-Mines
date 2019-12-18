@@ -36,10 +36,10 @@ internal struct BoardSquareView: View {
                     .background(Color(self.model.appropriateBackgroundColor()))
             }
             .border(SeparatorShapeStyle(), width: 1)
-            .alsoForView { print("\tBoardSquareView Did regenerate view") }
+            .also { print("\tBoardSquareView Did regenerate view") }
             .frame(minWidth: 8, idealWidth: 16, minHeight: 8, idealHeight: 16, alignment: .center)
             .aspectRatio(1, contentMode: .fit)
-            .alsoForView { print("\tBoardSquareView Did set up view") }
+            .also { print("\tBoardSquareView Did set up view") }
         return x
     }
     
