@@ -27,10 +27,7 @@ struct ContentView: View {
         return boardView
             .onSquareTapped { (square, action) in
                 print("Square tapped -", action)
-                self.game = Game(id: UUID(),
-                                 board: self.game.board.allRevealed(reason: .manuallyTriggered),
-                                 playState: .playing)
-                //self.game.updateBoard(after: action, at: square.cachedLocation)
+                self.game.updateBoard(after: action, at: square.cachedLocation)
                 boardView.board = self.game.board
             }
             .forSwiftUi()

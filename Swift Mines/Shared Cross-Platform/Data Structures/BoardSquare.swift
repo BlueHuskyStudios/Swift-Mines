@@ -77,7 +77,7 @@ public extension BoardSquare {
             self.externalRepresentation = .blank
             
         case .revealed(reason: _):
-            assertionFailure("Attempted to place a flag on a square whose content was already revealed")
+            print("    Attempted to place a flag on a square whose content was already revealed")
         }
     }
     

@@ -65,11 +65,12 @@ public extension Game {
     }
     
     
-    private mutating func placeFlag(style: FlagStyle?, at location: UIntPoint) {
-        if let style = style {
+    private mutating func placeFlag(style: NextFlagStyle, at location: UIntPoint) {
+        switch style {
+        case .specific(let style):
             board.content[location].placeFlag(style: style)
-        }
-        else {
+        
+        case .automatic:
             board.content[location].cycleFlag()
         }
     }
@@ -97,6 +98,7 @@ extension Game.PlayState: Hashable {}
 // MARK: - UserAction
 
 public extension Game {
+    
     /// An action the user took while playing
     enum UserAction {
         
@@ -105,11 +107,19 @@ public extension Game {
         
         /// The user placed a flag on a spot, either declaring that there is a mine there, or noting it for later
         ///
-        /// - Parameter style: The style of flag to place, or `nil` to cycle based on the current flag
-        case placeFlag(style: FlagStyle?)
+        /// - Parameter style: The style of flag to place
+        case placeFlag(style: NextFlagStyle)
     }
     
     
     
-    typealias FlagStyle = BoardSquare.ExternalRepresentation.FlagStyle
+    /// Which flag style to use next
+    enum NextFlagStyle {
+        
+        /// Use a specific flag style next
+        case specific(style: BoardSquare.ExternalRepresentation.FlagStyle)
+        
+        /// Automatically choose a flag style based on the current flag
+        case automatic
+    }
 }

@@ -69,6 +69,10 @@ private extension BoardSquareView {
         let digGestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(userDidPressSquare_digGesture))
         digGestureRecognizer.buttonMask = 0b0001
         self.addGestureRecognizer(digGestureRecognizer)
+        
+        let placeFlagGestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(userDidPressSquare_placeFlagGesture))
+        placeFlagGestureRecognizer.buttonMask = 0b0010
+        self.addGestureRecognizer(placeFlagGestureRecognizer)
     }
 }
 
@@ -81,5 +85,11 @@ private extension BoardSquareView {
     @IBAction
     func userDidPressSquare_digGesture(sender: Any?) {
         onUserDidPressSquare?(square, .dig)
+    }
+    
+    
+    @IBAction
+    func userDidPressSquare_placeFlagGesture(sender: Any?) {
+        onUserDidPressSquare?(square, .placeFlag(style: .automatic))
     }
 }
