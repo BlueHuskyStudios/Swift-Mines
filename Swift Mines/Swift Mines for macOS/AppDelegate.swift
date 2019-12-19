@@ -27,8 +27,8 @@ extension AppDelegate: NSApplicationDelegate {
         let contentView = ContentView(
             game: Game(
                 id: UUID(),
-                board: Board.generateNewBoard(size: UIntSize(width: 2, height: 2),
-                                              totalNumberOfMines: 4)
+                board: Board.generateNewBoard(size: UIntSize(width: 10, height: 10),
+                                              totalNumberOfMines: 10)
                     .annotated(baseStyle: .default),
                 playState: .playing
             )

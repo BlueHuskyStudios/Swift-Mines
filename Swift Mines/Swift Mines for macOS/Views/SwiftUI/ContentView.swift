@@ -22,7 +22,7 @@ struct ContentView: View {
     
     
     var body: some View {
-        var boardView = BoardView(board: game.board)
+        let boardView = BoardView(board: game.board)
         
         return boardView
             .onSquareTapped { (square, action) in

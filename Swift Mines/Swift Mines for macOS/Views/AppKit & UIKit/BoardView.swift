@@ -61,7 +61,15 @@ internal class BoardView: NSCollectionView {
 private extension BoardView {
     func updateUi() {
         squareViews.adjustSize(to: board.content.size, newElementGenerator: generateNewBoardSquareView)
-        layOutSquareViews()
+//        layOutSquareViews()
+        
+        squareViews.mutateEachIndexed { row, rowIndex in
+            row.mutateEachIndexed { boardSquareView, columnIndex in
+                boardSquareView.square = board.content[rowIndex][columnIndex]
+            }
+        }
+        
+        self.reloadData()
     }
     
     
@@ -81,27 +89,27 @@ private extension BoardView {
     }
     
     
-    private func layOutSquareViews() { // TODO: Test
-        self.subviews = []
-        
-        let eachSquareSideLength = self.bounds.size.minSideLength / CGFloat(self.board.size.maxSideLength)
-        let eachSquareSize = CGSize(width: eachSquareSideLength, height: eachSquareSideLength)
-        
-        @inline(__always)
-        func origin(forSquareAtRow rowIndex: CGFloat, column columnIndex: CGFloat) -> CGPoint {
-            CGPoint(x: columnIndex * eachSquareSize.width, y: rowIndex * eachSquareSize.height)
-        }
-        
-        self.squareViews.mutateEachIndexed { row, rowIndex in
-            let rowIndexCgFloat = CGFloat(rowIndex)
-            row.mutateEachIndexed { squareView, columnIndex in
-//                squareView.frame = CGRect(origin: origin(forSquareAtRow: rowIndexCgFloat, column: CGFloat(columnIndex)),
-//                                          size: eachSquareSize)
-//                self.addSubview(squareView)
-                
-            }
-        }
-    }
+//    private func layOutSquareViews() { // TODO: Test
+//        self.subviews = []
+//
+//        let eachSquareSideLength = self.bounds.size.minSideLength / CGFloat(self.board.size.maxSideLength)
+//        let eachSquareSize = CGSize(width: eachSquareSideLength, height: eachSquareSideLength)
+//
+//        @inline(__always)
+//        func origin(forSquareAtRow rowIndex: CGFloat, column columnIndex: CGFloat) -> CGPoint {
+//            CGPoint(x: columnIndex * eachSquareSize.width, y: rowIndex * eachSquareSize.height)
+//        }
+//
+//        self.squareViews.mutateEachIndexed { row, rowIndex in
+//            let rowIndexCgFloat = CGFloat(rowIndex)
+//            row.mutateEachIndexed { squareView, columnIndex in
+////                squareView.frame = CGRect(origin: origin(forSquareAtRow: rowIndexCgFloat, column: CGFloat(columnIndex)),
+////                                          size: eachSquareSize)
+////                self.addSubview(squareView)
+//
+//            }
+//        }
+//    }
 }
 
 

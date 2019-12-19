@@ -13,6 +13,10 @@
 		A31A60A723A830A100C465A9 /* RangeReplaceableCollection Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A60A623A830A100C465A9 /* RangeReplaceableCollection Extensions.swift */; };
 		A31A60A923A8494400C465A9 /* IndexPath Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A60A823A8494400C465A9 /* IndexPath Extensions.swift */; };
 		A31A60DA23A88D4500C465A9 /* TODO in Frameworks */ = {isa = PBXBuildFile; productRef = A31A60D923A88D4500C465A9 /* TODO */; };
+		A32E3E9523AADC0A00AD1D95 /* BoardSquare + Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32E3E9423AADC0A00AD1D95 /* BoardSquare + Image.swift */; };
+		A32E3E9823AADC4000AD1D95 /* NativeImage + SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32E3E9723AADC4000AD1D95 /* NativeImage + SwiftUI.swift */; };
+		A32E3E9A23AAE28400AD1D95 /* BoardSquare + Realized Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32E3E9923AAE28400AD1D95 /* BoardSquare + Realized Style.swift */; };
+		A354546B23AB10D6003035D7 /* Rectangle Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A354546A23AB10D6003035D7 /* Rectangle Extensions.swift */; };
 		A35D2853239F791B0006B72B /* Board + random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D2852239F791B0006B72B /* Board + random.swift */; };
 		A35D2856239F81DC0006B72B /* OptionalTools in Frameworks */ = {isa = PBXBuildFile; productRef = A35D2855239F81DC0006B72B /* OptionalTools */; };
 		A37D06D9239DDBE200C88026 /* NativeImage Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */; };
@@ -65,6 +69,10 @@
 		A31A60A423A822E000C465A9 /* ByLengthInitializableCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByLengthInitializableCollection.swift; sourceTree = "<group>"; };
 		A31A60A623A830A100C465A9 /* RangeReplaceableCollection Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollection Extensions.swift"; sourceTree = "<group>"; };
 		A31A60A823A8494400C465A9 /* IndexPath Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath Extensions.swift"; sourceTree = "<group>"; };
+		A32E3E9423AADC0A00AD1D95 /* BoardSquare + Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoardSquare + Image.swift"; sourceTree = "<group>"; };
+		A32E3E9723AADC4000AD1D95 /* NativeImage + SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NativeImage + SwiftUI.swift"; sourceTree = "<group>"; };
+		A32E3E9923AAE28400AD1D95 /* BoardSquare + Realized Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoardSquare + Realized Style.swift"; sourceTree = "<group>"; };
+		A354546A23AB10D6003035D7 /* Rectangle Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rectangle Extensions.swift"; sourceTree = "<group>"; };
 		A35D2852239F791B0006B72B /* Board + random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board + random.swift"; sourceTree = "<group>"; };
 		A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NativeImage Extensions.swift"; sourceTree = "<group>"; };
 		A37D06DB239DECD800C88026 /* Clear Square with Number Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clear Square with Number Image.swift"; sourceTree = "<group>"; };
@@ -131,11 +139,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A32E3E9623AADC3000AD1D95 /* CrossKitTypes */ = {
+			isa = PBXGroup;
+			children = (
+				A32E3E9723AADC4000AD1D95 /* NativeImage + SwiftUI.swift */,
+			);
+			path = CrossKitTypes;
+			sourceTree = "<group>";
+		};
 		A37D06D7239DDBD100C88026 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				A3FE565923A0AED900309B2D /* UIKit & AppKit */,
 				A3FE565823A0AED000309B2D /* Foundation */,
+				A32E3E9623AADC3000AD1D95 /* CrossKitTypes */,
 				A3FE565A23A0AEF500309B2D /* RectangleTools */,
 			);
 			path = Extensions;
@@ -217,6 +234,8 @@
 			children = (
 				A3BE7ECE23A6BC2300766250 /* BoardView.swift */,
 				A3EFDC8423A6DD0A00D439A5 /* BoardSquareView.swift */,
+				A32E3E9423AADC0A00AD1D95 /* BoardSquare + Image.swift */,
+				A32E3E9923AAE28400AD1D95 /* BoardSquare + Realized Style.swift */,
 			);
 			path = "AppKit & UIKit";
 			sourceTree = "<group>";
@@ -359,6 +378,7 @@
 			children = (
 				A39B86CB239F06E800579A89 /* Size2D Extensions.swift */,
 				A39B86CD239F07B000579A89 /* TwoDimensional Extensions.swift */,
+				A354546A23AB10D6003035D7 /* Rectangle Extensions.swift */,
 			);
 			path = RectangleTools;
 			sourceTree = "<group>";
@@ -485,6 +505,7 @@
 				A38CC46923A4AADF00D42F69 /* MutableCollection Extensions.swift in Sources */,
 				A39B86C6239EE56B00579A89 /* Assertion Debuggin.swift in Sources */,
 				A3C69F512397A13F00520B2F /* ContentView.swift in Sources */,
+				A354546B23AB10D6003035D7 /* Rectangle Extensions.swift in Sources */,
 				A35D2853239F791B0006B72B /* Board + random.swift in Sources */,
 				A3028DB523AA0B8300082718 /* BoardSquareView.swift in Sources */,
 				A39B86CC239F06E800579A89 /* Size2D Extensions.swift in Sources */,
@@ -498,6 +519,7 @@
 				A37D06D9239DDBE200C88026 /* NativeImage Extensions.swift in Sources */,
 				A3EFDC8723A71EB900D439A5 /* Sequence Extensions.swift in Sources */,
 				A3FE565D23A0AF1200309B2D /* RandomAccessCollection Extensions.swift in Sources */,
+				A32E3E9A23AAE28400AD1D95 /* BoardSquare + Realized Style.swift in Sources */,
 				A38CC46B23A4B04700D42F69 /* HasTransform + SwiftUI.swift in Sources */,
 				A39B86C8239EE95E00579A89 /* Swatches.swift in Sources */,
 				A3B32FFA239868320034F236 /* BoardSquare.swift in Sources */,
@@ -508,7 +530,9 @@
 				A3B330032398D6D50034F236 /* BoardSquare + SwiftUI.swift in Sources */,
 				A39B86CE239F07B000579A89 /* TwoDimensional Extensions.swift in Sources */,
 				A31A60A523A822E000C465A9 /* ByLengthInitializableCollection.swift in Sources */,
+				A32E3E9823AADC4000AD1D95 /* NativeImage + SwiftUI.swift in Sources */,
 				A3C69F742397A1CF00520B2F /* Board.swift in Sources */,
+				A32E3E9523AADC0A00AD1D95 /* BoardSquare + Image.swift in Sources */,
 				A3C158F223A1815100A95B20 /* HasAlso + SwiftUI.swift in Sources */,
 				A3C69F4F2397A13F00520B2F /* AppDelegate.swift in Sources */,
 				A3B3300E239A1D060034F236 /* Style.swift in Sources */,

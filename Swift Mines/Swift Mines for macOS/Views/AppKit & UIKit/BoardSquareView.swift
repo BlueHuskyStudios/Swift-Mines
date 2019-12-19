@@ -12,6 +12,8 @@ import Cocoa
 #error("TODO: CocoaTouch support")
 #endif
 
+import CrossKitTypes
+
 
 
 internal class BoardSquareView: NSView {
@@ -47,12 +49,19 @@ internal class BoardSquareView: NSView {
 
 
 
+// MARK: - Functionality
+
 private extension BoardSquareView {
     func updateUi() {
         self.wantsLayer = true
-        self.layer?.backgroundColor = NSColor.controlAccentColor.cgColor
-        self.layer?.borderColor = NSColor.quaternaryLabelColor.cgColor
-        self.layer?.borderWidth = 1
+        layer?.backgroundColor = square.appropriateBackgroundColor().cgColor
+        layer?.borderColor = NSColor.quaternaryLabelColor.cgColor
+        layer?.borderWidth = 1
+        var zeroOriginFrame = frame.withOriginZero
+        layer?.contents = square
+            .imageForUi(size: frame.size)
+            .cgImage(forProposedRect: &zeroOriginFrame, context: .current, hints: nil)
+        layer?.contentsGravity = .resizeAspect
     }
     
     
@@ -61,7 +70,13 @@ private extension BoardSquareView {
         digGestureRecognizer.buttonMask = 0b0001
         self.addGestureRecognizer(digGestureRecognizer)
     }
-    
+}
+
+
+
+// MARK: - Actions
+
+private extension BoardSquareView {
     
     @IBAction
     func userDidPressSquare_digGesture(sender: Any?) {

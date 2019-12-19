@@ -29,7 +29,7 @@ internal struct BoardSquareView: View {
     var body: some View {
         print("BoardSquareView setting up at \(model.cachedLocation)...")
         let x = GeometryReader { geometryProxy in
-                Image(nsImage: self.currentImage(size: geometryProxy.size))
+                Image(nsImage: self.model.imageForUi(size: geometryProxy.size))
                     .resizable(resizingMode: .stretch)
                     .frame(minWidth: 8, idealWidth: 16, minHeight: 8, idealHeight: 16, alignment: .center)
                     .aspectRatio(1, contentMode: .fit)
@@ -67,69 +67,6 @@ extension BoardSquareView: Hashable {
         model.hash(into: &hasher)
     }
 }
-
-
-
-private extension BoardSquareView {
-    
-    func currentImage(size: CGSize) -> NativeImage {
-        
-        let imageWhichNeedsToBeResized: NativeImage
-        
-        switch (model.base.externalRepresentation, model.mineContext) {
-        case (.blank, _),
-             (.revealed(reason: _), .clear(.farFromMine)):
-            return .blank()
-            
-        case (.revealed(reason: _), .clear(let distance)):
-            return .number(forClearSquareAtDistance: distance, size: UIntSize(size))
-            
-        case (.flagged(style: .sure), _):
-            imageWhichNeedsToBeResized = .minesIcon(.flag)
-            
-        case (.flagged(style: .unsure), _):
-            imageWhichNeedsToBeResized = .minesIcon(.questionMark)
-            
-        case (.revealed(reason: .manuallyTriggered), .mine):
-            switch model.base.content {
-            case .mine:
-                imageWhichNeedsToBeResized = .minesIcon(.detonatedMine)
-                
-            case .clear:
-                assertionFailure("Clear square with revealed mine")
-                return .blank()
-            }
-            
-        case (.revealed(reason: .safelyRevealedAfterWin), .mine),
-             (.revealed(reason: .chainReaction), .mine):
-            switch model.base.content {
-            case .mine:
-                imageWhichNeedsToBeResized = .minesIcon(.revealedMine)
-                
-            case .clear:
-                assertionFailure("Clear square with revealed mine")
-                return .blank()
-            }
-        }
-        
-        imageWhichNeedsToBeResized.size = size
-        return imageWhichNeedsToBeResized
-    }
-}
-
-
-
-private extension BoardSquare.Annotated {
-    func appropriateBackgroundColor() -> NSColor {
-        switch self.base.externalRepresentation {
-        case .blank,
-             .flagged(style: _):
-            return inheritedStyle.baseColor
-            
-        case .revealed:
-            return inheritedStyle.baseColor.withSystemEffect(.pressed)
-        }
-    }
 }
 
 
