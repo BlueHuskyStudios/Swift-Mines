@@ -23,15 +23,16 @@ class AppDelegate: NSObject {
 extension AppDelegate: NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        guard !CommandLine.arguments.contains("doNotRunApp") else {
+            // This argument is passed by the testing suite
+            return
+        }
+        
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView(
-            game: Game(
-                id: UUID(),
-                board: Board.generateNewBoard(size: UIntSize(width: 10, height: 10),
-                                              totalNumberOfMines: 10)
-                    .annotated(baseStyle: .default),
-                playState: .playing
-            )
+            game: Game.new(size: UIntSize(width: 10, height: 10),
+                           totalNumberOfMines: 10)
         )
 
         // Create the window and set the content view. 

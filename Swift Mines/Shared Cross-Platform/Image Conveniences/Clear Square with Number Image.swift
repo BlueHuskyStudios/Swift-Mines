@@ -24,7 +24,7 @@ public extension NativeImage {
     
     static func number(forClearSquareAtDistance distance: BoardSquare.MineDistance, size: UIntSize) -> NativeImage {
         cachedNumberImage(forClearSquareAtDistance: distance, size: size)
-        ?? generateAndCacheNumberImage(forClearSquareAtDistance: distance, size: size)
+            ?? generateAndCacheNumberImage(forClearSquareAtDistance: distance, size: size)
     }
     
     
@@ -53,7 +53,7 @@ public extension NativeImage {
         paragraphStyle.alignment = .center
         number.inCurrentGraphicsContext { number, context in
             let attributedString =
-                NSMutableAttributedString(string: distance.numberObMinesNearby.description,
+                NSMutableAttributedString(string: distance.numberOfMinesNearby.description,
                                    attributes:
                     [
                         .font : NativeFont.monospacedDigitSystemFont(ofSize: fontSize, weight: .bold),

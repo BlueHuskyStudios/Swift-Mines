@@ -11,10 +11,19 @@ import RectangleTools
 
 
 
+// MARK: - Protocol
+
+public protocol BoardSquareProtocol {
+    /// The content of the board square, whether or not the square has been revealed
+    var content: Content { get }
+}
+
+
+
 // MARK: - Basics
 
 /// A single square on a Mines board
-public struct BoardSquare {
+public struct BoardSquare: BoardSquareProtocol {
     
     /// Allows this square to be identified across runtimes
     public let id: UUID
@@ -35,6 +44,15 @@ public extension BoardSquare {
     /// `true` iff this square’s content indicates a mine
     @inline(__always)
     var hasMine: Bool { content.hasMine }
+    
+    
+    /// `true` iff the content of this square has been revealed
+    var isRevealed: Bool {
+        switch externalRepresentation {
+        case .blank, .flagged(style: _): return false
+        case .revealed(reason: _): return true
+        }
+    }
     
     
     /// If this square does not contain a mine, then it is made to have one
@@ -104,24 +122,27 @@ public extension BoardSquare {
 
 // MARK: - Content
 
-public extension BoardSquare {
+public extension BoardSquareProtocol {
+    typealias Content = BoardSquareContent
+}
+
+
+
+/// The content of a board square
+public enum BoardSquareContent: String {
     
-    /// The content of a board square
-    enum Content: String {
-        
-        /// The square is clear; there is no mine
-        case clear
-        
-        /// The square has a mine within it
-        case mine
-    }
+    /// The square is clear; there is no mine
+    case clear
+    
+    /// The square has a mine within it
+    case mine
 }
 
 
 
 // MARK: Functionality
 
-public extension BoardSquare.Content {
+public extension BoardSquareContent {
     /// `true` iff this square's content indicates a mine
     var hasMine: Bool {
         switch self {
@@ -203,6 +224,16 @@ public extension BoardSquare {
 }
 
 
+// MARK: BoardSquareProtocol
+
+extension BoardSquare.Annotated: BoardSquareProtocol {
+    public var content: Content {
+        get { base.content }
+        set { base.content = newValue }
+    }
+}
+
+
 // MARK: Identifiable
 
 extension BoardSquare.Annotated: Identifiable {
@@ -216,9 +247,11 @@ public extension BoardSquare.Annotated {
     
     /// `true` iff this square’s content indicates a mine
     @inlinable
-    var hasMine: Bool {
-        self.base.hasMine
-    }
+    var hasMine: Bool { base.hasMine }
+    
+    /// `true` iff the content of this square has been revealed
+    @inlinable
+    var isRevealed: Bool { base.isRevealed }
     
     
     /// Mutates this board square so its contents are revealed
@@ -313,7 +346,7 @@ public extension BoardSquare {
 
 public extension BoardSquare.MineDistance {
     @inline(__always)
-    var numberObMinesNearby: UInt8 {
+    var numberOfMinesNearby: UInt8 {
         return rawValue
     }
 }
@@ -324,13 +357,13 @@ public extension BoardSquare.MineDistance {
 
 public extension BoardSquare {
     
-    /// The reason why a square with a mine has its mine revealed
+    /// The reason why a square had its content revealed
     enum RevealReason: String {
         
-        /// The player manually triggered the mine
-        case manuallyTriggered
+        /// The player manually revealed the square
+        case manual
         
-        /// The mine was a part of a chain reaction caused by a manually-triggerd one
+        /// The reveal was a part of a chain reaction caused by a manually-triggerd one
         case chainReaction
         
         /// The player successfully completed the game without triggering any mines, so it's being displayed
@@ -343,7 +376,7 @@ public extension BoardSquare {
 // MARK: - Conformances
 
 extension BoardSquare: Hashable {}
-extension BoardSquare.Content: Hashable {}
+extension BoardSquareContent: Hashable {}
 extension BoardSquare.ExternalRepresentation: Hashable {}
 extension BoardSquare.ExternalRepresentation.FlagStyle: Hashable {}
 extension BoardSquare.Annotated: Hashable {}
@@ -351,7 +384,7 @@ extension BoardSquare.MineContext: Hashable {}
 extension BoardSquare.RevealReason: Hashable {}
 extension BoardSquare.MineDistance: Hashable {}
 
-extension BoardSquare.Content: CaseIterable {}
+extension BoardSquareContent: CaseIterable {}
 extension BoardSquare.ExternalRepresentation.FlagStyle: CaseIterable {}
 extension BoardSquare.RevealReason: CaseIterable {}
 extension BoardSquare.MineDistance: CaseIterable {}

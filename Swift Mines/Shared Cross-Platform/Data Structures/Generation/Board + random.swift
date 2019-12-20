@@ -33,14 +33,19 @@ public extension Board {
     /// - Parameters:
     ///   - size:               How big you want the resulting board
     ///   - totalNumberOfMines: The amount of mines in the resulting board. Obviously, if this is greater than the
-    ///                         number of squares, then all the squares will be mines
-    static func generateNewBoard(size: UIntSize, totalNumberOfMines: UInt) -> Board {
+    ///                         number of squares minus the 9 around the given location, then all the squares will be
+    ///                         mines
+    ///   - safeLocation:       _optional_ - The location where there should be no mines, used for the user's first
+    ///                         move. Defaults to a random location on the board.
+    static func generateNewBoard(size: Size,
+                                 totalNumberOfMines: UInt,
+                                 disallowingMinesNear safeLocation: Location
+    ) -> Board {
         let size = size.greaterThanZero
         var board = Board.empty(size: size)
         
-        size
-            .lazy
-            .shuffled()
+        size.shuffled()
+            .discarding(where: { $0.isTouching(.init(safeLocation)) })
             .onlyFirst(totalNumberOfMines)
             .map(IntPoint.init(_:))
             .forEach { point in
@@ -48,6 +53,23 @@ public extension Board {
             }
         
         return board
+    }
+    
+    
+    /// Generates an entire board, ready to be played
+    ///
+    /// - Parameters:
+    ///   - size:               How big you want the resulting board
+    ///   - totalNumberOfMines: The amount of mines in the resulting board. Obviously, if this is greater than the
+    ///                         number of squares minus the 9 around the given location, then all the squares will be
+    ///                         mines
+    ///   - safeLocation:       _optional_ - The location where there should be no mines, used for the user's first
+    ///                         move. Defaults to a random location on the board.
+    @inlinable
+    static func generateNewBoard(size: Size, totalNumberOfMines: UInt) -> Board {
+        generateNewBoard(size: size,
+                         totalNumberOfMines: totalNumberOfMines,
+                         disallowingMinesNear: Location(size.randomElement()!))
     }
     
     

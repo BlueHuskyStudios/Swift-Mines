@@ -39,6 +39,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(game: Game(id: UUID(), board: Board(content: UIntSize(width: 10, height: 10).map2D { _ in .random() }).annotated(baseStyle: .default), playState: .notStarted))
+        ContentView(game: Game(id: UUID(), board: Board(content: UIntSize(width: 10, height: 10).map2D { _ in .random() }).annotated(baseStyle: .default), playState: .notStarted, totalNumberOfMines: 10))
     }
 }

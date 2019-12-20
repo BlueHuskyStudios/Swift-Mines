@@ -31,7 +31,7 @@ public extension BoardSquare {
 
 
 
-public extension BoardSquare.Content {
+public extension BoardSquareProtocol.Content {
     static func random() -> BoardSquare.Content {
         return allCases.randomElement()!
     }
@@ -64,7 +64,7 @@ public extension BoardSquare.RevealReason {
     static func random() -> Self {
         switch (1...3).randomElement() {
         case 1: return .chainReaction
-        case 2: return .manuallyTriggered
+        case 2: return .manual
         case 3: return .safelyRevealedAfterWin
         default: preconditionFailure("Random selection out of range")
         }

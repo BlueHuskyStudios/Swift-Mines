@@ -19,7 +19,7 @@ import RectangleTools
 
 internal extension BoardSquare.Annotated {
     
-    func imageForUi	(size: CGSize) -> NativeImage {
+    func imageForUi(size: CGSize) -> NativeImage {
         
         let imageWhichNeedsToBeResized: NativeImage
         
@@ -37,7 +37,7 @@ internal extension BoardSquare.Annotated {
         case (.flagged(style: .unsure), _):
             imageWhichNeedsToBeResized = .minesIcon(.questionMark)
             
-        case (.revealed(reason: .manuallyTriggered), .mine):
+        case (.revealed(reason: .manual), .mine):
             switch self.base.content {
             case .mine:
                 imageWhichNeedsToBeResized = .minesIcon(.detonatedMine)
