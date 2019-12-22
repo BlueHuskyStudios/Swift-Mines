@@ -31,8 +31,8 @@ extension AppDelegate: NSApplicationDelegate {
         
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView(
-            game: Game.new(size: UIntSize(width: 10, height: 10),
-                           totalNumberOfMines: 10)
+            game: Game.new(size: UIntSize(width: 20, height: 20),
+                           totalNumberOfMines: (40))
         )
 
         // Create the window and set the content view. 
@@ -40,6 +40,7 @@ extension AppDelegate: NSApplicationDelegate {
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
+        window.title = "Swift Mines"
         window.center()
         window.setFrameAutosaveName("Main Window")
         window.contentView = NSHostingView(rootView: contentView)
@@ -54,4 +55,3 @@ extension AppDelegate: NSApplicationDelegate {
     
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool { true }
 }
-

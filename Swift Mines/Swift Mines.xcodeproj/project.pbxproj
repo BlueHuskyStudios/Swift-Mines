@@ -21,6 +21,9 @@
 		A351C69723AC3F7E00097718 /* Point2D Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351C69623AC3F7E00097718 /* Point2D Extensions.swift */; };
 		A351C69F23AC718500097718 /* FixedWidthInteger Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351C69E23AC718500097718 /* FixedWidthInteger Extensions.swift */; };
 		A351C6A123AC914500097718 /* Point2D Extensions Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351C6A023AC914500097718 /* Point2D Extensions Tests.swift */; };
+		A351C6A323AD8BA800097718 /* GameStatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351C6A223AD8BA800097718 /* GameStatusBarView.swift */; };
+		A351C6A723AD8EFE00097718 /* SevenSegmentDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351C6A623AD8EFE00097718 /* SevenSegmentDisplay.swift */; };
+		A351C6A923AD8F4200097718 /* DisplaySegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351C6A823AD8F4200097718 /* DisplaySegment.swift */; };
 		A354546B23AB10D6003035D7 /* Rectangle Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A354546A23AB10D6003035D7 /* Rectangle Extensions.swift */; };
 		A35D2853239F791B0006B72B /* Board + random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D2852239F791B0006B72B /* Board + random.swift */; };
 		A35D2856239F81DC0006B72B /* OptionalTools in Frameworks */ = {isa = PBXBuildFile; productRef = A35D2855239F81DC0006B72B /* OptionalTools */; };
@@ -41,6 +44,8 @@
 		A3B3300B239A0D9A0034F236 /* BoardSquare + random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B3300A239A0D9A0034F236 /* BoardSquare + random.swift */; };
 		A3B3300E239A1D060034F236 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B3300D239A1D060034F236 /* Style.swift */; };
 		A3B33011239A1E560034F236 /* CrossKitTypes in Frameworks */ = {isa = PBXBuildFile; productRef = A3B33010239A1E560034F236 /* CrossKitTypes */; };
+		A3BCD78B23AEF98800346F05 /* CGAffineTransform Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BCD78A23AEF98800346F05 /* CGAffineTransform Extensions.swift */; };
+		A3BCD78E23AEFB6400346F05 /* Path Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BCD78D23AEFB6400346F05 /* Path Extensions.swift */; };
 		A3C158EF23A1803300A95B20 /* HasAlso.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C158EE23A1803300A95B20 /* HasAlso.swift */; };
 		A3C158F223A1815100A95B20 /* HasAlso + SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C158F123A1815100A95B20 /* HasAlso + SwiftUI.swift */; };
 		A3C69F4F2397A13F00520B2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C69F4E2397A13F00520B2F /* AppDelegate.swift */; };
@@ -82,6 +87,9 @@
 		A351C69623AC3F7E00097718 /* Point2D Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Point2D Extensions.swift"; sourceTree = "<group>"; };
 		A351C69E23AC718500097718 /* FixedWidthInteger Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FixedWidthInteger Extensions.swift"; sourceTree = "<group>"; };
 		A351C6A023AC914500097718 /* Point2D Extensions Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Point2D Extensions Tests.swift"; sourceTree = "<group>"; };
+		A351C6A223AD8BA800097718 /* GameStatusBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatusBarView.swift; sourceTree = "<group>"; };
+		A351C6A623AD8EFE00097718 /* SevenSegmentDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDisplay.swift; sourceTree = "<group>"; };
+		A351C6A823AD8F4200097718 /* DisplaySegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySegment.swift; sourceTree = "<group>"; };
 		A354546A23AB10D6003035D7 /* Rectangle Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rectangle Extensions.swift"; sourceTree = "<group>"; };
 		A35D2852239F791B0006B72B /* Board + random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board + random.swift"; sourceTree = "<group>"; };
 		A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NativeImage Extensions.swift"; sourceTree = "<group>"; };
@@ -100,6 +108,8 @@
 		A3B330022398D6D50034F236 /* BoardSquare + SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoardSquare + SwiftUI.swift"; sourceTree = "<group>"; };
 		A3B3300A239A0D9A0034F236 /* BoardSquare + random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoardSquare + random.swift"; sourceTree = "<group>"; };
 		A3B3300D239A1D060034F236 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		A3BCD78A23AEF98800346F05 /* CGAffineTransform Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform Extensions.swift"; sourceTree = "<group>"; };
+		A3BCD78D23AEFB6400346F05 /* Path Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Path Extensions.swift"; sourceTree = "<group>"; };
 		A3BE7ECE23A6BC2300766250 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		A3C158EE23A1803300A95B20 /* HasAlso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasAlso.swift; sourceTree = "<group>"; };
 		A3C158F123A1815100A95B20 /* HasAlso + SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HasAlso + SwiftUI.swift"; sourceTree = "<group>"; };
@@ -165,12 +175,33 @@
 			path = "Standard Library";
 			sourceTree = "<group>";
 		};
+		A351C6A423AD8BB000097718 /* Status Bar */ = {
+			isa = PBXGroup;
+			children = (
+				A351C6A223AD8BA800097718 /* GameStatusBarView.swift */,
+				A351C6A623AD8EFE00097718 /* SevenSegmentDisplay.swift */,
+				A351C6A823AD8F4200097718 /* DisplaySegment.swift */,
+			);
+			path = "Status Bar";
+			sourceTree = "<group>";
+		};
+		A351C6A523AD8BB800097718 /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				A3C69F702397A1A500520B2F /* BoardView.swift */,
+				A3B32FF7239868130034F236 /* BoardSquareView.swift */,
+			);
+			path = Board;
+			sourceTree = "<group>";
+		};
 		A37D06D7239DDBD100C88026 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				A351C69D23AC715E00097718 /* Standard Library */,
-				A3FE565923A0AED900309B2D /* UIKit & AppKit */,
+				A3BCD78923AEF94000346F05 /* Core Graphics */,
 				A3FE565823A0AED000309B2D /* Foundation */,
+				A3FE565923A0AED900309B2D /* UIKit & AppKit */,
+				A3BCD78C23AEFB2A00346F05 /* SwiftUI */,
 				A32E3E9623AADC3000AD1D95 /* CrossKitTypes */,
 				A3FE565A23A0AEF500309B2D /* RectangleTools */,
 			);
@@ -238,12 +269,28 @@
 			path = Theming;
 			sourceTree = "<group>";
 		};
+		A3BCD78923AEF94000346F05 /* Core Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				A3BCD78A23AEF98800346F05 /* CGAffineTransform Extensions.swift */,
+			);
+			path = "Core Graphics";
+			sourceTree = "<group>";
+		};
+		A3BCD78C23AEFB2A00346F05 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				A3BCD78D23AEFB6400346F05 /* Path Extensions.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		A3BE7ECC23A6BBF100766250 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
 				A3C69F502397A13F00520B2F /* ContentView.swift */,
-				A3C69F702397A1A500520B2F /* BoardView.swift */,
-				A3B32FF7239868130034F236 /* BoardSquareView.swift */,
+				A351C6A523AD8BB800097718 /* Board */,
+				A351C6A423AD8BB000097718 /* Status Bar */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -525,6 +572,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A351C6A323AD8BA800097718 /* GameStatusBarView.swift in Sources */,
 				A38CC46923A4AADF00D42F69 /* MutableCollection Extensions.swift in Sources */,
 				A39B86C6239EE56B00579A89 /* Assertion Debuggin.swift in Sources */,
 				A3C69F512397A13F00520B2F /* ContentView.swift in Sources */,
@@ -538,9 +586,12 @@
 				A3FE565423A07E0200309B2D /* Collection Extensions.swift in Sources */,
 				A37D06DC239DECD800C88026 /* Clear Square with Number Image.swift in Sources */,
 				A3EFDC8923A736FA00D439A5 /* HasAlso + AppKit.swift in Sources */,
+				A351C6A723AD8EFE00097718 /* SevenSegmentDisplay.swift in Sources */,
 				A3C158EF23A1803300A95B20 /* HasAlso.swift in Sources */,
 				A38CC46223A477FF00D42F69 /* HasTransform.swift in Sources */,
+				A3BCD78E23AEFB6400346F05 /* Path Extensions.swift in Sources */,
 				A37D06D9239DDBE200C88026 /* NativeImage Extensions.swift in Sources */,
+				A351C6A923AD8F4200097718 /* DisplaySegment.swift in Sources */,
 				A351C69323AC312A00097718 /* Simple Functional Utilities.swift in Sources */,
 				A3EFDC8723A71EB900D439A5 /* Sequence Extensions.swift in Sources */,
 				A3FE565D23A0AF1200309B2D /* RandomAccessCollection Extensions.swift in Sources */,
@@ -548,6 +599,7 @@
 				A38CC46B23A4B04700D42F69 /* HasTransform + SwiftUI.swift in Sources */,
 				A39B86C8239EE95E00579A89 /* Swatches.swift in Sources */,
 				A3B32FFA239868320034F236 /* BoardSquare.swift in Sources */,
+				A3BCD78B23AEF98800346F05 /* CGAffineTransform Extensions.swift in Sources */,
 				A39B86CA239EFF6C00579A89 /* Image Constants.swift in Sources */,
 				A3B3300B239A0D9A0034F236 /* BoardSquare + random.swift in Sources */,
 				A351C69523AC313800097718 /* Function Types.swift in Sources */,

@@ -49,6 +49,26 @@ internal class BoardSquareView: NSView {
 
 
 
+internal extension BoardSquareView {
+    
+    override func viewDidEndLiveResize() {
+        updateUi()
+        super.viewDidEndLiveResize()
+    }
+    
+    
+    override func exitFullScreenMode(options: [NSView.FullScreenModeOptionKey : Any]? = nil) {
+        super.exitFullScreenMode(options: options)
+    }
+    
+    
+    override func enterFullScreenMode(_ screen: NSScreen, withOptions options: [NSView.FullScreenModeOptionKey : Any]? = nil) -> Bool {
+        return super.enterFullScreenMode(screen, withOptions: options)
+    }
+}
+
+
+
 // MARK: - Functionality
 
 private extension BoardSquareView {
