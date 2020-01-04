@@ -22,6 +22,11 @@ struct GameStatusBarView: View {
     @MutableSafePointer
     var game: Game
     
+    private let updateTimer = Timer.publish(every: 0.1, on: .current, in: .common).autoconnect()
+
+    @State
+    private var secondsReadout: String = "0"
+    
     
     var body: some View {
         return GeometryReader { geometry in
@@ -39,8 +44,11 @@ struct GameStatusBarView: View {
                                         bottom: geometry.size.minSideLength / 8,
                                         trailing: geometry.size.minSideLength / 16))
                 
-                SevenSegmentReadout(resembling: self.displayText(from: self.game.numberOfSecondsSinceGameStarted))
+                SevenSegmentReadout(resembling: self.secondsReadout)
                     .eachCharacterAspectRatio(perCharacterRatio)
+                    .onReceive(self.updateTimer) { _ in
+                        self.secondsReadout = self.displayText(from: self.game.numberOfSecondsSinceGameStarted)
+                    }
                 
                 Spacer()
             }
@@ -59,4 +67,15 @@ struct GameStatusBarView_Previews: PreviewProvider {
     static var previews: some View {
         GameStatusBarView(game: Game.new(size: UIntSize(width: 10, height: 10), totalNumberOfMines: 10))
     }
+}
+
+
+prefix operator *
+
+prefix func * <T, PointerToT> (rhs: T) -> PointerToT
+    where
+        PointerToT: Pointer,
+        PointerToT.Pointee == T
+{
+    return PointerToT.init(to: rhs)
 }
