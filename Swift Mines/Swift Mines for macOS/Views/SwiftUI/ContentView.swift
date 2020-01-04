@@ -24,14 +24,20 @@ struct ContentView: View {
     var body: some View {
         let boardView = BoardView(board: game.board)
         
-        return boardView
-            .onSquareTapped { (square, action) in
-                print("Square tapped -", action)
-                self.game.updateBoard(after: action, at: square.cachedLocation)
-                boardView.board = self.game.board
-            }
-            .forSwiftUi()
-            .also { print("ContentView Did regenerate view") }
+        return VStack(spacing: 0) {
+            GameStatusBarView(game: game)
+                .frame(width: nil, height: 48, alignment: .top)
+            
+            boardView
+                .onSquareTapped { (square, action) in
+                    print("Square tapped -", action)
+                    self.game.updateBoard(after: action, at: square.cachedLocation)
+                    boardView.board = self.game.board
+                }
+                .forSwiftUi()
+                .aspectRatio(1, contentMode: .fit)
+                .also { print("ContentView Did regenerate view") }
+        }
     }
 }
 
@@ -39,6 +45,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(game: Game(id: UUID(), board: Board(content: UIntSize(width: 10, height: 10).map2D { _ in .random() }).annotated(baseStyle: .default), playState: .notStarted, totalNumberOfMines: 10))
+        ContentView(game: Game.new(size: UIntSize(width: 10, height: 10), totalNumberOfMines: 10))
     }
 }

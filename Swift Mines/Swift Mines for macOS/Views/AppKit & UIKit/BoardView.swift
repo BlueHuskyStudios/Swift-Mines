@@ -92,7 +92,7 @@ private extension BoardView {
 //    private func layOutSquareViews() { // TODO: Test
 //        self.subviews = []
 //
-//        let eachSquareSideLength = self.bounds.size.minSideLength / CGFloat(self.board.size.maxSideLength)
+//        let eachSquareSideLength = self.bounds.size.minMeasurement / CGFloat(self.board.size.maxSideLength)
 //        let eachSquareSize = CGSize(width: eachSquareSideLength, height: eachSquareSideLength)
 //
 //        @inline(__always)

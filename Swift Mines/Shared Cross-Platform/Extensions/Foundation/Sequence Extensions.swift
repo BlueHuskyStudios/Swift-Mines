@@ -25,6 +25,14 @@ public extension Sequence {
 
 
 
+public extension Sequence where Element: AdditiveArithmetic, Element: ExpressibleByIntegerLiteral {
+    func summed() -> Element {
+        return reduce(into: 0, +=)
+    }
+}
+
+
+
 public extension Sequence {
     
     /// Returns a lazily-evaluated sequence where only elements which match the given predicate are kept

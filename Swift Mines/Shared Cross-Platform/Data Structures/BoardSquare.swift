@@ -55,6 +55,23 @@ public extension BoardSquare {
     }
     
     
+    /// `true` if the user thinks this square is a mine.
+    /// This means they either flagged it `.sure`, or it was revealed to be a mine.
+    var isThoughtToBeAMine: Bool {
+        switch externalRepresentation {
+        case .blank,
+             .flagged(style: .unsure):
+            return false
+            
+        case .flagged(style: .sure):
+            return true
+            
+        case .revealed(reason: _):
+            return hasMine
+        }
+    }
+    
+    
     /// If this square does not contain a mine, then it is made to have one
     @inline(__always)
     mutating func giveMine() {
@@ -254,6 +271,11 @@ public extension BoardSquare.Annotated {
     var isRevealed: Bool { base.isRevealed }
     
     
+    /// `true` if the user thinks this square is a mine.
+    /// This means they either flagged it `.sure`, or it was revealed to be a mine.
+    var isThoughtToBeAMine: Bool { base.isThoughtToBeAMine }
+    
+    
     /// Mutates this board square so its contents are revealed
     ///
     /// - Parameter reason: The reason why you want to reveal the contents
@@ -284,6 +306,10 @@ public extension BoardSquare.Annotated {
     mutating func cycleFlag() {
         self.base.cycleFlag()
     }
+    
+    
+    
+    typealias FlagStyle = BoardSquare.ExternalRepresentation.FlagStyle
 }
 
 

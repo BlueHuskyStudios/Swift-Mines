@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/RougeWare/Swift-Rectangle-Tools.git",
         "state": {
           "branch": null,
-          "revision": "9453a32d5eee1ee59a36f9208710513a85870390",
-          "version": "2.3.0"
+          "revision": "54e1e057da5483fff9409cf85afb0f72e3e4877e",
+          "version": "2.4.0"
         }
       },
       {
@@ -71,6 +71,15 @@
           "branch": null,
           "revision": "8d227a03c493f1382a638bb7573510be24f789a3",
           "version": "1.0.0"
+        }
+      },
+      {
+        "package": "SevenSegmentDisplay",
+        "repositoryURL": "https://github.com/RougeWare/SwiftUI-SevenSegmentDisplay.git",
+        "state": {
+          "branch": "feature/MVP",
+          "revision": "9f592f9c7bf8b9666ef60dc1245e4f3242b69843",
+          "version": null
         }
       }
     ]

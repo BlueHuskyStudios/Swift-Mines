@@ -139,6 +139,18 @@ public extension Board {
 
 public extension Board.Annotated {
     
+    var totalNumberOfMines: UInt {
+        return UInt(
+            self
+                .content
+                .lazy
+                .flatMap { $0 }
+                .filter { $0.hasMine }
+                .count
+        )
+    }
+    
+    
     /// Returns a copy of this board, with all the squares revealed
     func allRevealed(reason: BoardSquare.RevealReason) -> Self {
         Self.init(
@@ -371,7 +383,23 @@ public extension SquareNeighbors {
             .lazy                               // Evaluate all the following steps in only 1 loop
             .discardingNilElements()            // Discard any neighbors which are off the board
             .map { $0.content.hasMine ? 1 : 0 } // If it has a mine, treat it as a `1`, otherwise a `0`
-            .reduce(into: 0, +=)                // Add them all up!
+            .summed()                           // Add them all up!
+    }
+    
+    
+    
+    /// Finds the number of neighbors which contain a mine
+    func numberOfNeighborsWithMines_procedural() -> UInt8 {
+        
+        var returnValue: UInt8 = 0
+        
+        for neighbor in self {
+            if neighbor != nil && neighbor!.content.hasMine {
+                returnValue += 1
+            }
+        }
+        
+        return returnValue
     }
 }
 

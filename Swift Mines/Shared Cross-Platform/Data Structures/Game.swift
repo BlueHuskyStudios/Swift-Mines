@@ -17,6 +17,24 @@ public struct Game {
     public fileprivate(set) var board: Board.Annotated
     public fileprivate(set) var playState: PlayState
     public let totalNumberOfMines: UInt
+    
+    
+    fileprivate init(id: UUID = UUID(), board: Board.Annotated, playState: PlayState, totalNumberOfMines: UInt) {
+        self.id = id
+        self.board = board
+        self.playState = playState
+        self.totalNumberOfMines = totalNumberOfMines
+    }
+    
+    
+    public init(id: UUID = UUID(), board: Board.Annotated, playState: PlayState) {
+        self.init(
+            id: id,
+            board: board,
+            playState: playState,
+            totalNumberOfMines: board.totalNumberOfMines
+        )
+    }
 }
 
 
@@ -29,12 +47,13 @@ extension Game: Hashable {}
 
 public extension Game {
     static func new(size: UIntSize, totalNumberOfMines: UInt) -> Self {
-        self.init(id: UUID(),
-                  board: Board.generateNewBoard(size: size,
-                                                totalNumberOfMines: totalNumberOfMines)
-                    .annotated(baseStyle: .default),
-                  playState: .notStarted,
-                  totalNumberOfMines: totalNumberOfMines)
+        self.init(
+            board: Board.generateNewBoard(size: size,
+                                          totalNumberOfMines: totalNumberOfMines)
+                .annotated(baseStyle: .default),
+            playState: .notStarted,
+            totalNumberOfMines: totalNumberOfMines
+        )
     }
 }
 
@@ -57,7 +76,7 @@ public extension Game {
             }
             
         case .notStarted:
-            self.playState = .playing
+            self.playState = .playing(startDate: Date())
             
             switch action {
             case .dig:
@@ -106,7 +125,7 @@ public extension Game {
         print("Board has a mine at \(detonatedMineLocation)! Game over")
         board.revealAll(reason: .chainReaction)
         board.content[detonatedMineLocation].base.reveal(reason: .manual)
-        playState = .loss
+        playState.lose()
     }
     
     
@@ -134,21 +153,79 @@ public extension Game {
 }
 
 
+// MARK: Introspection
+
+public extension Game {
+    
+    /// Counts the number of mines which the user hasn't yet flagged or revealed
+    var numberOfMinesRemainingToFind: UInt { totalNumberOfMines - numberOfSquaresThoughtToBeMines }
+    
+    /// Counts the number of squares in the game which the user thinks/knowns are mines
+    var numberOfSquaresThoughtToBeMines: UInt {
+        return UInt(
+            self                                  // Start from the entire game
+                .board                            // Focus on the board
+                .content                          // Focus on the content (rows of squares)
+                .lazy                             // Evaluatem lazily
+                .flatMap { $0 }                   // Flatten the rows-of-squares into just the squares
+                .filter { $0.isThoughtToBeAMine } // Only consider those squares which the user thinks are mines
+                .count                            // Count them up!
+        )
+    }
+    
+    var numberOfSecondsSinceGameStarted: UInt {
+        switch playState {
+        case .notStarted:
+            return 0
+            
+        case .playing(let startDate):
+            return UInt(-startDate.timeIntervalSinceNow)
+            
+        case .win(let startDate, let endDate),
+             .loss(let startDate, let endDate):
+            return UInt(endDate.timeIntervalSince(startDate))
+        }
+    }
+}
+
+
 
 // MARK: - PlayState
 
 public extension Game {
     enum PlayState {
         case notStarted
-        case playing
-        case win
-        case loss
+        case playing(startDate: Date)
+        case win(startDate: Date, winDate: Date)
+        case loss(startDate: Date, lossDate: Date)
     }
 }
 
 
 
 extension Game.PlayState: Hashable {}
+
+
+
+extension Game.PlayState {
+    
+    var startDate: Date? {
+        switch self {
+        case .notStarted:
+            return nil
+            
+        case .playing(let startDate),
+             .win(let startDate, winDate: _),
+             .loss(let startDate, lossDate: _):
+            return startDate
+        }
+    }
+    
+    mutating func lose() {
+        let now = Date()
+        self = .loss(startDate: startDate ?? now, lossDate: now)
+    }
+}
 
 
 
