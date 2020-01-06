@@ -13,11 +13,13 @@ import Cocoa
 #endif
 
 import RectangleTools
+import SafePointer
 
 
 
 internal class BoardView: NSCollectionView {
     
+    @MutableSafePointer
     var board: Board.Annotated {
         didSet {
             updateUi()
@@ -30,8 +32,8 @@ internal class BoardView: NSCollectionView {
     
     
     
-    init(board: Board.Annotated, onUserDidPressSquare: OnUserDidPressSquare? = nil) {
-        self.board = board
+    init(board: MutableSafePointer<Board.Annotated>, onUserDidPressSquare: OnUserDidPressSquare? = nil) {
+        self._board = board
         self.onUserDidPressSquare = onUserDidPressSquare
         
         super.init(frame: .zero)
@@ -39,8 +41,8 @@ internal class BoardView: NSCollectionView {
         self.dataSource = self
         
         let layout = NSCollectionViewGridLayout()
-        layout.maximumNumberOfColumns = Int(board.size.width)
-        layout.maximumNumberOfRows = Int(board.size.height)
+        layout.maximumNumberOfColumns = Int((*board).size.width)
+        layout.maximumNumberOfRows = Int((*board).size.height)
         self.collectionViewLayout = layout
         
         updateUi()

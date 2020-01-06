@@ -9,6 +9,7 @@
 import Cocoa
 import SwiftUI
 import RectangleTools
+import SafePointer
 
 
 
@@ -31,8 +32,8 @@ extension AppDelegate: NSApplicationDelegate {
         
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView(
-            game: Game.new(size: UIntSize(width: 20, height: 20),
-                           totalNumberOfMines: (40))
+            game: Game.new(size: UIntSize(width: 10, height: 10),
+                           totalNumberOfMines: 10)
         )
 
         // Create the window and set the content view. 

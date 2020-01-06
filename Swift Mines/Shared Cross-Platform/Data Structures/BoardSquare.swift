@@ -72,6 +72,18 @@ public extension BoardSquare {
     }
     
     
+    var flagStyle: BoardSquare.ExternalRepresentation.FlagStyle? {
+        switch externalRepresentation {
+        case .blank,
+             .revealed(reason: _):
+            return nil
+            
+        case .flagged(let style):
+            return style
+        }
+    }
+    
+    
     /// If this square does not contain a mine, then it is made to have one
     @inline(__always)
     mutating func giveMine() {
@@ -95,7 +107,14 @@ public extension BoardSquare {
     }
     
     
-    /// Mutates this square so that its flag is the next flag style
+    /// Mutates this square so that its flag is the next flag style.
+    ///
+    /// 1. If the current flag is unset (the square is blank and not revealed), then the `.sure` flag is placed.
+    /// 2. If the current flag is a `.sure` flag, then it's replaced with a `.unsure` flag.
+    /// 3. If the current flag is an `.unsure` flag, then the flag is removed and the square is made blank again.
+    ///
+    /// If the square is already revealed, then no flag can be placed. In this case, this function returns without
+    /// performing any mutations.
     mutating func cycleFlag() {
         print("Cycling flag...")
         switch externalRepresentation {
@@ -275,6 +294,7 @@ public extension BoardSquare.Annotated {
     /// This means they either flagged it `.sure`, or it was revealed to be a mine.
     var isThoughtToBeAMine: Bool { base.isThoughtToBeAMine }
     
+    var flagStyle: BoardSquare.ExternalRepresentation.FlagStyle? { base.flagStyle }
     
     /// Mutates this board square so its contents are revealed
     ///
@@ -302,7 +322,8 @@ public extension BoardSquare.Annotated {
     }
     
     
-    /// Mutates this square so that its flag is the next flag style
+    /// Mutates this square so that its flag is the next flag style. See the documentation for
+    /// `BoardSquare.cycleFlag()` for more info.
     mutating func cycleFlag() {
         self.base.cycleFlag()
     }

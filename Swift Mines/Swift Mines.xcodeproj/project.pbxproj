@@ -59,6 +59,7 @@
 		A3EFDC8723A71EB900D439A5 /* Sequence Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EFDC8623A71EB900D439A5 /* Sequence Extensions.swift */; };
 		A3EFDC8923A736FA00D439A5 /* HasAlso + AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EFDC8823A736FA00D439A5 /* HasAlso + AppKit.swift */; };
 		A3EFDC8C23A73C6500D439A5 /* forSwiftUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EFDC8B23A73C6500D439A5 /* forSwiftUi.swift */; };
+		A3F7C23C23C1A4990006AB7D /* SafePointer Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F7C23B23C1A4990006AB7D /* SafePointer Extensions.swift */; };
 		A3FE565423A07E0200309B2D /* Collection Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE565323A07E0200309B2D /* Collection Extensions.swift */; };
 		A3FE565D23A0AF1200309B2D /* RandomAccessCollection Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE565C23A0AF1200309B2D /* RandomAccessCollection Extensions.swift */; };
 		A3FE566023A0C0DA00309B2D /* SafePointer in Frameworks */ = {isa = PBXBuildFile; productRef = A3FE565F23A0C0DA00309B2D /* SafePointer */; };
@@ -128,6 +129,7 @@
 		A3EFDC8623A71EB900D439A5 /* Sequence Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence Extensions.swift"; sourceTree = "<group>"; };
 		A3EFDC8823A736FA00D439A5 /* HasAlso + AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HasAlso + AppKit.swift"; sourceTree = "<group>"; };
 		A3EFDC8B23A73C6500D439A5 /* forSwiftUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forSwiftUi.swift; sourceTree = "<group>"; };
+		A3F7C23B23C1A4990006AB7D /* SafePointer Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SafePointer Extensions.swift"; path = "Shared Cross-Platform/Extensions/SafePointer/SafePointer Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		A3FE565323A07E0200309B2D /* Collection Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection Extensions.swift"; sourceTree = "<group>"; };
 		A3FE565C23A0AF1200309B2D /* RandomAccessCollection Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomAccessCollection Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,6 +199,7 @@
 		A37D06D7239DDBD100C88026 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A3F7C23D23C1A4A20006AB7D /* SafePointer */,
 				A351C69D23AC715E00097718 /* Standard Library */,
 				A3BCD78923AEF94000346F05 /* Core Graphics */,
 				A3FE565823A0AED000309B2D /* Foundation */,
@@ -422,6 +425,14 @@
 			path = "SwiftUI + AppKit + UIKit";
 			sourceTree = "<group>";
 		};
+		A3F7C23D23C1A4A20006AB7D /* SafePointer */ = {
+			isa = PBXGroup;
+			children = (
+				A3F7C23B23C1A4990006AB7D /* SafePointer Extensions.swift */,
+			);
+			path = SafePointer;
+			sourceTree = "<group>";
+		};
 		A3FE565823A0AED000309B2D /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,6 +585,7 @@
 			files = (
 				A38CC46923A4AADF00D42F69 /* MutableCollection Extensions.swift in Sources */,
 				A39B86C6239EE56B00579A89 /* Assertion Debuggin.swift in Sources */,
+				A3F7C23C23C1A4990006AB7D /* SafePointer Extensions.swift in Sources */,
 				A3C69F512397A13F00520B2F /* ContentView.swift in Sources */,
 				A35D2853239F791B0006B72B /* Board + random.swift in Sources */,
 				A3028DB523AA0B8300082718 /* BoardSquareView.swift in Sources */,

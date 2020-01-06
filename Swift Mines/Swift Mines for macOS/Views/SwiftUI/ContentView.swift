@@ -22,10 +22,13 @@ struct ContentView: View {
     
     
     var body: some View {
-        let boardView = BoardView(board: game.board)
+        let boardView = BoardView(board: game.board*)
         
         return VStack(spacing: 0) {
-            GameStatusBarView(game: game)
+            GameStatusBarView(game: game, onNewGameButtonPressed: {
+                    self.game.startNewGame()
+                    boardView.board = self.game.board
+                })
                 .frame(width: nil, height: 48, alignment: .top)
             
             boardView

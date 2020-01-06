@@ -117,10 +117,15 @@ public extension Game {
         case .mine:
             loseGame(detonatedMineLocation: location)
         }
+        
+        evaluateWinState()
     }
     
     
     
+    /// Immediately considers the game lost, revealing all squares and marking the one the user clicked as the culprit
+    ///
+    /// - Parameter detonatedMineLocation: The location of the mine that the player clicked
     private mutating func loseGame(detonatedMineLocation: UIntPoint) {
         print("Board has a mine at \(detonatedMineLocation)! Game over")
         board.revealAll(reason: .chainReaction)
@@ -129,7 +134,54 @@ public extension Game {
     }
     
     
-    private mutating func placeFlag(style: NextFlagStyle, at location: UIntPoint) {
+    /// Evaluates whether the user has won the game. If the user has won, the state is mutated to reflect that win
+    private mutating func evaluateWinState() {
+        switch playState {
+        case .notStarted,
+             .win(startDate: _, winDate: _),
+             .loss(startDate: _, lossDate: _):
+            // Cannot go to Win from this state
+            return
+            
+        case .playing(let startDate):
+            if userHasWonGame() {
+                self.playState = .win(startDate: startDate, winDate: Date())
+            }
+        }
+    }
+    
+    
+    /// Checks to determine whether the user has won the game
+    private func userHasWonGame() -> Bool {
+        guard self.numberOfFlagsRemainingToPlace == 0 else {
+            // If the user has not placed all the flags, they have not yet won
+            return false
+        }
+        
+        return self                                         // Look at the game
+            .board                                          // Look at the game's board
+            .content                                        // Look at the board's content
+            .lazy                                           // Evaluate the following in just one loop
+            .flatMap { $0 }                                 // Flatten the 2D array of board squares into a 1D array
+            .filter { $0.hasMine && $0.flagStyle == .sure } // Look at the squares which have mines and a for-sure flag
+            .count                                          // Count how many squares meet the above criteria
+            == self.totalNumberOfMines                      // If that number is equal to the total number of mines,
+                                                            //     the player has won the game!
+    }
+    
+    
+    /// Immediately places a flag of the given style at the given location.
+    ///
+    /// If you pass `.specific`, then the style of flag you specify will be placed there, even if it's already placed
+    /// or out-of-cycle.
+    ///
+    /// If you pass `.automatic`, then the next flag in the cycle will be placed there. See the documentation for
+    /// `BoardSquare.cycleFlag()` for that behavior.
+    ///
+    /// - Parameters:
+    ///   - style:    The style of the flag to place
+    ///   - location: <#location description#>
+    mutating func placeFlag(style: NextFlagStyle, at location: UIntPoint) {
         switch style {
         case .specific(let style):
             board.content[location].placeFlag(style: style)
@@ -138,17 +190,27 @@ public extension Game {
             board.content[location].cycleFlag()
         }
     }
-    
-    
+}
+
+
+// MARK: New Game
+
+public extension Game {
     /// Generates a new board with the same dimensions, style, and number of mines as the current one
     /// - Parameter location: The location where there should not be near a mine
-    private mutating func regenerateBoard(disallowingMinesNear location: Board.Location) {
+    fileprivate mutating func regenerateBoard(disallowingMinesNear location: Board.Location) {
         self.board = Board.generateNewBoard(
                 size: board.size,
                 totalNumberOfMines: self.totalNumberOfMines,
                 disallowingMinesNear: location
             )
             .annotated(baseStyle: board.style)
+    }
+    
+    
+    /// Discards the current game and generates a new one
+    mutating func startNewGame() {
+        self = .new(size: board.size, totalNumberOfMines: totalNumberOfMines)
     }
 }
 
@@ -157,8 +219,8 @@ public extension Game {
 
 public extension Game {
     
-    /// Counts the number of mines which the user hasn't yet flagged or revealed
-    var numberOfMinesRemainingToFind: UInt { totalNumberOfMines - numberOfSquaresThoughtToBeMines }
+    /// Counts the number of flags which the user hasn't yet placed
+    var numberOfFlagsRemainingToPlace: UInt { totalNumberOfMines - numberOfSquaresThoughtToBeMines }
     
     /// Counts the number of squares in the game which the user thinks/knowns are mines
     var numberOfSquaresThoughtToBeMines: UInt {
