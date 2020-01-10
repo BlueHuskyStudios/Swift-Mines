@@ -46,14 +46,67 @@ extension Game: Hashable {}
 // MARK: Convenience init
 
 public extension Game {
-    static func new(size: UIntSize, totalNumberOfMines: UInt) -> Self {
+    /// Starts a new game with a board of the given size, optionally specifying a number of mines
+    ///
+    /// - Parameters:
+    ///   - size:               The size of the board in the new game
+    ///   - totalNumberOfMines: _optional_ - The maximum number of mines to place on the board. No matter what option
+    ///                         is chosen, there will always be an area without mines where the user first clicks.
+    ///                         Defaults to `.auto`
+    static func new(size: Board.Size, totalNumberOfMines: TotalNumberOfMines = .auto) -> Self {
         self.init(
-            board: Board.generateNewBoard(size: size,
-                                          totalNumberOfMines: totalNumberOfMines)
+            board: Board.empty(size: size)
                 .annotated(baseStyle: .default),
             playState: .notStarted,
-            totalNumberOfMines: totalNumberOfMines
+            totalNumberOfMines: totalNumberOfMines.count(in: size)
         )
+    }
+    
+    
+    /// Starts a good default new game when the user hasn't expressed any preference
+    static func basicNewGame() -> Self {
+        new(size: Board.Size(width: 10, height: 10))
+    }
+    
+    
+    
+    /// Describes the total number of mines to place on a new game board
+    enum TotalNumberOfMines: ExpressibleByIntegerLiteral {
+        /// Don't place any mines on the board
+        case none
+        
+        /// Choose some number of mines to place based on the board's size
+        case auto
+        
+        /// Place a specific number of mines on the board
+        case custom(count: UInt)
+        
+        
+        
+        public typealias IntegerLiteralType = UInt
+        
+        
+        
+        public init(integerLiteral value: IntegerLiteralType) {
+            if value == 0 {
+                self = .none
+            }
+            else {
+                self = .custom(count: value)
+            }
+        }
+        
+        
+        /// Returns the number of mines to place on a board of the given size
+        ///
+        /// - Parameter boardSize: The size of the board onto which some number of mines will be placed
+        func count(in boardSize: Board.Size) -> UInt {
+            switch self {
+            case .none:              return 0
+            case .auto:              return UInt(sqrt(CGFloat(boardSize.area)).rounded())
+            case .custom(let count): return count
+            }
+        }
     }
 }
 
@@ -81,9 +134,9 @@ public extension Game {
             switch action {
             case .dig:
                 
-                if board.content[location].mineContext != .clear(distance: .farFromMine) {
+//                if board.content[location].mineContext != .clear(distance: .farFromMine) {
                     regenerateBoard(disallowingMinesNear: location)
-                }
+//                }
                 
                 dig(at: location)
                 
@@ -180,8 +233,8 @@ public extension Game {
     ///
     /// - Parameters:
     ///   - style:    The style of the flag to place
-    ///   - location: <#location description#>
-    mutating func placeFlag(style: NextFlagStyle, at location: UIntPoint) {
+    ///   - location: The location where the flag should be placed
+    private mutating func placeFlag(style: NextFlagStyle, at location: UIntPoint) {
         switch style {
         case .specific(let style):
             board.content[location].placeFlag(style: style)
@@ -210,7 +263,7 @@ public extension Game {
     
     /// Discards the current game and generates a new one
     mutating func startNewGame() {
-        self = .new(size: board.size, totalNumberOfMines: totalNumberOfMines)
+        self = .new(size: board.size, totalNumberOfMines: .custom(count: totalNumberOfMines))
     }
 }
 

@@ -67,7 +67,6 @@ extension BoardSquareView: Hashable {
         model.hash(into: &hasher)
     }
 }
-}
 
 
 
@@ -89,92 +88,92 @@ extension BoardSquareView.Style: Hashable {}
 
 
 
-// MARK: - Preview
-
-struct BoardSquareView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            Group {
-                preview(name: "Unclicked",
-                        context: .mine,
-                        representation: .blank)
-            }
-            
-            
-            Group {
-                preview(name: "Clear (1)",
-                        context: .clear(distance: .closeTo1Mine),
-                        representation: .revealed(reason: .manuallyTriggered))
-                preview(name: "Clear (2)",
-                        context: .clear(distance: .closeTo2Mines),
-                        representation: .revealed(reason: .manuallyTriggered))
-                preview(name: "Clear (3)",
-                        context: .clear(distance: .closeTo3Mines),
-                        representation: .revealed(reason: .manuallyTriggered))
-                preview(name: "Clear (4)",
-                        context: .clear(distance: .closeTo4Mines),
-                        representation: .revealed(reason: .manuallyTriggered))
-                preview(name: "Clear (5)",
-                        context: .clear(distance: .closeTo5Mines),
-                        representation: .revealed(reason: .manuallyTriggered))
-                preview(name: "Clear (6)",
-                        context: .clear(distance: .closeTo6Mines),
-                        representation: .revealed(reason: .manuallyTriggered))
-                preview(name: "Clear (7)",
-                        context: .clear(distance: .closeTo7Mines),
-                        representation: .revealed(reason: .manuallyTriggered))
-                preview(name: "Clear (8)",
-                        context: .clear(distance: .closeTo8Mines),
-                        representation: .revealed(reason: .manuallyTriggered))
-            }
-            
-            
-            Group {
-                preview(name: "Flag",
-                        context: .mine,
-                        representation: .flagged(style: .sure))
-                preview(name: "Unsure",
-                        context: .mine,
-                        representation: .flagged(style: .unsure))
-            }
-            
-            
-            Group {
-                preview(name: "Mine (Safely Revealed)",
-                        context: .mine,
-                        representation: .revealed(reason: .safelyRevealedAfterWin))
-                preview(name: "Mine (Chain Reaction)",
-                        context: .mine,
-                        representation: .revealed(reason: .chainReaction))
-                preview(name: "Manually Triggered Mine",
-                        context: .mine,
-                        representation: .revealed(reason: .manuallyTriggered))
-            }
-        }
-    }
-    
-    
-    
-    private static func preview(name: String,
-                                context: BoardSquare.MineContext,
-                                representation: BoardSquare.ExternalRepresentation) -> some View {
-        BoardSquareView(
-            style: nil,
-            model: .init(base: BoardSquare(id: UUID(),
-                                           content: content(from: context),
-                                           externalRepresentation: representation),
-                         inheritedStyle: .default,
-                         mineContext: context,
-                         cachedLocation: .zero))
-            .previewDisplayName(name)
-            .frame(width: 16, height: 16, alignment: .center)
-    }
-    
-    
-    private static func content(from context: BoardSquare.MineContext) -> BoardSquare.Content {
-        switch context {
-        case .clear(distance: _): return .clear
-        case .mine:               return .mine
-        }
-    }
-}
+//// MARK: - Preview
+//
+//struct BoardSquareView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            Group {
+//                preview(name: "Unclicked",
+//                        context: .mine,
+//                        representation: .blank)
+//            }
+//            
+//            
+//            Group {
+//                preview(name: "Clear (1)",
+//                        context: .clear(distance: .closeTo1Mine),
+//                        representation: .revealed(reason: .manual))
+//                preview(name: "Clear (2)",
+//                        context: .clear(distance: .closeTo2Mines),
+//                        representation: .revealed(reason: .manual))
+//                preview(name: "Clear (3)",
+//                        context: .clear(distance: .closeTo3Mines),
+//                        representation: .revealed(reason: .manual))
+//                preview(name: "Clear (4)",
+//                        context: .clear(distance: .closeTo4Mines),
+//                        representation: .revealed(reason: .manual))
+//                preview(name: "Clear (5)",
+//                        context: .clear(distance: .closeTo5Mines),
+//                        representation: .revealed(reason: .manual))
+//                preview(name: "Clear (6)",
+//                        context: .clear(distance: .closeTo6Mines),
+//                        representation: .revealed(reason: .manual))
+//                preview(name: "Clear (7)",
+//                        context: .clear(distance: .closeTo7Mines),
+//                        representation: .revealed(reason: .manual))
+//                preview(name: "Clear (8)",
+//                        context: .clear(distance: .closeTo8Mines),
+//                        representation: .revealed(reason: .manual))
+//            }
+//            
+//            
+//            Group {
+//                preview(name: "Flag",
+//                        context: .mine,
+//                        representation: .flagged(style: .sure))
+//                preview(name: "Unsure",
+//                        context: .mine,
+//                        representation: .flagged(style: .unsure))
+//            }
+//            
+//            
+//            Group {
+//                preview(name: "Mine (Safely Revealed)",
+//                        context: .mine,
+//                        representation: .revealed(reason: .safelyRevealedAfterWin))
+//                preview(name: "Mine (Chain Reaction)",
+//                        context: .mine,
+//                        representation: .revealed(reason: .chainReaction))
+//                preview(name: "Manually Triggered Mine",
+//                        context: .mine,
+//                        representation: .revealed(reason: .manual))
+//            }
+//        }
+//    }
+//    
+//    
+//    
+//    private static func preview(name: String,
+//                                context: BoardSquare.MineContext,
+//                                representation: BoardSquare.ExternalRepresentation) -> some View {
+//        BoardSquareView(
+//            style: nil,
+//            model: .init(base: BoardSquare(id: UUID(),
+//                                           content: content(from: context),
+//                                           externalRepresentation: representation),
+//                         inheritedStyle: .default,
+//                         mineContext: context,
+//                         cachedLocation: .zero))
+//            .previewDisplayName(name)
+//            .frame(width: 16, height: 16, alignment: .center)
+//    }
+//    
+//    
+//    private static func content(from context: BoardSquare.MineContext) -> BoardSquare.Content {
+//        switch context {
+//        case .clear(distance: _): return .clear
+//        case .mine:               return .mine
+//        }
+//    }
+//}

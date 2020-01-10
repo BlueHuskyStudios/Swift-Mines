@@ -73,8 +73,8 @@ public struct Board {
 public extension Board {
     
     /// The number of cells wide and tall
-    var size: UIntSize {
-        UIntSize(width: UInt(content[0].count), height: UInt(content.count))
+    var size: Size {
+        Size(width: UInt(content[0].count), height: UInt(content.count))
     }
     
     
@@ -113,7 +113,7 @@ public extension Board {
         }
         
         /// The size of the board
-        var size: UIntSize
+        var size: Size
         
         /// How this board and its squares are styled
         var style: Style {
@@ -431,7 +431,7 @@ extension SquareNeighbors: Sequence {
 
 public extension Board {
     
-    static func random(size: UIntSize) -> Board {
+    static func random(size: Size) -> Board {
         return Board(content: size.map2D { _ in
             BoardSquare.random()
         })

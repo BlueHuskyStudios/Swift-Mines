@@ -19,8 +19,8 @@ private let perCharacterRatio = CGSize(width: 10, height: 16)
 
 struct GameStatusBarView: View {
     
-    @MutableSafePointer
-    var game: Game
+    @EnvironmentObject
+    var overallAppState: OverallAppState
     
     let onNewGameButtonPressed: OnNewGameButtonPressed
     
@@ -38,11 +38,11 @@ struct GameStatusBarView: View {
             HStack(alignment: VerticalAlignment.center) {
                 Spacer()
                 
-                SevenSegmentReadout(resembling: self.displayText(from: self.game.numberOfFlagsRemainingToPlace),
+                SevenSegmentReadout(resembling: self.displayText(from: self.overallAppState.game.numberOfFlagsRemainingToPlace),
                                     skew: .traditional)
                     .eachCharacterAspectRatio(perCharacterRatio)
                 
-                Button(action: self.onNewGameButtonPressed, label: { self.buttonLabel(for: self.game) })
+                Button(action: self.onNewGameButtonPressed, label: { self.buttonLabel(for: self.overallAppState.game) })
                     .buttonStyle(PlainButtonStyle())
                     .aspectRatio(1, contentMode: .fit)
                     .frame(minWidth: geometry.size.minSideLength * 0.75,
@@ -58,7 +58,7 @@ struct GameStatusBarView: View {
                 SevenSegmentReadout(resembling: self.secondsReadout, skew: .traditional)
                     .eachCharacterAspectRatio(perCharacterRatio)
                     .onReceive(self.updateTimer) { _ in
-                        self.secondsReadout = self.displayText(from: self.game.numberOfSecondsSinceGameStarted)
+                        self.secondsReadout = self.displayText(from: self.overallAppState.game.numberOfSecondsSinceGameStarted)
                     }
                 
                 Spacer()
@@ -86,7 +86,7 @@ struct GameStatusBarView: View {
     
     
     func buttonText(for playState: Game.PlayState) -> some View {
-        switch self.game.playState {
+        switch self.overallAppState.game.playState {
         case .notStarted: return Text(verbatim: "😴")
         case .playing(startDate: _): return Text(verbatim: "🙂")
         case .win(startDate: _, winDate: _): return Text(verbatim: "😎")
@@ -101,10 +101,12 @@ struct GameStatusBarView: View {
 
 struct GameStatusBarView_Previews: PreviewProvider {
     
+    @EnvironmentObject
+    static var overallAppState: OverallAppState
+    
     static var previews: some View {
-        GameStatusBarView(
-            game: Game.new(size: UIntSize(width: 10, height: 10), totalNumberOfMines: 10),
-            onNewGameButtonPressed: { }
-        )
+        overallAppState.game = Game.new(size: Board.Size(width: 10, height: 10))
+        
+        return GameStatusBarView() {}
     }
 }

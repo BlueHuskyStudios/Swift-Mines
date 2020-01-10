@@ -10,6 +10,12 @@ import RectangleTools
 
 
 
+public extension Point2D {
+    var humanReadableDescription: String { "(\(x), \(y))" }
+}
+
+
+
 public extension Point2D where Length: FixedWidthInteger {
     
     /// Determines whether this point is touching the given one
@@ -18,11 +24,15 @@ public extension Point2D where Length: FixedWidthInteger {
     ///   - other:     The point to check which might touch this one
     ///   - inclusive: _optional_ - Iff `true`, then this returns `true` when `self == other`. Either value will not
     ///                 affect how this function looks at adjacent locations
-    func isTouching(_ other: Self, inclusive: Bool = true) -> Bool { // TODO: Test
+    ///   - tolerance: The number of squares away from this one which are considered "touching", where `0` means only
+    ///                this square (if `inclusive`), `1` means this square (if `inclusive`) and the 8 squares around
+    ///                it, `2` means this square (if `inclusive`), the 8 squares around it, and the 16 squares around
+    ///                those, etc.
+    func isTouching(_ other: Self, inclusive: Bool = true, tolerance: UInt = 1) -> Bool { // TODO: Test
         
         func isTouchingInclusively() -> Bool {
-            return abs(x.distance(to: other.x)) <= 1
-                && abs(y.distance(to: other.y)) <= 1
+            return abs(x.distance(to: other.x)) <= tolerance
+                && abs(y.distance(to: other.y)) <= tolerance
         }
         
         if inclusive {

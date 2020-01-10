@@ -36,18 +36,18 @@ internal struct BoardView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .center, spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
                 ForEach(self.board.content, id: \.self) { row in
-                    HStack(alignment: .center, spacing: 0) {
+                    HStack(alignment: .top, spacing: 0) {
                         ForEach(row, id: \.self) { square in
                             BoardSquareView(
                                 style: self.style(for: square),
                                 model: square
                             )
-                                .also { print("BoardView Did regenerate board square view at", square.cachedLocation) }
-                                .gesture(TapGesture().modifiers(.control).onEnded({ self.onSquareTapped.pointee?(square, .placeFlag(style: nil)) }))
+                                .also { print(square.cachedLocation.humanReadableDescription, square.base.externalRepresentation) }
+                                .gesture(TapGesture().modifiers(.control).onEnded({ _ in self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic)) }))
                                 .gesture(TapGesture().onEnded({ self.onSquareTapped.pointee?(square, .dig) }))
-                                .also { print("\tBoardView Did attach listeners to board square view at", square.cachedLocation) }
+//                                .also { print("\tBoardView Did attach listeners to board square view at", square.cachedLocation) }
                         }
                     }
                 }
@@ -86,7 +86,7 @@ private extension BoardView {
     
     func handleUserDidAltTap(_ square: BoardSquare.Annotated) -> OnGestureDidEnd {{
         print("Tap2")
-        self.onSquareTapped.pointee?(square, .placeFlag(style: nil))
+        self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic))
     }}
     
     
@@ -106,8 +106,9 @@ private extension BoardView {
 struct BoardView_Previews: PreviewProvider {
     
     static let test10x10Board = Board
-        .generateNewBoard(size: UIntSize(width: 10, height: 10),
-                          totalNumberOfMines: 10)
+        .generateNewBoard(size: Board.Size(width: 10, height: 10),
+                          totalNumberOfMines: 10,
+                          disallowingMinesNear: .zero)
         .annotated(baseStyle: .default)
         .allRevealed(reason: .safelyRevealedAfterWin)
     

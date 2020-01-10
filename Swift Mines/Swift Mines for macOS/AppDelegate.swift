@@ -17,6 +17,10 @@ import SafePointer
 class AppDelegate: NSObject {
 
     var window: NSWindow!
+    
+    var overallAppState = OverallAppState(
+        game: Game.new(size: Board.Size(width: 10, height: 10))
+    )
 }
 
 
@@ -31,10 +35,7 @@ extension AppDelegate: NSApplicationDelegate {
         }
         
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView(
-            game: Game.new(size: UIntSize(width: 10, height: 10),
-                           totalNumberOfMines: 10)
-        )
+        let contentView = ContentView()
 
         // Create the window and set the content view. 
         window = NSWindow(
@@ -44,7 +45,7 @@ extension AppDelegate: NSApplicationDelegate {
         window.title = "Swift Mines"
         window.center()
         window.setFrameAutosaveName("Main Window")
-        window.contentView = NSHostingView(rootView: contentView)
+        window.contentView = NSHostingView(rootView: contentView.environmentObject(overallAppState))
         window.makeKeyAndOrderFront(nil)
     }
     

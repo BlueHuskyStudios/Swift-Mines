@@ -14,13 +14,13 @@ import Cocoa
 
 import RectangleTools
 import SafePointer
+import SwiftUI
 
 
 
 internal class BoardView: NSCollectionView {
     
-    @MutableSafePointer
-    var board: Board.Annotated {
+    var board: Board.Annotated = Board.empty(size: .zero).annotated(baseStyle: .default) {
         didSet {
             updateUi()
         }
@@ -28,29 +28,29 @@ internal class BoardView: NSCollectionView {
     
     private var squareViews = [[BoardSquareView]]()
     
-    var onUserDidPressSquare: OnUserDidPressSquare?
+    private var onUserDidPressSquare: OnUserDidPressSquare?
     
     
     
-    init(board: MutableSafePointer<Board.Annotated>, onUserDidPressSquare: OnUserDidPressSquare? = nil) {
-        self._board = board
-        self.onUserDidPressSquare = onUserDidPressSquare
+    init(/*overallAppState: OverallAppState*/) {
+//        self.overallAppState = overallAppState
         
         super.init(frame: .zero)
         
         self.dataSource = self
         
-        let layout = NSCollectionViewGridLayout()
-        layout.maximumNumberOfColumns = Int((*board).size.width)
-        layout.maximumNumberOfRows = Int((*board).size.height)
-        self.collectionViewLayout = layout
-        
-        updateUi()
+//        updateUi()
     }
     
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    override func layout() {
+        updateUi()
+        super.layout()
     }
     
     
@@ -70,6 +70,11 @@ private extension BoardView {
                 boardSquareView.square = board.content[rowIndex][columnIndex]
             }
         }
+        
+        let layout = NSCollectionViewGridLayout()
+        layout.maximumNumberOfColumns = Int(board.size.width)
+        layout.maximumNumberOfRows = Int(board.size.height)
+        self.collectionViewLayout = layout
         
         self.reloadData()
     }
@@ -143,7 +148,7 @@ extension BoardView: NSCollectionViewDataSource {
     }
     
     
-    private func location(for indexPath: IndexPath) -> UIntPoint? {
+    private func location(for indexPath: IndexPath) -> Board.Location? {
         return indexPath.asPoint(in: board.size, sectionRequirement: .onlyAllowSectionZero)
     }
     
@@ -173,5 +178,47 @@ extension BoardView: NSCollectionViewDataSource {
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
+    }
+}
+
+
+
+// MARK: - SwiftUI Wrapper
+
+internal struct BoardViewWrapper: NSViewRepresentable {
+    
+    typealias NSViewType = BoardView
+    
+    
+    
+    @EnvironmentObject
+    private var overallAppState: OverallAppState
+    
+    private let wrapped: BoardView
+    
+    
+    init(wrapping boardView: BoardView) {
+        self.wrapped = boardView
+    }
+    
+    
+    func makeNSView(context: Context) -> NSViewType {
+        wrapped.board = context.environment[OverallAppState.key].game.board
+        return wrapped
+//        NSViewType(overallAppState: context.environment[OverallAppState.Key.self])
+    }
+    
+    
+    func updateNSView(_ nsView: NSViewType, context: Context) {
+        print("Updating board view")
+        nsView.board = context.environment[OverallAppState.key].game.board
+    }
+}
+
+
+
+internal extension BoardView {
+    func wrappedForSwiftUi() -> some NSViewRepresentable {
+        BoardViewWrapper(wrapping: self)
     }
 }
