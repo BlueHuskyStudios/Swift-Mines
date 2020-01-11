@@ -30,7 +30,7 @@ struct ContentView: View {
                     print("Square tapped -", action)
                     self.overallAppState.game.updateBoard(after: action, at: square.cachedLocation)
                 }
-                .wrappedForSwiftUi()
+//                .wrappedForSwiftUi()
                 .environmentObject(overallAppState)
                 .aspectRatio(1, contentMode: .fit)
                 .also { print("ContentView Did regenerate view") }

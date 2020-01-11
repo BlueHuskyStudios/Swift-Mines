@@ -27,20 +27,16 @@ internal struct BoardSquareView: View {
     
     
     var body: some View {
-        print("BoardSquareView setting up at \(model.cachedLocation)...")
-        let x = GeometryReader { geometryProxy in
-                Image(nsImage: self.model.imageForUi(size: geometryProxy.size))
-                    .resizable(resizingMode: .stretch)
-                    .frame(minWidth: 8, idealWidth: 16, minHeight: 8, idealHeight: 16, alignment: .center)
-                    .aspectRatio(1, contentMode: .fit)
-                    .background(Color(self.model.appropriateBackgroundColor()))
-            }
-            .border(SeparatorShapeStyle(), width: 1)
-            .also { print("\tBoardSquareView Did regenerate view") }
-            .frame(minWidth: 8, idealWidth: 16, minHeight: 8, idealHeight: 16, alignment: .center)
-            .aspectRatio(1, contentMode: .fit)
-            .also { print("\tBoardSquareView Did set up view") }
-        return x
+        GeometryReader { geometryProxy in
+            Image(nsImage: self.model.imageForUi(size: geometryProxy.size))
+                .resizable(resizingMode: .stretch)
+//                .frame(minWidth: 8, idealWidth: 16, minHeight: 8, idealHeight: 16, alignment: .center)
+//                .aspectRatio(1, contentMode: .fit)
+                .background(Color(self.model.appropriateBackgroundColor()))
+        }
+        .border(SeparatorShapeStyle(), width: 1)
+        .frame(minWidth: 8, idealWidth: 16, minHeight: 8, idealHeight: 16, alignment: .center)
+//        .aspectRatio(1, contentMode: .fit)
     }
     
     

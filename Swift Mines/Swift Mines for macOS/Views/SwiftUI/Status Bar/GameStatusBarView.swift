@@ -50,9 +50,9 @@ struct GameStatusBarView: View {
                            minHeight: geometry.size.minSideLength * 0.75,
                            idealHeight: geometry.size.minSideLength * 0.8,
                            alignment: .center)
-                    .padding(EdgeInsets(top: geometry.size.minSideLength / 8,
+                    .padding(EdgeInsets(top: 0,//geometry.size.minSideLength / 8,
                                         leading: geometry.size.minSideLength / 16,
-                                        bottom: geometry.size.minSideLength / 8,
+                                        bottom: 0,//geometry.size.minSideLength / 8,
                                         trailing: geometry.size.minSideLength / 16))
                 
                 SevenSegmentReadout(resembling: self.secondsReadout, skew: .traditional)
@@ -63,7 +63,7 @@ struct GameStatusBarView: View {
                 
                 Spacer()
             }
-            .padding(Edge.Set.all, max(4, geometry.size.minSideLength / 32))
+            .padding(Edge.Set.all, max(4, geometry.size.minSideLength / 12))
         }
     }
     

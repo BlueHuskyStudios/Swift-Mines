@@ -14,30 +14,33 @@ import SafePointer
 
 internal struct BoardView: View {
     
-    @State
-    public var board: Board.Annotated {
-        didSet {
-            print("BoardView did update board")
-        }
-    }
+    @EnvironmentObject
+    var overallAppState: OverallAppState
+    
+//    @State
+//    public var board: Board.Annotated {
+//        didSet {
+//            print("BoardView did update board")
+//        }
+//    }
     
     private var onSquareTapped = MutableSafePointer<OnSquareTapped?>(to: nil)
     
     
-    internal init(board: Board.Annotated) {
-        self.init(board: State(wrappedValue: board))
-    }
-    
-    
-    internal init(board: State<Board.Annotated>) {
-        self._board = board
-    }
+//    internal init(board: Board.Annotated) {
+//        self.init(board: State(wrappedValue: board))
+//    }
+//
+//
+//    internal init(board: State<Board.Annotated>) {
+//        self._board = board
+//    }
     
     
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 0) {
-                ForEach(self.board.content, id: \.self) { row in
+                ForEach(self.overallAppState.game.board.content, id: \.self) { row in
                     HStack(alignment: .top, spacing: 0) {
                         ForEach(row, id: \.self) { square in
                             BoardSquareView(
@@ -47,14 +50,15 @@ internal struct BoardView: View {
                                 .also { print(square.cachedLocation.humanReadableDescription, square.base.externalRepresentation) }
                                 .gesture(TapGesture().modifiers(.control).onEnded({ _ in self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic)) }))
                                 .gesture(TapGesture().onEnded({ self.onSquareTapped.pointee?(square, .dig) }))
+                                .onLongPressGesture { self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic)) }
 //                                .also { print("\tBoardView Did attach listeners to board square view at", square.cachedLocation) }
                         }
                     }
                 }
             }
-            .background(Color(self.board.style.baseColor))
+            .background(Color(self.overallAppState.game.board.style.baseColor))
         }
-        .also { print("BoardView Did regenerate view with \(board.content.count * (board.content[orNil: 0]?.count ?? 1)) squares") }
+//        .also { print("BoardView Did regenerate view with \(overallAppState.game.board.content.size.area) squares") }
     }
     
     
@@ -92,7 +96,7 @@ private extension BoardView {
     
     func style(for square: BoardSquare.Annotated) -> BoardSquareView.Style {
         .init(
-            actualColor: board.style.baseColor
+            actualColor: self.overallAppState.game.board.style.baseColor
         )
     }
     
@@ -103,16 +107,16 @@ private extension BoardView {
 
 
 
-struct BoardView_Previews: PreviewProvider {
-    
-    static let test10x10Board = Board
-        .generateNewBoard(size: Board.Size(width: 10, height: 10),
-                          totalNumberOfMines: 10,
-                          disallowingMinesNear: .zero)
-        .annotated(baseStyle: .default)
-        .allRevealed(reason: .safelyRevealedAfterWin)
-    
-    static var previews: some View {
-        BoardView(board: test10x10Board)
-    }
-}
+//struct BoardView_Previews: PreviewProvider {
+//    
+//    static let test10x10Board = Board
+//        .generateNewBoard(size: Board.Size(width: 10, height: 10),
+//                          totalNumberOfMines: 10,
+//                          disallowingMinesNear: .zero)
+//        .annotated(baseStyle: .default)
+//        .allRevealed(reason: .safelyRevealedAfterWin)
+//    
+//    static var previews: some View {
+//        BoardView(board: test10x10Board)
+//    }
+//}
