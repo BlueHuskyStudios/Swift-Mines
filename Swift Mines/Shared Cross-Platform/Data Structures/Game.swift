@@ -156,6 +156,9 @@ public extension Game {
     ///
     /// - Parameter location: The location where to dig
     private mutating func dig(at location: UIntPoint) {
+        
+        defer { evaluateWinState() }
+        
         print("Digging at", location)
         let revealedSquare = board.revealSquare(at: location, reason: .manual)
         
@@ -170,8 +173,6 @@ public extension Game {
         case .mine:
             loseGame(detonatedMineLocation: location)
         }
-        
-        evaluateWinState()
     }
     
     
@@ -235,6 +236,9 @@ public extension Game {
     ///   - style:    The style of the flag to place
     ///   - location: The location where the flag should be placed
     private mutating func placeFlag(style: NextFlagStyle, at location: UIntPoint) {
+        
+        defer { evaluateWinState() }
+        
         switch style {
         case .specific(let style):
             board.content[location].placeFlag(style: style)

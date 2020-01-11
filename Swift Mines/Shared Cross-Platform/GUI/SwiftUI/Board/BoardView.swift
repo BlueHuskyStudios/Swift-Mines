@@ -44,10 +44,10 @@ internal struct BoardView: View {
                     HStack(alignment: .top, spacing: 0) {
                         ForEach(row, id: \.self) { square in
                             BoardSquareView(
-                                style: self.style(for: square),
+//                                style: self.style(for: square),
                                 model: square
                             )
-                                .also { print(square.cachedLocation.humanReadableDescription, square.base.externalRepresentation) }
+//                                .also { print(square.cachedLocation.humanReadableDescription, square.base.externalRepresentation) }
                                 .gesture(TapGesture().modifiers(.control).onEnded({ _ in self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic)) }))
                                 .gesture(TapGesture().onEnded({ self.onSquareTapped.pointee?(square, .dig) }))
                                 .onLongPressGesture { self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic)) }
@@ -92,13 +92,13 @@ private extension BoardView {
         print("Tap2")
         self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic))
     }}
-    
-    
-    func style(for square: BoardSquare.Annotated) -> BoardSquareView.Style {
-        .init(
-            actualColor: self.overallAppState.game.board.style.baseColor
-        )
-    }
+//
+//
+//    func style(for square: BoardSquare.Annotated) -> BoardSquareView.Style {
+//        .init(
+//            actualColor: self.overallAppState.game.board.style.baseColor
+//        )
+//    }
     
     
     

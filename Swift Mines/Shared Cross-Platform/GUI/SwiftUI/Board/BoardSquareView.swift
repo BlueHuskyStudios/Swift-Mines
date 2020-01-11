@@ -16,9 +16,6 @@ import RectangleTools
 internal struct BoardSquareView: View {
     
     @State
-    var style: Style?
-    
-    @State
     var model: Model {
         didSet {
             print("BoardSquareView did set square")

@@ -19,7 +19,7 @@ struct ContentView: View {
     
     
     var body: some View {
-        return VStack(spacing: 0) {
+        VStack(spacing: 0) {
             GameStatusBarView() {
                     self.overallAppState.game.startNewGame()
                 }
@@ -35,6 +35,14 @@ struct ContentView: View {
                 .aspectRatio(1, contentMode: .fit)
                 .also { print("ContentView Did regenerate view") }
         }
+        .sheet(
+            isPresented: Binding(
+                get: { self.overallAppState.currentScreen == .newGameSetup },
+                set: { shouldShowSetup in self.overallAppState.currentScreen = shouldShowSetup ? .newGameSetup : .game }
+            ),
+            onDismiss: { self.overallAppState.game.startNewGame() },
+            content: { NewGameSetupView().environmentObject(self.overallAppState) })
+        
     }
 }
 

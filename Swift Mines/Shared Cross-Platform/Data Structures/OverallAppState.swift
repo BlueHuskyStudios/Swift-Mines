@@ -11,8 +11,12 @@ import SwiftUI
 
 
 public class OverallAppState: ObservableObject {
+    
     @Published
     public var game: Game
+    
+    @Published
+    public var currentScreen = AppScreen.game
     
     
     init(game: Game) {

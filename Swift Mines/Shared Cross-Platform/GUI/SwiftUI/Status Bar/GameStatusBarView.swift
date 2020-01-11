@@ -33,8 +33,7 @@ struct GameStatusBarView: View {
     private var buttonImage = Image("")
     
     
-    var body: some View {
-        return GeometryReader { geometry in
+    var body: some View {GeometryReader { geometry in
             HStack(alignment: VerticalAlignment.center) {
                 Spacer()
                 
@@ -50,9 +49,9 @@ struct GameStatusBarView: View {
                            minHeight: geometry.size.minSideLength * 0.75,
                            idealHeight: geometry.size.minSideLength * 0.8,
                            alignment: .center)
-                    .padding(EdgeInsets(top: 0,//geometry.size.minSideLength / 8,
+                    .padding(EdgeInsets(top: 0,
                                         leading: geometry.size.minSideLength / 16,
-                                        bottom: 0,//geometry.size.minSideLength / 8,
+                                        bottom: 0,
                                         trailing: geometry.size.minSideLength / 16))
                 
                 SevenSegmentReadout(resembling: self.secondsReadout, skew: .traditional)
