@@ -10,20 +10,29 @@ import Foundation
 
 
 
-public enum GameDifficulty: String {
+public enum PredefinedGameDifficulty: String {
     case easy         = "Easy"
     case intermediate = "Intermediate"
     case advanced     = "Advanced"
-    case custom       = "Custom"
 }
 
 
 
-extension GameDifficulty: Identifiable {
+public extension PredefinedGameDifficulty {
+    
+    static let `default` = easy
+    
+    
+    var displayName: String { rawValue }
+}
+
+
+
+extension PredefinedGameDifficulty: Identifiable {
     public var id: String { rawValue }
 }
 
 
 
-extension GameDifficulty: CaseIterable {}
-extension GameDifficulty: Hashable {}
+extension PredefinedGameDifficulty: CaseIterable {}
+extension PredefinedGameDifficulty: Hashable {}

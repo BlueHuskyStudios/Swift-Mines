@@ -49,7 +49,7 @@ public extension Board {
             .onlyFirst(totalNumberOfMines)
             .map(IntPoint.init(_:))
             .forEach { point in
-                board.content[point.x][point.y].giveMine()
+                board.content[point].giveMine()
             }
         
         return board

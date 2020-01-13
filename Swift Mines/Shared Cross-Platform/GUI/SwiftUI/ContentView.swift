@@ -32,7 +32,7 @@ struct ContentView: View {
                 }
 //                .wrappedForSwiftUi()
                 .environmentObject(overallAppState)
-                .aspectRatio(1, contentMode: .fit)
+                .aspectRatio(CGSize(overallAppState.game.board.size), contentMode: .fit)
                 .also { print("ContentView Did regenerate view") }
         }
         .sheet(
@@ -40,7 +40,7 @@ struct ContentView: View {
                 get: { self.overallAppState.currentScreen == .newGameSetup },
                 set: { shouldShowSetup in self.overallAppState.currentScreen = shouldShowSetup ? .newGameSetup : .game }
             ),
-            onDismiss: { self.overallAppState.game.startNewGame() },
+//            onDismiss: { self.overallAppState.game.startNewGame() },
             content: { NewGameSetupView().environmentObject(self.overallAppState) })
         
     }

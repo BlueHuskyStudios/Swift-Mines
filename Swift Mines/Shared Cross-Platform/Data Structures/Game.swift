@@ -63,6 +63,16 @@ public extension Game {
     }
     
     
+    /// Starts a new game with a board of the given configuration
+    ///
+    /// - Parameter configuration: How to configure the new game
+    @inlinable
+    static func new(_ configuration: NewGameConfiguration) -> Self {
+        new(size: configuration.boardSize,
+            totalNumberOfMines: configuration.numberOfMines)
+    }
+    
+    
     /// Starts a good default new game when the user hasn't expressed any preference
     static func basicNewGame() -> Self {
         new(size: Board.Size(width: 10, height: 10))
@@ -103,7 +113,7 @@ public extension Game {
         func count(in boardSize: Board.Size) -> UInt {
             switch self {
             case .none:              return 0
-            case .auto:              return UInt(sqrt(CGFloat(boardSize.area)).rounded())
+            case .auto:              return UInt((CGFloat(boardSize.area) / 10).rounded())
             case .custom(let count): return count
             }
         }
@@ -254,6 +264,7 @@ public extension Game {
 
 public extension Game {
     /// Generates a new board with the same dimensions, style, and number of mines as the current one
+    /// 
     /// - Parameter location: The location where there should not be near a mine
     fileprivate mutating func regenerateBoard(disallowingMinesNear location: Board.Location) {
         self.board = Board.generateNewBoard(
@@ -266,8 +277,18 @@ public extension Game {
     
     
     /// Discards the current game and generates a new one
+    ///
+    /// - Parameter configuration: _optional_ The configuration of the new game. Defaults to the current configuration.
     mutating func startNewGame() {
         self = .new(size: board.size, totalNumberOfMines: .custom(count: totalNumberOfMines))
+    }
+    
+    
+    /// Discards the current game and generates a new one
+    ///
+    /// - Parameter configuration: _optional_ The configuration of the new game. Defaults to the current configuration.
+    mutating func startNewGame(configuration: NewGameConfiguration) {
+        self = .new(configuration)
     }
 }
 

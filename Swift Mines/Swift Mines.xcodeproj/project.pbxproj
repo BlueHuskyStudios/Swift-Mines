@@ -34,7 +34,7 @@
 		A39B5E4E23C97E3B00049357 /* BoardSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B32FF7239868130034F236 /* BoardSquareView.swift */; };
 		A39B5E5023C9A1E700049357 /* AppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E4F23C9A1E700049357 /* AppScreen.swift */; };
 		A39B5E5423C9AEC300049357 /* NewGameSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E5323C9AEC300049357 /* NewGameSetupView.swift */; };
-		A39B5E5623C9BE5A00049357 /* GameDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E5523C9BE5A00049357 /* GameDifficulty.swift */; };
+		A39B5E5623C9BE5A00049357 /* PredefinedGameDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E5523C9BE5A00049357 /* PredefinedGameDifficulty.swift */; };
 		A39B5E5823C9C68700049357 /* SwiftUI + Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E5723C9C68700049357 /* SwiftUI + Hidden.swift */; };
 		A39B86C6239EE56B00579A89 /* Assertion Debuggin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B86C5239EE56B00579A89 /* Assertion Debuggin.swift */; };
 		A39B86C8239EE95E00579A89 /* Swatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B86C7239EE95E00579A89 /* Swatches.swift */; };
@@ -64,6 +64,9 @@
 		A3CB7F2023C7C54800B82BDB /* OverallAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB7F1F23C7C54800B82BDB /* OverallAppState.swift */; };
 		A3D5CE8A23B479C500F6FDEE /* Comparable Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D5CE8923B479C500F6FDEE /* Comparable Extensions.swift */; };
 		A3E49229239BAE5A00394FC4 /* SafeCollectionAccess in Frameworks */ = {isa = PBXBuildFile; productRef = A3E49228239BAE5A00394FC4 /* SafeCollectionAccess */; };
+		A3EBCE7A23CA8CA50036EFFD /* NumberPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EBCE7923CA8CA50036EFFD /* NumberPicker.swift */; };
+		A3EBCE7C23CA95BC0036EFFD /* NewGameConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EBCE7B23CA95BC0036EFFD /* NewGameConfiguration.swift */; };
+		A3EBCE7E23CA99800036EFFD /* Size2D Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EBCE7D23CA99800036EFFD /* Size2D Extensions.swift */; };
 		A3EFDC8723A71EB900D439A5 /* Sequence Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EFDC8623A71EB900D439A5 /* Sequence Extensions.swift */; };
 		A3EFDC8923A736FA00D439A5 /* HasAlso + AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EFDC8823A736FA00D439A5 /* HasAlso + AppKit.swift */; };
 		A3EFDC8C23A73C6500D439A5 /* forSwiftUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EFDC8B23A73C6500D439A5 /* forSwiftUi.swift */; };
@@ -109,7 +112,7 @@
 		A38D5B7423C9106D0036B59D /* 2D Collection + ASCII.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "2D Collection + ASCII.swift"; sourceTree = "<group>"; };
 		A39B5E4F23C9A1E700049357 /* AppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreen.swift; sourceTree = "<group>"; };
 		A39B5E5323C9AEC300049357 /* NewGameSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameSetupView.swift; sourceTree = "<group>"; };
-		A39B5E5523C9BE5A00049357 /* GameDifficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDifficulty.swift; sourceTree = "<group>"; };
+		A39B5E5523C9BE5A00049357 /* PredefinedGameDifficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedGameDifficulty.swift; sourceTree = "<group>"; };
 		A39B5E5723C9C68700049357 /* SwiftUI + Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI + Hidden.swift"; sourceTree = "<group>"; };
 		A39B86C5239EE56B00579A89 /* Assertion Debuggin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assertion Debuggin.swift"; sourceTree = "<group>"; };
 		A39B86C7239EE95E00579A89 /* Swatches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swatches.swift; sourceTree = "<group>"; };
@@ -141,6 +144,9 @@
 		A3C69F732397A1CF00520B2F /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		A3CB7F1F23C7C54800B82BDB /* OverallAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallAppState.swift; sourceTree = "<group>"; };
 		A3D5CE8923B479C500F6FDEE /* Comparable Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable Extensions.swift"; sourceTree = "<group>"; };
+		A3EBCE7923CA8CA50036EFFD /* NumberPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPicker.swift; sourceTree = "<group>"; };
+		A3EBCE7B23CA95BC0036EFFD /* NewGameConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameConfiguration.swift; sourceTree = "<group>"; };
+		A3EBCE7D23CA99800036EFFD /* Size2D Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Size2D Extensions.swift"; sourceTree = "<group>"; };
 		A3EFDC8423A6DD0A00D439A5 /* BoardSquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSquareView.swift; sourceTree = "<group>"; };
 		A3EFDC8623A71EB900D439A5 /* Sequence Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence Extensions.swift"; sourceTree = "<group>"; };
 		A3EFDC8823A736FA00D439A5 /* HasAlso + AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HasAlso + AppKit.swift"; sourceTree = "<group>"; };
@@ -335,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				A3C69F502397A13F00520B2F /* ContentView.swift */,
+				A3EBCE7823CA8C920036EFFD /* General Controls */,
 				A39B5E5223C9AEA800049357 /* New Game Setup */,
 				A351C6A523AD8BB800097718 /* Board */,
 				A351C6A423AD8BB000097718 /* Status Bar */,
@@ -445,7 +452,8 @@
 				A3B32FFB2398CE050034F236 /* Game.swift */,
 				A3CB7F1F23C7C54800B82BDB /* OverallAppState.swift */,
 				A39B5E4F23C9A1E700049357 /* AppScreen.swift */,
-				A39B5E5523C9BE5A00049357 /* GameDifficulty.swift */,
+				A39B5E5523C9BE5A00049357 /* PredefinedGameDifficulty.swift */,
+				A3EBCE7B23CA95BC0036EFFD /* NewGameConfiguration.swift */,
 			);
 			path = "Data Structures";
 			sourceTree = "<group>";
@@ -463,6 +471,14 @@
 				A37D06D7239DDBD100C88026 /* Extensions */,
 			);
 			path = "Shared Cross-Platform";
+			sourceTree = "<group>";
+		};
+		A3EBCE7823CA8C920036EFFD /* General Controls */ = {
+			isa = PBXGroup;
+			children = (
+				A3EBCE7923CA8CA50036EFFD /* NumberPicker.swift */,
+			);
+			path = "General Controls";
 			sourceTree = "<group>";
 		};
 		A3EFDC8A23A73C4A00D439A5 /* SwiftUI + AppKit + UIKit */ = {
@@ -506,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				A351C69623AC3F7E00097718 /* Point2D Extensions.swift */,
+				A3EBCE7D23CA99800036EFFD /* Size2D Extensions.swift */,
 			);
 			path = RectangleTools;
 			sourceTree = "<group>";
@@ -652,16 +669,19 @@
 				A37D06D9239DDBE200C88026 /* NativeImage Extensions.swift in Sources */,
 				A351C69323AC312A00097718 /* Simple Functional Utilities.swift in Sources */,
 				A38D5B7523C9106D0036B59D /* 2D Collection + ASCII.swift in Sources */,
-				A39B5E5623C9BE5A00049357 /* GameDifficulty.swift in Sources */,
+				A3EBCE7C23CA95BC0036EFFD /* NewGameConfiguration.swift in Sources */,
+				A39B5E5623C9BE5A00049357 /* PredefinedGameDifficulty.swift in Sources */,
 				A3EFDC8723A71EB900D439A5 /* Sequence Extensions.swift in Sources */,
 				A3FE565D23A0AF1200309B2D /* RandomAccessCollection Extensions.swift in Sources */,
 				A32E3E9A23AAE28400AD1D95 /* BoardSquare + Realized Style.swift in Sources */,
 				A38CC46B23A4B04700D42F69 /* HasTransform + SwiftUI.swift in Sources */,
+				A3EBCE7E23CA99800036EFFD /* Size2D Extensions.swift in Sources */,
 				A39B86C8239EE95E00579A89 /* Swatches.swift in Sources */,
 				A3B32FFA239868320034F236 /* BoardSquare.swift in Sources */,
 				A3BCD78B23AEF98800346F05 /* CGAffineTransform Extensions.swift in Sources */,
 				A39B5E5823C9C68700049357 /* SwiftUI + Hidden.swift in Sources */,
 				A39B86CA239EFF6C00579A89 /* Image Constants.swift in Sources */,
+				A3EBCE7A23CA8CA50036EFFD /* NumberPicker.swift in Sources */,
 				A3B3300B239A0D9A0034F236 /* BoardSquare + random.swift in Sources */,
 				A351C69523AC313800097718 /* Function Types.swift in Sources */,
 				A3EFDC8C23A73C6500D439A5 /* forSwiftUi.swift in Sources */,
