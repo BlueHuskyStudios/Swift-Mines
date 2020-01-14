@@ -128,7 +128,6 @@
 		A3BB286D23C51613009254E6 /* Board Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board Tests.swift"; sourceTree = "<group>"; };
 		A3BCD78A23AEF98800346F05 /* CGAffineTransform Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform Extensions.swift"; sourceTree = "<group>"; };
 		A3BCD78D23AEFB6400346F05 /* Path Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Path Extensions.swift"; sourceTree = "<group>"; };
-		A3BE7ECE23A6BC2300766250 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		A3C158EE23A1803300A95B20 /* HasAlso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasAlso.swift; sourceTree = "<group>"; };
 		A3C158F123A1815100A95B20 /* HasAlso + SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HasAlso + SwiftUI.swift"; sourceTree = "<group>"; };
 		A3C69F4B2397A13F00520B2F /* Swift Mines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Mines.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,7 +150,6 @@
 		A3EBCE7923CA8CA50036EFFD /* NumberPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPicker.swift; sourceTree = "<group>"; };
 		A3EBCE7B23CA95BC0036EFFD /* NewGameConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameConfiguration.swift; sourceTree = "<group>"; };
 		A3EBCE7D23CA99800036EFFD /* Size2D Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Size2D Extensions.swift"; sourceTree = "<group>"; };
-		A3EFDC8423A6DD0A00D439A5 /* BoardSquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSquareView.swift; sourceTree = "<group>"; };
 		A3EFDC8623A71EB900D439A5 /* Sequence Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence Extensions.swift"; sourceTree = "<group>"; };
 		A3EFDC8823A736FA00D439A5 /* HasAlso + AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HasAlso + AppKit.swift"; sourceTree = "<group>"; };
 		A3EFDC8B23A73C6500D439A5 /* forSwiftUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forSwiftUi.swift; sourceTree = "<group>"; };
@@ -353,15 +351,13 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
-		A3BE7ECD23A6BBF900766250 /* AppKit */ = {
+		A3BE7ECD23A6BBF900766250 /* Board */ = {
 			isa = PBXGroup;
 			children = (
-				A3BE7ECE23A6BC2300766250 /* BoardView.swift */,
-				A3EFDC8423A6DD0A00D439A5 /* BoardSquareView.swift */,
 				A32E3E9423AADC0A00AD1D95 /* BoardSquare + Image.swift */,
 				A32E3E9923AAE28400AD1D95 /* BoardSquare + Realized Style.swift */,
 			);
-			path = AppKit;
+			path = Board;
 			sourceTree = "<group>";
 		};
 		A3C158ED23A1802600A95B20 /* Utilities */ = {
@@ -442,7 +438,7 @@
 		A3C69F6F2397A18D00520B2F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A3BE7ECD23A6BBF900766250 /* AppKit */,
+				A3BE7ECD23A6BBF900766250 /* Board */,
 			);
 			path = Views;
 			sourceTree = "<group>";
