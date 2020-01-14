@@ -208,7 +208,7 @@ public extension Game {
             return
             
         case .playing(let startDate):
-            if userHasWonGame() {
+            if playerHasWonGame() {
                 self.playState = .win(startDate: startDate, winDate: Date())
             }
         }
@@ -216,21 +216,15 @@ public extension Game {
     
     
     /// Checks to determine whether the user has won the game
-    private func userHasWonGame() -> Bool {
-        guard self.numberOfFlagsRemainingToPlace == 0 else {
-            // If the user has not placed all the flags, they have not yet won
-            return false
-        }
-        
-        return self                                         // Look at the game
-            .board                                          // Look at the game's board
-            .content                                        // Look at the board's content
-            .lazy                                           // Evaluate the following in just one loop
-            .flatMap { $0 }                                 // Flatten the 2D array of board squares into a 1D array
-            .filter { $0.hasMine && $0.flagStyle == .sure } // Look at the squares which have mines and a for-sure flag
-            .count                                          // Count how many squares meet the above criteria
-            == self.totalNumberOfMines                      // If that number is equal to the total number of mines,
-                                                            //     the player has won the game!
+    private func playerHasWonGame() -> Bool {
+        return self                                 // Look at the game
+            .board                                  // Look at the game's board
+            .content                                // Look at the board's content
+            .lazy                                   // Evaluate the following in just one loop
+            .flatMap { $0 }                         // Flatten the 2D array of board squares into a 1D array
+            .discarding { ($0.hasMine               // Ignore at the squares which have mines
+                           || $0.base.isRevealed) } // Ignore the square that the user has revealed
+            .isEmpty                                // If there are none left (all squares are either revealed or have a mine), the player has won
     }
     
     
