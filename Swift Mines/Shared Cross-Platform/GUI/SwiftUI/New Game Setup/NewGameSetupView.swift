@@ -96,19 +96,19 @@ struct NewGameSetupView: View {
                         NumberPicker(label: "Width", value: Binding(
                             get: { self.selectedCustomBoardWidth },
                             set: { self.selectedCustomBoardWidth = $0 }
-                        ))
+                        ), range: 6...200)
                         Text("×")
                         NumberPicker(label: "Height", value: Binding(
                             get: { self.selectedCustomBoardHeight },
                             set: { self.selectedCustomBoardHeight = $0 }
-                        ))
+                        ), range: 6...200)
                     }
                     
                     Slider(value:  Binding(
                         get: { self.selectedCustomNumberOfMines },
                         set: { self.selectedCustomNumberOfMines = $0 }
                         ),
-                           in: 2 ... maxNumberOfMines,
+                           in: 1 ... maxNumberOfMines,
                            step: 1)
                     HStack(alignment: .center) {
                         Spacer()

@@ -61,6 +61,7 @@
 		A3C69F652397A14100520B2F /* Swift_MinesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C69F642397A14100520B2F /* Swift_MinesTests.swift */; };
 		A3C69F742397A1CF00520B2F /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C69F732397A1CF00520B2F /* Board.swift */; };
 		A3C69F782397A26400520B2F /* RectangleTools in Frameworks */ = {isa = PBXBuildFile; productRef = A3C69F772397A26400520B2F /* RectangleTools */; };
+		A3C8B3F723CD5C860080017F /* NumberFormatter Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C8B3F623CD5C860080017F /* NumberFormatter Extensions.swift */; };
 		A3CB7F2023C7C54800B82BDB /* OverallAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB7F1F23C7C54800B82BDB /* OverallAppState.swift */; };
 		A3D5CE8A23B479C500F6FDEE /* Comparable Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D5CE8923B479C500F6FDEE /* Comparable Extensions.swift */; };
 		A3E49229239BAE5A00394FC4 /* SafeCollectionAccess in Frameworks */ = {isa = PBXBuildFile; productRef = A3E49228239BAE5A00394FC4 /* SafeCollectionAccess */; };
@@ -142,6 +143,7 @@
 		A3C69F662397A14100520B2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3C69F702397A1A500520B2F /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		A3C69F732397A1CF00520B2F /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		A3C8B3F623CD5C860080017F /* NumberFormatter Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter Extensions.swift"; sourceTree = "<group>"; };
 		A3CB7F1F23C7C54800B82BDB /* OverallAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallAppState.swift; sourceTree = "<group>"; };
 		A3D5CE8923B479C500F6FDEE /* Comparable Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable Extensions.swift"; sourceTree = "<group>"; };
 		A3EBCE7923CA8CA50036EFFD /* NumberPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPicker.swift; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 				A3FE565C23A0AF1200309B2D /* RandomAccessCollection Extensions.swift */,
 				A31A60A623A830A100C465A9 /* RangeReplaceableCollection Extensions.swift */,
 				A3EFDC8623A71EB900D439A5 /* Sequence Extensions.swift */,
+				A3C8B3F623CD5C860080017F /* NumberFormatter Extensions.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				A3EBCE7A23CA8CA50036EFFD /* NumberPicker.swift in Sources */,
 				A3B3300B239A0D9A0034F236 /* BoardSquare + random.swift in Sources */,
 				A351C69523AC313800097718 /* Function Types.swift in Sources */,
+				A3C8B3F723CD5C860080017F /* NumberFormatter Extensions.swift in Sources */,
 				A3EFDC8C23A73C6500D439A5 /* forSwiftUi.swift in Sources */,
 				A3B330032398D6D50034F236 /* BoardSquare + SwiftUI.swift in Sources */,
 				A39B5E5423C9AEC300049357 /* NewGameSetupView.swift in Sources */,
