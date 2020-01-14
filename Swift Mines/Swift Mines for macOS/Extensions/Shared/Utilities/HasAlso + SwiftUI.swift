@@ -11,7 +11,7 @@ import SwiftUI
 
 
 public extension View {
-    func alsoForView(do additionalAction: () -> Void) -> Self {
+    func also(do additionalAction: () -> Void) -> Self {
         additionalAction()
         return self
     }
@@ -19,15 +19,15 @@ public extension View {
 
 
 
-extension VStack: HasAlso {}
-extension HStack: HasAlso {}
-extension ForEach: HasAlso {}
-extension GeometryReader: HasAlso {}
-
-extension ModifiedContent: HasAlso {}
-extension _FlexFrameLayout: HasAlso {}
-extension _AspectRatioLayout: HasAlso {}
-extension _BackgroundModifier: HasAlso {}
-
-extension Image: HasAlso {}
-extension Color: HasAlso {}
+//extension VStack: HasAlso {}
+//extension HStack: HasAlso {}
+//extension ForEach: HasAlso {}
+//extension GeometryReader: HasAlso {}
+//
+//extension ModifiedContent: HasAlso {}
+//extension _FlexFrameLayout: HasAlso {}
+//extension _AspectRatioLayout: HasAlso {}
+//extension _BackgroundModifier: HasAlso {}
+//
+//extension Image: HasAlso {}
+//extension Color: HasAlso {}

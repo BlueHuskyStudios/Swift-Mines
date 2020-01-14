@@ -9,6 +9,7 @@
 import Cocoa
 import SwiftUI
 import RectangleTools
+import SafePointer
 
 
 
@@ -16,6 +17,10 @@ import RectangleTools
 class AppDelegate: NSObject {
 
     var window: NSWindow!
+    
+    var overallAppState = OverallAppState(
+        game: Game.new(size: Board.Size(width: 10, height: 10))
+    )
 }
 
 
@@ -23,25 +28,22 @@ class AppDelegate: NSObject {
 extension AppDelegate: NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView(
-            game: Game(
-                id: UUID(),
-                board: Board.generateNewBoard(size: UIntSize(width: 2, height: 2),
-                                              totalNumberOfMines: 4)
-                    .annotated(baseStyle: .default),
-                playState: .playing
-            )
-        )
-
+        
+        guard !CommandLine.arguments.contains("doNotRunApp") else {
+            // This argument is passed by the testing suite
+            return
+        }
+        
+        
         // Create the window and set the content view. 
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
+        window.title = "Swift Mines"
         window.center()
         window.setFrameAutosaveName("Main Window")
-        window.contentView = NSHostingView(rootView: contentView)
+        window.contentView = NSHostingView(rootView: ContentView().environmentObject(overallAppState))
         window.makeKeyAndOrderFront(nil)
     }
     
@@ -54,3 +56,11 @@ extension AppDelegate: NSApplicationDelegate {
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool { true }
 }
 
+
+
+private extension AppDelegate {
+    
+    @IBAction func didSelectNewGameMenuItem(_ sender: NSMenuItem) {
+        overallAppState.currentScreen = .newGameSetup
+    }
+}

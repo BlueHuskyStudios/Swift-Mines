@@ -9,14 +9,63 @@
 import Foundation
 import RectangleTools
 import SafeCollectionAccess
+import SafePointer
 
 
+
+// MARK: - Protocol
+
+public protocol BoardProtocol {
+    associatedtype Square: BoardSquareProtocol
+    
+    var content: [[Square]] { get }
+    
+    func neighbors(ofSquareAt location: Location) -> Neighbors
+    
+    
+    
+    typealias Neighbors = SquareNeighbors<Square>
+}
+
+
+// MARK: Synthesis
+
+public extension BoardProtocol {
+    
+    @inlinable
+    func neighbors(ofSquareAt location: Location) -> Neighbors {
+        neighbors(ofSquareAtRow: Int(location.y), column: Int(location.x))
+    }
+    
+    
+    func neighbors(ofSquareAtRow rowIndex: Int, column columnIndex: Int) -> Neighbors {
+        Neighbors(
+            top:         content[orNil: rowIndex - 1]?[orNil: columnIndex    ],
+            topRight:    content[orNil: rowIndex - 1]?[orNil: columnIndex + 1],
+            right:       content[orNil: rowIndex    ]?[orNil: columnIndex + 1],
+            bottomRight: content[orNil: rowIndex + 1]?[orNil: columnIndex + 1],
+            bottom:      content[orNil: rowIndex + 1]?[orNil: columnIndex    ],
+            bottomLeft:  content[orNil: rowIndex + 1]?[orNil: columnIndex - 1],
+            left:        content[orNil: rowIndex    ]?[orNil: columnIndex - 1],
+            topLeft:     content[orNil: rowIndex - 1]?[orNil: columnIndex - 1]
+        )
+    }
+    
+    
+    
+    typealias Location = UIntPoint
+    typealias Size = UIntSize
+}
+
+
+
+// MARK: - Basics
 
 /// A game board for Mines
 public struct Board {
     
     /// The content of the game board: A grid of unannotated Mines board squares
-    var content: [[BoardSquare]]
+    public var content: [[BoardSquare]]
 }
 
 
@@ -24,8 +73,8 @@ public struct Board {
 public extension Board {
     
     /// The number of cells wide and tall
-    var size: UIntSize {
-        UIntSize(width: UInt(content[0].count), height: UInt(content.count))
+    var size: Size {
+        Size(width: UInt(content[0].count), height: UInt(content.count))
     }
     
     
@@ -57,7 +106,14 @@ public extension Board {
     struct Annotated {
         
         /// The content of this board; all of the squares and info annotated upon them
-        var content: [[BoardSquare.Annotated]]
+        public var content: [[BoardSquare.Annotated]] {
+            didSet {
+                self.size = content.size
+            }
+        }
+        
+        /// The size of the board
+        var size: Size
         
         /// How this board and its squares are styled
         var style: Style {
@@ -69,12 +125,32 @@ public extension Board {
                 }
             }
         }
+        
+        
+        init(content: [[BoardSquare.Annotated]], style: Style) {
+            self.content = content
+            self.style = style
+            self.size = content.size
+        }
     }
 }
 
 
 
 public extension Board.Annotated {
+    
+    var totalNumberOfMines: UInt {
+        return UInt(
+            self
+                .content
+                .lazy
+                .flatMap { $0 }
+                .filter { $0.hasMine }
+                .count
+        )
+    }
+    
+    
     /// Returns a copy of this board, with all the squares revealed
     func allRevealed(reason: BoardSquare.RevealReason) -> Self {
         Self.init(
@@ -131,11 +207,61 @@ public extension Board.Annotated {
     /// Mutates this board so that the square at the given location is revealed
     ///
     /// - Parameter location: The location of the square to be revealed
-    internal mutating func revealSquare(at location: UIntPoint, reason: BoardSquare.RevealReason) {
-        print("Revealing that the square at", location, content[location].hasMine ? "has a mine" : "is clear", "(was previously \(content[location].base.externalRepresentation))")
+    /// - Returns: _discardable_ - The annotated square which was just revealed
+    @discardableResult
+    internal mutating func revealSquare(at location: UIntPoint, reason: BoardSquare.RevealReason) -> BoardSquare.Annotated {
+//        print("Revealing that the square at", location, content[location].hasMine ? "has a mine" : "is clear", "(was previously \(content[location].base.externalRepresentation))")
         content[location].reveal(reason: reason)
+        return content[location]
+    }
+    
+    
+    /// Reveals all the squares touching the given one which are far from mines (touching 0 mine squares), and all the
+    /// squares those touch.
+    ///
+    /// - Note: It is a precondition that the given location not already have a mine. If it does have a mine, this
+    ///         function will do nothing.
+    ///
+    /// - Parameters:
+    ///   - startingLocation:                  The first square to reveal. Iff this is touching 0 mines, then all of
+    ///                                        its neighbors are also revealed. This process repeats for all neighbors
+    ///                                        which are touching 0 mines.
+    ///   - stopIfThisSquareIsAlreadyRevealed: _optional_ - Iff `true`, then this function will not continue if the
+    ///                                        square at the given location is already revealed
+    internal mutating func revealClearSquares(touching startingLocation: UIntPoint,
+                                              stopIfThisSquareIsAlreadyRevealed: Bool = false) {
+        let square = content[startingLocation]
+        
+//        guard stopIfThisSquareIsAlreadyRevealed ? !square.isRevealed : true else {
+//            return
+//        }
+
+        revealSquare(at: startingLocation, reason: .chainReaction)
+        
+        switch square.mineContext {
+        case .clear(distance: .farFromMine):
+            self.neighbors(ofSquareAt: startingLocation)
+                .discardingNilElements()
+                .discarding { $0.isRevealed }
+                .forEach { neighborSquare in
+                    revealClearSquares(touching: neighborSquare.cachedLocation,
+                                       stopIfThisSquareIsAlreadyRevealed: true)
+                }
+            
+        case .clear(distance: _):
+            break // Nothing to do?
+            
+        case .mine:
+            assertionFailure("This function should not be called upon a square with a mine")
+            return
+        }
     }
 }
+
+
+// MARK: BoardProtocol
+
+extension Board.Annotated: BoardProtocol {}
 
 
 
@@ -201,43 +327,36 @@ public extension Board {
             return neighbors.mineContextAssumingCenterIsClear()
         }
     }
+}
+
+
+// MARK: BoardProtocol
+
+extension Board: BoardProtocol {}
+
+
+
+// MARK: - SquareNeighbors
+
+public struct SquareNeighbors<NeighborType: BoardSquareProtocol> {
+    
+    public let top: Neighbor
+    public let topRight: Neighbor
+    public let right: Neighbor
+    public let bottomRight: Neighbor
+    public let bottom: Neighbor
+    public let bottomLeft: Neighbor
+    public let left: Neighbor
+    public let topLeft: Neighbor
     
     
-    private func neighbors(ofSquareAtRow rowIndex: Int, column columnIndex: Int) -> SquareNeighbors {
-        SquareNeighbors(
-            top:         content[orNil: rowIndex - 1]?[orNil: columnIndex    ],
-            topRight:    content[orNil: rowIndex - 1]?[orNil: columnIndex + 1],
-            right:       content[orNil: rowIndex    ]?[orNil: columnIndex + 1],
-            bottomRight: content[orNil: rowIndex + 1]?[orNil: columnIndex + 1],
-            bottom:      content[orNil: rowIndex + 1]?[orNil: columnIndex    ],
-            bottomLeft:  content[orNil: rowIndex + 1]?[orNil: columnIndex - 1],
-            left:        content[orNil: rowIndex    ]?[orNil: columnIndex - 1],
-            topLeft:     content[orNil: rowIndex - 1]?[orNil: columnIndex - 1]
-        )
-    }
     
-    
-    
-    fileprivate struct SquareNeighbors {
-        
-        let top: Neighbor
-        let topRight: Neighbor
-        let right: Neighbor
-        let bottomRight: Neighbor
-        let bottom: Neighbor
-        let bottomLeft: Neighbor
-        let left: Neighbor
-        let topLeft: Neighbor
-        
-        
-        
-        typealias Neighbor = BoardSquare?
-    }
+    public typealias Neighbor = NeighborType?
 }
 
 
 
-private extension Board.SquareNeighbors {
+private extension SquareNeighbors {
     
     /// Determines the context of the square at the center of these neighbors,
     /// assuming that square does not have a mine
@@ -252,26 +371,46 @@ private extension Board.SquareNeighbors {
         
         return .clear(distance: distance)
     }
+}
+
+
+
+public extension SquareNeighbors {
+    
+    /// Finds the number of neighbors which contain a mine
+    func numberOfNeighborsWithMines() -> UInt8 {
+        return self                             // Given all neighbors of a particular cell on the game board
+            .lazy                               // Evaluate all the following steps in only 1 loop
+            .discardingNilElements()            // Discard any neighbors which are off the board
+            .map { $0.content.hasMine ? 1 : 0 } // If it has a mine, treat it as a `1`, otherwise a `0`
+            .summed()                           // Add them all up!
+    }
+    
     
     
     /// Finds the number of neighbors which contain a mine
-    private func numberOfNeighborsWithMines() -> UInt8 {
-        return self                             // Given all neighbors of a particular cell on the game board
-            .lazy                               // Evaluate all the following steps in only 1 loop
-            .compactMap { $0 }                  // Discard any neighbors which are off the board
-            .map { $0.content.hasMine ? 1 : 0 } // If it has a mine, treat it as a `1`, otherwise a `0`
-            .reduce(into: 0, +=)                // Add them all up!
+    func numberOfNeighborsWithMines_procedural() -> UInt8 {
+        
+        var returnValue: UInt8 = 0
+        
+        for neighbor in self {
+            if neighbor != nil && neighbor!.content.hasMine {
+                returnValue += 1
+            }
+        }
+        
+        return returnValue
     }
 }
 
 
 
-extension Board.SquareNeighbors: Sequence {
+extension SquareNeighbors: Sequence {
     
-    var underestimatedCount: Int { 8 }
+    public var underestimatedCount: Int { 8 }
     
     
-    func makeIterator() -> Array<Neighbor>.Iterator {
+    public func makeIterator() -> Array<Neighbor>.Iterator {
         return [
                 top,
                 topRight,
@@ -292,7 +431,7 @@ extension Board.SquareNeighbors: Sequence {
 
 public extension Board {
     
-    static func random(size: UIntSize) -> Board {
+    static func random(size: Size) -> Board {
         return Board(content: size.map2D { _ in
             BoardSquare.random()
         })

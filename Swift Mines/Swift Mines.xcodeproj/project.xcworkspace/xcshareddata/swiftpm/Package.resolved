@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/RougeWare/Swift-Rectangle-Tools.git",
         "state": {
           "branch": null,
-          "revision": "7888250c2cd3f16e2e3a14da6fc27567a4bc27ce",
-          "version": "2.2.0"
+          "revision": "54e1e057da5483fff9409cf85afb0f72e3e4877e",
+          "version": "2.4.0"
         }
       },
       {
@@ -60,8 +60,26 @@
         "repositoryURL": "https://github.com/RougeWare/Swift-Safe-Pointer.git",
         "state": {
           "branch": null,
-          "revision": "18faa4b850a9b8ebc9a23e2801b5abff752bd90c",
-          "version": "2.0.0"
+          "revision": "35a96bd9d1dd42ae1101341424c76c88a14da3f2",
+          "version": "2.0.1"
+        }
+      },
+      {
+        "package": "TODO",
+        "repositoryURL": "https://github.com/RougeWare/Swift-TODO",
+        "state": {
+          "branch": null,
+          "revision": "8d227a03c493f1382a638bb7573510be24f789a3",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "SevenSegmentDisplay",
+        "repositoryURL": "https://github.com/RougeWare/SwiftUI-SevenSegmentDisplay.git",
+        "state": {
+          "branch": "feature/MVP",
+          "revision": "09b587a10c7d9ec67a1c0c182b1fd588c09176a6",
+          "version": null
         }
       }
     ]

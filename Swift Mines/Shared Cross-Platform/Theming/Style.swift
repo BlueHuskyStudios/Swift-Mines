@@ -39,6 +39,8 @@ extension Board.Style: Hashable {}
 
 public extension Board.Style {
     
-    static let `default` = Self.init(baseColor: .init(hue: (210/360), saturation: 0.74, brightness: 0.64, alpha: 1),
+    static let `default` = Self.init(baseColor: .controlAccentColor, pattern: .checkerboard)
+    
+    static let blue = Self.init(baseColor: .init(hue: (210/360), saturation: 0.74, brightness: 0.64, alpha: 1),
                                      pattern: .checkerboard)
 }

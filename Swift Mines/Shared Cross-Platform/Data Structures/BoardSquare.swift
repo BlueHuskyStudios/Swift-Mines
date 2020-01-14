@@ -11,10 +11,19 @@ import RectangleTools
 
 
 
+// MARK: - Protocol
+
+public protocol BoardSquareProtocol {
+    /// The content of the board square, whether or not the square has been revealed
+    var content: Content { get }
+}
+
+
+
 // MARK: - Basics
 
 /// A single square on a Mines board
-public struct BoardSquare {
+public struct BoardSquare: BoardSquareProtocol {
     
     /// Allows this square to be identified across runtimes
     public let id: UUID
@@ -35,6 +44,44 @@ public extension BoardSquare {
     /// `true` iff this square’s content indicates a mine
     @inline(__always)
     var hasMine: Bool { content.hasMine }
+    
+    
+    /// `true` iff the content of this square has been revealed
+    var isRevealed: Bool {
+        switch externalRepresentation {
+        case .blank, .flagged(style: _): return false
+        case .revealed(reason: _): return true
+        }
+    }
+    
+    
+    /// `true` if the user thinks this square is a mine.
+    /// This means they either flagged it `.sure`, or it was revealed to be a mine.
+    var isThoughtToBeAMine: Bool {
+        switch externalRepresentation {
+        case .blank,
+             .flagged(style: .unsure):
+            return false
+            
+        case .flagged(style: .sure):
+            return true
+            
+        case .revealed(reason: _):
+            return hasMine
+        }
+    }
+    
+    
+    var flagStyle: BoardSquare.ExternalRepresentation.FlagStyle? {
+        switch externalRepresentation {
+        case .blank,
+             .revealed(reason: _):
+            return nil
+            
+        case .flagged(let style):
+            return style
+        }
+    }
     
     
     /// If this square does not contain a mine, then it is made to have one
@@ -60,7 +107,14 @@ public extension BoardSquare {
     }
     
     
-    /// Mutates this square so that its flag is the next flag style
+    /// Mutates this square so that its flag is the next flag style.
+    ///
+    /// 1. If the current flag is unset (the square is blank and not revealed), then the `.sure` flag is placed.
+    /// 2. If the current flag is a `.sure` flag, then it's replaced with a `.unsure` flag.
+    /// 3. If the current flag is an `.unsure` flag, then the flag is removed and the square is made blank again.
+    ///
+    /// If the square is already revealed, then no flag can be placed. In this case, this function returns without
+    /// performing any mutations.
     mutating func cycleFlag() {
         print("Cycling flag...")
         switch externalRepresentation {
@@ -77,7 +131,7 @@ public extension BoardSquare {
             self.externalRepresentation = .blank
             
         case .revealed(reason: _):
-            assertionFailure("Attempted to place a flag on a square whose content was already revealed")
+            print("    Attempted to place a flag on a square whose content was already revealed")
         }
     }
     
@@ -104,24 +158,27 @@ public extension BoardSquare {
 
 // MARK: - Content
 
-public extension BoardSquare {
+public extension BoardSquareProtocol {
+    typealias Content = BoardSquareContent
+}
+
+
+
+/// The content of a board square
+public enum BoardSquareContent: String {
     
-    /// The content of a board square
-    enum Content: String {
-        
-        /// The square is clear; there is no mine
-        case clear
-        
-        /// The square has a mine within it
-        case mine
-    }
+    /// The square is clear; there is no mine
+    case clear
+    
+    /// The square has a mine within it
+    case mine
 }
 
 
 
 // MARK: Functionality
 
-public extension BoardSquare.Content {
+public extension BoardSquareContent {
     /// `true` iff this square's content indicates a mine
     var hasMine: Bool {
         switch self {
@@ -203,6 +260,16 @@ public extension BoardSquare {
 }
 
 
+// MARK: BoardSquareProtocol
+
+extension BoardSquare.Annotated: BoardSquareProtocol {
+    public var content: Content {
+        get { base.content }
+        set { base.content = newValue }
+    }
+}
+
+
 // MARK: Identifiable
 
 extension BoardSquare.Annotated: Identifiable {
@@ -216,10 +283,18 @@ public extension BoardSquare.Annotated {
     
     /// `true` iff this square’s content indicates a mine
     @inlinable
-    var hasMine: Bool {
-        self.base.hasMine
-    }
+    var hasMine: Bool { base.hasMine }
     
+    /// `true` iff the content of this square has been revealed
+    @inlinable
+    var isRevealed: Bool { base.isRevealed }
+    
+    
+    /// `true` if the user thinks this square is a mine.
+    /// This means they either flagged it `.sure`, or it was revealed to be a mine.
+    var isThoughtToBeAMine: Bool { base.isThoughtToBeAMine }
+    
+    var flagStyle: BoardSquare.ExternalRepresentation.FlagStyle? { base.flagStyle }
     
     /// Mutates this board square so its contents are revealed
     ///
@@ -247,10 +322,15 @@ public extension BoardSquare.Annotated {
     }
     
     
-    /// Mutates this square so that its flag is the next flag style
+    /// Mutates this square so that its flag is the next flag style. See the documentation for
+    /// `BoardSquare.cycleFlag()` for more info.
     mutating func cycleFlag() {
         self.base.cycleFlag()
     }
+    
+    
+    
+    typealias FlagStyle = BoardSquare.ExternalRepresentation.FlagStyle
 }
 
 
@@ -313,7 +393,7 @@ public extension BoardSquare {
 
 public extension BoardSquare.MineDistance {
     @inline(__always)
-    var numberObMinesNearby: UInt8 {
+    var numberOfMinesNearby: UInt8 {
         return rawValue
     }
 }
@@ -324,13 +404,13 @@ public extension BoardSquare.MineDistance {
 
 public extension BoardSquare {
     
-    /// The reason why a square with a mine has its mine revealed
+    /// The reason why a square had its content revealed
     enum RevealReason: String {
         
-        /// The player manually triggered the mine
-        case manuallyTriggered
+        /// The player manually revealed the square
+        case manual
         
-        /// The mine was a part of a chain reaction caused by a manually-triggerd one
+        /// The reveal was a part of a chain reaction caused by a manually-triggerd one
         case chainReaction
         
         /// The player successfully completed the game without triggering any mines, so it's being displayed
@@ -343,7 +423,7 @@ public extension BoardSquare {
 // MARK: - Conformances
 
 extension BoardSquare: Hashable {}
-extension BoardSquare.Content: Hashable {}
+extension BoardSquareContent: Hashable {}
 extension BoardSquare.ExternalRepresentation: Hashable {}
 extension BoardSquare.ExternalRepresentation.FlagStyle: Hashable {}
 extension BoardSquare.Annotated: Hashable {}
@@ -351,7 +431,7 @@ extension BoardSquare.MineContext: Hashable {}
 extension BoardSquare.RevealReason: Hashable {}
 extension BoardSquare.MineDistance: Hashable {}
 
-extension BoardSquare.Content: CaseIterable {}
+extension BoardSquareContent: CaseIterable {}
 extension BoardSquare.ExternalRepresentation.FlagStyle: CaseIterable {}
 extension BoardSquare.RevealReason: CaseIterable {}
 extension BoardSquare.MineDistance: CaseIterable {}
