@@ -108,7 +108,7 @@ struct NewGameSetupView: View {
                         get: { self.selectedCustomNumberOfMines },
                         set: { self.selectedCustomNumberOfMines = $0 }
                         ),
-                           in: 1 ... maxNumberOfMines,
+                           in: 2 ... maxNumberOfMines,
                            step: 1)
                     HStack(alignment: .center) {
                         Spacer()
@@ -125,10 +125,10 @@ struct NewGameSetupView: View {
             
             HStack {
                 Spacer()
-                Button("Cancel") {
+                NativeButton("Cancel", keyEquivalent: .escape) {
                     self.overallAppState.currentScreen = .game
                 }
-                Button("Start New Game") {
+                NativeButton("Start New Game", keyEquivalent: .return) {
                     self.overallAppState.game.startNewGame(configuration: self.selectedGameConfiguration)
                     self.overallAppState.currentScreen = .game
                 }

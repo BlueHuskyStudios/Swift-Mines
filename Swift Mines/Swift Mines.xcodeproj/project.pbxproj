@@ -62,6 +62,7 @@
 		A3C69F742397A1CF00520B2F /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C69F732397A1CF00520B2F /* Board.swift */; };
 		A3C69F782397A26400520B2F /* RectangleTools in Frameworks */ = {isa = PBXBuildFile; productRef = A3C69F772397A26400520B2F /* RectangleTools */; };
 		A3C8B3F723CD5C860080017F /* NumberFormatter Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C8B3F623CD5C860080017F /* NumberFormatter Extensions.swift */; };
+		A3C8B3F923CD99CB0080017F /* NativeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C8B3F823CD99CB0080017F /* NativeButton.swift */; };
 		A3CB7F2023C7C54800B82BDB /* OverallAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB7F1F23C7C54800B82BDB /* OverallAppState.swift */; };
 		A3D5CE8A23B479C500F6FDEE /* Comparable Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D5CE8923B479C500F6FDEE /* Comparable Extensions.swift */; };
 		A3E49229239BAE5A00394FC4 /* SafeCollectionAccess in Frameworks */ = {isa = PBXBuildFile; productRef = A3E49228239BAE5A00394FC4 /* SafeCollectionAccess */; };
@@ -144,6 +145,7 @@
 		A3C69F702397A1A500520B2F /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		A3C69F732397A1CF00520B2F /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		A3C8B3F623CD5C860080017F /* NumberFormatter Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter Extensions.swift"; sourceTree = "<group>"; };
+		A3C8B3F823CD99CB0080017F /* NativeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeButton.swift; sourceTree = "<group>"; };
 		A3CB7F1F23C7C54800B82BDB /* OverallAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallAppState.swift; sourceTree = "<group>"; };
 		A3D5CE8923B479C500F6FDEE /* Comparable Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable Extensions.swift"; sourceTree = "<group>"; };
 		A3EBCE7923CA8CA50036EFFD /* NumberPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPicker.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				A3EBCE7923CA8CA50036EFFD /* NumberPicker.swift */,
+				A3C8B3F823CD99CB0080017F /* NativeButton.swift */,
 			);
 			path = "General Controls";
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				A3C69F4F2397A13F00520B2F /* AppDelegate.swift in Sources */,
 				A3B3300E239A1D060034F236 /* Style.swift in Sources */,
 				A39B5E4D23C97E3800049357 /* BoardView.swift in Sources */,
+				A3C8B3F923CD99CB0080017F /* NativeButton.swift in Sources */,
 				A31A60A923A8494400C465A9 /* IndexPath Extensions.swift in Sources */,
 				A39B5E4E23C97E3B00049357 /* BoardSquareView.swift in Sources */,
 				A351C69723AC3F7E00097718 /* Point2D Extensions.swift in Sources */,
