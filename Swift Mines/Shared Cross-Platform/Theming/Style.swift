@@ -12,8 +12,14 @@ import CrossKitTypes
 
 
 public extension Board {
+    
+    /// The style of a board
     struct Style {
+        
+        /// The color of the board
         var baseColor: NativeColor
+        
+        /// The pattern which uses the base color
         var pattern: Pattern
     }
 }
@@ -21,9 +27,15 @@ public extension Board {
 
 
 public extension Board.Style {
+    
+    /// A pattern for the board
     enum Pattern {
+        
+        /// No pattern; use a solid color
         case solid
-        case checkerboard
+        
+//        /// A simple checkerboard pattern
+//        case checkerboard
     }
 }
 
@@ -39,8 +51,8 @@ extension Board.Style: Hashable {}
 
 public extension Board.Style {
     
-    static let `default` = Self.init(baseColor: .controlAccentColor, pattern: .checkerboard)
+    static let `default` = Self.init(baseColor: .controlAccentColor, pattern: .solid)
     
     static let blue = Self.init(baseColor: .init(hue: (210/360), saturation: 0.74, brightness: 0.64, alpha: 1),
-                                     pattern: .checkerboard)
+                                     pattern: .solid)
 }

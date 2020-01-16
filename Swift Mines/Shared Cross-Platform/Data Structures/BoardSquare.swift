@@ -339,7 +339,7 @@ public extension BoardSquare.Annotated {
 
 public extension BoardSquare {
     
-    /// How the board square appears to the user
+    /// How the board square would appear to the user if they click it
     enum MineContext {
         
         /// The square does not contain a mine

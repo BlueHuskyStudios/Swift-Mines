@@ -14,12 +14,22 @@ import SafeCollectionAccess
 
 public extension RandomAccessCollection where Index: SignedInteger {
     
+    /// Allows you to access any random-access collection (whose index is a signed integer) by using an unsigned integer
+    ///
+    /// - Parameter indices: The index of the item in this collection
+    ///
+    /// - Returns: The item at the given index
     @inlinable
     subscript(_ index: UInt) -> Element {
         return self[Index.init(index)]
     }
     
     
+    /// Safely access this collection by using an unsigned integer instead of an `Index`. If the index you pass is not
+    /// in this collection, then `nil` is returned.
+    ///
+    /// - Parameter index: The index of the element to retrieve, or an index outside this collection
+    /// - Returns: The element which is in this collection at the given index, or `nil` if it’s outside this collection
     @inlinable
     subscript(orNil index: UInt) -> Element? {
         return self[orNil: Index.init(index)]
@@ -33,6 +43,11 @@ public extension RandomAccessCollection
         Self: MutableCollection,
         Index: SignedInteger
 {
+    /// Allows you to access any random-access collection (whose index is a signed integer) by using an unsigned integer
+    ///
+    /// - Parameter indices: The index of the item in this collection
+    ///
+    /// - Returns: The item at the given index
     @inlinable
     subscript(_ index: UInt) -> Element {
         get {
@@ -102,6 +117,12 @@ public extension RandomAccessCollection
         Element: MutableCollection,
         Element.Index == Self.Index
 {
+    /// Convenienct access into a 2D collection by using a 2D point, where `y` references the outer collection and `x`
+    /// references the inner
+    ///
+    /// - Parameter indices: The location of the item in this collection
+    ///
+    /// - Returns: The item at the given location
     @inlinable
     subscript(_ indices: BinaryIntegerPoint<Index>) -> Element.Element {
         get {
@@ -121,12 +142,24 @@ public extension RandomAccessCollection
         Element: RandomAccessCollection,
         Element.Index == Self.Index
 {
+    /// Convenienct access into a 2D collection by using a 2D point, where `y` references the outer collection and `x`
+    /// references the inner
+    ///
+    /// - Parameter indices: The location of the item in this collection
+    ///
+    /// - Returns: The item at the given location
     @inlinable
     subscript(_ indices: UIntPoint) -> Element.Element {
         return self[indices.y][indices.x]
     }
     
     
+    /// Convenienct access into a 2D collection by using a 2D point, where `y` references the outer collection and `x`
+    /// references the inner. If there is no such item, `nil` is returned.
+    ///
+    /// - Parameter indices: The location of the item in this collection
+    ///
+    /// - Returns: The item at the given location, or `nil` if there is no such item
     @inlinable
     subscript(orNil indices: UIntPoint) -> Element.Element? {
         return self[orNil: indices.y]?[orNil: indices.x]
@@ -143,6 +176,12 @@ public extension RandomAccessCollection
         Element: MutableCollection,
         Element.Index == Self.Index
 {
+    /// Convenienct access into a 2D collection by using a 2D point, where `y` references the outer collection and `x`
+    /// references the inner
+    ///
+    /// - Parameter indices: The location of the item in this collection
+    ///
+    /// - Returns: The item at the given location
     @inlinable
     subscript(_ indices: UIntPoint) -> Element.Element {
         get {

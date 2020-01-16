@@ -62,8 +62,8 @@ public extension IndexPath {
         
         
         func disregardSectionIndex() -> Point? {
-            Point.init(x: unrolledIndex % size.width,
-                       y: unrolledIndex / size.height)
+            Point(x: unrolledIndex % size.width,
+                  y: unrolledIndex / size.height)
         }
         
         
@@ -84,11 +84,11 @@ public extension IndexPath {
         case .disregardSectionIndex:
             return disregardSectionIndex()
             
-        case .multiplyUnrolledItemIndexBySectionNumber:
-            return multiplyingUnrolledItemIndexBySectionNumber()
-            
-        case .multiplyYIndexBySectionNumber:
-            return multiplyingYIndexBySectionNumber()
+//        case .multiplyUnrolledItemIndexBySectionNumber:
+//            return multiplyingUnrolledItemIndexBySectionNumber()
+//
+//        case .multiplyYIndexBySectionNumber:
+//            return multiplyingYIndexBySectionNumber()
         }
     }
     
@@ -104,12 +104,12 @@ public extension IndexPath {
         /// The section index will be ignored entirely
         case disregardSectionIndex
         
-        /// (The section index plus one) will be multiplied by the item index
-        case multiplyUnrolledItemIndexBySectionNumber
-        
-        /// The section index will be ignored until return time, at which point the Y value will be multiplied by (the
-        /// section index plus one)
-        case multiplyYIndexBySectionNumber
+//        /// (The section index plus one) will be multiplied by the item index
+//        case multiplyUnrolledItemIndexBySectionNumber
+//
+//        /// The section index will be ignored until return time, at which point the Y value will be multiplied by (the
+//        /// section index plus one)
+//        case multiplyYIndexBySectionNumber
     }
 }
 

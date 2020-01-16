@@ -10,6 +10,10 @@ import Foundation
 
 
 
+/// Negates the results of given predicate
+///
+/// - Parameter predicate: The function whose result to negate
+@inlinable
 public prefix func ! <T> (_ predicate: @escaping Predicate<T>) -> Predicate<T> {{ element in
     !predicate(element)
 }}

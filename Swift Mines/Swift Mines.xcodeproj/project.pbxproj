@@ -70,8 +70,6 @@
 		A3EBCE7C23CA95BC0036EFFD /* NewGameConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EBCE7B23CA95BC0036EFFD /* NewGameConfiguration.swift */; };
 		A3EBCE7E23CA99800036EFFD /* Size2D Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EBCE7D23CA99800036EFFD /* Size2D Extensions.swift */; };
 		A3EFDC8723A71EB900D439A5 /* Sequence Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EFDC8623A71EB900D439A5 /* Sequence Extensions.swift */; };
-		A3EFDC8923A736FA00D439A5 /* HasAlso + AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EFDC8823A736FA00D439A5 /* HasAlso + AppKit.swift */; };
-		A3EFDC8C23A73C6500D439A5 /* forSwiftUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EFDC8B23A73C6500D439A5 /* forSwiftUi.swift */; };
 		A3F7C23C23C1A4990006AB7D /* SafePointer Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F7C23B23C1A4990006AB7D /* SafePointer Extensions.swift */; };
 		A3FE565423A07E0200309B2D /* Collection Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE565323A07E0200309B2D /* Collection Extensions.swift */; };
 		A3FE565D23A0AF1200309B2D /* RandomAccessCollection Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE565C23A0AF1200309B2D /* RandomAccessCollection Extensions.swift */; };
@@ -151,8 +149,6 @@
 		A3EBCE7B23CA95BC0036EFFD /* NewGameConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameConfiguration.swift; sourceTree = "<group>"; };
 		A3EBCE7D23CA99800036EFFD /* Size2D Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Size2D Extensions.swift"; sourceTree = "<group>"; };
 		A3EFDC8623A71EB900D439A5 /* Sequence Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence Extensions.swift"; sourceTree = "<group>"; };
-		A3EFDC8823A736FA00D439A5 /* HasAlso + AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HasAlso + AppKit.swift"; sourceTree = "<group>"; };
-		A3EFDC8B23A73C6500D439A5 /* forSwiftUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forSwiftUi.swift; sourceTree = "<group>"; };
 		A3F7C23B23C1A4990006AB7D /* SafePointer Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SafePointer Extensions.swift"; path = "Shared Cross-Platform/Extensions/SafePointer/SafePointer Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		A3FE565323A07E0200309B2D /* Collection Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection Extensions.swift"; sourceTree = "<group>"; };
 		A3FE565C23A0AF1200309B2D /* RandomAccessCollection Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomAccessCollection Extensions.swift"; sourceTree = "<group>"; };
@@ -187,6 +183,7 @@
 		A32E3E9623AADC3000AD1D95 /* CrossKitTypes */ = {
 			isa = PBXGroup;
 			children = (
+				A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */,
 				A32E3E9723AADC4000AD1D95 /* NativeImage + SwiftUI.swift */,
 			);
 			path = CrossKitTypes;
@@ -227,7 +224,6 @@
 				A351C69D23AC715E00097718 /* Standard Library */,
 				A3BCD78923AEF94000346F05 /* Core Graphics */,
 				A3FE565823A0AED000309B2D /* Foundation */,
-				A3FE565923A0AED900309B2D /* UIKit & AppKit */,
 				A3BCD78C23AEFB2A00346F05 /* SwiftUI */,
 				A32E3E9623AADC3000AD1D95 /* CrossKitTypes */,
 				A3FE565A23A0AEF500309B2D /* RectangleTools */,
@@ -281,7 +277,6 @@
 		A3B32FFD2398D5CA0034F236 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A3EFDC8A23A73C4A00D439A5 /* SwiftUI + AppKit + UIKit */,
 				A3B330002398D6A10034F236 /* Shared */,
 			);
 			path = Extensions;
@@ -377,7 +372,6 @@
 			children = (
 				A3C158F123A1815100A95B20 /* HasAlso + SwiftUI.swift */,
 				A38CC46A23A4B04700D42F69 /* HasTransform + SwiftUI.swift */,
-				A3EFDC8823A736FA00D439A5 /* HasAlso + AppKit.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -482,14 +476,6 @@
 			path = "General Controls";
 			sourceTree = "<group>";
 		};
-		A3EFDC8A23A73C4A00D439A5 /* SwiftUI + AppKit + UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				A3EFDC8B23A73C6500D439A5 /* forSwiftUi.swift */,
-			);
-			path = "SwiftUI + AppKit + UIKit";
-			sourceTree = "<group>";
-		};
 		A3F7C23D23C1A4A20006AB7D /* SafePointer */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,14 +496,6 @@
 				A3C8B3F623CD5C860080017F /* NumberFormatter Extensions.swift */,
 			);
 			path = Foundation;
-			sourceTree = "<group>";
-		};
-		A3FE565923A0AED900309B2D /* UIKit & AppKit */ = {
-			isa = PBXGroup;
-			children = (
-				A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */,
-			);
-			path = "UIKit & AppKit";
 			sourceTree = "<group>";
 		};
 		A3FE565A23A0AEF500309B2D /* RectangleTools */ = {
@@ -661,7 +639,6 @@
 				A3FE565423A07E0200309B2D /* Collection Extensions.swift in Sources */,
 				A37D06DC239DECD800C88026 /* Clear Square with Number Image.swift in Sources */,
 				A3CB7F2023C7C54800B82BDB /* OverallAppState.swift in Sources */,
-				A3EFDC8923A736FA00D439A5 /* HasAlso + AppKit.swift in Sources */,
 				A32EB78C23B6A2FB0045E16E /* Character Extensions.swift in Sources */,
 				A38D5B7323C910260036B59D /* Board + ASCII.swift in Sources */,
 				A3C158EF23A1803300A95B20 /* HasAlso.swift in Sources */,
@@ -687,7 +664,6 @@
 				A3B3300B239A0D9A0034F236 /* BoardSquare + random.swift in Sources */,
 				A351C69523AC313800097718 /* Function Types.swift in Sources */,
 				A3C8B3F723CD5C860080017F /* NumberFormatter Extensions.swift in Sources */,
-				A3EFDC8C23A73C6500D439A5 /* forSwiftUi.swift in Sources */,
 				A3B330032398D6D50034F236 /* BoardSquare + SwiftUI.swift in Sources */,
 				A39B5E5423C9AEC300049357 /* NewGameSetupView.swift in Sources */,
 				A31A60A523A822E000C465A9 /* ByLengthInitializableCollection.swift in Sources */,
@@ -861,6 +837,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Swift Mines for macOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 26V9MK8TGP;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -871,6 +848,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.benleggiero.Swift-Mines";
 				PRODUCT_NAME = "Swift Mines";
 				SWIFT_VERSION = 5.0;
@@ -885,6 +863,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Swift Mines for macOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 26V9MK8TGP;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -895,6 +874,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.benleggiero.Swift-Mines";
 				PRODUCT_NAME = "Swift Mines";
 				SWIFT_VERSION = 5.0;

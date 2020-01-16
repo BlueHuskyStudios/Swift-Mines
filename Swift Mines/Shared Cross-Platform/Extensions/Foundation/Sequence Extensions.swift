@@ -20,12 +20,20 @@ public extension Sequence {
     
     
     
+    /// The kind of sequence which is returned from a function which strips another sequence of its nil elements
     typealias OnlyNonNilElements<Wrapped> = LazyMapSequence<LazyFilterSequence<LazyMapSequence<Self, Wrapped?>>, Wrapped>
 }
 
 
 
 public extension Sequence where Element: AdditiveArithmetic, Element: ExpressibleByIntegerLiteral {
+    
+    /// Sums this sequence
+    ///
+    /// If this sequence is empty, `0` is returned.
+    ///
+    /// - Returns: The sum of all elements in this sequence
+    @inlinable
     func summed() -> Element {
         return reduce(into: 0, +=)
     }
@@ -52,7 +60,9 @@ public extension Sequence {
     
     
     
+    /// Evaluates an element and returns the Boolean result of that evaluation
     typealias Predicate = (Element) -> Bool
     
+    /// The kind of sequence which contains only certain elements of another sequence
     typealias OnlyCertainElements = LazyFilterSequence<Self>
 }

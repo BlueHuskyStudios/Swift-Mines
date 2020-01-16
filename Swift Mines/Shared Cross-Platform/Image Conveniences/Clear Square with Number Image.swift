@@ -22,17 +22,42 @@ import AppKit.NSParagraphStyle
 
 public extension NativeImage {
     
+    /// Generates an image with the number appropriate for the given distance from a mine.
+    ///
+    /// - Note: A cache is kept so that if such an image has already been generated, it is returned
+    ///
+    /// - Parameters:
+    ///   - distance: The distance to be represented in the returned image
+    ///   - size:     The dimensions of the resulting image
+    ///
+    /// - Returns: An image of the given size representing the given distance from a mine
     static func number(forClearSquareAtDistance distance: BoardSquare.MineDistance, size: UIntSize) -> NativeImage {
         cachedNumberImage(forClearSquareAtDistance: distance, size: size)
             ?? generateAndCacheNumberImage(forClearSquareAtDistance: distance, size: size)
     }
     
     
+    /// Fetches the cached image for the given distance at the given size.
+    /// If the cache has no such image, `nil` is returned.
+    ///
+    /// - Parameters:
+    ///   - distance: The distance to be represented in the returned image
+    ///   - size:     The dimensions of the resulting image
+    ///
+    /// - Returns: A cached image of the given size representing the given distance from a mine, or `nil` if no such
+    ///            image has been cached
     private static func cachedNumberImage(forClearSquareAtDistance distance: BoardSquare.MineDistance, size: UIntSize) -> NativeImage? {
         cacheForImagesOfBoardSquareNumbers.object(forKey: NumberImageCacheKey(distance: distance, size: size))
     }
     
     
+    /// Generates an image of the given size for the given distance, and immediately caches it
+    ///
+    /// - Parameters:
+    ///   - distance: The distance to be represented in the returned image
+    ///   - size:     The dimensions of the resulting image
+    ///
+    /// - Returns: An image of the given size representing the given distance from a mine
     private static func generateAndCacheNumberImage(forClearSquareAtDistance distance: BoardSquare.MineDistance, size: UIntSize) -> NativeImage {
         let image = generateNumberImage(forClearSquareAtDistance: distance, size: size)
         cacheForImagesOfBoardSquareNumbers.setObject(
@@ -44,6 +69,11 @@ public extension NativeImage {
     }
     
     
+    /// Generates an image of the given size for the given distance
+    ///
+    /// - Parameters:
+    ///   - distance: The distance to be represented in the returned image
+    ///   - size:     The dimensions of the resulting image
     private static func generateNumberImage(forClearSquareAtDistance distance: BoardSquare.MineDistance, size: UIntSize) -> NativeImage {
         let size = CGSize(size.greaterThanZero)
         let number = NativeImage(size: size)
@@ -73,6 +103,10 @@ public extension NativeImage {
     }
     
     
+    /// Estimates the cost of generating an image of the given size
+    ///
+    /// - Parameter size: The dimensions of an image to generate
+    /// - Returns: The cost of generating such an image
     private static func cost(forGeneratedNumberImageOfSize size: UIntSize) -> Int {
         return Int(size.area)
     }
@@ -83,6 +117,8 @@ public extension NativeImage {
 // MARK: - Convenience Extensions
 
 private extension BoardSquare.MineDistance {
+    
+    /// The color with which to fill a number representing this distance
     var numberFillColor: NativeColor {
         switch self {
         case .farFromMine:
@@ -102,6 +138,7 @@ private extension BoardSquare.MineDistance {
     }
     
     
+    /// The name of a color asset to use to represent this distance
     private var colorName: NativeColor.Name {
         return "Color for mine distance \(rawValue)"
     }
@@ -111,11 +148,16 @@ private extension BoardSquare.MineDistance {
 
 // MARK: - Cache
 
+/// The app-wide cache of generated number images
 private let cacheForImagesOfBoardSquareNumbers: NSCache<NumberImageCacheKey, NativeImage> = {
     let cache = NSCache<NumberImageCacheKey, NativeImage>()
     cache.totalCostLimit = maxCacheCost
     return cache
 }()
+
+
+// Some convenient constants for use in the cache. These should be self-explanatory. If they're not, please file a bug:
+// https://GitHub.com/BenLeggiero/Swift-Mines/issues/new
 
 private let presumedTallestScreenResolution = 2880
 private let presumedEasiestBoardNumberOfVerticalSquares = 10
@@ -128,10 +170,17 @@ private let maxCacheCost = Int(CGFloat(presumedMostPixelsToStoreEightSquareImage
 
 // MARK: NumberImageCacheKey
 
+/// A key used to store and fetch a number image into the number image cache
 private class NumberImageCacheKey {
+    
+    /// The distance the image represents
     let distance: BoardSquare.MineDistance
+    
+    /// The dimensions of the image
     let size: UIntSize
     
+    
+    /// Creates a new cache key
     init(distance: BoardSquare.MineDistance,
          size: UIntSize) {
         self.distance = distance
@@ -145,5 +194,14 @@ extension NumberImageCacheKey: Equatable {
     static func == (lhs: NumberImageCacheKey, rhs: NumberImageCacheKey) -> Bool {
         return lhs.distance == rhs.distance
             && lhs.size == rhs.size
+    }
+}
+
+
+
+extension NumberImageCacheKey: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(distance)
+        hasher.combine(size)
     }
 }

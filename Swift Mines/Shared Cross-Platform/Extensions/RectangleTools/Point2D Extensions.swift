@@ -42,40 +42,7 @@ public extension Point2D where Length: FixedWidthInteger {
             return !isCoLocated(with: other)
                 && isTouchingInclusively()
         }
-        
-//        return Self.init(x: x +~ 0, y: x +~ 1).isCoLocated(with: other) // ↑
-//            || Self.init(x: x +~ 1, y: y +~ 1).isCoLocated(with: other) // ↗︎
-//            || Self.init(x: x +~ 1, y: y +~ 0).isCoLocated(with: other) // →
-//            || Self.init(x: x +~ 1, y: y -~ 1).isCoLocated(with: other) // ↘︎
-//            || Self.init(x: x +~ 0, y: y -~ 1).isCoLocated(with: other) // ↓
-//            || Self.init(x: x -~ 1, y: y -~ 1).isCoLocated(with: other) // ↙︎
-//            || Self.init(x: x -~ 1, y: y +~ 0).isCoLocated(with: other) // ←
-//            || Self.init(x: x -~ 1, y: y +~ 1).isCoLocated(with: other) // ↖︎
     }
-//
-//
-//    /// Returns a new point which is at the location of this point with the given shift applied
-//    ///
-//    /// - Parameters:
-//    ///   - 𝚫x: The change in the X coordinate
-//    ///   - 𝚫y: The change in the Y coordinate
-//    func shifted(𝚫x: Length, 𝚫y: Length) -> Self { // TODO: Test
-//        Self.init(
-//            x: x + 𝚫x,
-//            y: y + 𝚫y
-//        )
-//    }
-//
-//
-//    /// The ASCII-only version of `shifted(𝚫x:𝚫y:)`
-//    ///
-//    /// - Parameters:
-//    ///   - deltaX: The change in the X coordinate
-//    ///   - deltaY: The change in the Y coordinate
-//    @inline(__always)
-//    func shifted(deltaX: Length, deltaY: Length) -> Self { // TODO: Test
-//        shifted(𝚫x: deltaX, 𝚫y: deltaY)
-//    }
 }
 
 

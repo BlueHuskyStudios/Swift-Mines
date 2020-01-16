@@ -11,12 +11,21 @@ import Foundation
 
 
 public extension NumberFormatter {
+    
+    /// Mutates this number formater so that it allows or denies floating-point numbers
+    ///
+    /// - Parameter shouldAllow: Whether to allow floats
+    /// - Returns: `self`
     func allowFloats(_ shouldAllow: Bool) -> Self {
         self.allowsFloats = shouldAllow
         return self
     }
     
     
+    /// Mutates this number formater so that it covers the given range
+    ///
+    /// - Parameter newRange: The range of numbers to cover
+    /// - Returns: `self`
     func range<BI>(_ newRange: ClosedRange<BI>) -> Self
         where BI: BinaryInteger
     {
@@ -26,6 +35,10 @@ public extension NumberFormatter {
     }
     
     
+    /// Mutates this number formater so that it covers the given range
+    ///
+    /// - Parameter newRange: The range of numbers to cover
+    /// - Returns: `self` 
     func range<BI>(_ newRange: ClosedRange<BI>) -> Self
         where BI: BinaryFloatingPoint
     {
