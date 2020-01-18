@@ -13,12 +13,34 @@ import RectangleTools
 
 /// Everything we need to know in order to display a game of Mines while it's being played
 public struct Game {
+    
+    /// The unique identifier for this game
     public let id: UUID
+    
+    /// The board that the player sees
     public fileprivate(set) var board: Board.Annotated
+    
+    /// The current state of play
     public fileprivate(set) var playState: PlayState
+    
+    /// A cache of the number of mines which are presented in this game.
+    ///
+    /// If you iterate over the `board` and count the number of squares with mines, it should always equal this number.
     public let totalNumberOfMines: UInt
     
     
+    /// Creates a game based on the given pre-checked parameters
+    ///
+    /// - Attention: This initializer is simple. It does no checking. If the combination of parameters you give are
+    ///              inconsistent, then the game will be in an invalid state and undefined behavior might occur. For
+    ///              this reason, this initializer is file-private. Do not make it any more public; instead make
+    ///              specialized initializers which check the parameters before passing them to this one.
+    ///
+    /// - Parameters:
+    ///   - id: <#id description#>
+    ///   - board: <#board description#>
+    ///   - playState: <#playState description#>
+    ///   - totalNumberOfMines: <#totalNumberOfMines description#>
     fileprivate init(id: UUID = UUID(), board: Board.Annotated, playState: PlayState, totalNumberOfMines: UInt) {
         self.id = id
         self.board = board

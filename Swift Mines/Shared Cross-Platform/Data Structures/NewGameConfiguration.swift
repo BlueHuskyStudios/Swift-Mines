@@ -37,9 +37,20 @@ public extension NewGameConfiguration {
     }
     
     
+    /// The predefined configuration for an easy game.
+    /// A good entry-level configuration for new players, or those not looking for a challenge.
     static let easy         = NewGameConfiguration(difficulty: .easy)
+    
+    /// The predefined configuration for a game of intermediate difficulty.
+    /// A good configuration for players who've mastered the basics and want to graduate to a more challenging board.
     static let intermediate = NewGameConfiguration(difficulty: .intermediate)
+    
+    /// The predefined configuration for a game of advanced difficulty.
+    /// A good configuration for players who've become bored of easier boards and want a bigger challenge.
     static let advanced     = NewGameConfiguration(difficulty: .advanced)
+    
+    /// The predefined configuration for a game where no assumptions are made of the player.
+    /// A good configuration for the first board shown to players.
     static let `default`    = NewGameConfiguration(difficulty: .default)
 }
 

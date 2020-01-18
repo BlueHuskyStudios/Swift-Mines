@@ -36,7 +36,7 @@
 		A39B5E5423C9AEC300049357 /* NewGameSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E5323C9AEC300049357 /* NewGameSetupView.swift */; };
 		A39B5E5623C9BE5A00049357 /* PredefinedGameDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E5523C9BE5A00049357 /* PredefinedGameDifficulty.swift */; };
 		A39B5E5823C9C68700049357 /* SwiftUI + Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E5723C9C68700049357 /* SwiftUI + Hidden.swift */; };
-		A39B86C6239EE56B00579A89 /* Assertion Debuggin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B86C5239EE56B00579A89 /* Assertion Debuggin.swift */; };
+		A39B86C6239EE56B00579A89 /* Assertion Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B86C5239EE56B00579A89 /* Assertion Debugging.swift */; };
 		A39B86C8239EE95E00579A89 /* Swatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B86C7239EE95E00579A89 /* Swatches.swift */; };
 		A39B86CA239EFF6C00579A89 /* Image Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B86C9239EFF6C00579A89 /* Image Constants.swift */; };
 		A3B32FFA239868320034F236 /* BoardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B32FF9239868320034F236 /* BoardSquare.swift */; };
@@ -114,7 +114,7 @@
 		A39B5E5323C9AEC300049357 /* NewGameSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameSetupView.swift; sourceTree = "<group>"; };
 		A39B5E5523C9BE5A00049357 /* PredefinedGameDifficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedGameDifficulty.swift; sourceTree = "<group>"; };
 		A39B5E5723C9C68700049357 /* SwiftUI + Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI + Hidden.swift"; sourceTree = "<group>"; };
-		A39B86C5239EE56B00579A89 /* Assertion Debuggin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assertion Debuggin.swift"; sourceTree = "<group>"; };
+		A39B86C5239EE56B00579A89 /* Assertion Debugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assertion Debugging.swift"; sourceTree = "<group>"; };
 		A39B86C7239EE95E00579A89 /* Swatches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swatches.swift; sourceTree = "<group>"; };
 		A39B86C9239EFF6C00579A89 /* Image Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Constants.swift"; sourceTree = "<group>"; };
 		A3B32FF7239868130034F236 /* BoardSquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSquareView.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 		A39B86C4239EE55300579A89 /* Debugging */ = {
 			isa = PBXGroup;
 			children = (
-				A39B86C5239EE56B00579A89 /* Assertion Debuggin.swift */,
+				A39B86C5239EE56B00579A89 /* Assertion Debugging.swift */,
 			);
 			path = Debugging;
 			sourceTree = "<group>";
@@ -629,7 +629,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A38CC46923A4AADF00D42F69 /* MutableCollection Extensions.swift in Sources */,
-				A39B86C6239EE56B00579A89 /* Assertion Debuggin.swift in Sources */,
+				A39B86C6239EE56B00579A89 /* Assertion Debugging.swift in Sources */,
 				A3F7C23C23C1A4990006AB7D /* SafePointer Extensions.swift in Sources */,
 				A3C69F512397A13F00520B2F /* ContentView.swift in Sources */,
 				A35D2853239F791B0006B72B /* Board + random.swift in Sources */,

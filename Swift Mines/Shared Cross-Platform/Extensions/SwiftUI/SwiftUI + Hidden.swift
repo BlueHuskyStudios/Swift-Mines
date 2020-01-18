@@ -5,6 +5,9 @@
 //  Originally posted on StackOverflow:
 //  https://stackoverflow.com/a/59228385/3939277
 //
+//  Later posted to this GitHub repo:
+//  https://github.com/George-J-E/HidingViews
+//
 //  Created by George_E on 2019-12-07.
 //  Placed in this project by Ben Leggiero on 2020-01-11.
 //
