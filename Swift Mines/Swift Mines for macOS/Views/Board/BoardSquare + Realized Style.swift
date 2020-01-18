@@ -3,7 +3,7 @@
 //  Swift Mines for macOS
 //
 //  Created by Ben Leggiero on 2019-12-18.
-//  Copyright © 2019 Ben Leggiero. All rights reserved.
+//  Copyright © 2019 Ben Leggiero BH-1-PS
 //
 
 import CrossKitTypes

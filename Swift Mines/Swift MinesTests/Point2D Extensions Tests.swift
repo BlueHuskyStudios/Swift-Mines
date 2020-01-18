@@ -3,7 +3,7 @@
 //  Swift MinesTests
 //
 //  Created by Ben Leggiero on 2019-12-19.
-//  Copyright © 2019 Ben Leggiero. All rights reserved.
+//  Copyright © 2019 Ben Leggiero BH-1-PS
 //
 
 import XCTest
