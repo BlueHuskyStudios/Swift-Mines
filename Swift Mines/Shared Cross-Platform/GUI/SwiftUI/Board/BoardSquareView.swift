@@ -92,28 +92,28 @@ struct BoardSquareView_Previews: PreviewProvider {
             
             Group {
                 preview(name: "Clear (1)",
-                        context: .clear(distance: .closeTo1Mine),
+                        context: .clear(proximity: .closeTo1Mine),
                         representation: .revealed(reason: .manual))
                 preview(name: "Clear (2)",
-                        context: .clear(distance: .closeTo2Mines),
+                        context: .clear(proximity: .closeTo2Mines),
                         representation: .revealed(reason: .manual))
                 preview(name: "Clear (3)",
-                        context: .clear(distance: .closeTo3Mines),
+                        context: .clear(proximity: .closeTo3Mines),
                         representation: .revealed(reason: .manual))
                 preview(name: "Clear (4)",
-                        context: .clear(distance: .closeTo4Mines),
+                        context: .clear(proximity: .closeTo4Mines),
                         representation: .revealed(reason: .manual))
                 preview(name: "Clear (5)",
-                        context: .clear(distance: .closeTo5Mines),
+                        context: .clear(proximity: .closeTo5Mines),
                         representation: .revealed(reason: .manual))
                 preview(name: "Clear (6)",
-                        context: .clear(distance: .closeTo6Mines),
+                        context: .clear(proximity: .closeTo6Mines),
                         representation: .revealed(reason: .manual))
                 preview(name: "Clear (7)",
-                        context: .clear(distance: .closeTo7Mines),
+                        context: .clear(proximity: .closeTo7Mines),
                         representation: .revealed(reason: .manual))
                 preview(name: "Clear (8)",
-                        context: .clear(distance: .closeTo8Mines),
+                        context: .clear(proximity: .closeTo8Mines),
                         representation: .revealed(reason: .manual))
             }
             
@@ -161,8 +161,8 @@ struct BoardSquareView_Previews: PreviewProvider {
     
     private static func content(from context: BoardSquare.MineContext) -> BoardSquare.Content {
         switch context {
-        case .clear(distance: _): return .clear
-        case .mine:               return .mine
+        case .clear(proximity: _): return .clear
+        case .mine:                return .mine
         }
     }
 }

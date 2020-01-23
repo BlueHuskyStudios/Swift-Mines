@@ -195,11 +195,11 @@ public extension Game {
         let revealedSquare = board.revealSquare(at: location, reason: .manual)
         
         switch revealedSquare.mineContext {
-        case .clear(distance: .farFromMine):
+        case .clear(proximity: .farFromMine):
             print("Revealing neighboring clear squares")
             board.revealClearSquares(touching: location)
             
-        case .clear(distance: _):
+        case .clear(proximity: _):
             print("Only revealing square")
             
         case .mine:

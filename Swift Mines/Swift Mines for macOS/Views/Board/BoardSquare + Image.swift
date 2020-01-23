@@ -29,7 +29,7 @@ internal extension BoardSquare.Annotated {
             return .blank()
             
         case (.revealed(reason: _), .clear(let distance)):
-            return .number(forClearSquareAtDistance: distance, size: UIntSize(size))
+            return .number(forClearSquareWithProximity: distance, size: UIntSize(size))
             
         case (.flagged(style: .sure), _):
             imageWhichNeedsToBeResized = .minesIcon(.flag)

@@ -27,13 +27,13 @@ public extension NativeImage {
     /// - Note: A cache is kept so that if such an image has already been generated, it is returned
     ///
     /// - Parameters:
-    ///   - distance: The distance to be represented in the returned image
-    ///   - size:     The dimensions of the resulting image
+    ///   - proximity: The proximity to be represented in the returned image
+    ///   - size:      The dimensions of the resulting image
     ///
     /// - Returns: An image of the given size representing the given distance from a mine
-    static func number(forClearSquareAtDistance distance: BoardSquare.MineDistance, size: UIntSize) -> NativeImage {
-        cachedNumberImage(forClearSquareAtDistance: distance, size: size)
-            ?? generateAndCacheNumberImage(forClearSquareAtDistance: distance, size: size)
+    static func number(forClearSquareWithProximity proximity: BoardSquare.MineProximity, size: UIntSize) -> NativeImage {
+        cachedNumberImage(forClearSquareWithProximity: proximity, size: size)
+            ?? generateAndCacheNumberImage(forClearSquareWithProximity: proximity, size: size)
     }
     
     
@@ -41,28 +41,28 @@ public extension NativeImage {
     /// If the cache has no such image, `nil` is returned.
     ///
     /// - Parameters:
-    ///   - distance: The distance to be represented in the returned image
-    ///   - size:     The dimensions of the resulting image
+    ///   - proximity: The proximity to be represented in the returned image
+    ///   - size:      The dimensions of the resulting image
     ///
     /// - Returns: A cached image of the given size representing the given distance from a mine, or `nil` if no such
     ///            image has been cached
-    private static func cachedNumberImage(forClearSquareAtDistance distance: BoardSquare.MineDistance, size: UIntSize) -> NativeImage? {
-        cacheForImagesOfBoardSquareNumbers.object(forKey: NumberImageCacheKey(distance: distance, size: size))
+    private static func cachedNumberImage(forClearSquareWithProximity proximity: BoardSquare.MineProximity, size: UIntSize) -> NativeImage? {
+        cacheForImagesOfBoardSquareNumbers.object(forKey: NumberImageCacheKey(proximity: proximity, size: size))
     }
     
     
     /// Generates an image of the given size for the given distance, and immediately caches it
     ///
     /// - Parameters:
-    ///   - distance: The distance to be represented in the returned image
-    ///   - size:     The dimensions of the resulting image
+    ///   - proximity: The proximity to be represented in the returned image
+    ///   - size:      The dimensions of the resulting image
     ///
     /// - Returns: An image of the given size representing the given distance from a mine
-    private static func generateAndCacheNumberImage(forClearSquareAtDistance distance: BoardSquare.MineDistance, size: UIntSize) -> NativeImage {
-        let image = generateNumberImage(forClearSquareAtDistance: distance, size: size)
+    private static func generateAndCacheNumberImage(forClearSquareWithProximity proximity: BoardSquare.MineProximity, size: UIntSize) -> NativeImage {
+        let image = generateNumberImage(forClearSquareWithProximity: proximity, size: size)
         cacheForImagesOfBoardSquareNumbers.setObject(
             image,
-            forKey: NumberImageCacheKey(distance: distance, size: size),
+            forKey: NumberImageCacheKey(proximity: proximity, size: size),
             cost: cost(forGeneratedNumberImageOfSize: size)
         )
         return image
@@ -72,9 +72,9 @@ public extension NativeImage {
     /// Generates an image of the given size for the given distance
     ///
     /// - Parameters:
-    ///   - distance: The distance to be represented in the returned image
-    ///   - size:     The dimensions of the resulting image
-    private static func generateNumberImage(forClearSquareAtDistance distance: BoardSquare.MineDistance, size: UIntSize) -> NativeImage {
+    ///   - proximity: The proximity to be represented in the returned image
+    ///   - size:      The dimensions of the resulting image
+    private static func generateNumberImage(forClearSquareWithProximity proximity: BoardSquare.MineProximity, size: UIntSize) -> NativeImage {
         let size = CGSize(size.greaterThanZero)
         let number = NativeImage(size: size)
         number.size = size
@@ -83,12 +83,12 @@ public extension NativeImage {
         paragraphStyle.alignment = .center
         number.inCurrentGraphicsContext { number, context in
             let attributedString =
-                NSMutableAttributedString(string: distance.numberOfMinesNearby.description,
+                NSMutableAttributedString(string: proximity.numberOfMinesNearby.description,
                                    attributes:
                     [
                         .font : NativeFont.monospacedDigitSystemFont(ofSize: fontSize, weight: .bold),
                         .paragraphStyle : paragraphStyle,
-                        .foregroundColor : distance.numberFillColor,
+                        .foregroundColor : proximity.numberFillColor,
                         .strokeColor : NativeColor.white,
                         .strokeWidth : NSNumber(value: (fontSize / 4).native)
                     ]
@@ -116,7 +116,7 @@ public extension NativeImage {
 
 // MARK: - Convenience Extensions
 
-private extension BoardSquare.MineDistance {
+private extension BoardSquare.MineProximity {
     
     /// The color with which to fill a number representing this distance
     var numberFillColor: NativeColor {
@@ -173,17 +173,17 @@ private let maxCacheCost = Int(CGFloat(presumedMostPixelsToStoreEightSquareImage
 /// A key used to store and fetch a number image into the number image cache
 private class NumberImageCacheKey {
     
-    /// The distance the image represents
-    let distance: BoardSquare.MineDistance
+    /// The proximity the image represents
+    let proximity: BoardSquare.MineProximity
     
     /// The dimensions of the image
     let size: UIntSize
     
     
     /// Creates a new cache key
-    init(distance: BoardSquare.MineDistance,
+    init(proximity: BoardSquare.MineProximity,
          size: UIntSize) {
-        self.distance = distance
+        self.proximity = proximity
         self.size = size
     }
 }
@@ -192,7 +192,7 @@ private class NumberImageCacheKey {
 
 extension NumberImageCacheKey: Equatable {
     static func == (lhs: NumberImageCacheKey, rhs: NumberImageCacheKey) -> Bool {
-        return lhs.distance == rhs.distance
+        return lhs.proximity == rhs.proximity
             && lhs.size == rhs.size
     }
 }
@@ -201,7 +201,7 @@ extension NumberImageCacheKey: Equatable {
 
 extension NumberImageCacheKey: Hashable {
     func hash(into hasher: inout Hasher) {
-        hasher.combine(distance)
+        hasher.combine(proximity)
         hasher.combine(size)
     }
 }

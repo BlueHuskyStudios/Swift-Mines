@@ -26,7 +26,7 @@ public extension Board.Annotated {
                     
                 case .revealed(let reason):
                     switch square.mineContext {
-                    case .clear(distance: .farFromMine):
+                    case .clear(proximity: .farFromMine):
                         return " "
                         
                     case .clear(let distance):

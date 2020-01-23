@@ -239,7 +239,7 @@ public extension Board.Annotated {
         revealSquare(at: startingLocation, reason: .chainReaction)
         
         switch square.mineContext {
-        case .clear(distance: .farFromMine):
+        case .clear(proximity: .farFromMine):
             self.neighbors(ofSquareAt: startingLocation)
                 .discardingNilElements()
                 .discarding { $0.isRevealed }
@@ -248,7 +248,7 @@ public extension Board.Annotated {
                                        stopIfThisSquareIsAlreadyRevealed: true)
                 }
             
-        case .clear(distance: _):
+        case .clear(proximity: _):
             break // Nothing to do?
             
         case .mine:
@@ -364,12 +364,12 @@ private extension SquareNeighbors {
         
         let neighboringMineCount = self.numberOfNeighborsWithMines()
         
-        guard let distance = BoardSquare.MineDistance(rawValue: neighboringMineCount) else {
+        guard let distance = BoardSquare.MineProximity(rawValue: neighboringMineCount) else {
             assertionFailure("Attempted to 0...8 mines around square, but got \(neighboringMineCount)")
-            return .clear(distance: .closeTo8Mines)
+            return .clear(proximity: .closeTo8Mines)
         }
         
-        return .clear(distance: distance)
+        return .clear(proximity: distance)
     }
 }
 

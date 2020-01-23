@@ -72,6 +72,7 @@ public extension BoardSquare {
     }
     
     
+    /// The style of the flag on this board square, or `nil` if there is no flag
     var flagStyle: BoardSquare.ExternalRepresentation.FlagStyle? {
         switch externalRepresentation {
         case .blank,
@@ -159,6 +160,7 @@ public extension BoardSquare {
 // MARK: - Content
 
 public extension BoardSquareProtocol {
+    /// The content of a board square
     typealias Content = BoardSquareContent
 }
 
@@ -263,6 +265,8 @@ public extension BoardSquare {
 // MARK: BoardSquareProtocol
 
 extension BoardSquare.Annotated: BoardSquareProtocol {
+    
+    /// The content of the board square, whether or not the square has been revealed
     public var content: Content {
         get { base.content }
         set { base.content = newValue }
@@ -273,6 +277,7 @@ extension BoardSquare.Annotated: BoardSquareProtocol {
 // MARK: Identifiable
 
 extension BoardSquare.Annotated: Identifiable {
+    /// Allows this square to be identified across runtimes
     public var id: UUID { base.id }
 }
 
@@ -294,6 +299,7 @@ public extension BoardSquare.Annotated {
     /// This means they either flagged it `.sure`, or it was revealed to be a mine.
     var isThoughtToBeAMine: Bool { base.isThoughtToBeAMine }
     
+    /// The style of the flag on this board square, or nil if there is no flag
     var flagStyle: BoardSquare.ExternalRepresentation.FlagStyle? { base.flagStyle }
     
     /// Mutates this board square so its contents are revealed
@@ -330,6 +336,7 @@ public extension BoardSquare.Annotated {
     
     
     
+    /// The style of a flag on an annotated square
     typealias FlagStyle = BoardSquare.ExternalRepresentation.FlagStyle
 }
 
@@ -343,7 +350,8 @@ public extension BoardSquare {
     enum MineContext {
         
         /// The square does not contain a mine
-        case clear(distance: MineDistance)
+        /// - Parameter proximity: The number of mines nearby the clear square
+        case clear(proximity: MineProximity)
         
         /// The square houses a mine
         /// - Parameter revealReason: The reason why this mine was revealed, or `nil` if it has not been revealed
@@ -357,8 +365,8 @@ public extension BoardSquare {
 
 public extension BoardSquare {
     
-    /// Describes the distance of this square from a mine, assuming it does not contain a mine
-    enum MineDistance: UInt8 {
+    /// Describes the proximity of this square to a mine, assuming it itself does not contain a mine
+    enum MineProximity: UInt8 {
         
         /// The square is far from any mine
         case farFromMine   = 0
@@ -391,7 +399,8 @@ public extension BoardSquare {
 
 
 
-public extension BoardSquare.MineDistance {
+public extension BoardSquare.MineProximity {
+    /// The number of mines that this proximity describes
     @inline(__always)
     var numberOfMinesNearby: UInt8 {
         return rawValue
@@ -429,9 +438,9 @@ extension BoardSquare.ExternalRepresentation.FlagStyle: Hashable {}
 extension BoardSquare.Annotated: Hashable {}
 extension BoardSquare.MineContext: Hashable {}
 extension BoardSquare.RevealReason: Hashable {}
-extension BoardSquare.MineDistance: Hashable {}
+extension BoardSquare.MineProximity: Hashable {}
 
 extension BoardSquareContent: CaseIterable {}
 extension BoardSquare.ExternalRepresentation.FlagStyle: CaseIterable {}
 extension BoardSquare.RevealReason: CaseIterable {}
-extension BoardSquare.MineDistance: CaseIterable {}
+extension BoardSquare.MineProximity: CaseIterable {}
