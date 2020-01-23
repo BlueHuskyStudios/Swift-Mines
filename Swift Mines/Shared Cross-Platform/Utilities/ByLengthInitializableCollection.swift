@@ -54,7 +54,7 @@ public struct CollectionLengthNotSupported {
 // MARK: - Default conformances
 
 extension Array: ByLengthInitializableCollection {
-    public init(length: UInt, elementGenerator: (Int) throws -> Element) throws {
+    public init(length: UInt, elementGenerator: (Index) throws -> Element) throws {
         self = try (0..<length)
             .lazy
             .map(Index.init(_:))

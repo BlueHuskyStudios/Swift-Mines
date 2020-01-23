@@ -231,10 +231,6 @@ public extension Board.Annotated {
     internal mutating func revealClearSquares(touching startingLocation: UIntPoint,
                                               stopIfThisSquareIsAlreadyRevealed: Bool = false) {
         let square = content[startingLocation]
-        
-//        guard stopIfThisSquareIsAlreadyRevealed ? !square.isRevealed : true else {
-//            return
-//        }
 
         revealSquare(at: startingLocation, reason: .chainReaction)
         

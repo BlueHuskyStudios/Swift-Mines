@@ -15,7 +15,10 @@ public protocol HasTransform {
     
     /// Transforms this value into a new one
     ///
-    /// - Parameter transformer: Performs the transformation
+    /// - Parameters:
+    ///   - transformer: Performs the transformation
+    ///    - old: The value before it was returned
+    /// - Returns: The value as it was transformed with the given transformer
     func transform<New>(with transformer: (_ old: Self) throws -> New) rethrows -> New
 }
 

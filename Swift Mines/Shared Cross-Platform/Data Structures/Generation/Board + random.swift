@@ -57,23 +57,6 @@ public extension Board {
     }
     
     
-//    /// Generates an entire board, ready to be played
-//    ///
-//    /// - Parameters:
-//    ///   - size:               How big you want the resulting board
-//    ///   - totalNumberOfMines: The amount of mines in the resulting board. Obviously, if this is greater than the
-//    ///                         number of squares minus the 9 around the given location, then all the squares will be
-//    ///                         mines
-//    ///   - safeLocation:       _optional_ - The location where there should be no mines, used for the user's first
-//    ///                         move. Defaults to a random location on the board.
-//    @inlinable
-//    static func generateNewBoard(size: Size, totalNumberOfMines: UInt) -> Board {
-//        generateNewBoard(size: size,
-//                         totalNumberOfMines: totalNumberOfMines,
-//                         disallowingMinesNear: Location(size.randomElement()!))
-//    }
-    
-    
     /// Creates and returns an empty board
     ///
     /// - Parameter size: How big you want the resulting board

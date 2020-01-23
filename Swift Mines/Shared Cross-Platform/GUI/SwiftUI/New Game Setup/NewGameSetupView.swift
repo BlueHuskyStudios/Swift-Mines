@@ -11,17 +11,17 @@ import SafePointer
 
 
 
-private let defaultConfiguration = NewGameConfiguration.default
-
-
-
-struct NewGameSetupView: View {
+/// A view to let the user set up a new game
+///
+/// - Attention: This requires an `OverallAppState` environment object, and it will mutate that object once the user
+///              presses "Start New Game"
+public struct NewGameSetupView: View {
     
     @EnvironmentObject
     private var overallAppState: OverallAppState
     
     @State
-    fileprivate var customGameConfiguration: NewGameConfiguration = defaultConfiguration
+    fileprivate var customGameConfiguration = NewGameConfiguration.default
     
     @State
     fileprivate var selectedDifficultyIndex = 0
@@ -72,7 +72,7 @@ struct NewGameSetupView: View {
     private var setLock = false
     
     
-    var body: some View {
+    public var body: some View {
         Form {
             Text("New Game")
                 .font(Font.title.bold())

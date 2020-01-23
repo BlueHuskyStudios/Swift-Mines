@@ -11,6 +11,10 @@ import Foundation
 
 
 public protocol HasAlso {
+    /// Returns this value after performing the given action
+    ///
+    /// - Parameter additionalAction: The action to perform before returning this value
+    /// - Returns: This value, unchanged
     func also(do additionalAction: () -> Void) -> Self
 }
 

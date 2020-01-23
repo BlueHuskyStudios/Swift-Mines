@@ -17,24 +17,7 @@ internal struct BoardView: View {
     @EnvironmentObject
     var overallAppState: OverallAppState
     
-//    @State
-//    public var board: Board.Annotated {
-//        didSet {
-//            print("BoardView did update board")
-//        }
-//    }
-    
     private var onSquareTapped = MutableSafePointer<OnSquareTapped?>(to: nil)
-    
-    
-//    internal init(board: Board.Annotated) {
-//        self.init(board: State(wrappedValue: board))
-//    }
-//
-//
-//    internal init(board: State<Board.Annotated>) {
-//        self._board = board
-//    }
     
     
     var body: some View {
@@ -92,31 +75,8 @@ private extension BoardView {
         print("Tap2")
         self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic))
     }}
-//
-//
-//    func style(for square: BoardSquare.Annotated) -> BoardSquareView.Style {
-//        .init(
-//            actualColor: self.overallAppState.game.board.style.baseColor
-//        )
-//    }
     
     
     
     typealias OnGestureDidEnd = () -> Void
 }
-
-
-
-//struct BoardView_Previews: PreviewProvider {
-//    
-//    static let test10x10Board = Board
-//        .generateNewBoard(size: Board.Size(width: 10, height: 10),
-//                          totalNumberOfMines: 10,
-//                          disallowingMinesNear: .zero)
-//        .annotated(baseStyle: .default)
-//        .allRevealed(reason: .safelyRevealedAfterWin)
-//    
-//    static var previews: some View {
-//        BoardView(board: test10x10Board)
-//    }
-//}

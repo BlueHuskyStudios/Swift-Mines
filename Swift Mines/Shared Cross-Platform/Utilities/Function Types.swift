@@ -10,4 +10,10 @@ import Foundation
 
 
 
-public typealias Predicate<Element> = (Element) -> Bool
+/// A function which can convert some arbitrary value into a boolean.
+///
+/// This is generally used to process sequences of data one item at a time, like `.filter`.
+///
+/// - Parameter element: The value to be evaluated
+/// - Returns: A Boolean result of an evaluation
+public typealias Predicate<Element> = (_ element: Element) -> Bool
