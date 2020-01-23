@@ -43,11 +43,12 @@ public extension Board {
     ) -> Board {
         let size = size.greaterThanZero
         var board = Board.empty(size: size)
+        let safeLocation = Size.Index(safeLocation)
         
         size.shuffled()
-            .discarding(where: { $0.isTouching(.init(safeLocation), tolerance: 2) })
+            .discarding(where: { $0.isTouching(safeLocation, tolerance: 2) })
             .onlyFirst(totalNumberOfMines)
-            .map(IntPoint.init(_:))
+            .map(IntPoint.init)
             .forEach { point in
                 board.content[point].giveMine()
             }
