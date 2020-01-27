@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 
@@ -37,10 +38,12 @@ public extension PredefinedGameDifficulty {
     
     
     /// The human-readable text to display for the name of this difficulty
-    var displayName: String { rawValue }
+    var displayName: LocalizedStringKey { .init(rawValue) }
 }
 
 
+
+// MARK: - Conformance
 
 extension PredefinedGameDifficulty: Identifiable {
     public var id: String { rawValue }

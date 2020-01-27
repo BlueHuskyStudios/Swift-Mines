@@ -20,7 +20,7 @@ extension View {
     
     /// Whether the view is hidden.
     /// - Parameter bool: Set to `true` to hide the view. Set to `false` to show the view.
-    func isHidden(_ bool: Bool) -> some View {
+    func hidden(_ bool: Bool) -> some View {
         modifier(HiddenModifier(isHidden: bool))
     }
 }
@@ -31,7 +31,7 @@ extension View {
 ///
 /// ```
 /// Text("Hello World!")
-///     .isHidden(true)
+///     .hidden(true)
 /// ```
 ///
 /// Variables can be used in place so that the content can be changed dynamically.

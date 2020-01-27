@@ -37,10 +37,11 @@ public struct Game {
     ///              specialized initializers which check the parameters before passing them to this one.
     ///
     /// - Parameters:
-    ///   - id: <#id description#>
-    ///   - board: <#board description#>
-    ///   - playState: <#playState description#>
-    ///   - totalNumberOfMines: <#totalNumberOfMines description#>
+    ///   - id:                 _optional_ - The ID of the new game. Defaults to a randomly-generated one
+    ///   - board:              The annotated board on which the user will play
+    ///   - playState:          The starting state of play
+    ///   - totalNumberOfMines: The number of mines in `board`, in case you already calculated that. If you don't
+    ///                         specify this, another initializer will be used which calculates it based on `board`
     fileprivate init(id: UUID = UUID(), board: Board.Annotated, playState: PlayState, totalNumberOfMines: UInt) {
         self.id = id
         self.board = board
@@ -49,6 +50,12 @@ public struct Game {
     }
     
     
+    /// Creates a game based on the given pre-created parameters
+    ///
+    /// - Parameters:
+    ///   - id:                 _optional_ - The ID of the new game. Defaults to a randomly-generated one
+    ///   - board:              The annotated board on which the user will play
+    ///   - playState:          The starting state of play
     public init(id: UUID = UUID(), board: Board.Annotated, playState: PlayState) {
         self.init(
             id: id,
@@ -75,6 +82,8 @@ public extension Game {
     ///   - totalNumberOfMines: _optional_ - The maximum number of mines to place on the board. No matter what option
     ///                         is chosen, there will always be an area without mines where the user first clicks.
     ///                         Defaults to `.auto`
+    ///
+    /// - Returns: The newly-created game
     static func new(size: Board.Size, totalNumberOfMines: TotalNumberOfMines = .auto) -> Self {
         self.init(
             board: Board.empty(size: size)
@@ -88,6 +97,8 @@ public extension Game {
     /// Starts a new game with a board of the given configuration
     ///
     /// - Parameter configuration: How to configure the new game
+    ///
+    /// - Returns: The newly-created game
     @inlinable
     static func new(_ configuration: NewGameConfiguration) -> Self {
         new(size: configuration.boardSize,
@@ -96,6 +107,8 @@ public extension Game {
     
     
     /// Starts a good default new game when the user hasn't expressed any preference
+    ///
+    /// - Returns: The newly-created game
     static func basicNewGame() -> Self {
         new(size: Board.Size(width: 10, height: 10))
     }
@@ -104,6 +117,7 @@ public extension Game {
     
     /// Describes the total number of mines to place on a new game board
     enum TotalNumberOfMines: ExpressibleByIntegerLiteral {
+        
         /// Don't place any mines on the board
         case none
         
@@ -120,6 +134,11 @@ public extension Game {
         
         
         public init(integerLiteral value: IntegerLiteralType) {
+            self.init(value)
+        }
+        
+        
+        public init(_ value: UInt) {
             if value == 0 {
                 self = .none
             }

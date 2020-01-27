@@ -12,13 +12,17 @@ import SafePointer
 
 
 
-struct ContentView: View {
+/// The content view for a Swift Mines game.
+///
+/// Controls both the game and the new game setup screen.
+public struct ContentView: View {
     
+    /// The overall app state, which will be reflected and mutated by this view
     @EnvironmentObject
     var overallAppState: OverallAppState
     
     
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 0) {
             GameStatusBarView() {
                     self.overallAppState.game.startNewGame()
@@ -30,17 +34,16 @@ struct ContentView: View {
                     print("Square tapped -", action)
                     self.overallAppState.game.updateBoard(after: action, at: square.cachedLocation)
                 }
-//                .wrappedForSwiftUi()
                 .environmentObject(overallAppState)
                 .aspectRatio(CGSize(overallAppState.game.board.size), contentMode: .fit)
                 .also { print("ContentView Did regenerate view") }
         }
+        .disabled(self.overallAppState.currentScreen == .newGameSetup)
         .sheet(
             isPresented: Binding(
                 get: { self.overallAppState.currentScreen == .newGameSetup },
                 set: { shouldShowSetup in self.overallAppState.currentScreen = shouldShowSetup ? .newGameSetup : .game }
             ),
-//            onDismiss: { self.overallAppState.game.startNewGame() },
             content: { NewGameSetupView().environmentObject(self.overallAppState) })
         
     }

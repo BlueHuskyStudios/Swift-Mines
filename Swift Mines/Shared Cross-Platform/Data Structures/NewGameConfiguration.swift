@@ -37,6 +37,19 @@ public extension NewGameConfiguration {
     }
     
     
+    /// Infers the difficulty of this configuration, or returns `nil` if this config doesn't perfectly match a
+    /// predefined difficulty
+    func inferredDifficulty() -> PredefinedGameDifficulty? {
+        switch ((width: boardSize.height, height: boardSize.height), numberOfMines) {
+        case ((width: 10, height: 10), .auto): return .easy
+        case ((width: 20, height: 15), .auto): return .intermediate
+        case ((width: 30, height: 20), .auto): return .advanced
+            
+        default: return nil
+        }
+    }
+    
+    
     /// The predefined configuration for an easy game.
     /// A good entry-level configuration for new players, or those not looking for a challenge.
     static let easy         = NewGameConfiguration(difficulty: .easy)
@@ -57,8 +70,31 @@ public extension NewGameConfiguration {
 
 
 public extension NewGameConfiguration {
+    
     /// Counts the number of mines that should appear on the board with this configuration
     var countNumberOfMines: UInt {
         return numberOfMines.count(in: boardSize)
+    }
+    
+    
+    /// Returns the number of mines which should appear on a board with this configuration, pretending that this
+    /// configuration always has `.auto` number of mines
+    var goodAutomaticNumberOfMines: UInt {
+        return Game.TotalNumberOfMines.auto.count(in: boardSize)
+    }
+}
+
+
+
+// MARK: - Conversion
+
+public extension NewGameConfiguration {
+    
+    /// Creates a new game configuration based on an existing game
+    ///
+    /// - Parameter game: The game from which to infer a configuration
+    init(_ game: Game) {
+        self.boardSize = game.board.size
+        self.numberOfMines = .init(game.totalNumberOfMines)
     }
 }

@@ -74,22 +74,21 @@ struct GameStatusBarView: View {
     
     func buttonLabel(for game: Game) -> some View {
         GeometryReader { geometry in
-            ZStack {
-                self.buttonText(for: game.playState)
-                    .position(geometry.size.center())
-            }
+            Text(verbatim: self.buttonString(for: game.playState))
+                .font(Font.system(size: geometry.size.minSideLength * 0.5))
+                .position(geometry.size.center())
         }
         .border(SeparatorShapeStyle(), width: 2)
         .background(Color.accentColor)
     }
     
     
-    func buttonText(for playState: Game.PlayState) -> some View {
+    func buttonString(for playState: Game.PlayState) -> String {
         switch self.overallAppState.game.playState {
-        case .notStarted: return Text(verbatim: "😴")
-        case .playing(startDate: _): return Text(verbatim: "🙂")
-        case .win(startDate: _, winDate: _): return Text(verbatim: "😎")
-        case .loss(startDate: _, lossDate: _): return Text(verbatim: "😵")
+        case .notStarted:                      return "😴"
+        case .playing(startDate: _):           return "🙂"
+        case .win(startDate: _, winDate: _):   return "😎"
+        case .loss(startDate: _, lossDate: _): return "😵"
         }
     }
     

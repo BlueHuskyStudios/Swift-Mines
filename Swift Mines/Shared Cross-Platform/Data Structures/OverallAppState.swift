@@ -47,3 +47,12 @@ public extension OverallAppState {
         public static let defaultValue = OverallAppState(game: Game.basicNewGame())
     }
 }
+
+
+
+public extension EnvironmentValues {
+    var overallAppState: OverallAppState {
+        get { self[OverallAppState.key] }
+        set { self[OverallAppState.key] = newValue}
+    }
+}
