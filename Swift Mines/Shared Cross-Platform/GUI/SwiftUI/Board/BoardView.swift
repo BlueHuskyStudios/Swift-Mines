@@ -12,11 +12,14 @@ import SafePointer
 
 
 
+/// This view displays and mutates a game's board
 internal struct BoardView: View {
     
+    /// The app's overall state, which this board view will observe and mutate as the user interacts with it
     @EnvironmentObject
     var overallAppState: OverallAppState
     
+    /// Called when a square is tapped
     private var onSquareTapped = MutableSafePointer<OnSquareTapped?>(to: nil)
     
     
@@ -53,6 +56,9 @@ internal struct BoardView: View {
 
 internal extension BoardView {
     
+    /// Attach the given function as the one which will respond to the user clicking any square
+    ///
+    /// - Parameter responder: Called when the user clicking any square
     func onSquareTapped(perform responder: @escaping OnSquareTapped) -> BoardView {
         self.onSquareTapped.pointee = { square, action in
             responder(square, action)

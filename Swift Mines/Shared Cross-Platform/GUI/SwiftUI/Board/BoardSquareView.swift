@@ -13,8 +13,10 @@ import RectangleTools
 
 
 
+/// This view represents a square on a board
 internal struct BoardSquareView: View {
     
+    /// The current model representing this board square
     @State
     var model: Model {
         didSet {

@@ -13,19 +13,24 @@ import SafePointer
 
 
 
+/// The aspect ratio of each character in the displays
 private let perCharacterRatio = CGSize(width: 10, height: 16)
 
 
 
 struct GameStatusBarView: View {
     
+/// The number of mines remaining, amount of time played, and the reset button
+    /// The overall app state, which this view can both observe and modify
     @EnvironmentObject
     var overallAppState: OverallAppState
     
+    /// The function which is called when the New Game button is pressed
     let onNewGameButtonPressed: OnNewGameButtonPressed
     
-    private let updateTimer = Timer.publish(every: 0.05, on: .current, in: .common).autoconnect()
+    /// This updates the game time display
 
+    /// The string to be displayed in the number of seconds game timer
     @State
     private var secondsReadout: String = "0"
     
@@ -67,12 +72,21 @@ struct GameStatusBarView: View {
     }
     
     
+    /// Returns a string version of the given number, appropriately formatted for the readout displays
+    ///
+    /// This will take care of ensuring the string is at least long enough to fill the displays, and it might return
+    /// a string that's longer if necessary
+    ///
+    /// - Parameter number: The number to be converted into a string for the display
     func displayText(from number: UInt) -> String {
         return number.description.padding(toLength: 4, withPad: " ", startingAt: 0)
     }
     
     
-    func buttonLabel(for game: Game) -> some View {
+    /// Generates a label appropriate for the New Game button
+    ///
+    /// - Parameter game: The current game, whose state will be reflected in the button
+    func newGameButtonLabel(for game: Game) -> some View {
         GeometryReader { geometry in
             Text(verbatim: self.buttonString(for: game.playState))
                 .font(Font.system(size: geometry.size.minSideLength * 0.5))
@@ -83,6 +97,9 @@ struct GameStatusBarView: View {
     }
     
     
+    /// The string to display on the New Game button
+    ///
+    /// - Parameter playState: The current game's play state
     func buttonString(for playState: Game.PlayState) -> String {
         switch self.overallAppState.game.playState {
         case .notStarted:                      return "😴"
