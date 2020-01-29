@@ -16,11 +16,17 @@ import SafePointer
 /// The aspect ratio of each character in the displays
 private let perCharacterRatio = CGSize(width: 10, height: 16)
 
+private let gameTimeDisplayUpdateInterval: TimeInterval = 0.05
+
+/// The minimum size of each display, in characters. The displays might become larger than this if that's necessary
+/// to display what's needed, but they'll never become smaller than this.
+private let minimumNumberOfCharactersPerDisplay = 4
 
 
-struct GameStatusBarView: View {
-    
+
 /// The number of mines remaining, amount of time played, and the reset button
+public struct GameStatusBarView: View {
+    
     /// The overall app state, which this view can both observe and modify
     @EnvironmentObject
     var overallAppState: OverallAppState
@@ -29,6 +35,9 @@ struct GameStatusBarView: View {
     let onNewGameButtonPressed: OnNewGameButtonPressed
     
     /// This updates the game time display
+    private let updateTimer = Timer.publish(every: gameTimeDisplayUpdateInterval,
+                                            on: .current,
+                                            in: .common).autoconnect()
 
     /// The string to be displayed in the number of seconds game timer
     @State
@@ -38,15 +47,18 @@ struct GameStatusBarView: View {
     private var buttonImage = Image("")
     
     
-    var body: some View {GeometryReader { geometry in
+    public var body: some View {GeometryReader { geometry in
             HStack(alignment: VerticalAlignment.center) {
                 Spacer()
                 
-                SevenSegmentReadout(resembling: self.displayText(from: self.overallAppState.game.numberOfFlagsRemainingToPlace),
-                                    skew: .traditional)
+                SevenSegmentReadout(
+                    resembling: self.playStateOrDisplayText(
+                        from: self.overallAppState.game.numberOfFlagsRemainingToPlace,
+                        playState: self.overallAppState.game.playState),
+                    skew: .traditional)
                     .eachCharacterAspectRatio(perCharacterRatio)
                 
-                Button(action: self.onNewGameButtonPressed, label: { self.buttonLabel(for: self.overallAppState.game) })
+                Button(action: self.onNewGameButtonPressed, label: { self.newGameButtonLabel(for: self.overallAppState.game) })
                     .buttonStyle(PlainButtonStyle())
                     .aspectRatio(1, contentMode: .fit)
                     .frame(minWidth: geometry.size.minSideLength * 0.75,
@@ -79,7 +91,38 @@ struct GameStatusBarView: View {
     ///
     /// - Parameter number: The number to be converted into a string for the display
     func displayText(from number: UInt) -> String {
-        return number.description.padding(toLength: 4, withPad: " ", startingAt: 0)
+        let numberString = number.description
+        
+        if numberString.count < minimumNumberOfCharactersPerDisplay {
+            return number.description.padding(toLength: minimumNumberOfCharactersPerDisplay,
+                                              withPad: " ",
+                                              startingAt: 0)
+        }
+        else {
+            return numberString
+        }
+    }
+    
+    
+    /// Returns a string version of the given number, appropriately formatted for the readout displays, unless the
+    /// current play state should be reflected in the returned string.
+    ///
+    /// Currently, the only play state that returns a special string is the win state. Otherwise, this behaves
+    /// identically to `displayText(from:)`
+    ///
+    /// - Parameters:
+    ///   - number:    The number to be converted into a string for the display, if the current play state allows
+    ///   - playState: The current play state which might be reflected in the returned string
+    func playStateOrDisplayText(from number: UInt, playState: Game.PlayState) -> String {
+        switch playState {
+        case .notStarted,
+             .playing(startDate: _),
+             .loss(startDate: _, lossDate: _):
+            return displayText(from: number)
+            
+        case .win(startDate: _, winDate: _):
+            return "YAY!"
+        }
     }
     
     
