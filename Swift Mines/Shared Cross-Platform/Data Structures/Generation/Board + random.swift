@@ -41,12 +41,17 @@ public extension Board {
                                  totalNumberOfMines: UInt,
                                  disallowingMinesNear safeLocation: Location
     ) -> Board {
+        guard totalNumberOfMines > 0 else {
+            // If they want an empty board, they get an empty board
+            return Board.empty(size: size)
+        }
+        
         let size = size.greaterThanZero
         var board = Board.empty(size: size)
         let safeLocation = Size.Index(safeLocation)
         
         size.shuffled()
-            .discarding(where: { $0.isTouching(safeLocation, tolerance: 2) })
+            .discarding(where: { $0.isTouching(safeLocation, tolerance: 1) })
             .onlyFirst(totalNumberOfMines)
             .map(IntPoint.init)
             .forEach { point in
