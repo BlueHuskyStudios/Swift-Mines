@@ -146,6 +146,7 @@ public struct NewGameSetupView: View {
                                              set: { self.selectedCustomBoardWidth = $0 }
                                          ),
                                          range: 6...200)
+                                
                             
                             Text("×")
                             

@@ -37,7 +37,7 @@ internal struct BoardView: View {
                                 .gesture(TapGesture().modifiers(.control).onEnded({ _ in self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic)) }))
                                 .gesture(TapGesture().onEnded({ self.onSquareTapped.pointee?(square, .dig) }))
                                 .onLongPressGesture { self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic)) }
-//                                .also { print("\tBoardView Did attach listeners to board square view at", square.cachedLocation) }
+//                                .also { print("\tBoardView Did attach listeners to board square view at", square.cachedLocation.humanReadableDescription) }
                         }
                     }
                 }
@@ -65,24 +65,4 @@ internal extension BoardView {
         }
         return self
     }
-}
-
-
-
-private extension BoardView {
-    
-    func handleUserDidTap(_ square: BoardSquare.Annotated) -> OnGestureDidEnd {{
-        print("Tap")
-        self.onSquareTapped.pointee?(square, .dig)
-    }}
-    
-    
-    func handleUserDidAltTap(_ square: BoardSquare.Annotated) -> OnGestureDidEnd {{
-        print("Tap2")
-        self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic))
-    }}
-    
-    
-    
-    typealias OnGestureDidEnd = () -> Void
 }
