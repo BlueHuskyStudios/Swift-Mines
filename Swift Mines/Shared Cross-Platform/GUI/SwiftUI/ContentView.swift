@@ -29,6 +29,8 @@ public struct ContentView: View {
                 }
                 .frame(height: 48, alignment: .top)
             
+            Spacer(minLength: 0)
+            
             BoardView()
                 .onSquareTapped { (square, action) in
                     print("Square tapped -", action)
@@ -37,6 +39,8 @@ public struct ContentView: View {
                 .environmentObject(overallAppState)
                 .aspectRatio(CGSize(overallAppState.game.board.size), contentMode: .fit)
                 .also { print("ContentView Did regenerate view") }
+            
+            Spacer(minLength: 0)
         }
         .disabled(self.overallAppState.currentScreen == .newGameSetup)
         .sheet(
