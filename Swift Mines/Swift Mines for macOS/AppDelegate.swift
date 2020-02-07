@@ -60,7 +60,22 @@ extension AppDelegate: NSApplicationDelegate {
 
 private extension AppDelegate {
     
+    @IBAction func didSelectSourceCodeMenuItem(_ sender: NSMenuItem) {
+        NSWorkspace.shared.open(.repo)
+    }
+    
+    
     @IBAction func didSelectNewGameMenuItem(_ sender: NSMenuItem) {
         overallAppState.currentScreen = .newGameSetup
+    }
+    
+    
+    @IBAction func didSelectFeedbackMenuItem(_ sender: NSMenuItem) {
+        NSWorkspace.shared.open(.feedback)
+    }
+    
+    
+    @IBAction func showHelp(_ sender: NSMenuItem) {
+        NSWorkspace.shared.open(.help)
     }
 }

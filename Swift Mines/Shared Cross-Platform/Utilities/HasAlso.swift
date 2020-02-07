@@ -58,4 +58,6 @@ extension Array: HasAlso {}
 extension Dictionary: HasAlso {}
 extension Set: HasAlso {}
 
+extension URL: HasAlso {}
+
 //extension Never: HasAlso {}
