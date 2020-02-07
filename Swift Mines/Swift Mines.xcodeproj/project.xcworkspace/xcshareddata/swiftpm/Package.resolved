@@ -81,6 +81,15 @@
           "revision": "09b587a10c7d9ec67a1c0c182b1fd588c09176a6",
           "version": null
         }
+      },
+      {
+        "package": "UserDefault",
+        "repositoryURL": "https://github.com/juliand665/UserDefault.git",
+        "state": {
+          "branch": null,
+          "revision": "93255a96b54a3dd7d7b4aa6102721e249e847be5",
+          "version": "1.0.0"
+        }
       }
     ]
   },

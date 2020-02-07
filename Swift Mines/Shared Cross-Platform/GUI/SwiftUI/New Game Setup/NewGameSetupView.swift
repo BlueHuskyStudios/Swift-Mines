@@ -44,7 +44,7 @@ import SafePointer
 ///              presses "Start New Game"
 public struct NewGameSetupView: View {
     
-    /// The state of the app which will both build and
+    /// The state of the app which will be given the new game once the user is done sconfiguring it
     @EnvironmentObject
     private var overallAppState: OverallAppState
     

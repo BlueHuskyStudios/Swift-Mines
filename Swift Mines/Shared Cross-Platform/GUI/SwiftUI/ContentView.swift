@@ -45,11 +45,25 @@ public struct ContentView: View {
         .disabled(self.overallAppState.currentScreen == .newGameSetup)
         .sheet(
             isPresented: Binding(
-                get: { self.overallAppState.currentScreen == .newGameSetup },
-                set: { shouldShowSetup in self.overallAppState.currentScreen = shouldShowSetup ? .newGameSetup : .game }
+                get: {
+                    [.newGameSetup, .oobe].contains(self.overallAppState.currentScreen)
+                },
+                set: { isPresented in
+                    if !isPresented {
+                        self.overallAppState.currentScreen = .game
+                    }
+                }
             ),
-            content: { NewGameSetupView().environmentObject(self.overallAppState) })
-        
+            content: {
+                Group {
+                    if self.overallAppState.currentScreen == .newGameSetup {
+                        NewGameSetupView().environmentObject(self.overallAppState)
+                    }
+                    else {
+                        FirstTimeDisclaimerView().environmentObject(self.overallAppState)
+                    }
+                }
+            })
     }
 }
 

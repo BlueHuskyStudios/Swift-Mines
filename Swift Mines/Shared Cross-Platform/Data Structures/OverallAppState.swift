@@ -19,7 +19,11 @@ public class OverallAppState: ObservableObject {
     
     /// The current screen that the player is seeing
     @Published
-    public var currentScreen = AppScreen.game
+    public var currentScreen = AppScreen.appropriateStartupScreen()
+    
+    /// The state of the Out-Of-Box Experience
+    @Published
+    public var oobeState = OobeState.shared
     
     
     init(game: Game) {

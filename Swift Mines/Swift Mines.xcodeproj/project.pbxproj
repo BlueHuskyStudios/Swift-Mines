@@ -11,6 +11,10 @@
 		A31A60A723A830A100C465A9 /* RangeReplaceableCollection Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A60A623A830A100C465A9 /* RangeReplaceableCollection Extensions.swift */; };
 		A31A60A923A8494400C465A9 /* IndexPath Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A60A823A8494400C465A9 /* IndexPath Extensions.swift */; };
 		A31A60DA23A88D4500C465A9 /* TODO in Frameworks */ = {isa = PBXBuildFile; productRef = A31A60D923A88D4500C465A9 /* TODO */; };
+		A31C444A23EA877F006C8C9D /* FirstTimeDisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C444923EA877F006C8C9D /* FirstTimeDisclaimerView.swift */; };
+		A31C444E23EB2A18006C8C9D /* OobeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C444D23EB2A18006C8C9D /* OobeState.swift */; };
+		A31C445123EB989E006C8C9D /* UserDefault in Frameworks */ = {isa = PBXBuildFile; productRef = A31C445023EB989E006C8C9D /* UserDefault */; };
+		A31C445323ED1047006C8C9D /* UserDefaults constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C445223ED1047006C8C9D /* UserDefaults constants.swift */; };
 		A32E3E9523AADC0A00AD1D95 /* BoardSquare + Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32E3E9423AADC0A00AD1D95 /* BoardSquare + Image.swift */; };
 		A32E3E9823AADC4000AD1D95 /* NativeImage + SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32E3E9723AADC4000AD1D95 /* NativeImage + SwiftUI.swift */; };
 		A32E3E9A23AAE28400AD1D95 /* BoardSquare + Realized Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32E3E9923AAE28400AD1D95 /* BoardSquare + Realized Style.swift */; };
@@ -91,6 +95,9 @@
 		A31A60A423A822E000C465A9 /* ByLengthInitializableCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByLengthInitializableCollection.swift; sourceTree = "<group>"; };
 		A31A60A623A830A100C465A9 /* RangeReplaceableCollection Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollection Extensions.swift"; sourceTree = "<group>"; };
 		A31A60A823A8494400C465A9 /* IndexPath Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath Extensions.swift"; sourceTree = "<group>"; };
+		A31C444923EA877F006C8C9D /* FirstTimeDisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTimeDisclaimerView.swift; sourceTree = "<group>"; };
+		A31C444D23EB2A18006C8C9D /* OobeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OobeState.swift; sourceTree = "<group>"; };
+		A31C445223ED1047006C8C9D /* UserDefaults constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults constants.swift"; sourceTree = "<group>"; };
 		A32E3E9423AADC0A00AD1D95 /* BoardSquare + Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoardSquare + Image.swift"; sourceTree = "<group>"; };
 		A32E3E9723AADC4000AD1D95 /* NativeImage + SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NativeImage + SwiftUI.swift"; sourceTree = "<group>"; };
 		A32E3E9923AAE28400AD1D95 /* BoardSquare + Realized Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoardSquare + Realized Style.swift"; sourceTree = "<group>"; };
@@ -167,6 +174,7 @@
 				A3B7110623BDB0C9003D280C /* SevenSegmentDisplay in Frameworks */,
 				A35D2856239F81DC0006B72B /* OptionalTools in Frameworks */,
 				A3FE566023A0C0DA00309B2D /* SafePointer in Frameworks */,
+				A31C445123EB989E006C8C9D /* UserDefault in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +188,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A31C444B23EB29EC006C8C9D /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				A31C444C23EB29FA006C8C9D /* States */,
+			);
+			path = Serialization;
+			sourceTree = "<group>";
+		};
+		A31C444C23EB29FA006C8C9D /* States */ = {
+			isa = PBXGroup;
+			children = (
+				A31C444D23EB2A18006C8C9D /* OobeState.swift */,
+			);
+			path = States;
+			sourceTree = "<group>";
+		};
+		A31C445423ED2DFD006C8C9D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A31C445223ED1047006C8C9D /* UserDefaults constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		A32E3E9623AADC3000AD1D95 /* CrossKitTypes */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				A3C69F502397A13F00520B2F /* ContentView.swift */,
+				A31C444923EA877F006C8C9D /* FirstTimeDisclaimerView.swift */,
 				A3EBCE7823CA8C920036EFFD /* General Controls */,
 				A39B5E5223C9AEA800049357 /* New Game Setup */,
 				A351C6A523AD8BB800097718 /* Board */,
@@ -458,10 +491,12 @@
 				A39B5E5123C9AE7900049357 /* GUI */,
 				A38D5B7123C910120036B59D /* TUI */,
 				A3C158ED23A1802600A95B20 /* Utilities */,
+				A31C444B23EB29EC006C8C9D /* Serialization */,
 				A3C69F722397A1BF00520B2F /* Data Structures */,
 				A39B86C4239EE55300579A89 /* Debugging */,
 				A37D06DA239DECB000C88026 /* Image Conveniences */,
 				A3B3300C239A1CFD0034F236 /* Theming */,
+				A31C445423ED2DFD006C8C9D /* Constants */,
 				A37D06D7239DDBD100C88026 /* Extensions */,
 			);
 			path = "Shared Cross-Platform";
@@ -532,6 +567,7 @@
 				A3FE565F23A0C0DA00309B2D /* SafePointer */,
 				A31A60D923A88D4500C465A9 /* TODO */,
 				A3B7110523BDB0C9003D280C /* SevenSegmentDisplay */,
+				A31C445023EB989E006C8C9D /* UserDefault */,
 			);
 			productName = "Swift Mines";
 			productReference = A3C69F4B2397A13F00520B2F /* Swift Mines.app */;
@@ -592,6 +628,7 @@
 				A3FE565E23A0C0DA00309B2D /* XCRemoteSwiftPackageReference "Swift-Safe-Pointer" */,
 				A31A60D823A88D4500C465A9 /* XCRemoteSwiftPackageReference "Swift-TODO" */,
 				A3B7110423BDB0C9003D280C /* XCRemoteSwiftPackageReference "SwiftUI-SevenSegmentDisplay" */,
+				A31C444F23EB989E006C8C9D /* XCRemoteSwiftPackageReference "UserDefault" */,
 			);
 			productRefGroup = A3C69F4C2397A13F00520B2F /* Products */;
 			projectDirPath = "";
@@ -628,6 +665,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A31C444E23EB2A18006C8C9D /* OobeState.swift in Sources */,
 				A38CC46923A4AADF00D42F69 /* MutableCollection Extensions.swift in Sources */,
 				A39B86C6239EE56B00579A89 /* Assertion Debugging.swift in Sources */,
 				A3F7C23C23C1A4990006AB7D /* SafePointer Extensions.swift in Sources */,
@@ -663,6 +701,7 @@
 				A3EBCE7A23CA8CA50036EFFD /* NumberPicker.swift in Sources */,
 				A3B3300B239A0D9A0034F236 /* BoardSquare + random.swift in Sources */,
 				A351C69523AC313800097718 /* Function Types.swift in Sources */,
+				A31C444A23EA877F006C8C9D /* FirstTimeDisclaimerView.swift in Sources */,
 				A3C8B3F723CD5C860080017F /* NumberFormatter Extensions.swift in Sources */,
 				A3B330032398D6D50034F236 /* BoardSquare + SwiftUI.swift in Sources */,
 				A39B5E5423C9AEC300049357 /* NewGameSetupView.swift in Sources */,
@@ -677,6 +716,7 @@
 				A3C69F4F2397A13F00520B2F /* AppDelegate.swift in Sources */,
 				A3B3300E239A1D060034F236 /* Style.swift in Sources */,
 				A39B5E4D23C97E3800049357 /* BoardView.swift in Sources */,
+				A31C445323ED1047006C8C9D /* UserDefaults constants.swift in Sources */,
 				A3C8B3F923CD99CB0080017F /* NativeButton.swift in Sources */,
 				A31A60A923A8494400C465A9 /* IndexPath Extensions.swift in Sources */,
 				A39B5E4E23C97E3B00049357 /* BoardSquareView.swift in Sources */,
@@ -968,6 +1008,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		A31C444F23EB989E006C8C9D /* XCRemoteSwiftPackageReference "UserDefault" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/juliand665/UserDefault.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		A35D2854239F81DC0006B72B /* XCRemoteSwiftPackageReference "Swift-Optional-Tools" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RougeWare/Swift-Optional-Tools.git";
@@ -1032,6 +1080,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A31A60D823A88D4500C465A9 /* XCRemoteSwiftPackageReference "Swift-TODO" */;
 			productName = TODO;
+		};
+		A31C445023EB989E006C8C9D /* UserDefault */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A31C444F23EB989E006C8C9D /* XCRemoteSwiftPackageReference "UserDefault" */;
+			productName = UserDefault;
 		};
 		A35D2855239F81DC0006B72B /* OptionalTools */ = {
 			isa = XCSwiftPackageProductDependency;
