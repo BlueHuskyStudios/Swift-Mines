@@ -18,6 +18,8 @@ class AppDelegate: NSObject {
 
     var window: NSWindow!
     
+    @IBOutlet var newGameMenuItem: NSMenuItem!
+    
     var overallAppState = OverallAppState(
         game: Game.new(size: Board.Size(width: 10, height: 10))
     )
@@ -67,6 +69,11 @@ private extension AppDelegate {
     
     @IBAction func didSelectNewGameMenuItem(_ sender: NSMenuItem) {
         overallAppState.currentScreen = .newGameSetup
+    }
+    
+    
+    @IBAction func didSelectRestartMenuItem(_ sender: NSMenuItem) {
+        overallAppState.game.startNewGame()
     }
     
     

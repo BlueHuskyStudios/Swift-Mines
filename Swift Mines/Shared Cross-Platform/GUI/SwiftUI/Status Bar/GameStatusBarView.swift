@@ -70,6 +70,7 @@ public struct GameStatusBarView: View {
                                         leading: geometry.size.minSideLength / 16,
                                         bottom: 0,
                                         trailing: geometry.size.minSideLength / 16))
+                    // TODO: .tooltip("Click to restart the game")
                 
                 SevenSegmentReadout(resembling: self.secondsReadout, skew: .traditional)
                     .eachCharacterAspectRatio(perCharacterRatio)

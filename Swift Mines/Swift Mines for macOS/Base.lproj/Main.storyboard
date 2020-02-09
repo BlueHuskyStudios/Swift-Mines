@@ -69,6 +69,11 @@
                                                 <action selector="didSelectNewGameMenuItem:" target="Voe-Tx-rLC" id="Jx4-wh-muW"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Restart" keyEquivalent="r" id="APg-eA-k6N">
+                                            <connections>
+                                                <action selector="didSelectRestartMenuItem:" target="Voe-Tx-rLC" id="a7b-WQ-2Po"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Open…" hidden="YES" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
                                                 <action selector="openDocument:" target="Ady-hI-5gd" id="bVn-NM-KNZ"/>
