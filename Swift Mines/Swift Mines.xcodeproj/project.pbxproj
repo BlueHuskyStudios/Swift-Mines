@@ -16,6 +16,8 @@
 		A31C445123EB989E006C8C9D /* UserDefault in Frameworks */ = {isa = PBXBuildFile; productRef = A31C445023EB989E006C8C9D /* UserDefault */; };
 		A31C445323ED1047006C8C9D /* UserDefaults constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C445223ED1047006C8C9D /* UserDefaults constants.swift */; };
 		A31C445623ED2E0E006C8C9D /* URL Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C445523ED2E0E006C8C9D /* URL Constants.swift */; };
+		A31C445823EE8326006C8C9D /* Image Tinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C445723EE8326006C8C9D /* Image Tinting.swift */; };
+		A31C445A23EE8458006C8C9D /* Generated Image Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C445923EE8458006C8C9D /* Generated Image Cache.swift */; };
 		A32E3E9523AADC0A00AD1D95 /* BoardSquare + Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32E3E9423AADC0A00AD1D95 /* BoardSquare + Image.swift */; };
 		A32E3E9823AADC4000AD1D95 /* NativeImage + SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32E3E9723AADC4000AD1D95 /* NativeImage + SwiftUI.swift */; };
 		A32E3E9A23AAE28400AD1D95 /* BoardSquare + Realized Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32E3E9923AAE28400AD1D95 /* BoardSquare + Realized Style.swift */; };
@@ -100,6 +102,8 @@
 		A31C444D23EB2A18006C8C9D /* OobeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OobeState.swift; sourceTree = "<group>"; };
 		A31C445223ED1047006C8C9D /* UserDefaults constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults constants.swift"; sourceTree = "<group>"; };
 		A31C445523ED2E0E006C8C9D /* URL Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL Constants.swift"; sourceTree = "<group>"; };
+		A31C445723EE8326006C8C9D /* Image Tinting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Tinting.swift"; sourceTree = "<group>"; };
+		A31C445923EE8458006C8C9D /* Generated Image Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Generated Image Cache.swift"; sourceTree = "<group>"; };
 		A32E3E9423AADC0A00AD1D95 /* BoardSquare + Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoardSquare + Image.swift"; sourceTree = "<group>"; };
 		A32E3E9723AADC4000AD1D95 /* NativeImage + SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NativeImage + SwiftUI.swift"; sourceTree = "<group>"; };
 		A32E3E9923AAE28400AD1D95 /* BoardSquare + Realized Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoardSquare + Realized Style.swift"; sourceTree = "<group>"; };
@@ -270,8 +274,10 @@
 			isa = PBXGroup;
 			children = (
 				A37D06DB239DECD800C88026 /* Clear Square with Number Image.swift */,
+				A31C445923EE8458006C8C9D /* Generated Image Cache.swift */,
 				A39B86C7239EE95E00579A89 /* Swatches.swift */,
 				A39B86C9239EFF6C00579A89 /* Image Constants.swift */,
+				A31C445723EE8326006C8C9D /* Image Tinting.swift */,
 			);
 			path = "Image Conveniences";
 			sourceTree = "<group>";
@@ -678,6 +684,7 @@
 				A3B32FFC2398CE050034F236 /* Game.swift in Sources */,
 				A31A60A723A830A100C465A9 /* RangeReplaceableCollection Extensions.swift in Sources */,
 				A3FE565423A07E0200309B2D /* Collection Extensions.swift in Sources */,
+				A31C445823EE8326006C8C9D /* Image Tinting.swift in Sources */,
 				A37D06DC239DECD800C88026 /* Clear Square with Number Image.swift in Sources */,
 				A3CB7F2023C7C54800B82BDB /* OverallAppState.swift in Sources */,
 				A32EB78C23B6A2FB0045E16E /* Character Extensions.swift in Sources */,
@@ -713,6 +720,7 @@
 				A3B7110323BDAFC7003D280C /* GameStatusBarView.swift in Sources */,
 				A3C69F742397A1CF00520B2F /* Board.swift in Sources */,
 				A32E3E9523AADC0A00AD1D95 /* BoardSquare + Image.swift in Sources */,
+				A31C445A23EE8458006C8C9D /* Generated Image Cache.swift in Sources */,
 				A3C158F223A1815100A95B20 /* HasAlso + SwiftUI.swift in Sources */,
 				A3D5CE8A23B479C500F6FDEE /* Comparable Extensions.swift in Sources */,
 				A32EB78E23B6A9110045E16E /* UnicodeScalar Extensions.swift in Sources */,

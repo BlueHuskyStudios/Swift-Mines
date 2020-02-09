@@ -32,15 +32,15 @@ internal extension BoardSquare.Annotated {
             return .number(forClearSquareWithProximity: distance, size: UIntSize(size))
             
         case (.flagged(style: .sure), _):
-            imageWhichNeedsToBeResized = .minesIcon(.flag)
+            imageWhichNeedsToBeResized = .minesIcon(.flag, size: .init(size))
             
         case (.flagged(style: .unsure), _):
-            imageWhichNeedsToBeResized = .minesIcon(.questionMark)
+            imageWhichNeedsToBeResized = .minesIcon(.questionMark, size: .init(size))
             
         case (.revealed(reason: .manual), .mine):
             switch self.base.content {
             case .mine:
-                imageWhichNeedsToBeResized = .minesIcon(.detonatedMine)
+                imageWhichNeedsToBeResized = .minesIcon(.detonatedMine, size: .init(size))
                 
             case .clear:
                 assertionFailure("Clear square with revealed mine")
@@ -51,7 +51,7 @@ internal extension BoardSquare.Annotated {
              (.revealed(reason: .chainReaction), .mine):
             switch self.base.content {
             case .mine:
-                imageWhichNeedsToBeResized = .minesIcon(.revealedMine)
+                imageWhichNeedsToBeResized = .minesIcon(.revealedMine, size: .init(size))
                 
             case .clear:
                 assertionFailure("Clear square with revealed mine")

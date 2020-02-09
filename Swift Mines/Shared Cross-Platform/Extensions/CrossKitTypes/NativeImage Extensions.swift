@@ -21,6 +21,24 @@ import AppKit
 
 
 public extension NativeImage {
+    #if canImport(UIKit) || canImport(WatchKit)
+    /// The default "flipped" drawing context of the current target OS. That is, whether to flip the Y axis of the
+    /// graphics context so that positive is downward. This is `false` in macOS with AppKit, and `true` in the newer
+    /// Apple platforms UIKit and WatchKit.
+    static let defaultFlipped = true
+    #elseif canImport(AppKit)
+    /// The default "flipped" drawing context of the current target OS. That is, whether to flip the Y axis of the
+    /// graphics context so that positive is downward. This is `false` in macOS with AppKit, and `true` in the newer
+    /// Apple platforms UIKit and WatchKit.
+    static let defaultFlipped = false
+    #else
+    #error("Could not infer default 'flipped' drawing context for the target OS")
+    #endif
+}
+
+
+
+public extension NativeImage {
     
     /// Executes the given function while this image has draw context focus,
     /// and automatically unlocks that focus after the block is done
@@ -30,11 +48,13 @@ public extension NativeImage {
     ///              Defaults to the platform's default.
     ///   - operation: The operation to perform while this image has context focus
     ///
+    /// - Returns: Anything the given function throws
+    ///
     /// - Throws: Anything the given function throws
-    func withFocus(do operation: (_ image: NativeImage) throws -> Void) rethrows {
+    func withFocus<Return>(do operation: (_ image: NativeImage) throws -> Return) rethrows -> Return {
         self.lockFocus()
-        try operation(self)
-        self.unlockFocus()
+        defer { self.unlockFocus() }
+        return try operation(self)
     }
     
     
@@ -46,27 +66,56 @@ public extension NativeImage {
     ///              Defaults to the platform's default.
     ///   - operation: The operation to perform while this image has context focus
     ///
+    /// - Returns: Anything the given function throws
+    ///
     /// - Throws: Anything the given function throws
-    func withFocus(flipped: Bool, do operation: (_ image: NativeImage) throws -> Void) rethrows {
+    func withFocus<Return>(flipped: Bool, do operation: (_ image: NativeImage) throws -> Return) rethrows -> Return {
         self.lockFocusFlipped(flipped)
-        try operation(self)
-        self.unlockFocus()
+        defer { self.unlockFocus() }
+        return try operation(self)
     }
     
     
     /// Allows you to perform a contextualized draw operation with the current context on this image. The image will
     /// have focus lock while in the given function.
     ///
-    /// - Parameter operation: The contextualized operation to perform while this image has focus lock
-    func inCurrentGraphicsContext(do operation: (_ image: NativeImage, _ context: CGContext) throws -> Void) rethrows {
-        try withFocus { focusedImage in
-            guard let context = CGContext.current else {
-                return
+    /// - Parameters:
+    ///   - flipped:   _optional_ - Whether to flip the Y axis of the graphics context. Defaults to `defaultFlipped`.
+    ///   - withFocus: _optional_ - Whether to lock focus on the current image before entering the given function.
+    ///                Defaults to `true`.
+    ///   - operation: The contextualized operation to perform while this image has focus lock
+    ///
+    /// - Returns: Anything the given function throws
+    ///
+    /// - Throws: Anything the given function throws
+    func inCurrentGraphicsContext<Return>(flipped: Bool = defaultFlipped,
+                                          withFocus: Bool = true,
+                                          do operation: OperationInCurrentGraphicsContext<Return>
+    ) rethrows -> Return {
+        
+        func handleContextSwitch(_ image: NativeImage) throws -> Return {
+            guard let gc = CGContext.current else {
+                return try operation(image, nil)
             }
             
-            try operation(focusedImage, context)
+            let priorNsgc = NSGraphicsContext.current
+            defer { NSGraphicsContext.current = priorNsgc }
+            NSGraphicsContext.current = NSGraphicsContext(cgContext: gc, flipped: false)
+            
+            return try operation(image, gc)
+        }
+        
+        if withFocus {
+            return try self.withFocus(do: handleContextSwitch)
+        }
+        else {
+            return try handleContextSwitch(self)
         }
     }
+    
+    
+    
+    typealias OperationInCurrentGraphicsContext<Return> = (_ image: NativeImage, _ context: CGContext?) throws -> Return
 }
 
 

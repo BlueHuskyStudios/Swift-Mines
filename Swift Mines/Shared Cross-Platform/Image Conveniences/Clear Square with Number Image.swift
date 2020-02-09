@@ -22,6 +22,15 @@ import AppKit.NSParagraphStyle
 
 public extension NativeImage {
     
+    @inline(__always)
+    private static var cache: NSCache<GeneratedImageCacheKey, NativeImage> { .generatedBoardImages }
+    
+    
+    private static func cacheKey(proximity: BoardSquare.MineProximity, size: UIntSize) -> GeneratedImageCacheKey {
+        GeneratedImageCacheKey(representedConcept: .generatedNumber(proximity: proximity), size: size)
+    }
+    
+    
     /// Generates an image with the number appropriate for the given distance from a mine.
     ///
     /// - Note: A cache is kept so that if such an image has already been generated, it is returned
@@ -47,7 +56,7 @@ public extension NativeImage {
     /// - Returns: A cached image of the given size representing the given distance from a mine, or `nil` if no such
     ///            image has been cached
     private static func cachedNumberImage(forClearSquareWithProximity proximity: BoardSquare.MineProximity, size: UIntSize) -> NativeImage? {
-        cacheForImagesOfBoardSquareNumbers.object(forKey: NumberImageCacheKey(proximity: proximity, size: size))
+        cache.object(forKey: cacheKey(proximity: proximity, size: size))
     }
     
     
@@ -60,9 +69,9 @@ public extension NativeImage {
     /// - Returns: An image of the given size representing the given distance from a mine
     private static func generateAndCacheNumberImage(forClearSquareWithProximity proximity: BoardSquare.MineProximity, size: UIntSize) -> NativeImage {
         let image = generateNumberImage(forClearSquareWithProximity: proximity, size: size)
-        cacheForImagesOfBoardSquareNumbers.setObject(
+        cache.setObject(
             image,
-            forKey: NumberImageCacheKey(proximity: proximity, size: size),
+            forKey: cacheKey(proximity: proximity, size: size),
             cost: cost(forGeneratedNumberImageOfSize: size)
         )
         return image
@@ -141,67 +150,5 @@ private extension BoardSquare.MineProximity {
     /// The name of a color asset to use to represent this distance
     private var colorName: NativeColor.Name {
         return "Color for mine distance \(rawValue)"
-    }
-}
-
-
-
-// MARK: - Cache
-
-/// The app-wide cache of generated number images
-private let cacheForImagesOfBoardSquareNumbers: NSCache<NumberImageCacheKey, NativeImage> = {
-    let cache = NSCache<NumberImageCacheKey, NativeImage>()
-    cache.totalCostLimit = maxCacheCost
-    return cache
-}()
-
-
-// Some convenient constants for use in the cache. These should be self-explanatory. If they're not, please file a bug:
-// https://GitHub.com/BenLeggiero/Swift-Mines/issues/new
-
-private let presumedTallestScreenResolution = 2880
-private let presumedEasiestBoardNumberOfVerticalSquares = 10
-private let presumedBiggestSquareVerticalResolution = presumedTallestScreenResolution / presumedEasiestBoardNumberOfVerticalSquares
-private let presumedBiggestSquarePixelCount = presumedBiggestSquareVerticalResolution * presumedBiggestSquareVerticalResolution
-private let presumedMostPixelsToStoreEightSquareImages = presumedBiggestSquarePixelCount * 8
-private let maxCacheCost = Int(CGFloat(presumedMostPixelsToStoreEightSquareImages) * 1.2)
-
-
-
-// MARK: NumberImageCacheKey
-
-/// A key used to store and fetch a number image into the number image cache
-private class NumberImageCacheKey {
-    
-    /// The proximity the image represents
-    let proximity: BoardSquare.MineProximity
-    
-    /// The dimensions of the image
-    let size: UIntSize
-    
-    
-    /// Creates a new cache key
-    init(proximity: BoardSquare.MineProximity,
-         size: UIntSize) {
-        self.proximity = proximity
-        self.size = size
-    }
-}
-
-
-
-extension NumberImageCacheKey: Equatable {
-    static func == (lhs: NumberImageCacheKey, rhs: NumberImageCacheKey) -> Bool {
-        return lhs.proximity == rhs.proximity
-            && lhs.size == rhs.size
-    }
-}
-
-
-
-extension NumberImageCacheKey: Hashable {
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(proximity)
-        hasher.combine(size)
     }
 }

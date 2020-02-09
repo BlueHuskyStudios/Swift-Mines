@@ -22,6 +22,7 @@ public extension NativeImage {
     static func swatch(color: NativeColor, size: UIntSize = UIntSize(width: 1, height: 1)) -> Self {
         let `self` = self.init(size: .init(size))
         self.inCurrentGraphicsContext { `self`, context in
+            guard let context = context else { return }
             context.setFillColor(color.cgColor)
             context.fill(CGRect(origin: .zero, size: self.size))
         }
