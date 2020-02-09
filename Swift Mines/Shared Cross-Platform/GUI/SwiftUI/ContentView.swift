@@ -42,6 +42,7 @@ public struct ContentView: View {
             
             Spacer(minLength: 0)
         }
+        .frame(minWidth: 160, idealWidth: 480, minHeight: 150, idealHeight: 300, alignment: .center)
         .disabled(self.overallAppState.currentScreen == .newGameSetup)
         .sheet(
             isPresented: Binding(
