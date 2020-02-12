@@ -3,7 +3,7 @@
 //  Swift Mines for macOS
 //
 //  Created by Ben Leggiero on 2020-02-04.
-//  Copyright © 2020 Ben Leggiero. All rights reserved.
+//  Copyright © 2020 Ben Leggiero BH-1-PS
 //
 
 import SwiftUI
