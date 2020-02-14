@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 
 
@@ -28,6 +29,15 @@ public class OverallAppState: ObservableObject {
     
     init(game: Game) {
         self.game = game
+    }
+}
+
+
+
+public extension OverallAppState {
+    /// Returns a publisher that publishes events whenever the current screen changes
+    func currentScreenPublisher() -> Published<AppScreen>.Publisher {
+        return _currentScreen.projectedValue
     }
 }
 

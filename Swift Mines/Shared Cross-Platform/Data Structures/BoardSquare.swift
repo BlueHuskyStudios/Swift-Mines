@@ -13,7 +13,9 @@ import RectangleTools
 
 // MARK: - Protocol
 
+/// Defines what a game board square data structure looks like and does
 public protocol BoardSquareProtocol {
+    
     /// The content of the board square, whether or not the square has been revealed
     var content: Content { get }
 }
@@ -277,6 +279,7 @@ extension BoardSquare.Annotated: BoardSquareProtocol {
 // MARK: Identifiable
 
 extension BoardSquare.Annotated: Identifiable {
+    
     /// Allows this square to be identified across runtimes
     public var id: UUID { base.id }
 }

@@ -19,6 +19,9 @@ import RectangleTools
 
 internal extension BoardSquare.Annotated {
     
+    /// Creates an image of the given size which is appropriate for presenting on the UI
+    ///
+    /// - Parameter size: The dimensions of the image to return
     func imageForUi(size: CGSize) -> NativeImage {
         
         let imageWhichNeedsToBeResized: NativeImage

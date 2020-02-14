@@ -15,15 +15,27 @@ import SafePointer
 
 // MARK: - Protocol
 
+/// Defines what a game board data structure looks like and does
 public protocol BoardProtocol {
+    
+    /// The kind of square that fills the board
     associatedtype Square: BoardSquareProtocol
     
+    
+    
+    /// The actual content of the board
     var content: [[Square]] { get }
     
+    
+    /// Finds the neighboring squares around the given square
+    ///
+    /// - Parameter location: The square which has neighbors
+    /// - Returns: The neightbors around `location`
     func neighbors(ofSquareAt location: Location) -> Neighbors
     
     
     
+    /// Neighbors around a square on this board
     typealias Neighbors = SquareNeighbors<Square>
 }
 
@@ -38,6 +50,13 @@ public extension BoardProtocol {
     }
     
     
+    /// Finds the neighboring squares around the given square
+    ///
+    /// - Parameters:
+    ///   - rowIndex:    The index of the row containing the square which has neighbors
+    ///   - columnIndex: The index of the column containing the square which has neighbors
+    ///
+    /// - Returns: The neightbors around `(columnIndex, rowIndex)`
     func neighbors(ofSquareAtRow rowIndex: Int, column columnIndex: Int) -> Neighbors {
         Neighbors(
             top:         content[orNil: rowIndex - 1]?[orNil: columnIndex    ],
@@ -53,7 +72,12 @@ public extension BoardProtocol {
     
     
     
+    /// The kind of coordinates of a square on a board
     typealias Location = UIntPoint
+    
+    
+    
+    /// The kind of size of a board
     typealias Size = UIntSize
 }
 
@@ -139,7 +163,8 @@ public extension Board {
 
 public extension Board.Annotated {
     
-    var totalNumberOfMines: UInt {
+    /// Finds the total number of squares on this board which have mines
+    func totalNumberOfMines() -> UInt {
         return UInt(
             self
                 .content
@@ -275,6 +300,9 @@ public extension Board {
     }
     
     
+    /// Computes the metadata of the content of this board
+    ///
+    /// - Parameter baseStyle: The style to apply to the squares in this board
     private func annotatedContent(baseStyle: Style) -> [[BoardSquare.Annotated]] {
         content
             .enumerated()
@@ -291,6 +319,13 @@ public extension Board {
     }
     
     
+    /// Annotates the given square, noting its current location
+    ///
+    /// - Parameters:
+    ///   - square:      The square to annotate
+    ///   - rowIndex:    The index of the current row that the square is in
+    ///   - columnIndex: The index of the current column that the square is in
+    ///   - style:       The style to apply to the square
     private func annotate(square: BoardSquare,
                           atRow rowIndex: Int,
                           column columnIndex: Int,
@@ -309,6 +344,12 @@ public extension Board {
     }
     
     
+    /// Uses the given square and its location to discover the context in which it sits
+    ///
+    /// - Parameters:
+    ///   - square:      The square whose context is needed
+    ///   - rowIndex:    The index of the current row that the square is in
+    ///   - columnIndex: The index of the current column that the square is in
     private func findMineContext(ofSquare square: BoardSquare,
                                  atRow rowIndex: Int,
                                  column columnIndex: Int
@@ -334,19 +375,36 @@ extension Board: BoardProtocol {}
 
 // MARK: - SquareNeighbors
 
+/// The neighboring squares around a board square
 public struct SquareNeighbors<NeighborType: BoardSquareProtocol> {
     
+    /// The neighbor directly above a square
     public let top: Neighbor
+    
+    /// The neighbor above and to the right of a square
     public let topRight: Neighbor
+    
+    /// The neighbor to the right of a square
     public let right: Neighbor
+    
+    /// The neighbor below and to the right of a square
     public let bottomRight: Neighbor
+    
+    /// The neighbor below a square
     public let bottom: Neighbor
+    
+    /// The neighbor below and to the left of a square
     public let bottomLeft: Neighbor
+    
+    /// The neighbor to the left of a square
     public let left: Neighbor
+    
+    /// The neighbor above and to the left of a square
     public let topLeft: Neighbor
     
     
     
+    /// The kind of square which might neighbor another
     public typealias Neighbor = NeighborType?
 }
 
@@ -427,6 +485,10 @@ extension SquareNeighbors: Sequence {
 
 public extension Board {
     
+    /// Just generates a random board. Useful only to preview different square types; should never be used in play.
+    /// For that, see `generateNewBoard`
+    ///
+    /// - Parameter size: The size of the randomized board
     static func random(size: Size) -> Board {
         return Board(content: size.map2D { _ in
             BoardSquare.random()

@@ -61,7 +61,7 @@ public struct Game {
             id: id,
             board: board,
             playState: playState,
-            totalNumberOfMines: board.totalNumberOfMines
+            totalNumberOfMines: board.totalNumberOfMines()
         )
     }
 }
@@ -184,11 +184,7 @@ public extension Game {
             
             switch action {
             case .dig:
-                
-//                if board.content[location].mineContext != .clear(distance: .farFromMine) {
-                    regenerateBoard(disallowingMinesNear: location)
-//                }
-                
+                regenerateBoard(disallowingMinesNear: location)
                 dig(at: location)
                 
             case .placeFlag(let style):
@@ -208,7 +204,7 @@ public extension Game {
     /// - Parameter location: The location where to dig
     private mutating func dig(at location: UIntPoint) {
         
-        defer { evaluateWinState() }
+        defer { winIfGameIsOver() }
         
         print("Digging at", location)
         let revealedSquare = board.revealSquare(at: location, reason: .manual)
@@ -240,7 +236,7 @@ public extension Game {
     
     
     /// Evaluates whether the user has won the game. If the user has won, the state is mutated to reflect that win
-    private mutating func evaluateWinState() {
+    private mutating func winIfGameIsOver() {
         switch playState {
         case .notStarted,
              .win(startDate: _, winDate: _),
@@ -281,9 +277,6 @@ public extension Game {
     ///   - style:    The style of the flag to place
     ///   - location: The location where the flag should be placed
     private mutating func placeFlag(style: NextFlagStyle, at location: UIntPoint) {
-        
-        defer { evaluateWinState() }
-        
         switch style {
         case .specific(let style):
             board.content[location].placeFlag(style: style)

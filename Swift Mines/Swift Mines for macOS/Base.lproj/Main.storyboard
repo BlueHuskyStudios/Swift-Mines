@@ -693,7 +693,9 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Swift_Mines" customModuleProvider="target">
                     <connections>
                         <outlet property="didSelectNewGameMenuItem" destination="Was-JA-tGl" id="Q1p-hL-JxG"/>
+                        <outlet property="gameMenu" destination="bib-Uj-vzu" id="W4P-K6-mnC"/>
                         <outlet property="newGameMenuItem" destination="Was-JA-tGl" id="XCc-RB-6wx"/>
+                        <outlet property="restartGameMenuItem" destination="APg-eA-k6N" id="Cr4-aq-R77"/>
                     </connections>
                 </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>

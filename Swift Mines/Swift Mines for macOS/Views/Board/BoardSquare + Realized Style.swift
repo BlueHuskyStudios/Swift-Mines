@@ -11,6 +11,7 @@ import CrossKitTypes
 
 
 internal extension BoardSquare.Annotated {
+    /// Uses the square, its inherited style, and its current fields, to determine the best color to show behind it
     func appropriateBackgroundColor() -> NativeColor {
         switch self.base.externalRepresentation {
         case .blank,
