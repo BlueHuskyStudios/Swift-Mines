@@ -9,14 +9,13 @@
 import Foundation
 import RectangleTools
 import MultiplicativeArithmetic
-import TODO
 
 
 
 public extension IndexPath {
     
     // TODO: Test
-    /// Converts this index path into a point in the given size
+    /// Converts this index path into a point in the given size, scanline-style
     ///
     /// ```
     ///  y x→  0   1   2
@@ -29,8 +28,8 @@ public extension IndexPath {
     /// ```
     ///
     /// - Parameters:
-    ///   - size:               <#size description#>
-    ///   - sectionRequirement: <#sectionRequirement description#>
+    ///   - size:               The overall size of the object which is using the `IndexPath`
+    ///   - sectionRequirement: Your requirement for how the point is chosen
     func asPoint<I>(
         in size: BinaryIntegerSize<I>,
         sectionRequirement: AsPointSectionBehavior
@@ -52,6 +51,10 @@ public extension IndexPath {
         let rowIndex = unrolledIndex / size.height
         
         
+        /// Implements the behavior for when the user chooses `.onlyAllowOneParticularSection` as the
+        /// `sectionRequirement`. See the documentation for `.onlyAllowOneParticularSection` for more.
+        ///
+        /// - Parameter allowedSectionIndex: The index which is the only one that is allowed
         func onlyAllowingOneParticularSection(allowedSectionIndex: Int) -> Point? {
             guard section == allowedSectionIndex else {
                 return nil
@@ -61,20 +64,22 @@ public extension IndexPath {
         }
         
         
+        /// Implements the behavior for when the user chooses `.disregardSectionIndex` as the
+        /// `sectionRequirement`. See the documentation for `.disregardSectionIndex` for more.
         func disregardSectionIndex() -> Point? {
             Point(x: unrolledIndex % size.width,
                   y: unrolledIndex / size.height)
         }
         
         
-        func multiplyingUnrolledItemIndexBySectionNumber() -> Point? {
-            TODO("multiplyingUnrolledItemIndexBySectionNumber")
-        }
-        
-        
-        func multiplyingYIndexBySectionNumber() -> Point? {
-            TODO("multiplyingYIndexBySectionNumber")
-        }
+//        func multiplyingUnrolledItemIndexBySectionNumber() -> Point? {
+//            TODO("multiplyingUnrolledItemIndexBySectionNumber")
+//        }
+//
+//
+//        func multiplyingYIndexBySectionNumber() -> Point? {
+//            TODO("multiplyingYIndexBySectionNumber")
+//        }
         
         
         switch sectionRequirement {
