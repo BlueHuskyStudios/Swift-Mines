@@ -59,6 +59,7 @@
 		A3BCD78B23AEF98800346F05 /* CGAffineTransform Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BCD78A23AEF98800346F05 /* CGAffineTransform Extensions.swift */; };
 		A3BCD78E23AEFB6400346F05 /* Path Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BCD78D23AEFB6400346F05 /* Path Extensions.swift */; };
 		A3C10D8523F6128700C84474 /* UserDefaults extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C10D8423F6128700C84474 /* UserDefaults extensions.swift */; };
+		A3C10D8723F7CF1400C84474 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A3C10D8623F7CF1400C84474 /* README.md */; };
 		A3C158EF23A1803300A95B20 /* HasAlso.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C158EE23A1803300A95B20 /* HasAlso.swift */; };
 		A3C158F223A1815100A95B20 /* HasAlso + SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C158F123A1815100A95B20 /* HasAlso + SwiftUI.swift */; };
 		A3C69F4F2397A13F00520B2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C69F4E2397A13F00520B2F /* AppDelegate.swift */; };
@@ -140,6 +141,7 @@
 		A3BCD78A23AEF98800346F05 /* CGAffineTransform Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform Extensions.swift"; sourceTree = "<group>"; };
 		A3BCD78D23AEFB6400346F05 /* Path Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Path Extensions.swift"; sourceTree = "<group>"; };
 		A3C10D8423F6128700C84474 /* UserDefaults extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults extensions.swift"; sourceTree = "<group>"; };
+		A3C10D8623F7CF1400C84474 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		A3C158EE23A1803300A95B20 /* HasAlso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasAlso.swift; sourceTree = "<group>"; };
 		A3C158F123A1815100A95B20 /* HasAlso + SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HasAlso + SwiftUI.swift"; sourceTree = "<group>"; };
 		A3C69F4B2397A13F00520B2F /* Swift Mines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Mines.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -421,6 +423,7 @@
 		A3C69F422397A13F00520B2F = {
 			isa = PBXGroup;
 			children = (
+				A3C10D8623F7CF1400C84474 /* README.md */,
 				A3C69F752397A1DC00520B2F /* Shared Cross-Platform */,
 				A3C69F4D2397A13F00520B2F /* Swift Mines for macOS */,
 				A3C69F632397A14100520B2F /* Swift MinesTests */,
@@ -656,6 +659,7 @@
 			files = (
 				A3C69F592397A14100520B2F /* Main.storyboard in Resources */,
 				A3C69F562397A14100520B2F /* Preview Assets.xcassets in Resources */,
+				A3C10D8723F7CF1400C84474 /* README.md in Resources */,
 				A3C69F532397A14100520B2F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
