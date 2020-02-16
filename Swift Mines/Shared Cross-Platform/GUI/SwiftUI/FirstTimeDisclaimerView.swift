@@ -35,8 +35,8 @@ public struct FirstTimeDisclaimerView: View {
             HStack {
                 Spacer()
                 Toggle("Never show this again", isOn: Binding(
-                    get: { !self.overallAppState.oobeState.shouldShowDisclaimer },
-                    set: { self.overallAppState.oobeState.shouldShowDisclaimer = !$0 })
+                    get: { self.overallAppState.oobeState.skipFirstTimeDisclaimer },
+                    set: { self.overallAppState.oobeState.skipFirstTimeDisclaimer = $0 })
                 )
                 NativeButton("Play without \(phrase_secondaryClick)", keyEquivalent: .return) { self.overallAppState.currentScreen = .game }
             }

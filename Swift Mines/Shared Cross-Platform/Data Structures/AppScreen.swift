@@ -41,7 +41,7 @@ public extension AppScreen {
     
     /// The screen to show when the app starts. This takes into account any previous app state.
     static func appropriateStartupScreen() -> AppScreen {
-        if OobeState.shared.shouldShowDisclaimer {
+        if !OobeState.shared.skipFirstTimeDisclaimer {
             return .oobe
         }
         else {
