@@ -895,7 +895,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Swift Mines for macOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 26V9MK8TGP;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -906,7 +906,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.benleggiero.Swift-Mines";
 				PRODUCT_NAME = "Swift Mines";
 				SWIFT_VERSION = 5.0;
@@ -921,7 +921,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Swift Mines for macOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 26V9MK8TGP;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -932,7 +932,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.benleggiero.Swift-Mines";
 				PRODUCT_NAME = "Swift Mines";
 				SWIFT_VERSION = 5.0;
