@@ -175,8 +175,13 @@ public extension Game {
         switch playState {
         case .playing:
             switch action {
-            case .dig: dig(at: location)
-            case .placeFlag(let style): placeFlag(style: style, at: location)
+            case .dig:
+                if !board.hasFlag(at: location) { // Don't dig where the user already thinks there's a mine
+                    dig(at: location)
+                }
+                
+            case .placeFlag(let style):
+                placeFlag(style: style, at: location)
             }
             
         case .notStarted:
