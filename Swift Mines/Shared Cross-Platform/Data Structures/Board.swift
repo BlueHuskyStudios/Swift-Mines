@@ -229,6 +229,16 @@ public extension Board.Annotated {
     }
     
     
+    /// Determines whether there is a flag at the given location
+    ///
+    /// - Parameters:
+    ///   - location:  The location of a potential mine
+    ///   - flagStyle: _optional_ - The style of flag to look for. Defaults to `.sure`
+    func hasFlag(at location: UIntPoint, flagStyle: BoardSquare.Annotated.FlagStyle = .sure) -> Bool {
+        square(at: location).flagStyle == flagStyle
+    }
+    
+    
     /// Mutates this board so that the square at the given location is revealed
     ///
     /// - Parameter location: The location of the square to be revealed
