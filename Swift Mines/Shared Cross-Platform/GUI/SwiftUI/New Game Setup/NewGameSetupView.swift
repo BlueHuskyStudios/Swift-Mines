@@ -8,6 +8,13 @@
 
 import SwiftUI
 import SafePointer
+import CrossKitTypes
+
+
+
+/// The maxumum number of squares in a board that is considered reasonable. After this size, a messgae will be show
+/// warning the user that the game might run slowly.
+private let maxReasonableBoardArea: UInt = 750
 
 
 
@@ -74,6 +81,7 @@ public struct NewGameSetupView: View {
         }
         nonmutating set {
             customGameConfiguration.boardSize.width = newValue
+            currentlySelectedSquareCount = customGameConfiguration.boardSize.area
         }
     }
     
@@ -84,6 +92,7 @@ public struct NewGameSetupView: View {
         }
         nonmutating set {
             customGameConfiguration.boardSize.height = newValue
+            currentlySelectedSquareCount = customGameConfiguration.boardSize.area
         }
     }
     
@@ -101,6 +110,11 @@ public struct NewGameSetupView: View {
             customGameConfiguration.numberOfMines = .custom(count: UInt(newValue))
         }
     }
+    
+    
+    /// The number of squares in the currently-selected configuration
+    @State
+    private var currentlySelectedSquareCount: UInt = 0
     
     
     public init() {}
@@ -145,7 +159,7 @@ public struct NewGameSetupView: View {
                                              get: { self.selectedCustomBoardWidth },
                                              set: { self.selectedCustomBoardWidth = $0 }
                                          ),
-                                         range: 6...200)
+                                         range: 6...50)
                                 
                             
                             Text("×")
@@ -155,7 +169,7 @@ public struct NewGameSetupView: View {
                                              get: { self.selectedCustomBoardHeight },
                                              set: { self.selectedCustomBoardHeight = $0 }
                                          ),
-                                         range: 6...200)
+                                         range: 6...50)
                         }
                     }
                     
@@ -186,11 +200,19 @@ public struct NewGameSetupView: View {
                 .accessibility(label: Text("Custom Board settings"))
             }
             
-            Spacer(minLength: 24)
-                .frame(maxHeight: 24, alignment: .center)
+            Spacer(minLength: 8)
+                .frame(maxHeight: 8, alignment: .center)
+
+            Text("⚠️ A board with \(currentlySelectedSquareCount) squares may run slowly")
+                .lineLimit(nil)
+                .font(.caption)
+                .foregroundColor(Color(NativeColor.systemRed))
+                .multilineTextAlignment(TextAlignment.trailing)
+                .hidden(currentlySelectedSquareCount < maxReasonableBoardArea)
             
             HStack {
                 Spacer()
+                
                 NativeButton("Cancel", keyEquivalent: .escape) {
                     self.overallAppState.currentScreen = .game
                 }
