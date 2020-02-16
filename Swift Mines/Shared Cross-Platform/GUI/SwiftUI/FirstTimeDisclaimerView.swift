@@ -20,17 +20,15 @@ public struct FirstTimeDisclaimerView: View {
 
     public var body: some View {
         Form {
-            Text("Thanks for trying out this early version of Swift Mines!")
+            Text("Welcome to Swift Mines!")
                 .font(.title)
 
             Spacer()
                 .fixedSize()
 
             Text("""
-                This was written entirely in Swift, using the new SwiftUI platform! Since SwiftUI is in its early stages, it has a few odd quirks. One that you'll notice is that it does not yet support \(phrase_secondaryClicking). For now, you can hold Control and click, or perform a long-click, to place a flag. Once SwiftUI supports \(phrase_secondaryClicking), this game will be update to include that.
-
-                If you notice any other bugs, feel free to report them by selecting the "Feedback" item in the Help menu.
-
+                This was written entirely in Swift, using the new SwiftUI platform! Since SwiftUI is in its early stages, SwiftUI has a few odd quirks. One that you'll notice is that it does not yet support \(phrase_secondaryClicking). Instead, to place a flag, you can hold Control and click, or perform a long-click. Once SwiftUI supports \(phrase_secondaryClicking), this game will be updated to include that.
+                
                 Have fun!
                 """)
 
