@@ -27,7 +27,7 @@ public struct FirstTimeDisclaimerView: View {
                 .fixedSize()
 
             Text("""
-                This was written entirely in Swift, using the new SwiftUI platform! Since SwiftUI is in its early stages, SwiftUI has a few odd quirks. One that you'll notice is that it does not yet support \(phrase_secondaryClicking). Instead, to place a flag, you can hold Control and click, or perform a long-click. Once SwiftUI supports \(phrase_secondaryClicking), this game will be updated to include that.
+                This was written entirely in Swift, using the new SwiftUI platform! Since SwiftUI does not yet support \(phrase_secondaryClicking), to place a flag, you can hold Control and click, or perform a long-click. Once SwiftUI supports \(phrase_secondaryClicking), this game will be updated to include that.
                 
                 Have fun!
                 """)
