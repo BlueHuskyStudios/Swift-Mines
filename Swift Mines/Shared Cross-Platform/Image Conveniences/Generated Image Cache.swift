@@ -12,7 +12,7 @@ import CrossKitTypes
 
 
 // Some convenient constants for use in the cache. These should be self-explanatory. If they're not, please file a bug:
-// https://GitHub.com/BenLeggiero/Swift-Mines/issues/new
+// https://GitHub.com/BlueHuskyStudios/Swift-Mines/issues/new
 
 private let presumedTallestScreenResolution = 2880
 private let presumedEasiestBoardNumberOfVerticalSquares = 4
