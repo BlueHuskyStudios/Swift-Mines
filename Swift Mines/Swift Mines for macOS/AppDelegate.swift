@@ -99,30 +99,35 @@ private extension AppDelegate {
     
     
     /// The user selected the "Source Code" menu item in the "Swift Mines" menu
+    @objc(didSelectSourceCodeMenuItem:)
     @IBAction func didSelectSourceCodeMenuItem(sender: NSMenuItem) {
         NSWorkspace.shared.open(.repo)
     }
     
     
     /// The user selected the "New" menu item in the "Game" menu
+    @objc(didSelectNewGameMenuItem:)
     @IBAction func didSelectNewGameMenuItem(sender: NSMenuItem) {
         overallAppState.currentScreen = .newGameSetup
     }
     
     
     /// The user selected the "Restart" menu item in the "Game" menu
+    @objc(didSelectRestartMenuItem:)
     @IBAction func didSelectRestartMenuItem(sender: NSMenuItem) {
         overallAppState.game.startNewGame()
     }
     
     
     /// The user selected the "Feedback" menu item in the "Help" menu
+    @objc(didSelectFeedbackMenuItem:)
     @IBAction func didSelectFeedbackMenuItem(sender: NSMenuItem) {
         NSWorkspace.shared.open(.feedback)
     }
     
     
     /// The user selected the "Swift Mines Help" menu item in the "Help" menu
+    @objc(showHelp:)
     @IBAction func showHelp(sender: NSMenuItem) {
         NSWorkspace.shared.open(.help)
     }
