@@ -13,7 +13,7 @@ import Foundation
 public extension URL {
     
     /// The URL for the GitHub repo for this app
-    static let repo = URL(string: "https://github.com/BenLeggiero/Swift-Mines")
+    static let repo = URL(string: "https://github.com/BlueHuskyStudios/Swift-Mines")
         ?? URL(fileURLWithPath: "").also { assertionFailure("The repo URL the developer provided was invalid") }
     
     /// The URL for providing feedback about Swift Mines

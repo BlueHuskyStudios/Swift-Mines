@@ -7,9 +7,9 @@ A Minesweeper-like game written entirely in [Swift](https://Swift.org), using [S
 
 ## Bugs and TODOs ##
 
-Any [known bugs](https://github.com/BenLeggiero/Swift-Mines/issues?q=is%3Aopen+is%3Aissue+label%3Abug) and [future features](https://github.com/BenLeggiero/Swift-Mines/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement) will be listed in the Issues tab.
+Any [known bugs](https://github.com/BlueHuskyStudios/Swift-Mines/issues?q=is%3Aopen+is%3Aissue+label%3Abug) and [future features](https://github.com/BlueHuskyStudios/Swift-Mines/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement) will be listed in the Issues tab.
 
-If you notice any other bugs or have any other ideas, feel free to [report or suggest them](https://github.com/BenLeggiero/Swift-Mines/issues/new)!
+If you notice any other bugs or have any other ideas, feel free to [report or suggest them](https://github.com/BlueHuskyStudios/Swift-Mines/issues/new)!
 
 Have fun!
 
