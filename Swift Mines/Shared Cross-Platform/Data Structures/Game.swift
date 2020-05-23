@@ -8,6 +8,7 @@
 
 import Foundation
 import RectangleTools
+import AVKit
 
 
 
@@ -237,6 +238,7 @@ public extension Game {
         board.revealAll(reason: .chainReaction)
         board.content[detonatedMineLocation].base.reveal(reason: .manual)
         playState.lose()
+        SoundEffect.mineExplosion.play()
     }
     
     
