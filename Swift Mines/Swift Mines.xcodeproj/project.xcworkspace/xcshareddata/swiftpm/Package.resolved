@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "LazyContainers",
+        "repositoryURL": "https://github.com/RougeWare/Swift-Lazy-Patterns.git",
+        "state": {
+          "branch": null,
+          "revision": "df59ce2944def4b163f3d9b12c19c86b6f62e5e0",
+          "version": "3.0.2"
+        }
+      },
+      {
         "package": "MultiplicativeArithmetic",
         "repositoryURL": "https://github.com/RougeWare/Swift-MultiplicativeArithmetic.git",
         "state": {

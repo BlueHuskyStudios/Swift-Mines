@@ -60,6 +60,7 @@
 		A3BB286E23C51613009254E6 /* Board Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BB286D23C51613009254E6 /* Board Tests.swift */; };
 		A3BCD78B23AEF98800346F05 /* CGAffineTransform Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BCD78A23AEF98800346F05 /* CGAffineTransform Extensions.swift */; };
 		A3BCD78E23AEFB6400346F05 /* Path Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BCD78D23AEFB6400346F05 /* Path Extensions.swift */; };
+		A3BEE1F82479BB52000C9A37 /* LazyContainers in Frameworks */ = {isa = PBXBuildFile; productRef = A3BEE1F72479BB52000C9A37 /* LazyContainers */; };
 		A3C10D8523F6128700C84474 /* UserDefaults extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C10D8423F6128700C84474 /* UserDefaults extensions.swift */; };
 		A3C10D8723F7CF1400C84474 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A3C10D8623F7CF1400C84474 /* README.md */; };
 		A3C158EF23A1803300A95B20 /* HasAlso.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C158EE23A1803300A95B20 /* HasAlso.swift */; };
@@ -185,6 +186,7 @@
 				A3C69F782397A26400520B2F /* RectangleTools in Frameworks */,
 				A31A60DA23A88D4500C465A9 /* TODO in Frameworks */,
 				A3B7110623BDB0C9003D280C /* SevenSegmentDisplay in Frameworks */,
+				A3BEE1F82479BB52000C9A37 /* LazyContainers in Frameworks */,
 				A35D2856239F81DC0006B72B /* OptionalTools in Frameworks */,
 				A3FE566023A0C0DA00309B2D /* SafePointer in Frameworks */,
 				A31C445123EB989E006C8C9D /* UserDefault in Frameworks */,
@@ -604,6 +606,7 @@
 				A31A60D923A88D4500C465A9 /* TODO */,
 				A3B7110523BDB0C9003D280C /* SevenSegmentDisplay */,
 				A31C445023EB989E006C8C9D /* UserDefault */,
+				A3BEE1F72479BB52000C9A37 /* LazyContainers */,
 			);
 			productName = "Swift Mines";
 			productReference = A3C69F4B2397A13F00520B2F /* Swift Mines.app */;
@@ -665,6 +668,7 @@
 				A31A60D823A88D4500C465A9 /* XCRemoteSwiftPackageReference "Swift-TODO" */,
 				A3B7110423BDB0C9003D280C /* XCRemoteSwiftPackageReference "SwiftUI-SevenSegmentDisplay" */,
 				A31C444F23EB989E006C8C9D /* XCRemoteSwiftPackageReference "UserDefault" */,
+				A3BEE1F62479BB52000C9A37 /* XCRemoteSwiftPackageReference "Swift-Lazy-Patterns" */,
 			);
 			productRefGroup = A3C69F4C2397A13F00520B2F /* Products */;
 			projectDirPath = "";
@@ -1091,6 +1095,14 @@
 				kind = branch;
 			};
 		};
+		A3BEE1F62479BB52000C9A37 /* XCRemoteSwiftPackageReference "Swift-Lazy-Patterns" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RougeWare/Swift-Lazy-Patterns.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.2;
+			};
+		};
 		A3C69F762397A26400520B2F /* XCRemoteSwiftPackageReference "Swift-Rectangle-Tools" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RougeWare/Swift-Rectangle-Tools.git";
@@ -1147,6 +1159,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A3B7110423BDB0C9003D280C /* XCRemoteSwiftPackageReference "SwiftUI-SevenSegmentDisplay" */;
 			productName = SevenSegmentDisplay;
+		};
+		A3BEE1F72479BB52000C9A37 /* LazyContainers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3BEE1F62479BB52000C9A37 /* XCRemoteSwiftPackageReference "Swift-Lazy-Patterns" */;
+			productName = LazyContainers;
 		};
 		A3C69F772397A26400520B2F /* RectangleTools */ = {
 			isa = XCSwiftPackageProductDependency;

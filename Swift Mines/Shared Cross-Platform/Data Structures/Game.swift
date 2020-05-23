@@ -163,15 +163,6 @@ public extension Game {
 }
 
 
-let soundUrl = Bundle.main.url(forResource: "Mine Explosion", withExtension: "mp3")!
-let soundData = try! Data(contentsOf: soundUrl, options: Data.ReadingOptions.mappedIfSafe)
-let player: AVAudioPlayer = {
-    let player = try! AVAudioPlayer(data: soundData, fileTypeHint: AVFileType.mp3.rawValue)
-    player.prepareToPlay()
-    return player
-}()
-
-
 // MARK: Functionality
 
 public extension Game {
@@ -247,14 +238,7 @@ public extension Game {
         board.revealAll(reason: .chainReaction)
         board.content[detonatedMineLocation].base.reveal(reason: .manual)
         playState.lose()
-        
-//        do {
-//            player.prepareToPlay()
-            player.volume = 1
-            player.play()
-//        } catch {
-//            print("Failed to create AVAudioPlayer")
-//        }
+        SoundEffect.mineExplosion.play()
     }
     
     
