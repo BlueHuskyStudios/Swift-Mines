@@ -48,8 +48,6 @@ public extension IndexPath {
             return nil
         }
         
-        let rowIndex = unrolledIndex / size.height
-        
         
         /// Implements the behavior for when the user chooses `.onlyAllowOneParticularSection` as the
         /// `sectionRequirement`. See the documentation for `.onlyAllowOneParticularSection` for more.
