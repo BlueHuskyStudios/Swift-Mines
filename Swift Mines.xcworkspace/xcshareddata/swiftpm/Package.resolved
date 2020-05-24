@@ -1,0 +1,106 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CrossKitTypes",
+        "repositoryURL": "https://github.com/RougeWare/Swift-Cross-Kit-Types.git",
+        "state": {
+          "branch": null,
+          "revision": "d64faa8d5e988352dff45e03a13da4f90c3a70e5",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "LazyContainers",
+        "repositoryURL": "https://github.com/RougeWare/Swift-Lazy-Patterns.git",
+        "state": {
+          "branch": null,
+          "revision": "df59ce2944def4b163f3d9b12c19c86b6f62e5e0",
+          "version": "3.0.2"
+        }
+      },
+      {
+        "package": "MultiplicativeArithmetic",
+        "repositoryURL": "https://github.com/RougeWare/Swift-MultiplicativeArithmetic.git",
+        "state": {
+          "branch": null,
+          "revision": "38eee08151bbbefbbb422d02ff2c8da1a8b8bfe1",
+          "version": "1.3.0"
+        }
+      },
+      {
+        "package": "NonEmpty",
+        "repositoryURL": "https://github.com/pointfreeco/swift-nonempty.git",
+        "state": {
+          "branch": null,
+          "revision": "9ef8c4aea57b8da7fedd5303d29470ea2a00c08d",
+          "version": "0.2.2"
+        }
+      },
+      {
+        "package": "OptionalTools",
+        "repositoryURL": "https://github.com/RougeWare/Swift-Optional-Tools.git",
+        "state": {
+          "branch": null,
+          "revision": "1b20da886944b9d258064c9a0deaecc1843e9fe0",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "RectangleTools",
+        "repositoryURL": "https://github.com/RougeWare/Swift-Rectangle-Tools.git",
+        "state": {
+          "branch": null,
+          "revision": "0bc598fb555e9b7d0569e31a2c5b1b2fb84aab84",
+          "version": "2.6.0"
+        }
+      },
+      {
+        "package": "SafeCollectionAccess",
+        "repositoryURL": "https://github.com/RougeWare/Swift-Safe-Collection-Access.git",
+        "state": {
+          "branch": null,
+          "revision": "4d1ce51529e7bfb255bbbb20c479831dc8dd1908",
+          "version": "1.2.0"
+        }
+      },
+      {
+        "package": "SafePointer",
+        "repositoryURL": "https://github.com/RougeWare/Swift-Safe-Pointer.git",
+        "state": {
+          "branch": null,
+          "revision": "a71a39d19275d90e13f362c3d23163dc41318d85",
+          "version": "2.1.3"
+        }
+      },
+      {
+        "package": "TODO",
+        "repositoryURL": "https://github.com/RougeWare/Swift-TODO",
+        "state": {
+          "branch": null,
+          "revision": "8d227a03c493f1382a638bb7573510be24f789a3",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "SevenSegmentDisplay",
+        "repositoryURL": "https://github.com/RougeWare/SwiftUI-SevenSegmentDisplay.git",
+        "state": {
+          "branch": "feature/MVP",
+          "revision": "09b587a10c7d9ec67a1c0c182b1fd588c09176a6",
+          "version": null
+        }
+      },
+      {
+        "package": "UserDefault",
+        "repositoryURL": "https://github.com/juliand665/UserDefault.git",
+        "state": {
+          "branch": null,
+          "revision": "93255a96b54a3dd7d7b4aa6102721e249e847be5",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
