@@ -6,7 +6,9 @@
 //  Copyright © 2020 Ben Leggiero BH-1-PS
 //
 
-import Cocoa
+#if canImport(UIKit)
+import UIKit
+#endif
 import CrossKitTypes
 
 
@@ -16,8 +18,8 @@ public extension Board {
     /// The style of a board
     struct Style {
         
-        /// The color of the board
-        var baseColor: NativeColor
+        /// The color of things on the board, like flags
+        var accentColor: NativeColor
         
         /// The pattern which uses the base color
         var pattern: Pattern
@@ -51,12 +53,36 @@ extension Board.Style: Hashable {}
 
 public extension Board.Style {
     
-    static let `default` = plain
+    static let `default` = systemAccentColor
     
-    static let plain = Self.init(baseColor: .controlColor, pattern: .solid)
+    static let plain = Self.init(accentColor: .plainBaseColor, pattern: .solid)
     
-    static let systemAccentColor = Self.init(baseColor: .controlAccentColor, pattern: .solid)
+    static let systemAccentColor = Self.init(accentColor: .tintColor, pattern: .solid)
     
-    static let blue = Self.init(baseColor: .init(hue: (210/360), saturation: 0.74, brightness: 0.64, alpha: 1),
+    static let blue = Self.init(accentColor: .init(hue: (210/360),
+                                                 saturation: 0.74,
+                                                 brightness: 0.64,
+                                                 alpha: 1),
                                      pattern: .solid)
+}
+
+
+
+internal extension NativeColor {
+    static var plainBaseColor: NativeColor {
+        #if canImport(UIKit)
+            return .systemFill
+        #elseif canImport(AppKit)
+            return .controlColor
+        #endif
+    }
+    
+    
+    static var tintColor: NativeColor {
+        #if canImport(UIKit)
+        return UIView().tintColor
+        #elseif canImport(AppKit)
+        return .controlAccentColor
+        #endif
+    }
 }

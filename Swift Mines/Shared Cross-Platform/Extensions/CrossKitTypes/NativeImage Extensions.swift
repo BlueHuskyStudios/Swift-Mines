@@ -9,6 +9,7 @@
 import Foundation
 import CrossKitTypes
 import RectangleTools
+import SimpleLogging
 
 #if canImport(UIKit)
 import UIKit
@@ -32,13 +33,40 @@ public extension NativeImage {
     /// Apple platforms UIKit and WatchKit.
     static let defaultFlipped = false
     #else
-    #error("Could not infer default 'flipped' drawing context for the target OS")
+    #error("Could not infer default 'flipped' drawing context for the target platform")
     #endif
 }
 
 
 
 public extension NativeImage {
+    
+    #if canImport(UIKit)
+    convenience init(
+        size: CGSize,
+        flipped drawingHandlerShouldBeCalledWithFlippedContext: Bool,
+        drawingHandler: @escaping (CGRect) throws -> Bool
+    ) rethrows
+    {
+        guard let cgImage = CGImage.new(size: size) else {
+            fatalError("Could not make empty image")
+        }
+        
+        self.init(cgImage: cgImage)
+        do {
+            let rect = CGRect(origin: .zero, size: size)
+            try inCurrentGraphicsContext(withFocus: true) { image, context in
+                context?.draw(cgImage, in: rect)
+                _ = try drawingHandler(rect)
+            }
+        }
+        catch {
+            log(error: error)
+            throw error
+        }
+    }
+    #endif
+    
     
     /// Executes the given function while this image has draw context focus,
     /// and automatically unlocks that focus after the block is done
@@ -52,8 +80,10 @@ public extension NativeImage {
     ///
     /// - Throws: Anything the given function throws
     func withFocus<Return>(do operation: (_ image: NativeImage) throws -> Return) rethrows -> Return {
+        #if canImport(AppKit)
         self.lockFocus()
         defer { self.unlockFocus() }
+        #endif
         return try operation(self)
     }
     
@@ -70,8 +100,10 @@ public extension NativeImage {
     ///
     /// - Throws: Anything the given function throws
     func withFocus<Return>(flipped: Bool, do operation: (_ image: NativeImage) throws -> Return) rethrows -> Return {
+        #if canImport(AppKit)
         self.lockFocusFlipped(flipped)
         defer { self.unlockFocus() }
+        #endif
         return try operation(self)
     }
     
@@ -87,35 +119,99 @@ public extension NativeImage {
     ///
     /// - Returns: Anything the given function throws
     ///
-    /// - Throws: Anything the given function throws
-    func inCurrentGraphicsContext<Return>(flipped: Bool = defaultFlipped,
-                                          withFocus: Bool = true,
-                                          do operation: OperationInCurrentGraphicsContext<Return>
-    ) rethrows -> Return {
-        
-        func handleContextSwitch(_ image: NativeImage) throws -> Return {
-            guard let gc = CGContext.current else {
+    /// - Throws: Anything the given function throws, or `InCurrentGraphicsContextError`
+    func inCurrentGraphicsContext<Return>(
+        flipped: Bool = defaultFlipped,
+        withFocus: Bool = true,
+        do operation: OperationInGraphicsContext<Return>
+    ) rethrows -> Return
+    {
+        try inGraphicsContext(withFocus: withFocus) { image in
+            guard let currentContext = CGContext.current else {
                 return try operation(image, nil)
             }
             
+            #if canImport(AppKit)
             let priorNsgc = NSGraphicsContext.current
             defer { NSGraphicsContext.current = priorNsgc }
-            NSGraphicsContext.current = NSGraphicsContext(cgContext: gc, flipped: false)
+            NSGraphicsContext.current = NSGraphicsContext(cgContext: currentContext, flipped: flipped)
+            #else
+            UIGraphicsPushContext(currentContext)
+            defer { UIGraphicsPopContext() }
+            #endif
             
-            return try operation(image, gc)
+            return try operation(image, currentContext)
         }
-        
+    }
+    
+    
+    func inNewGraphicsContext<Return>(
+        flipped: Bool = defaultFlipped,
+        withFocus: Bool = true,
+        do operation: OperationInGraphicsContext<Return>
+    ) rethrows -> Return
+    {
+        try inGraphicsContext(withFocus: withFocus) { image in
+            guard let currentContext = CGContext.current else {
+                return try operation(image, nil)
+            }
+            
+            #if canImport(AppKit)
+            #error("TODO")
+            #else
+            UIGraphicsBeginImageContextWithOptions(
+                /* size: */ size,
+                /* opaque: */ cgImage?.alphaInfo == CGImageAlphaInfo.none,
+                /* scale: */ scale
+            )
+            defer { UIGraphicsEndImageContext() }
+            #endif
+            
+            return try operation(image, currentContext)
+        }
+    }
+    
+    
+    private func inGraphicsContext<Return>(
+        withFocus: Bool,
+        contextSwitcher: ContextSwitcher<Return>
+    ) rethrows -> Return
+    {
         if withFocus {
-            return try self.withFocus(do: handleContextSwitch)
+            return try self.withFocus(do: contextSwitcher)
         }
         else {
-            return try handleContextSwitch(self)
+            return try contextSwitcher(self)
         }
     }
     
     
     
-    typealias OperationInCurrentGraphicsContext<Return> = (_ image: NativeImage, _ context: CGContext?) throws -> Return
+    typealias OperationInGraphicsContext<Return> = (_ image: NativeImage, _ context: CGContext?) throws -> Return
+    
+    private typealias ContextSwitcher<Return> = (_ image: NativeImage) throws -> Return
+}
+
+
+
+public extension NativeImage {
+    func copy(newSize: CGSize, retina: Bool = true) -> NativeImage? {
+        #if canImport(UIKit)
+        // In next line, pass 0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+        // Pass 1.0 to force exact pixel size.
+        UIGraphicsBeginImageContextWithOptions(/* size: */ newSize, /* opaque: */ false, /* scale: */ retina ? 0 : 1)
+        defer { UIGraphicsEndImageContext() }
+        
+        self.draw(in: CGRect(origin: .zero, size: newSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+        #elseif canImport(AppKit)
+        guard let copy = self.copy() as? NativeImage else {
+            return nil
+        }
+        copy.size = newSize
+        return copy
+        #endif
+    }
 }
 
 

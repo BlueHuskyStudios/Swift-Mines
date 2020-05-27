@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Cocoa
 import CrossKitTypes
 import RectangleTools
 
@@ -25,15 +24,32 @@ internal struct BoardSquareView: View {
     }
     
     
+    #if os(macOS)
+    
     var body: some View {
         GeometryReader { geometryProxy in
-            Image(nsImage: self.model.imageForUi(size: geometryProxy.size))
+            Image(native: self.model.imageForUi(size: geometryProxy.size))
                 .resizable(resizingMode: .stretch)
                 .background(Color(self.model.appropriateBackgroundColor()))
         }
         .border(SeparatorShapeStyle(), width: 1)
         .frame(minWidth: 8, idealWidth: 16, minHeight: 8, idealHeight: 16, alignment: .center)
     }
+    
+    #else
+    
+    var body: some View {
+        GeometryReader { geometryProxy in
+            Image(native: self
+                .model
+                .imageForUi(size: geometryProxy.size))
+                .resizable(resizingMode: .stretch)
+                .background(Color(self.model.appropriateBackgroundColor()))
+            }
+                .frame(minWidth: 8, idealWidth: 16, minHeight: 8, idealHeight: 16, alignment: .center)
+    }
+    
+    #endif
     
     
     

@@ -91,6 +91,8 @@ public extension RandomAccessCollection
     
     /// The size of this 2D collection
     ///
+    /// - Complexity: O(n) - where _n_ is the number of items in the outer collection
+    ///
     /// - Note: The returned `height` is always the same as `count`, but the returned `width` is the **maximum** of all
     ///         rows' `count`s. In other words, if this collection is not a perfect rectangle, this will return the
     ///         size of a rectangle that encompasses it.

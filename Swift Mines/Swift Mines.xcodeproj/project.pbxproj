@@ -34,6 +34,23 @@
 		A35D2856239F81DC0006B72B /* OptionalTools in Frameworks */ = {isa = PBXBuildFile; productRef = A35D2855239F81DC0006B72B /* OptionalTools */; };
 		A37D06D9239DDBE200C88026 /* NativeImage Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */; };
 		A37D06DC239DECD800C88026 /* Clear Square with Number Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D06DB239DECD800C88026 /* Clear Square with Number Image.swift */; };
+		A37D945E247B253600745153 /* PredefinedGameDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E5523C9BE5A00049357 /* PredefinedGameDifficulty.swift */; };
+		A37D945F247B257200745153 /* Size2D Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EBCE7D23CA99800036EFFD /* Size2D Extensions.swift */; };
+		A37D9460247B297D00745153 /* BoardSquare + Realized Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32E3E9923AAE28400AD1D95 /* BoardSquare + Realized Style.swift */; };
+		A37D9461247B41EF00745153 /* NewGameSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E5323C9AEC300049357 /* NewGameSetupView.swift */; };
+		A37D9463247B423700745153 /* NativeColor + Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D9462247B423700745153 /* NativeColor + Name.swift */; };
+		A37D9464247B423E00745153 /* NativeColor + Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D9462247B423700745153 /* NativeColor + Name.swift */; };
+		A37D9465247B438100745153 /* Assertion Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B86C5239EE56B00579A89 /* Assertion Debugging.swift */; };
+		A37D9468247B528700745153 /* SimpleLogging in Frameworks */ = {isa = PBXBuildFile; productRef = A37D9467247B528700745153 /* SimpleLogging */; };
+		A37D946A247B52A000745153 /* SimpleLogging in Frameworks */ = {isa = PBXBuildFile; productRef = A37D9469247B52A000745153 /* SimpleLogging */; };
+		A37D946B247B675400745153 /* Board + random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D2852239F791B0006B72B /* Board + random.swift */; };
+		A37D946E247BAA2500745153 /* CGImage Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D946D247BAA2500745153 /* CGImage Conveniences.swift */; };
+		A37D946F247BAA4500745153 /* CGImage Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D946D247BAA2500745153 /* CGImage Conveniences.swift */; };
+		A37D9472247BAAEC00745153 /* DrawingTools in Frameworks */ = {isa = PBXBuildFile; productRef = A37D9471247BAAEC00745153 /* DrawingTools */; };
+		A37D9474247BAB1C00745153 /* DrawingTools in Frameworks */ = {isa = PBXBuildFile; productRef = A37D9473247BAB1C00745153 /* DrawingTools */; };
+		A37D9475247CB62000745153 /* Point2D Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351C69623AC3F7E00097718 /* Point2D Extensions.swift */; };
+		A37D9476247CB62F00745153 /* RandomAccessCollection Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE565C23A0AF1200309B2D /* RandomAccessCollection Extensions.swift */; };
+		A37D9477247CB77A00745153 /* BoardSquare + random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B3300A239A0D9A0034F236 /* BoardSquare + random.swift */; };
 		A38CC46223A477FF00D42F69 /* HasTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CC46123A477FF00D42F69 /* HasTransform.swift */; };
 		A38CC46923A4AADF00D42F69 /* MutableCollection Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CC46823A4AADF00D42F69 /* MutableCollection Extensions.swift */; };
 		A38CC46B23A4B04700D42F69 /* HasTransform + SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CC46A23A4B04700D42F69 /* HasTransform + SwiftUI.swift */; };
@@ -48,6 +65,26 @@
 		A39B86C6239EE56B00579A89 /* Assertion Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B86C5239EE56B00579A89 /* Assertion Debugging.swift */; };
 		A39B86C8239EE95E00579A89 /* Swatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B86C7239EE95E00579A89 /* Swatches.swift */; };
 		A39B86CA239EFF6C00579A89 /* Image Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B86C9239EFF6C00579A89 /* Image Constants.swift */; };
+		A3A8D588247A5EE4004BD1E5 /* OverallAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB7F1F23C7C54800B82BDB /* OverallAppState.swift */; };
+		A3A8D589247A5EF5004BD1E5 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B32FFB2398CE050034F236 /* Game.swift */; };
+		A3A8D58A247A5F04004BD1E5 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C69F732397A1CF00520B2F /* Board.swift */; };
+		A3A8D58B247A5F09004BD1E5 /* BoardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B32FF9239868320034F236 /* BoardSquare.swift */; };
+		A3A8D58C247A600D004BD1E5 /* GameStatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351C6A223AD8BA800097718 /* GameStatusBarView.swift */; };
+		A3A8D58D247A6012004BD1E5 /* AppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E4F23C9A1E700049357 /* AppScreen.swift */; };
+		A3A8D58E247A6020004BD1E5 /* OobeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C444D23EB2A18006C8C9D /* OobeState.swift */; };
+		A3A8D58F247A6033004BD1E5 /* UserDefaults constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C445223ED1047006C8C9D /* UserDefaults constants.swift */; };
+		A3A8D590247A676D004BD1E5 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B3300D239A1D060034F236 /* Style.swift */; };
+		A3A8D591247A6AB0004BD1E5 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C69F702397A1A500520B2F /* BoardView.swift */; };
+		A3A8D592247A6AD7004BD1E5 /* BoardSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B32FF7239868130034F236 /* BoardSquareView.swift */; };
+		A3A8D596247A6ED8004BD1E5 /* BoardSquare + Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32E3E9423AADC0A00AD1D95 /* BoardSquare + Image.swift */; };
+		A3A8D597247A6FAE004BD1E5 /* NewGameConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EBCE7B23CA95BC0036EFFD /* NewGameConfiguration.swift */; };
+		A3A8D598247A6FBB004BD1E5 /* NativeImage Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */; };
+		A3A8D599247A6FBE004BD1E5 /* NativeImage + SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32E3E9723AADC4000AD1D95 /* NativeImage + SwiftUI.swift */; };
+		A3A8D59A247A7063004BD1E5 /* Swatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B86C7239EE95E00579A89 /* Swatches.swift */; };
+		A3A8D59B247A7072004BD1E5 /* Clear Square with Number Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D06DB239DECD800C88026 /* Clear Square with Number Image.swift */; };
+		A3A8D59C247A7076004BD1E5 /* Generated Image Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C445923EE8458006C8C9D /* Generated Image Cache.swift */; };
+		A3A8D59D247A707D004BD1E5 /* Image Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B86C9239EFF6C00579A89 /* Image Constants.swift */; };
+		A3A8D59E247A7080004BD1E5 /* Image Tinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C445723EE8326006C8C9D /* Image Tinting.swift */; };
 		A3B32FFA239868320034F236 /* BoardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B32FF9239868320034F236 /* BoardSquare.swift */; };
 		A3B32FFC2398CE050034F236 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B32FFB2398CE050034F236 /* Game.swift */; };
 		A3B330032398D6D50034F236 /* BoardSquare + SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B330022398D6D50034F236 /* BoardSquare + SwiftUI.swift */; };
@@ -61,6 +98,24 @@
 		A3BCD78B23AEF98800346F05 /* CGAffineTransform Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BCD78A23AEF98800346F05 /* CGAffineTransform Extensions.swift */; };
 		A3BCD78E23AEFB6400346F05 /* Path Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BCD78D23AEFB6400346F05 /* Path Extensions.swift */; };
 		A3BEE1F82479BB52000C9A37 /* LazyContainers in Frameworks */ = {isa = PBXBuildFile; productRef = A3BEE1F72479BB52000C9A37 /* LazyContainers */; };
+		A3BEE203247A58B3000C9A37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEE202247A58B3000C9A37 /* AppDelegate.swift */; };
+		A3BEE205247A58B3000C9A37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEE204247A58B3000C9A37 /* SceneDelegate.swift */; };
+		A3BEE209247A58B6000C9A37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3BEE208247A58B6000C9A37 /* Assets.xcassets */; };
+		A3BEE20C247A58B6000C9A37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3BEE20B247A58B6000C9A37 /* Preview Assets.xcassets */; };
+		A3BEE20F247A58B6000C9A37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3BEE20D247A58B6000C9A37 /* LaunchScreen.storyboard */; };
+		A3BEE21A247A58B6000C9A37 /* Swift_Mines_for_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEE219247A58B6000C9A37 /* Swift_Mines_for_iOSTests.swift */; };
+		A3BEE225247A58B6000C9A37 /* Swift_Mines_for_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEE224247A58B6000C9A37 /* Swift_Mines_for_iOSUITests.swift */; };
+		A3BEE230247A5C0B000C9A37 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C69F502397A13F00520B2F /* ContentView.swift */; };
+		A3BEE233247A5C39000C9A37 /* RectangleTools in Frameworks */ = {isa = PBXBuildFile; productRef = A3BEE232247A5C39000C9A37 /* RectangleTools */; };
+		A3BEE235247A5C39000C9A37 /* NonEmpty in Frameworks */ = {isa = PBXBuildFile; productRef = A3BEE234247A5C39000C9A37 /* NonEmpty */; };
+		A3BEE237247A5C39000C9A37 /* CrossKitTypes in Frameworks */ = {isa = PBXBuildFile; productRef = A3BEE236247A5C39000C9A37 /* CrossKitTypes */; };
+		A3BEE239247A5C39000C9A37 /* SafeCollectionAccess in Frameworks */ = {isa = PBXBuildFile; productRef = A3BEE238247A5C39000C9A37 /* SafeCollectionAccess */; };
+		A3BEE23B247A5C39000C9A37 /* OptionalTools in Frameworks */ = {isa = PBXBuildFile; productRef = A3BEE23A247A5C39000C9A37 /* OptionalTools */; };
+		A3BEE23D247A5C39000C9A37 /* SafePointer in Frameworks */ = {isa = PBXBuildFile; productRef = A3BEE23C247A5C39000C9A37 /* SafePointer */; };
+		A3BEE23F247A5C39000C9A37 /* TODO in Frameworks */ = {isa = PBXBuildFile; productRef = A3BEE23E247A5C39000C9A37 /* TODO */; };
+		A3BEE241247A5C39000C9A37 /* SevenSegmentDisplay in Frameworks */ = {isa = PBXBuildFile; productRef = A3BEE240247A5C39000C9A37 /* SevenSegmentDisplay */; };
+		A3BEE243247A5C39000C9A37 /* UserDefault in Frameworks */ = {isa = PBXBuildFile; productRef = A3BEE242247A5C39000C9A37 /* UserDefault */; };
+		A3BEE245247A5C39000C9A37 /* LazyContainers in Frameworks */ = {isa = PBXBuildFile; productRef = A3BEE244247A5C39000C9A37 /* LazyContainers */; };
 		A3C10D8523F6128700C84474 /* UserDefaults extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C10D8423F6128700C84474 /* UserDefaults extensions.swift */; };
 		A3C10D8723F7CF1400C84474 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A3C10D8623F7CF1400C84474 /* README.md */; };
 		A3C158EF23A1803300A95B20 /* HasAlso.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C158EE23A1803300A95B20 /* HasAlso.swift */; };
@@ -88,6 +143,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A3BEE216247A58B6000C9A37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3C69F432397A13F00520B2F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A3BEE1FF247A58B2000C9A37;
+			remoteInfo = "Swift Mines for iOS";
+		};
+		A3BEE221247A58B6000C9A37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3C69F432397A13F00520B2F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A3BEE1FF247A58B2000C9A37;
+			remoteInfo = "Swift Mines for iOS";
+		};
 		A3C69F612397A14100520B2F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A3C69F432397A13F00520B2F /* Project object */;
@@ -124,6 +193,8 @@
 		A35D2852239F791B0006B72B /* Board + random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board + random.swift"; sourceTree = "<group>"; };
 		A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NativeImage Extensions.swift"; sourceTree = "<group>"; };
 		A37D06DB239DECD800C88026 /* Clear Square with Number Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clear Square with Number Image.swift"; sourceTree = "<group>"; };
+		A37D9462247B423700745153 /* NativeColor + Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NativeColor + Name.swift"; sourceTree = "<group>"; };
+		A37D946D247BAA2500745153 /* CGImage Conveniences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage Conveniences.swift"; sourceTree = "<group>"; };
 		A38CC46123A477FF00D42F69 /* HasTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasTransform.swift; sourceTree = "<group>"; };
 		A38CC46823A4AADF00D42F69 /* MutableCollection Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MutableCollection Extensions.swift"; sourceTree = "<group>"; };
 		A38CC46A23A4B04700D42F69 /* HasTransform + SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HasTransform + SwiftUI.swift"; sourceTree = "<group>"; };
@@ -145,6 +216,20 @@
 		A3BB286D23C51613009254E6 /* Board Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board Tests.swift"; sourceTree = "<group>"; };
 		A3BCD78A23AEF98800346F05 /* CGAffineTransform Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform Extensions.swift"; sourceTree = "<group>"; };
 		A3BCD78D23AEFB6400346F05 /* Path Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Path Extensions.swift"; sourceTree = "<group>"; };
+		A3BEE200247A58B2000C9A37 /* Swift Mines for iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Mines for iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3BEE202247A58B3000C9A37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A3BEE204247A58B3000C9A37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A3BEE206247A58B3000C9A37 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A3BEE208247A58B6000C9A37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A3BEE20B247A58B6000C9A37 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A3BEE20E247A58B6000C9A37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A3BEE210247A58B6000C9A37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3BEE215247A58B6000C9A37 /* Swift Mines for iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swift Mines for iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3BEE219247A58B6000C9A37 /* Swift_Mines_for_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_Mines_for_iOSTests.swift; sourceTree = "<group>"; };
+		A3BEE21B247A58B6000C9A37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3BEE220247A58B6000C9A37 /* Swift Mines for iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swift Mines for iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3BEE224247A58B6000C9A37 /* Swift_Mines_for_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_Mines_for_iOSUITests.swift; sourceTree = "<group>"; };
+		A3BEE226247A58B6000C9A37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3C10D8423F6128700C84474 /* UserDefaults extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults extensions.swift"; sourceTree = "<group>"; };
 		A3C10D8623F7CF1400C84474 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		A3C10D8823F7D94B00C84474 /* PRIVACY POLICY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = "PRIVACY POLICY.md"; path = "../PRIVACY POLICY.md"; sourceTree = "<group>"; };
@@ -176,6 +261,39 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A3BEE1FD247A58B2000C9A37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3BEE237247A5C39000C9A37 /* CrossKitTypes in Frameworks */,
+				A3BEE239247A5C39000C9A37 /* SafeCollectionAccess in Frameworks */,
+				A3BEE235247A5C39000C9A37 /* NonEmpty in Frameworks */,
+				A3BEE233247A5C39000C9A37 /* RectangleTools in Frameworks */,
+				A3BEE23F247A5C39000C9A37 /* TODO in Frameworks */,
+				A37D9474247BAB1C00745153 /* DrawingTools in Frameworks */,
+				A3BEE241247A5C39000C9A37 /* SevenSegmentDisplay in Frameworks */,
+				A3BEE245247A5C39000C9A37 /* LazyContainers in Frameworks */,
+				A3BEE23B247A5C39000C9A37 /* OptionalTools in Frameworks */,
+				A37D946A247B52A000745153 /* SimpleLogging in Frameworks */,
+				A3BEE23D247A5C39000C9A37 /* SafePointer in Frameworks */,
+				A3BEE243247A5C39000C9A37 /* UserDefault in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3BEE212247A58B6000C9A37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3BEE21D247A58B6000C9A37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A3C69F482397A13F00520B2F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -185,9 +303,11 @@
 				A3B33008239A05C20034F236 /* NonEmpty in Frameworks */,
 				A3C69F782397A26400520B2F /* RectangleTools in Frameworks */,
 				A31A60DA23A88D4500C465A9 /* TODO in Frameworks */,
+				A37D9472247BAAEC00745153 /* DrawingTools in Frameworks */,
 				A3B7110623BDB0C9003D280C /* SevenSegmentDisplay in Frameworks */,
 				A3BEE1F82479BB52000C9A37 /* LazyContainers in Frameworks */,
 				A35D2856239F81DC0006B72B /* OptionalTools in Frameworks */,
+				A37D9468247B528700745153 /* SimpleLogging in Frameworks */,
 				A3FE566023A0C0DA00309B2D /* SafePointer in Frameworks */,
 				A31C445123EB989E006C8C9D /* UserDefault in Frameworks */,
 			);
@@ -234,6 +354,7 @@
 			children = (
 				A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */,
 				A32E3E9723AADC4000AD1D95 /* NativeImage + SwiftUI.swift */,
+				A37D9462247B423700745153 /* NativeColor + Name.swift */,
 			);
 			path = CrossKitTypes;
 			sourceTree = "<group>";
@@ -293,6 +414,7 @@
 				A3BCD78C23AEFB2A00346F05 /* SwiftUI */,
 				A32E3E9623AADC3000AD1D95 /* CrossKitTypes */,
 				A3FE565A23A0AEF500309B2D /* RectangleTools */,
+				A37D946C247BAA1200745153 /* DrawingTools */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -307,6 +429,14 @@
 				A31C445723EE8326006C8C9D /* Image Tinting.swift */,
 			);
 			path = "Image Conveniences";
+			sourceTree = "<group>";
+		};
+		A37D946C247BAA1200745153 /* DrawingTools */ = {
+			isa = PBXGroup;
+			children = (
+				A37D946D247BAA2500745153 /* CGImage Conveniences.swift */,
+			);
+			path = DrawingTools;
 			sourceTree = "<group>";
 		};
 		A38D5B7123C910120036B59D /* TUI */ = {
@@ -424,6 +554,53 @@
 			path = Board;
 			sourceTree = "<group>";
 		};
+		A3BEE201247A58B3000C9A37 /* Swift Mines for iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A3BEE202247A58B3000C9A37 /* AppDelegate.swift */,
+				A3BEE204247A58B3000C9A37 /* SceneDelegate.swift */,
+				A3BEE206247A58B3000C9A37 /* ContentView.swift */,
+				A3BEE208247A58B6000C9A37 /* Assets.xcassets */,
+				A3BEE20D247A58B6000C9A37 /* LaunchScreen.storyboard */,
+				A3BEE210247A58B6000C9A37 /* Info.plist */,
+				A3BEE20A247A58B6000C9A37 /* Preview Content */,
+			);
+			path = "Swift Mines for iOS";
+			sourceTree = "<group>";
+		};
+		A3BEE20A247A58B6000C9A37 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A3BEE20B247A58B6000C9A37 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A3BEE218247A58B6000C9A37 /* Swift Mines for iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				A3BEE219247A58B6000C9A37 /* Swift_Mines_for_iOSTests.swift */,
+				A3BEE21B247A58B6000C9A37 /* Info.plist */,
+			);
+			path = "Swift Mines for iOSTests";
+			sourceTree = "<group>";
+		};
+		A3BEE223247A58B6000C9A37 /* Swift Mines for iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A3BEE224247A58B6000C9A37 /* Swift_Mines_for_iOSUITests.swift */,
+				A3BEE226247A58B6000C9A37 /* Info.plist */,
+			);
+			path = "Swift Mines for iOSUITests";
+			sourceTree = "<group>";
+		};
+		A3BEE231247A5C39000C9A37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A3C158ED23A1802600A95B20 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,7 +630,11 @@
 				A3C69F752397A1DC00520B2F /* Shared Cross-Platform */,
 				A3C69F4D2397A13F00520B2F /* Swift Mines for macOS */,
 				A3C69F632397A14100520B2F /* Swift MinesTests */,
+				A3BEE201247A58B3000C9A37 /* Swift Mines for iOS */,
+				A3BEE218247A58B6000C9A37 /* Swift Mines for iOSTests */,
+				A3BEE223247A58B6000C9A37 /* Swift Mines for iOSUITests */,
 				A3C69F4C2397A13F00520B2F /* Products */,
+				A3BEE231247A5C39000C9A37 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -462,6 +643,9 @@
 			children = (
 				A3C69F4B2397A13F00520B2F /* Swift Mines.app */,
 				A3C69F602397A14100520B2F /* Swift MinesTests.xctest */,
+				A3BEE200247A58B2000C9A37 /* Swift Mines for iOS.app */,
+				A3BEE215247A58B6000C9A37 /* Swift Mines for iOSTests.xctest */,
+				A3BEE220247A58B6000C9A37 /* Swift Mines for iOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -583,6 +767,73 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A3BEE1FF247A58B2000C9A37 /* Swift Mines for iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3BEE22D247A58B6000C9A37 /* Build configuration list for PBXNativeTarget "Swift Mines for iOS" */;
+			buildPhases = (
+				A3BEE1FC247A58B2000C9A37 /* Sources */,
+				A3BEE1FD247A58B2000C9A37 /* Frameworks */,
+				A3BEE1FE247A58B2000C9A37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Swift Mines for iOS";
+			packageProductDependencies = (
+				A3BEE232247A5C39000C9A37 /* RectangleTools */,
+				A3BEE234247A5C39000C9A37 /* NonEmpty */,
+				A3BEE236247A5C39000C9A37 /* CrossKitTypes */,
+				A3BEE238247A5C39000C9A37 /* SafeCollectionAccess */,
+				A3BEE23A247A5C39000C9A37 /* OptionalTools */,
+				A3BEE23C247A5C39000C9A37 /* SafePointer */,
+				A3BEE23E247A5C39000C9A37 /* TODO */,
+				A3BEE240247A5C39000C9A37 /* SevenSegmentDisplay */,
+				A3BEE242247A5C39000C9A37 /* UserDefault */,
+				A3BEE244247A5C39000C9A37 /* LazyContainers */,
+				A37D9469247B52A000745153 /* SimpleLogging */,
+				A37D9473247BAB1C00745153 /* DrawingTools */,
+			);
+			productName = "Swift Mines for iOS";
+			productReference = A3BEE200247A58B2000C9A37 /* Swift Mines for iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A3BEE214247A58B6000C9A37 /* Swift Mines for iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3BEE22E247A58B6000C9A37 /* Build configuration list for PBXNativeTarget "Swift Mines for iOSTests" */;
+			buildPhases = (
+				A3BEE211247A58B6000C9A37 /* Sources */,
+				A3BEE212247A58B6000C9A37 /* Frameworks */,
+				A3BEE213247A58B6000C9A37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A3BEE217247A58B6000C9A37 /* PBXTargetDependency */,
+			);
+			name = "Swift Mines for iOSTests";
+			productName = "Swift Mines for iOSTests";
+			productReference = A3BEE215247A58B6000C9A37 /* Swift Mines for iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A3BEE21F247A58B6000C9A37 /* Swift Mines for iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3BEE22F247A58B6000C9A37 /* Build configuration list for PBXNativeTarget "Swift Mines for iOSUITests" */;
+			buildPhases = (
+				A3BEE21C247A58B6000C9A37 /* Sources */,
+				A3BEE21D247A58B6000C9A37 /* Frameworks */,
+				A3BEE21E247A58B6000C9A37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A3BEE222247A58B6000C9A37 /* PBXTargetDependency */,
+			);
+			name = "Swift Mines for iOSUITests";
+			productName = "Swift Mines for iOSUITests";
+			productReference = A3BEE220247A58B6000C9A37 /* Swift Mines for iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		A3C69F4A2397A13F00520B2F /* Swift Mines for macOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3C69F692397A14100520B2F /* Build configuration list for PBXNativeTarget "Swift Mines for macOS" */;
@@ -607,6 +858,8 @@
 				A3B7110523BDB0C9003D280C /* SevenSegmentDisplay */,
 				A31C445023EB989E006C8C9D /* UserDefault */,
 				A3BEE1F72479BB52000C9A37 /* LazyContainers */,
+				A37D9467247B528700745153 /* SimpleLogging */,
+				A37D9471247BAAEC00745153 /* DrawingTools */,
 			);
 			productName = "Swift Mines";
 			productReference = A3C69F4B2397A13F00520B2F /* Swift Mines.app */;
@@ -636,10 +889,21 @@
 		A3C69F432397A13F00520B2F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Ben Leggiero";
 				TargetAttributes = {
+					A3BEE1FF247A58B2000C9A37 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+					A3BEE214247A58B6000C9A37 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = A3BEE1FF247A58B2000C9A37;
+					};
+					A3BEE21F247A58B6000C9A37 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = A3BEE1FF247A58B2000C9A37;
+					};
 					A3C69F4A2397A13F00520B2F = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
@@ -669,6 +933,8 @@
 				A3B7110423BDB0C9003D280C /* XCRemoteSwiftPackageReference "SwiftUI-SevenSegmentDisplay" */,
 				A31C444F23EB989E006C8C9D /* XCRemoteSwiftPackageReference "UserDefault" */,
 				A3BEE1F62479BB52000C9A37 /* XCRemoteSwiftPackageReference "Swift-Lazy-Patterns" */,
+				A37D9466247B528700745153 /* XCRemoteSwiftPackageReference "Swift-Simple-Logging" */,
+				A37D9470247BAAEC00745153 /* XCRemoteSwiftPackageReference "Swift-Drawing-Tools" */,
 			);
 			productRefGroup = A3C69F4C2397A13F00520B2F /* Products */;
 			projectDirPath = "";
@@ -676,11 +942,38 @@
 			targets = (
 				A3C69F4A2397A13F00520B2F /* Swift Mines for macOS */,
 				A3C69F5F2397A14100520B2F /* Swift MinesTests */,
+				A3BEE1FF247A58B2000C9A37 /* Swift Mines for iOS */,
+				A3BEE214247A58B6000C9A37 /* Swift Mines for iOSTests */,
+				A3BEE21F247A58B6000C9A37 /* Swift Mines for iOSUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A3BEE1FE247A58B2000C9A37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3BEE20F247A58B6000C9A37 /* LaunchScreen.storyboard in Resources */,
+				A3BEE20C247A58B6000C9A37 /* Preview Assets.xcassets in Resources */,
+				A3BEE209247A58B6000C9A37 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3BEE213247A58B6000C9A37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3BEE21E247A58B6000C9A37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A3C69F492397A13F00520B2F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -703,6 +996,63 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A3BEE1FC247A58B2000C9A37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3A8D58C247A600D004BD1E5 /* GameStatusBarView.swift in Sources */,
+				A3A8D58F247A6033004BD1E5 /* UserDefaults constants.swift in Sources */,
+				A3A8D59D247A707D004BD1E5 /* Image Constants.swift in Sources */,
+				A37D9475247CB62000745153 /* Point2D Extensions.swift in Sources */,
+				A3A8D591247A6AB0004BD1E5 /* BoardView.swift in Sources */,
+				A37D945E247B253600745153 /* PredefinedGameDifficulty.swift in Sources */,
+				A3A8D59C247A7076004BD1E5 /* Generated Image Cache.swift in Sources */,
+				A3A8D599247A6FBE004BD1E5 /* NativeImage + SwiftUI.swift in Sources */,
+				A3BEE203247A58B3000C9A37 /* AppDelegate.swift in Sources */,
+				A3A8D58B247A5F09004BD1E5 /* BoardSquare.swift in Sources */,
+				A37D9477247CB77A00745153 /* BoardSquare + random.swift in Sources */,
+				A37D946B247B675400745153 /* Board + random.swift in Sources */,
+				A3A8D589247A5EF5004BD1E5 /* Game.swift in Sources */,
+				A3A8D597247A6FAE004BD1E5 /* NewGameConfiguration.swift in Sources */,
+				A3A8D592247A6AD7004BD1E5 /* BoardSquareView.swift in Sources */,
+				A3A8D59E247A7080004BD1E5 /* Image Tinting.swift in Sources */,
+				A3A8D58A247A5F04004BD1E5 /* Board.swift in Sources */,
+				A37D9460247B297D00745153 /* BoardSquare + Realized Style.swift in Sources */,
+				A37D9465247B438100745153 /* Assertion Debugging.swift in Sources */,
+				A3BEE205247A58B3000C9A37 /* SceneDelegate.swift in Sources */,
+				A3A8D598247A6FBB004BD1E5 /* NativeImage Extensions.swift in Sources */,
+				A37D945F247B257200745153 /* Size2D Extensions.swift in Sources */,
+				A3A8D590247A676D004BD1E5 /* Style.swift in Sources */,
+				A37D9476247CB62F00745153 /* RandomAccessCollection Extensions.swift in Sources */,
+				A3A8D596247A6ED8004BD1E5 /* BoardSquare + Image.swift in Sources */,
+				A3A8D59A247A7063004BD1E5 /* Swatches.swift in Sources */,
+				A37D946F247BAA4500745153 /* CGImage Conveniences.swift in Sources */,
+				A3A8D59B247A7072004BD1E5 /* Clear Square with Number Image.swift in Sources */,
+				A3BEE230247A5C0B000C9A37 /* ContentView.swift in Sources */,
+				A3A8D588247A5EE4004BD1E5 /* OverallAppState.swift in Sources */,
+				A37D9461247B41EF00745153 /* NewGameSetupView.swift in Sources */,
+				A37D9464247B423E00745153 /* NativeColor + Name.swift in Sources */,
+				A3A8D58E247A6020004BD1E5 /* OobeState.swift in Sources */,
+				A3A8D58D247A6012004BD1E5 /* AppScreen.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3BEE211247A58B6000C9A37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3BEE21A247A58B6000C9A37 /* Swift_Mines_for_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3BEE21C247A58B6000C9A37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3BEE225247A58B6000C9A37 /* Swift_Mines_for_iOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A3C69F472397A13F00520B2F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -747,6 +1097,7 @@
 				A3319E06243C097900DCE6CC /* Sound constants.swift in Sources */,
 				A351C69523AC313800097718 /* Function Types.swift in Sources */,
 				A31C444A23EA877F006C8C9D /* FirstTimeDisclaimerView.swift in Sources */,
+				A37D946E247BAA2500745153 /* CGImage Conveniences.swift in Sources */,
 				A3C8B3F723CD5C860080017F /* NumberFormatter Extensions.swift in Sources */,
 				A3B330032398D6D50034F236 /* BoardSquare + SwiftUI.swift in Sources */,
 				A39B5E5423C9AEC300049357 /* NewGameSetupView.swift in Sources */,
@@ -766,6 +1117,7 @@
 				A31C445323ED1047006C8C9D /* UserDefaults constants.swift in Sources */,
 				A3C8B3F923CD99CB0080017F /* NativeButton.swift in Sources */,
 				A31A60A923A8494400C465A9 /* IndexPath Extensions.swift in Sources */,
+				A37D9463247B423700745153 /* NativeColor + Name.swift in Sources */,
 				A39B5E4E23C97E3B00049357 /* BoardSquareView.swift in Sources */,
 				A351C69723AC3F7E00097718 /* Point2D Extensions.swift in Sources */,
 			);
@@ -783,6 +1135,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A3BEE217247A58B6000C9A37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A3BEE1FF247A58B2000C9A37 /* Swift Mines for iOS */;
+			targetProxy = A3BEE216247A58B6000C9A37 /* PBXContainerItemProxy */;
+		};
+		A3BEE222247A58B6000C9A37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A3BEE1FF247A58B2000C9A37 /* Swift Mines for iOS */;
+			targetProxy = A3BEE221247A58B6000C9A37 /* PBXContainerItemProxy */;
+		};
 		A3C69F622397A14100520B2F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A3C69F4A2397A13F00520B2F /* Swift Mines for macOS */;
@@ -791,6 +1153,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A3BEE20D247A58B6000C9A37 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3BEE20E247A58B6000C9A37 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		A3C69F572397A14100520B2F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -802,6 +1172,143 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A3BEE227247A58B6000C9A37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Swift Mines for iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 26V9MK8TGP;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Swift Mines for iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.benleggiero.Swift-Mines-for-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A3BEE228247A58B6000C9A37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Swift Mines for iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 26V9MK8TGP;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Swift Mines for iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.benleggiero.Swift-Mines-for-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A3BEE229247A58B6000C9A37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26V9MK8TGP;
+				INFOPLIST_FILE = "Swift Mines for iOSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.benleggiero.Swift-Mines-for-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swift Mines for iOS.app/Swift Mines for iOS";
+			};
+			name = Debug;
+		};
+		A3BEE22A247A58B6000C9A37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26V9MK8TGP;
+				INFOPLIST_FILE = "Swift Mines for iOSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.benleggiero.Swift-Mines-for-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swift Mines for iOS.app/Swift Mines for iOS";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A3BEE22B247A58B6000C9A37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26V9MK8TGP;
+				INFOPLIST_FILE = "Swift Mines for iOSUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.benleggiero.Swift-Mines-for-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Swift Mines for iOS";
+			};
+			name = Debug;
+		};
+		A3BEE22C247A58B6000C9A37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26V9MK8TGP;
+				INFOPLIST_FILE = "Swift Mines for iOSUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.benleggiero.Swift-Mines-for-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Swift Mines for iOS";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		A3C69F672397A14100520B2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -846,6 +1353,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -859,6 +1367,7 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 			};
 			name = Debug;
 		};
@@ -900,6 +1409,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -912,6 +1422,7 @@
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 			};
 			name = Release;
 		};
@@ -1016,6 +1527,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A3BEE22D247A58B6000C9A37 /* Build configuration list for PBXNativeTarget "Swift Mines for iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3BEE227247A58B6000C9A37 /* Debug */,
+				A3BEE228247A58B6000C9A37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3BEE22E247A58B6000C9A37 /* Build configuration list for PBXNativeTarget "Swift Mines for iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3BEE229247A58B6000C9A37 /* Debug */,
+				A3BEE22A247A58B6000C9A37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3BEE22F247A58B6000C9A37 /* Build configuration list for PBXNativeTarget "Swift Mines for iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3BEE22B247A58B6000C9A37 /* Debug */,
+				A3BEE22C247A58B6000C9A37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A3C69F462397A13F00520B2F /* Build configuration list for PBXProject "Swift Mines" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1068,6 +1606,22 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
+			};
+		};
+		A37D9466247B528700745153 /* XCRemoteSwiftPackageReference "Swift-Simple-Logging" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RougeWare/Swift-Simple-Logging.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.1;
+			};
+		};
+		A37D9470247BAAEC00745153 /* XCRemoteSwiftPackageReference "Swift-Drawing-Tools" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BenLeggiero/Swift-Drawing-Tools.git";
+			requirement = {
+				branch = feature/MVP;
+				kind = branch;
 			};
 		};
 		A3B33006239A05C20034F236 /* XCRemoteSwiftPackageReference "swift-nonempty" */ = {
@@ -1145,6 +1699,26 @@
 			package = A35D2854239F81DC0006B72B /* XCRemoteSwiftPackageReference "Swift-Optional-Tools" */;
 			productName = OptionalTools;
 		};
+		A37D9467247B528700745153 /* SimpleLogging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A37D9466247B528700745153 /* XCRemoteSwiftPackageReference "Swift-Simple-Logging" */;
+			productName = SimpleLogging;
+		};
+		A37D9469247B52A000745153 /* SimpleLogging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A37D9466247B528700745153 /* XCRemoteSwiftPackageReference "Swift-Simple-Logging" */;
+			productName = SimpleLogging;
+		};
+		A37D9471247BAAEC00745153 /* DrawingTools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A37D9470247BAAEC00745153 /* XCRemoteSwiftPackageReference "Swift-Drawing-Tools" */;
+			productName = DrawingTools;
+		};
+		A37D9473247BAB1C00745153 /* DrawingTools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A37D9470247BAAEC00745153 /* XCRemoteSwiftPackageReference "Swift-Drawing-Tools" */;
+			productName = DrawingTools;
+		};
 		A3B33007239A05C20034F236 /* NonEmpty */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A3B33006239A05C20034F236 /* XCRemoteSwiftPackageReference "swift-nonempty" */;
@@ -1161,6 +1735,56 @@
 			productName = SevenSegmentDisplay;
 		};
 		A3BEE1F72479BB52000C9A37 /* LazyContainers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3BEE1F62479BB52000C9A37 /* XCRemoteSwiftPackageReference "Swift-Lazy-Patterns" */;
+			productName = LazyContainers;
+		};
+		A3BEE232247A5C39000C9A37 /* RectangleTools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3C69F762397A26400520B2F /* XCRemoteSwiftPackageReference "Swift-Rectangle-Tools" */;
+			productName = RectangleTools;
+		};
+		A3BEE234247A5C39000C9A37 /* NonEmpty */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3B33006239A05C20034F236 /* XCRemoteSwiftPackageReference "swift-nonempty" */;
+			productName = NonEmpty;
+		};
+		A3BEE236247A5C39000C9A37 /* CrossKitTypes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3B3300F239A1E560034F236 /* XCRemoteSwiftPackageReference "Swift-Cross-Kit-Types" */;
+			productName = CrossKitTypes;
+		};
+		A3BEE238247A5C39000C9A37 /* SafeCollectionAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3E49227239BAE5A00394FC4 /* XCRemoteSwiftPackageReference "Swift-Safe-Collection-Access" */;
+			productName = SafeCollectionAccess;
+		};
+		A3BEE23A247A5C39000C9A37 /* OptionalTools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A35D2854239F81DC0006B72B /* XCRemoteSwiftPackageReference "Swift-Optional-Tools" */;
+			productName = OptionalTools;
+		};
+		A3BEE23C247A5C39000C9A37 /* SafePointer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3FE565E23A0C0DA00309B2D /* XCRemoteSwiftPackageReference "Swift-Safe-Pointer" */;
+			productName = SafePointer;
+		};
+		A3BEE23E247A5C39000C9A37 /* TODO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A31A60D823A88D4500C465A9 /* XCRemoteSwiftPackageReference "Swift-TODO" */;
+			productName = TODO;
+		};
+		A3BEE240247A5C39000C9A37 /* SevenSegmentDisplay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3B7110423BDB0C9003D280C /* XCRemoteSwiftPackageReference "SwiftUI-SevenSegmentDisplay" */;
+			productName = SevenSegmentDisplay;
+		};
+		A3BEE242247A5C39000C9A37 /* UserDefault */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A31C444F23EB989E006C8C9D /* XCRemoteSwiftPackageReference "UserDefault" */;
+			productName = UserDefault;
+		};
+		A3BEE244247A5C39000C9A37 /* LazyContainers */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A3BEE1F62479BB52000C9A37 /* XCRemoteSwiftPackageReference "Swift-Lazy-Patterns" */;
 			productName = LazyContainers;

@@ -6,10 +6,13 @@
 //  Copyright © 2020 Ben Leggiero BH-1-PS
 //
 
-#if canImport(AppKit)
-import Cocoa
-#elseif canImport(UIKit)
-import Cocoa
+#if canImport(UIKit)
+import UIKit
+import CoreGraphics
+#elseif canImport(AppKit)
+import AppKit
+#else
+#error("UIKit or AppKit is required")
 #endif
 
 import CrossKitTypes
@@ -35,15 +38,15 @@ internal extension BoardSquare.Annotated {
             return .number(forClearSquareWithProximity: distance, size: UIntSize(size))
             
         case (.flagged(style: .sure), _):
-            imageWhichNeedsToBeResized = .minesIcon(.flag, size: .init(size))
+            imageWhichNeedsToBeResized = .minesIcon(.flag, size: .init(size), style: inheritedStyle)
             
         case (.flagged(style: .unsure), _):
-            imageWhichNeedsToBeResized = .minesIcon(.questionMark, size: .init(size))
+            imageWhichNeedsToBeResized = .minesIcon(.questionMark, size: .init(size), style: inheritedStyle)
             
         case (.revealed(reason: .manual), .mine):
             switch self.base.content {
             case .mine:
-                imageWhichNeedsToBeResized = .minesIcon(.detonatedMine, size: .init(size))
+                imageWhichNeedsToBeResized = .minesIcon(.detonatedMine, size: .init(size), style: inheritedStyle)
                 
             case .clear:
                 assertionFailure("Clear square with revealed mine")
@@ -54,7 +57,7 @@ internal extension BoardSquare.Annotated {
              (.revealed(reason: .chainReaction), .mine):
             switch self.base.content {
             case .mine:
-                imageWhichNeedsToBeResized = .minesIcon(.revealedMine, size: .init(size))
+                imageWhichNeedsToBeResized = .minesIcon(.revealedMine, size: .init(size), style: inheritedStyle)
                 
             case .clear:
                 assertionFailure("Clear square with revealed mine")
@@ -62,7 +65,6 @@ internal extension BoardSquare.Annotated {
             }
         }
         
-        imageWhichNeedsToBeResized.size = size
-        return imageWhichNeedsToBeResized
+        return imageWhichNeedsToBeResized.copy(newSize: size) ?? imageWhichNeedsToBeResized
     }
 }

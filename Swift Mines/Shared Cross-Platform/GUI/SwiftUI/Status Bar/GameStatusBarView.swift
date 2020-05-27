@@ -127,6 +127,8 @@ public struct GameStatusBarView: View {
     }
     
     
+    #if os(macOS)
+    
     /// Generates a label appropriate for the New Game button
     ///
     /// - Parameter game: The current game, whose state will be reflected in the button
@@ -139,6 +141,21 @@ public struct GameStatusBarView: View {
         .border(SeparatorShapeStyle(), width: 2)
         .background(Color.accentColor)
     }
+    
+    #else
+    
+    /// Generates a label appropriate for the New Game button
+    ///
+    /// - Parameter game: The current game, whose state will be reflected in the button
+    func newGameButtonLabel(for game: Game) -> some View {
+        GeometryReader { geometry in
+            Text(verbatim: self.buttonString(for: game.playState))
+                .font(Font.system(size: geometry.size.minSideLength * 0.5))
+                .position(geometry.size.center())
+        }
+        .background(Color.accentColor)
+    }
+    #endif
     
     
     /// The string to display on the New Game button

@@ -28,10 +28,10 @@ public extension NativeImage {
     /// - Parameters:
     ///   - identifier: The identifier for a Mines icon
     ///   - size:       The size of the resulting image
-    static func minesIcon(_ identifier: MinesIconIdentifier, size: UIntSize) -> NativeImage {
+    static func minesIcon(_ identifier: MinesIconIdentifier, size: UIntSize, style: Board.Style) -> NativeImage {
         return cache.object(forKey: cacheKey(identifier: identifier, size: size))
             ?? (self.init(named: identifier.rawValue)?
-                .tintedAsNecessary(as: identifier, size: size)
+                .tintedAsNecessary(as: identifier, size: size, style: style)
                 ?? assertionFailure("No \(identifier.rawValue) image in assets", backupValue: .swatch(color: identifier.backupColor)))
     }
     
@@ -61,10 +61,15 @@ private extension NativeImage {
     /// If necessary, returns a tinted copy of this image
     ///
     /// - Parameter identifier: The identifier of some mines icon to tint
-    func tintedAsNecessary(as identifier: MinesIconIdentifier, flipped: Bool = defaultFlipped, size: UIntSize) -> Self {
+    func tintedAsNecessary(
+        as identifier: MinesIconIdentifier,
+        flipped: Bool = defaultFlipped,
+        size: UIntSize,
+        style: Board.Style
+    ) -> NativeImage {
         switch identifier {
         case .flag:
-            return tinted(with: .controlAccentColor, alphaMaskedColor: .white, flipped: flipped, size: size)
+            return tinted(with: style.accentColor, alphaMaskedColor: .white, flipped: flipped, size: size)
 
         case .questionMark, .detonatedMine, .revealedMine:
             return self

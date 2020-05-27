@@ -8,9 +8,10 @@
 
 import Cocoa
 import SwiftUI
+import Combine
 import RectangleTools
 import SafePointer
-import Combine
+import SimpleLogging
 
 
 
@@ -39,6 +40,34 @@ class AppDelegate: NSObject {
     var overallAppState = OverallAppState(
         game: Game.new(size: Board.Size(width: 10, height: 10))
     )
+    
+    
+    override init() {
+        super.init()
+        
+        do {
+            let errorLogPath = try FileManager.default.url(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true
+            )
+                .appendingPathComponent(Bundle.main.bundleIdentifier ?? "Swift Mines")
+                .appendingPathComponent("Logs")
+                .appendingPathComponent("Errors.log")
+                .path
+            
+            LogManager.defaultChannels.append(
+                try LogChannel(name: "Errors",
+                               location: .file(path: errorLogPath),
+                               lowestAllowedSeverity: .error)
+            )
+        }
+        catch {
+            assertionFailure("Could not set up logging: \(error)")
+            print(error)
+        }
+    }
 }
 
 

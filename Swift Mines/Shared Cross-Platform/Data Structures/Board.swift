@@ -97,9 +97,7 @@ public struct Board {
 public extension Board {
     
     /// The number of cells wide and tall
-    var size: Size {
-        Size(width: UInt(content[0].count), height: UInt(content.count))
-    }
+    var size: Size { content.size }
     
     
     /// Finds the square at the given location, or the one on the wall closest to it

@@ -20,7 +20,7 @@ internal struct BoardView: View {
     var overallAppState: OverallAppState
     
     /// Called when a square is tapped
-    private var onSquareTapped = MutableSafePointer<OnSquareTapped?>(to: nil)
+    fileprivate var onSquareTapped = MutableSafePointer<OnSquareTapped?>(to: nil)
     
     
     var body: some View {
@@ -33,16 +33,12 @@ internal struct BoardView: View {
 //                                style: self.style(for: square),
                                 model: square
                             )
-//                                .also { print(square.cachedLocation.humanReadableDescription, square.base.externalRepresentation) }
-                                .gesture(TapGesture().modifiers(.control).onEnded({ _ in self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic)) }))
-                                .gesture(TapGesture().onEnded({ self.onSquareTapped.pointee?(square, .dig) }))
-                                .onLongPressGesture { self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic)) }
-//                                .also { print("\tBoardView Did attach listeners to board square view at", square.cachedLocation.humanReadableDescription) }
+                                .withGestures(on: square, in: self)
                         }
                     }
                 }
             }
-            .background(Color(self.overallAppState.game.board.style.baseColor))
+            .background(Color(self.overallAppState.game.board.style.accentColor))
         }
 //        .also { print("BoardView Did regenerate view with \(overallAppState.game.board.content.size.area) squares") }
     }
@@ -64,5 +60,26 @@ internal extension BoardView {
             responder(square, action)
         }
         return self
+    }
+}
+
+
+
+private extension View {
+    func withGestures(on square: BoardSquareView.Model, in parent: BoardView) -> some View {
+        #if os(macOS)
+        return self
+//            .also { print(square.cachedLocation.humanReadableDescription, square.base.externalRepresentation) }
+            .gesture(TapGesture().modifiers(.control).onEnded({ _ in parent.onSquareTapped.pointee?(square, .placeFlag(style: .automatic)) }))
+            .gesture(TapGesture().onEnded({ parent.onSquareTapped.pointee?(square, .dig) }))
+            .onLongPressGesture { parent.onSquareTapped.pointee?(square, .placeFlag(style: .automatic)) }
+//            .also { print("\tBoardView Did attach listeners to board square view at", square.cachedLocation.humanReadableDescription) }
+        #elseif os(iOS)
+        return self
+//            .also { print(square.cachedLocation.humanReadableDescription, square.base.externalRepresentation) }
+            .gesture(TapGesture().onEnded({ parent.onSquareTapped.pointee?(square, .dig) }))
+            .onLongPressGesture { parent.onSquareTapped.pointee?(square, .placeFlag(style: .automatic)) }
+//            .also { print("\tBoardView Did attach listeners to board square view at", square.cachedLocation.humanReadableDescription) }
+        #endif
     }
 }

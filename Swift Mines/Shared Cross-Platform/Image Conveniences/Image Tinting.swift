@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import CoreGraphics
 import CrossKitTypes
 import RectangleTools
+import SimpleLogging
 
 
 
@@ -38,44 +40,107 @@ public extension NativeImage {
     func tinted(with color: NativeColor,
                 alphaMaskedColor: NativeColor? = nil,
                 flipped: Bool = defaultFlipped,
-                size: UIntSize? = nil) -> Self {
+                size: UIntSize? = nil) -> NativeImage {
         
         let size = size.map(CGSize.init) ?? self.size
-
-        return Self.init(size: size, flipped: flipped) { outputBounds in
-            self.inCurrentGraphicsContext(withFocus: false) { image, outputContext in
-                var rect = outputBounds
-                print(rect)
-                guard let outputContext = outputContext else { return false }
-                guard let cgImage = image.cgImage(forProposedRect: &rect, context: nil, hints: nil) else { return false }
-                print(rect, image.size, outputBounds, self.size, size)
-                
-                let unmaskedImage = Self.init(size: size, flipped: flipped) { unmaskedBounds in
-                    self.inCurrentGraphicsContext(withFocus: false) { unmaskedImage, unmaskedContext in
-                        guard let unmaskedContext = unmaskedContext else { return false }
-                        
-                        if let alphaMaskedColor = alphaMaskedColor {
-                            unmaskedContext.setFillColor(alphaMaskedColor.cgColor)
-                            unmaskedContext.fill(outputBounds)
-                        }
-                        
-                        self.draw(in: outputBounds)
-                        
-                        unmaskedContext.setBlendMode(.hue)
-                        unmaskedContext.setFillColor(color.cgColor)
-                        unmaskedContext.fill(outputBounds)
-                        
-                        return true
-                    }
-                }
-                
-                outputContext.clip(to: outputBounds, mask: cgImage)
-                
-                outputContext.setBlendMode(.sourceAtop)
-                unmaskedImage.draw(in: outputBounds)
-                
-                return true
+        
+        return NativeImage(size: size, flipped: flipped) { outputBounds in
+            do {
+                return try self.inCurrentGraphicsContext(
+                    withFocus: false,
+                    do: self.maskAndApplyTintWithinContext(
+                        tint: color,
+                        in: outputBounds,
+                        alphaMaskedColor: alphaMaskedColor,
+                        flipped: flipped,
+                        size: size
+                    )
+                )
+            }
+            catch {
+                log(error: error)
+                return nil!
             }
         }
     }
+    
+    
+    private func maskAndApplyTintWithinContext(
+        tint color: NativeColor,
+        in outputBounds: CGRect,
+        alphaMaskedColor: NativeColor?,
+        flipped: Bool,
+        size: CGSize
+    ) -> ((NativeImage, CGContext?) -> Bool) {{ image, outputContext in
+        
+        var rect = outputBounds
+        guard let outputContext = outputContext else { return false }
+        #if canImport(UIKit)
+        guard let cgImage = image.cgImage else { return false }
+        #elseif canImport(AppKit)
+        guard let cgImage = image.cgImage(forProposedRect: &rect, context: nil, hints: nil) else { return false }
+        #else
+        #error("UIKit or AppKit required")
+        #endif
+        
+        let unmaskedImage = NativeImage(
+            size: size,
+            flipped: flipped,
+            drawingHandler: self.drawingHandler(
+                forTint: color,
+                in: outputBounds,
+                alphaMaskedColor: alphaMaskedColor
+            )
+        )
+        
+        outputContext.clip(to: outputBounds, mask: cgImage)
+        
+        outputContext.setBlendMode(.sourceAtop)
+        unmaskedImage.draw(in: outputBounds)
+        
+        return true
+        
+    }}
+    
+    
+    private func drawingHandler(
+        forTint color: NativeColor,
+        in outputBounds: CGRect,
+        alphaMaskedColor: NativeColor?
+    ) -> ((CGRect) -> Bool) {{ unmaskedBounds in
+        
+        do {
+            return try self.inCurrentGraphicsContext(
+                withFocus: false,
+                do: self.apply(tint: color, in: outputBounds, alphaMaskedColor: alphaMaskedColor)
+            )
+        }
+        catch {
+            log(error: error)
+            return false
+        }
+    }}
+    
+    
+    private func apply(
+        tint color: NativeColor,
+        in outputBounds: CGRect,
+        alphaMaskedColor: NativeColor?
+    ) -> ((NativeImage, CGContext?) -> Bool) {{ unmaskedImage, unmaskedContext in
+        
+        guard let unmaskedContext = unmaskedContext else { return false }
+        
+        if let alphaMaskedColor = alphaMaskedColor {
+            unmaskedContext.setFillColor(alphaMaskedColor.cgColor)
+            unmaskedContext.fill(outputBounds)
+        }
+        
+        self.draw(in: outputBounds)
+        
+        unmaskedContext.setBlendMode(.hue)
+        unmaskedContext.setFillColor(color.cgColor)
+        unmaskedContext.fill(outputBounds)
+        
+        return true
+    }}
 }

@@ -16,10 +16,16 @@ internal extension BoardSquare.Annotated {
         switch self.base.externalRepresentation {
         case .blank,
              .flagged(style: _):
-            return inheritedStyle.baseColor
+            return inheritedStyle.accentColor
             
         case .revealed:
-            return inheritedStyle.baseColor.withSystemEffect(.pressed)
+            #if canImport(UIKit)
+            return inheritedStyle.accentColor.withAlphaComponent(0.5)
+            #elseif canImport(AppKit)
+            return inheritedStyle.accentColor.withSystemEffect(.pressed)
+            #else
+            #error("UIKit or AppKit required")
+            #endif
         }
     }
 }
