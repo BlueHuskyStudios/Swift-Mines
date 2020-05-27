@@ -1,5 +1,7 @@
 # Swift Mines #
 
+[![Download on the Mac App Store](https://shared.bhstudios.org/_img/external/Download%20on%20the%20Mac%20App%20Store%20Badge.svg)](https://apps.apple.com/us/app/swift-mines/id1499186244)
+
 A Minesweeper-like game written entirely in [Swift](https://Swift.org), using [SwiftUI](https://developer.apple.com/documentation/swiftui)!
 
 <img src="https://i.imgur.com/cW3duKc.png" alt="A screenshot of the game mid-play. Many squares are revealed and some flags are placed, but the game is not yet done." width="592" />
