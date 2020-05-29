@@ -61,9 +61,14 @@ public struct NumberPicker<N>: View
                 if useCustomLabels
                     && nil != label
                 {
+                    #if os(macOS)
                     Text(label!)
                         .controlSize(.mini)
                         .foregroundColor(.secondary)
+                    #elseif os(iOS)
+                    Text(label!)
+                        .foregroundColor(.secondary)
+                    #endif
                 }
             }
             
@@ -88,7 +93,7 @@ public extension NumberPicker where N: BinaryInteger {
         self.init(
             label: label,
             value: value,
-            formatter: NumberFormatter.default.range(range),
+            formatter: NumberFormatter.default.asRange(range),
             range: range
         )
     }

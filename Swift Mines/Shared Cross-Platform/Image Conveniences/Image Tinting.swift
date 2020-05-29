@@ -45,22 +45,16 @@ public extension NativeImage {
         let size = size.map(CGSize.init) ?? self.size
         
         return NativeImage(size: size, flipped: flipped) { outputBounds in
-            do {
-                return try self.inCurrentGraphicsContext(
-                    withFocus: false,
-                    do: self.maskAndApplyTintWithinContext(
-                        tint: color,
-                        in: outputBounds,
-                        alphaMaskedColor: alphaMaskedColor,
-                        flipped: flipped,
-                        size: size
-                    )
+            self.inCurrentGraphicsContext(
+                withFocus: false,
+                do: self.maskAndApplyTintWithinContext(
+                    tint: color,
+                    in: outputBounds,
+                    alphaMaskedColor: alphaMaskedColor,
+                    flipped: flipped,
+                    size: size
                 )
-            }
-            catch {
-                log(error: error)
-                return nil!
-            }
+            )
         }
     }
     
@@ -108,17 +102,10 @@ public extension NativeImage {
         in outputBounds: CGRect,
         alphaMaskedColor: NativeColor?
     ) -> ((CGRect) -> Bool) {{ unmaskedBounds in
-        
-        do {
-            return try self.inCurrentGraphicsContext(
-                withFocus: false,
-                do: self.apply(tint: color, in: outputBounds, alphaMaskedColor: alphaMaskedColor)
-            )
-        }
-        catch {
-            log(error: error)
-            return false
-        }
+        self.inCurrentGraphicsContext(
+            withFocus: false,
+            do: self.apply(tint: color, in: outputBounds, alphaMaskedColor: alphaMaskedColor)
+        )
     }}
     
     

@@ -32,11 +32,7 @@ private var controlActionClosureProtocolAssociatedObjectKey = UInt8()
 /// its method which will be called upon that user's action
 protocol ControlActionClosureProtocol: NSObjectProtocol {
     
-    /// The object which will respond to some action
-    var target: AnyObject? { get set }
-    
-    /// The selector which will be messaged upon the action
-    var action: Selector? { get set }
+    func setTarget(_ target: AnyObject, forAction action: Selector)
 }
 
 
@@ -75,15 +71,24 @@ extension ControlActionClosureProtocol {
     /// - Parameter action: The function to be called when the action is performed
     func onAction(_ action: @escaping (Self) -> Void) {
         let trampoline = ActionTrampoline(action: action)
-        self.target = trampoline
-        self.action = #selector(ActionTrampoline<Self>.action(sender:))
+        self.setTarget(trampoline, forAction: #selector(ActionTrampoline<Self>.action(sender:)))
         objc_setAssociatedObject(self, &controlActionClosureProtocolAssociatedObjectKey, trampoline, .OBJC_ASSOCIATION_RETAIN)
     }
 }
 
 
 
-extension NativeControl: ControlActionClosureProtocol {}
+extension NativeControl: ControlActionClosureProtocol {
+    func setTarget(_ target: AnyObject, forAction action: Selector) {
+        #if os(macOS)
+        // TODO
+        #elseif os(iOS)
+        
+        self.addTarget(target, action: action, for: [.touchUpInside, .valueChanged, .editingChanged])
+        
+        #endif
+    }
+}
 
 
 
@@ -97,11 +102,8 @@ extension NativeControl: ControlActionClosureProtocol {}
 @available(macOS 10.15, *)
 public struct SystemButton: NativeViewRepresentable {
     
-    #if os(macOS)
-    public typealias ViewType = NSButton
-    #elseif os(iOS)
-    public typealias ViewType = UIButton
-    #endif
+    public typealias ViewType = NativeButton
+    
     
     
     /// The text to show on the button
@@ -161,19 +163,21 @@ public struct SystemButton: NativeViewRepresentable {
     }
     
     
-    public func updateView(_ nsView: ViewType, context: Context) {
+    public func updateView(_ view: ViewType, context: Context) {
         if let attributedTitle = attributedTitle {
-            nsView.attributedTitle = attributedTitle
+            view.attributedTitle = attributedTitle
         }
         else {
-            nsView.title = title ?? "".also { assertionFailure("All buttons should have titles") }
+            view.title = title ?? "".also { assertionFailure("All buttons should have titles") }
         }
         
+        #if os(macOS)
         if let keyEquivalent = keyEquivalent?.rawValue {
-            nsView.keyEquivalent = keyEquivalent
+            view.keyEquivalent = keyEquivalent
         }
+        #endif
         
-        nsView.onAction { _ in
+        view.onAction { _ in
             self.action()
         }
     }

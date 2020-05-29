@@ -90,28 +90,24 @@ public extension NativeImage {
         let fontSize = size.minSideLength * (3/4)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        do {
-            try number.inCurrentGraphicsContext { number, context in
-                let attributedString =
-                    NSMutableAttributedString(string: proximity.numberOfMinesNearby.description,
-                                              attributes:
-                        [
-                            .font : NativeFont.monospacedDigitSystemFont(ofSize: fontSize, weight: .bold),
-                            .paragraphStyle : paragraphStyle,
-                            .foregroundColor : proximity.numberFillColor,
-                            .strokeColor : NativeColor.white,
-                            .strokeWidth : NSNumber(value: (fontSize / 4).native)
-                        ]
-                )
-                
-                attributedString.draw(in: CGRect(origin: .zero, size: size))
-                
-                attributedString.removeAttribute(.strokeWidth, range: NSRange(location: 0, length: attributedString.length))
-                attributedString.draw(in: CGRect(origin: .zero, size: size))
-            }
-        }
-        catch {
-            log(error: error)
+        
+        number.inCurrentGraphicsContext { number, context in
+            let attributedString =
+                NSMutableAttributedString(string: proximity.numberOfMinesNearby.description,
+                                          attributes:
+                    [
+                        .font : NativeFont.monospacedDigitSystemFont(ofSize: fontSize, weight: .bold),
+                        .paragraphStyle : paragraphStyle,
+                        .foregroundColor : proximity.numberFillColor,
+                        .strokeColor : NativeColor.white,
+                        .strokeWidth : NSNumber(value: (fontSize / 4).native)
+                    ]
+            )
+            
+            attributedString.draw(in: CGRect(origin: .zero, size: size))
+            
+            attributedString.removeAttribute(.strokeWidth, range: NSRange(location: 0, length: attributedString.length))
+            attributedString.draw(in: CGRect(origin: .zero, size: size))
         }
         
         return number

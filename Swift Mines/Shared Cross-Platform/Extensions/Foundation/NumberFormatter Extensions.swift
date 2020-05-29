@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 
 
@@ -26,7 +27,7 @@ public extension NumberFormatter {
     ///
     /// - Parameter newRange: The range of numbers to cover
     /// - Returns: `self`
-    func range<BI>(_ newRange: ClosedRange<BI>) -> Self
+    func asRange<BI>(_ newRange: ClosedRange<BI>) -> Self
         where BI: BinaryInteger
     {
         self.minimum = NSNumber(value: Int(newRange.lowerBound))
@@ -39,8 +40,8 @@ public extension NumberFormatter {
     ///
     /// - Parameter newRange: The range of numbers to cover
     /// - Returns: `self` 
-    func range<BI>(_ newRange: ClosedRange<BI>) -> Self
-        where BI: BinaryFloatingPoint
+    func asRange<BFP>(_ newRange: ClosedRange<BFP>) -> Self
+        where BFP: BinaryFloatingPoint
     {
         self.minimum = NSNumber(value: CGFloat.NativeType(newRange.lowerBound))
         self.maximum = NSNumber(value: CGFloat.NativeType(newRange.upperBound))

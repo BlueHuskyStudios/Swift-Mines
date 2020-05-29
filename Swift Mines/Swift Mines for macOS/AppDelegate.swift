@@ -84,7 +84,7 @@ extension AppDelegate: NSApplicationDelegate {
         
         currentScreenSink = overallAppState.currentScreenPublisher()
             .map { $0 == .game }
-            .map(gameMenuSelectors)
+            .map(gameMenuSelectors(enabled:))
             .sink {
                 self.newGameMenuItem.action = $0?.newGame
                 self.restartGameMenuItem.action = $0?.restart

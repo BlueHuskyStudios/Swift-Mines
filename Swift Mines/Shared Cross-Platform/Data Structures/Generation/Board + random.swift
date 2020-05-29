@@ -61,13 +61,16 @@ public extension Board {
         var board = Board.empty(size: size)
         let safeLocation = Size.Index(safeLocation)
         
-        size.shuffled()
+        let points: LazyMapSequence = size
+            .lazy
+            .shuffled()
             .discarding(where: { $0.isTouching(safeLocation, tolerance: 1) })
             .onlyFirst(totalNumberOfMines)
-            .map(IntPoint.init)
-            .forEach { point in
-                board.content[point].giveMine()
-            }
+            .map(UIntPoint.init)
+        
+        for point in points {
+            board.content[point].giveMine()
+        }
         
         return board
     }

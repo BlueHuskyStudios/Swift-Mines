@@ -7,9 +7,40 @@
 //
 
 import UIKit
+import SimpleLogging
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    
+    override init() {
+        super.init()
+        
+        do {
+            let errorLogPath = try FileManager.default.url(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true
+            )
+                .appendingPathComponent(Bundle.main.bundleIdentifier ?? "Swift Mines")
+                .appendingPathComponent("Logs")
+                .appendingPathComponent("Errors.log")
+                .path
+            
+            LogManager.defaultChannels.append(
+                try LogChannel(name: "Errors",
+                               location: .file(path: errorLogPath),
+                               lowestAllowedSeverity: .error)
+            )
+        }
+        catch {
+            assertionFailure("Could not set up logging: \(error)")
+            print(error)
+        }
+    }
 
 
 

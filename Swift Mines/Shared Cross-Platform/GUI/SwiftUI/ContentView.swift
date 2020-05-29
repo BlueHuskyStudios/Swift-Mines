@@ -57,12 +57,16 @@ public struct ContentView: View {
             ),
             content: {
                 Group {
+                    #if os(macOS)
                     if self.overallAppState.currentScreen == .newGameSetup {
                         NewGameSetupView().environmentObject(self.overallAppState)
                     }
                     else {
                         FirstTimeDisclaimerView().environmentObject(self.overallAppState)
                     }
+                    #elseif os(iOS)
+                    NewGameSetupView().environmentObject(self.overallAppState)
+                    #endif
                 }
             })
     }

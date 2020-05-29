@@ -34,10 +34,28 @@
 		A35D2856239F81DC0006B72B /* OptionalTools in Frameworks */ = {isa = PBXBuildFile; productRef = A35D2855239F81DC0006B72B /* OptionalTools */; };
 		A37D06D9239DDBE200C88026 /* NativeImage Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */; };
 		A37D06DC239DECD800C88026 /* Clear Square with Number Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D06DB239DECD800C88026 /* Clear Square with Number Image.swift */; };
+		A37D1B41247F57EA0019BD19 /* Sequence Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EFDC8623A71EB900D439A5 /* Sequence Extensions.swift */; };
+		A37D1B42247F58B60019BD19 /* Simple Functional Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351C69223AC312A00097718 /* Simple Functional Utilities.swift */; };
+		A37D1B43247F59410019BD19 /* Function Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351C69423AC313800097718 /* Function Types.swift */; };
+		A37D1B44247F5A160019BD19 /* Sound constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3319E05243C097900DCE6CC /* Sound constants.swift */; };
+		A37D1B45247F5A590019BD19 /* NumberPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EBCE7923CA8CA50036EFFD /* NumberPicker.swift */; };
+		A37D1B46247F5AC40019BD19 /* HasAlso + SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C158F123A1815100A95B20 /* HasAlso + SwiftUI.swift */; };
+		A37D1B47247F5BCC0019BD19 /* NumberFormatter Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C8B3F623CD5C860080017F /* NumberFormatter Extensions.swift */; };
+		A37D1B48247F5C390019BD19 /* SystemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C8B3F823CD99CB0080017F /* SystemButton.swift */; };
+		A37D1B49247F5CB10019BD19 /* SwiftUI + Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E5723C9C68700049357 /* SwiftUI + Hidden.swift */; };
+		A37D1B4B247F5D270019BD19 /* NativeViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D1B4A247F5D270019BD19 /* NativeViewRepresentable.swift */; };
+		A37D1B4C247F5D270019BD19 /* NativeViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D1B4A247F5D270019BD19 /* NativeViewRepresentable.swift */; };
+		A37D1B4E248094EC0019BD19 /* CrossKitTypes for AppKit or UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D1B4D248094EC0019BD19 /* CrossKitTypes for AppKit or UIKit.swift */; };
+		A37D1B4F248094EC0019BD19 /* CrossKitTypes for AppKit or UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D1B4D248094EC0019BD19 /* CrossKitTypes for AppKit or UIKit.swift */; };
+		A37D1B51248098E80019BD19 /* NativeViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D1B502480959D0019BD19 /* NativeViewControllerRepresentable.swift */; };
+		A37D1B52248098E80019BD19 /* NativeViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D1B502480959D0019BD19 /* NativeViewControllerRepresentable.swift */; };
+		A37D1B5324809D6E0019BD19 /* HasAlso.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C158EE23A1803300A95B20 /* HasAlso.swift */; };
+		A37D1B542480A2D70019BD19 /* NewGameSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E5323C9AEC300049357 /* NewGameSetupView.swift */; };
+		A37D1B552480A2E80019BD19 /* Comparable Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D5CE8923B479C500F6FDEE /* Comparable Extensions.swift */; };
+		A37D1B562480A3390019BD19 /* Collection Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE565323A07E0200309B2D /* Collection Extensions.swift */; };
 		A37D945E247B253600745153 /* PredefinedGameDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E5523C9BE5A00049357 /* PredefinedGameDifficulty.swift */; };
 		A37D945F247B257200745153 /* Size2D Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EBCE7D23CA99800036EFFD /* Size2D Extensions.swift */; };
 		A37D9460247B297D00745153 /* BoardSquare + Realized Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32E3E9923AAE28400AD1D95 /* BoardSquare + Realized Style.swift */; };
-		A37D9461247B41EF00745153 /* NewGameSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B5E5323C9AEC300049357 /* NewGameSetupView.swift */; };
 		A37D9463247B423700745153 /* NativeColor + Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D9462247B423700745153 /* NativeColor + Name.swift */; };
 		A37D9464247B423E00745153 /* NativeColor + Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D9462247B423700745153 /* NativeColor + Name.swift */; };
 		A37D9465247B438100745153 /* Assertion Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B86C5239EE56B00579A89 /* Assertion Debugging.swift */; };
@@ -128,7 +146,7 @@
 		A3C69F742397A1CF00520B2F /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C69F732397A1CF00520B2F /* Board.swift */; };
 		A3C69F782397A26400520B2F /* RectangleTools in Frameworks */ = {isa = PBXBuildFile; productRef = A3C69F772397A26400520B2F /* RectangleTools */; };
 		A3C8B3F723CD5C860080017F /* NumberFormatter Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C8B3F623CD5C860080017F /* NumberFormatter Extensions.swift */; };
-		A3C8B3F923CD99CB0080017F /* NativeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C8B3F823CD99CB0080017F /* NativeButton.swift */; };
+		A3C8B3F923CD99CB0080017F /* SystemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C8B3F823CD99CB0080017F /* SystemButton.swift */; };
 		A3CB7F2023C7C54800B82BDB /* OverallAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB7F1F23C7C54800B82BDB /* OverallAppState.swift */; };
 		A3D5CE8A23B479C500F6FDEE /* Comparable Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D5CE8923B479C500F6FDEE /* Comparable Extensions.swift */; };
 		A3E49229239BAE5A00394FC4 /* SafeCollectionAccess in Frameworks */ = {isa = PBXBuildFile; productRef = A3E49228239BAE5A00394FC4 /* SafeCollectionAccess */; };
@@ -193,6 +211,9 @@
 		A35D2852239F791B0006B72B /* Board + random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board + random.swift"; sourceTree = "<group>"; };
 		A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NativeImage Extensions.swift"; sourceTree = "<group>"; };
 		A37D06DB239DECD800C88026 /* Clear Square with Number Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clear Square with Number Image.swift"; sourceTree = "<group>"; };
+		A37D1B4A247F5D270019BD19 /* NativeViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeViewRepresentable.swift; sourceTree = "<group>"; };
+		A37D1B4D248094EC0019BD19 /* CrossKitTypes for AppKit or UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CrossKitTypes for AppKit or UIKit.swift"; sourceTree = "<group>"; };
+		A37D1B502480959D0019BD19 /* NativeViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		A37D9462247B423700745153 /* NativeColor + Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NativeColor + Name.swift"; sourceTree = "<group>"; };
 		A37D946D247BAA2500745153 /* CGImage Conveniences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage Conveniences.swift"; sourceTree = "<group>"; };
 		A38CC46123A477FF00D42F69 /* HasTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasTransform.swift; sourceTree = "<group>"; };
@@ -216,7 +237,7 @@
 		A3BB286D23C51613009254E6 /* Board Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board Tests.swift"; sourceTree = "<group>"; };
 		A3BCD78A23AEF98800346F05 /* CGAffineTransform Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform Extensions.swift"; sourceTree = "<group>"; };
 		A3BCD78D23AEFB6400346F05 /* Path Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Path Extensions.swift"; sourceTree = "<group>"; };
-		A3BEE200247A58B2000C9A37 /* Swift Mines for iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Mines for iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3BEE200247A58B2000C9A37 /* Swift Mines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Mines.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3BEE202247A58B3000C9A37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3BEE204247A58B3000C9A37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A3BEE206247A58B3000C9A37 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -248,7 +269,7 @@
 		A3C69F702397A1A500520B2F /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		A3C69F732397A1CF00520B2F /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		A3C8B3F623CD5C860080017F /* NumberFormatter Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter Extensions.swift"; sourceTree = "<group>"; };
-		A3C8B3F823CD99CB0080017F /* NativeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeButton.swift; sourceTree = "<group>"; };
+		A3C8B3F823CD99CB0080017F /* SystemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemButton.swift; sourceTree = "<group>"; };
 		A3CB7F1F23C7C54800B82BDB /* OverallAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallAppState.swift; sourceTree = "<group>"; };
 		A3D5CE8923B479C500F6FDEE /* Comparable Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable Extensions.swift"; sourceTree = "<group>"; };
 		A3EBCE7923CA8CA50036EFFD /* NumberPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPicker.swift; sourceTree = "<group>"; };
@@ -355,6 +376,9 @@
 				A37D06D8239DDBE200C88026 /* NativeImage Extensions.swift */,
 				A32E3E9723AADC4000AD1D95 /* NativeImage + SwiftUI.swift */,
 				A37D9462247B423700745153 /* NativeColor + Name.swift */,
+				A37D1B4A247F5D270019BD19 /* NativeViewRepresentable.swift */,
+				A37D1B502480959D0019BD19 /* NativeViewControllerRepresentable.swift */,
+				A37D1B4D248094EC0019BD19 /* CrossKitTypes for AppKit or UIKit.swift */,
 			);
 			path = CrossKitTypes;
 			sourceTree = "<group>";
@@ -643,7 +667,7 @@
 			children = (
 				A3C69F4B2397A13F00520B2F /* Swift Mines.app */,
 				A3C69F602397A14100520B2F /* Swift MinesTests.xctest */,
-				A3BEE200247A58B2000C9A37 /* Swift Mines for iOS.app */,
+				A3BEE200247A58B2000C9A37 /* Swift Mines.app */,
 				A3BEE215247A58B6000C9A37 /* Swift Mines for iOSTests.xctest */,
 				A3BEE220247A58B6000C9A37 /* Swift Mines for iOSUITests.xctest */,
 			);
@@ -727,7 +751,7 @@
 			isa = PBXGroup;
 			children = (
 				A3EBCE7923CA8CA50036EFFD /* NumberPicker.swift */,
-				A3C8B3F823CD99CB0080017F /* NativeButton.swift */,
+				A3C8B3F823CD99CB0080017F /* SystemButton.swift */,
 			);
 			path = "General Controls";
 			sourceTree = "<group>";
@@ -795,7 +819,7 @@
 				A37D9473247BAB1C00745153 /* DrawingTools */,
 			);
 			productName = "Swift Mines for iOS";
-			productReference = A3BEE200247A58B2000C9A37 /* Swift Mines for iOS.app */;
+			productReference = A3BEE200247A58B2000C9A37 /* Swift Mines.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A3BEE214247A58B6000C9A37 /* Swift Mines for iOSTests */ = {
@@ -1003,6 +1027,7 @@
 				A3A8D58C247A600D004BD1E5 /* GameStatusBarView.swift in Sources */,
 				A3A8D58F247A6033004BD1E5 /* UserDefaults constants.swift in Sources */,
 				A3A8D59D247A707D004BD1E5 /* Image Constants.swift in Sources */,
+				A37D1B49247F5CB10019BD19 /* SwiftUI + Hidden.swift in Sources */,
 				A37D9475247CB62000745153 /* Point2D Extensions.swift in Sources */,
 				A3A8D591247A6AB0004BD1E5 /* BoardView.swift in Sources */,
 				A37D945E247B253600745153 /* PredefinedGameDifficulty.swift in Sources */,
@@ -1011,26 +1036,40 @@
 				A3BEE203247A58B3000C9A37 /* AppDelegate.swift in Sources */,
 				A3A8D58B247A5F09004BD1E5 /* BoardSquare.swift in Sources */,
 				A37D9477247CB77A00745153 /* BoardSquare + random.swift in Sources */,
+				A37D1B552480A2E80019BD19 /* Comparable Extensions.swift in Sources */,
+				A37D1B51248098E80019BD19 /* NativeViewControllerRepresentable.swift in Sources */,
+				A37D1B5324809D6E0019BD19 /* HasAlso.swift in Sources */,
 				A37D946B247B675400745153 /* Board + random.swift in Sources */,
 				A3A8D589247A5EF5004BD1E5 /* Game.swift in Sources */,
+				A37D1B4C247F5D270019BD19 /* NativeViewRepresentable.swift in Sources */,
 				A3A8D597247A6FAE004BD1E5 /* NewGameConfiguration.swift in Sources */,
 				A3A8D592247A6AD7004BD1E5 /* BoardSquareView.swift in Sources */,
+				A37D1B542480A2D70019BD19 /* NewGameSetupView.swift in Sources */,
+				A37D1B42247F58B60019BD19 /* Simple Functional Utilities.swift in Sources */,
+				A37D1B45247F5A590019BD19 /* NumberPicker.swift in Sources */,
 				A3A8D59E247A7080004BD1E5 /* Image Tinting.swift in Sources */,
 				A3A8D58A247A5F04004BD1E5 /* Board.swift in Sources */,
 				A37D9460247B297D00745153 /* BoardSquare + Realized Style.swift in Sources */,
 				A37D9465247B438100745153 /* Assertion Debugging.swift in Sources */,
+				A37D1B41247F57EA0019BD19 /* Sequence Extensions.swift in Sources */,
 				A3BEE205247A58B3000C9A37 /* SceneDelegate.swift in Sources */,
+				A37D1B562480A3390019BD19 /* Collection Extensions.swift in Sources */,
+				A37D1B44247F5A160019BD19 /* Sound constants.swift in Sources */,
+				A37D1B4F248094EC0019BD19 /* CrossKitTypes for AppKit or UIKit.swift in Sources */,
 				A3A8D598247A6FBB004BD1E5 /* NativeImage Extensions.swift in Sources */,
 				A37D945F247B257200745153 /* Size2D Extensions.swift in Sources */,
+				A37D1B43247F59410019BD19 /* Function Types.swift in Sources */,
+				A37D1B46247F5AC40019BD19 /* HasAlso + SwiftUI.swift in Sources */,
 				A3A8D590247A676D004BD1E5 /* Style.swift in Sources */,
 				A37D9476247CB62F00745153 /* RandomAccessCollection Extensions.swift in Sources */,
 				A3A8D596247A6ED8004BD1E5 /* BoardSquare + Image.swift in Sources */,
 				A3A8D59A247A7063004BD1E5 /* Swatches.swift in Sources */,
+				A37D1B47247F5BCC0019BD19 /* NumberFormatter Extensions.swift in Sources */,
 				A37D946F247BAA4500745153 /* CGImage Conveniences.swift in Sources */,
+				A37D1B48247F5C390019BD19 /* SystemButton.swift in Sources */,
 				A3A8D59B247A7072004BD1E5 /* Clear Square with Number Image.swift in Sources */,
 				A3BEE230247A5C0B000C9A37 /* ContentView.swift in Sources */,
 				A3A8D588247A5EE4004BD1E5 /* OverallAppState.swift in Sources */,
-				A37D9461247B41EF00745153 /* NewGameSetupView.swift in Sources */,
 				A37D9464247B423E00745153 /* NativeColor + Name.swift in Sources */,
 				A3A8D58E247A6020004BD1E5 /* OobeState.swift in Sources */,
 				A3A8D58D247A6012004BD1E5 /* AppScreen.swift in Sources */,
@@ -1063,6 +1102,7 @@
 				A3F7C23C23C1A4990006AB7D /* SafePointer Extensions.swift in Sources */,
 				A3C69F512397A13F00520B2F /* ContentView.swift in Sources */,
 				A35D2853239F791B0006B72B /* Board + random.swift in Sources */,
+				A37D1B4B247F5D270019BD19 /* NativeViewRepresentable.swift in Sources */,
 				A351C69F23AC718500097718 /* FixedWidthInteger Extensions.swift in Sources */,
 				A3B32FFC2398CE050034F236 /* Game.swift in Sources */,
 				A31A60A723A830A100C465A9 /* RangeReplaceableCollection Extensions.swift in Sources */,
@@ -1082,6 +1122,7 @@
 				A3EBCE7C23CA95BC0036EFFD /* NewGameConfiguration.swift in Sources */,
 				A3C10D8523F6128700C84474 /* UserDefaults extensions.swift in Sources */,
 				A39B5E5623C9BE5A00049357 /* PredefinedGameDifficulty.swift in Sources */,
+				A37D1B4E248094EC0019BD19 /* CrossKitTypes for AppKit or UIKit.swift in Sources */,
 				A3EFDC8723A71EB900D439A5 /* Sequence Extensions.swift in Sources */,
 				A3FE565D23A0AF1200309B2D /* RandomAccessCollection Extensions.swift in Sources */,
 				A32E3E9A23AAE28400AD1D95 /* BoardSquare + Realized Style.swift in Sources */,
@@ -1115,7 +1156,8 @@
 				A3B3300E239A1D060034F236 /* Style.swift in Sources */,
 				A39B5E4D23C97E3800049357 /* BoardView.swift in Sources */,
 				A31C445323ED1047006C8C9D /* UserDefaults constants.swift in Sources */,
-				A3C8B3F923CD99CB0080017F /* NativeButton.swift in Sources */,
+				A37D1B52248098E80019BD19 /* NativeViewControllerRepresentable.swift in Sources */,
+				A3C8B3F923CD99CB0080017F /* SystemButton.swift in Sources */,
 				A31A60A923A8494400C465A9 /* IndexPath Extensions.swift in Sources */,
 				A37D9463247B423700745153 /* NativeColor + Name.swift in Sources */,
 				A39B5E4E23C97E3B00049357 /* BoardSquareView.swift in Sources */,
@@ -1187,7 +1229,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "me.benleggiero.Swift-Mines-for-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Swift Mines";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1209,7 +1251,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "me.benleggiero.Swift-Mines-for-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Swift Mines";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

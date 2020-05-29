@@ -192,7 +192,16 @@ public struct NewGameSetupView: View {
                                ),
                                in: minNumberOfMines ... maxNumberOfMines,
                                step: 1,
-                               label: { Text("\(Int(selectedCustomNumberOfMines)) Mines").fontWeight(.medium).controlSize(.small) }
+                               label: {
+                                   #if os(macOS)
+                                   Text("\(Int(selectedCustomNumberOfMines)) Mines")
+                                       .fontWeight(.medium)
+                                       .controlSize(.small)
+                                   #elseif os(iOS)
+                                   Text("\(Int(selectedCustomNumberOfMines)) Mines")
+                                       .fontWeight(.medium)
+                                   #endif
+                               }
                         )
                             .hidden(shouldUseAutomaticMineCount)
                     }
@@ -213,10 +222,10 @@ public struct NewGameSetupView: View {
             HStack {
                 Spacer()
                 
-                NativeButton("Cancel", keyEquivalent: .escape) {
+                SystemButton("Cancel", keyEquivalent: .escape) {
                     self.overallAppState.currentScreen = .game
                 }
-                NativeButton("Start New Game", keyEquivalent: .return) {
+                SystemButton("Start New Game", keyEquivalent: .return) {
                     self.overallAppState.game.startNewGame(configuration: self.selectedGameConfiguration)
                     self.overallAppState.currentScreen = .game
                 }
