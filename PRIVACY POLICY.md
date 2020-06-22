@@ -1,4 +1,4 @@
-#  Swift Munes Privacy Policy #
+#  Swift Mines Privacy Policy #
 
 Swift Mines does not collect your data. It is solely a local app and never reads nor sends any data whatsoever.
 
