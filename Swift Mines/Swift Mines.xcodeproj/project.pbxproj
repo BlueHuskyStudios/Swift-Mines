@@ -469,7 +469,6 @@
 		A3C69F4D2397A13F00520B2F /* Swift Mines for macOS */ = {
 			isa = PBXGroup;
 			children = (
-				A3C69F4E2397A13F00520B2F /* AppDelegate.swift */,
 				A3B32FFD2398D5CA0034F236 /* Extensions */,
 				A3C69F6F2397A18D00520B2F /* Views */,
 				A3319E07243C0A2300DCE6CC /* Assets */,
@@ -525,6 +524,7 @@
 		A3C69F752397A1DC00520B2F /* Shared Cross-Platform */ = {
 			isa = PBXGroup;
 			children = (
+				A3C69F4E2397A13F00520B2F /* AppDelegate.swift */,
 				A39B5E5123C9AE7900049357 /* GUI */,
 				A38D5B7123C910120036B59D /* TUI */,
 				A3C158ED23A1802600A95B20 /* Utilities */,
