@@ -16,8 +16,8 @@ import SafePointer
 internal struct BoardView: View {
     
     /// The app's overall state, which this board view will observe and mutate as the user interacts with it
-    @EnvironmentObject
-    var overallAppState: OverallAppState
+    @Environment(\.overallAppState)
+    private var overallAppState: OverallAppState
     
     /// Called when a square is tapped
     private var onSquareTapped = MutableSafePointer<OnSquareTapped?>(to: nil)
@@ -30,14 +30,11 @@ internal struct BoardView: View {
                     HStack(alignment: .top, spacing: 0) {
                         ForEach(row, id: \.self) { square in
                             BoardSquareView(
-//                                style: self.style(for: square),
                                 model: square
                             )
-//                                .also { print(square.cachedLocation.humanReadableDescription, square.base.externalRepresentation) }
                                 .gesture(TapGesture().modifiers(.control).onEnded({ _ in self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic)) }))
                                 .gesture(TapGesture().onEnded({ self.onSquareTapped.pointee?(square, .dig) }))
                                 .onLongPressGesture { self.onSquareTapped.pointee?(square, .placeFlag(style: .automatic)) }
-//                                .also { print("\tBoardView Did attach listeners to board square view at", square.cachedLocation.humanReadableDescription) }
                         }
                     }
                 }

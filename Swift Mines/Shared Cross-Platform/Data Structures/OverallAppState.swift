@@ -7,37 +7,24 @@
 //
 
 import SwiftUI
-import Combine
 
 
 
 /// The overall state of the app. Reading this will let you re-create the runtime from nothing.
-public class OverallAppState: ObservableObject {
+public struct OverallAppState {
     
     /// The current game that the player is playing
-    @Published
     public var game: Game
     
     /// The current screen that the player is seeing
-    @Published
-    public var currentScreen = AppScreen.appropriateStartupScreen()
+    public var currentScreen = AppScreen.appropriateStartupScreen
     
     /// The state of the Out-Of-Box Experience
-    @Published
     public var oobeState = OobeState.shared
     
     
     init(game: Game) {
         self.game = game
-    }
-}
-
-
-
-public extension OverallAppState {
-    /// Returns a publisher that publishes events whenever the current screen changes
-    func currentScreenPublisher() -> Published<AppScreen>.Publisher {
-        return _currentScreen.projectedValue
     }
 }
 

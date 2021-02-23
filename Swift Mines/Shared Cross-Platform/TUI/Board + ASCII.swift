@@ -38,7 +38,7 @@ public extension Board.Annotated {
     /// +---+---+---+---+---+---+---+---+---+---+
     /// ```
     func asAsciiText() -> String {
-        return content.asAsciiTextGrid { square -> Character.ASCII in
+        return content.asAsciiTextGrid { square in
             return { () -> Character in
                 switch square.base.externalRepresentation {
                 case .blank:

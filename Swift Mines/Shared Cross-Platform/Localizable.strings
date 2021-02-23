@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Swift Mines
+
+  Created by Ben Leggiero on 2021-02-23.
+  Copyright © 2021 Ben Leggiero. All rights reserved.
+*/
+
+
+"command.menu.game.title" = "Game";

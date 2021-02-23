@@ -52,7 +52,7 @@ private let maxReasonableBoardArea: UInt = 750
 public struct NewGameSetupView: View {
     
     /// The state of the app which will be given the new game once the user is done sconfiguring it
-    @EnvironmentObject
+    @Binding
     private var overallAppState: OverallAppState
     
     /// The configuration that the user would specify if they selects the "Custom" difficulty
@@ -117,10 +117,15 @@ public struct NewGameSetupView: View {
     private var currentlySelectedSquareCount: UInt = 0
     
     
-    public init() {}
+    public init(overallAppState: Binding<OverallAppState>) {
+        self._overallAppState = overallAppState
+    }
     
     
-    fileprivate init(customGameConfiguration: NewGameConfiguration, selectedDifficulty: DifficultySelection) {
+    fileprivate init(overallAppState: Binding<OverallAppState>,
+                     customGameConfiguration: NewGameConfiguration,
+                     selectedDifficulty: DifficultySelection) {
+        self.init(overallAppState: overallAppState)
         self.customGameConfiguration = customGameConfiguration
         self.selectedDifficultyIndex = DifficultySelection.allCases.firstIndex(of: selectedDifficulty) ?? 0
     }
@@ -213,14 +218,16 @@ public struct NewGameSetupView: View {
             HStack {
                 Spacer()
                 
-                NativeButton("Cancel", keyEquivalent: .escape) {
+                Button("Cancel") {
                     self.overallAppState.currentScreen = .game
                 }
-                NativeButton("Start New Game", keyEquivalent: .return) {
+                    .keyboardShortcut(.cancelAction)
+                
+                Button("Start New Game") {
                     self.overallAppState.game.startNewGame(configuration: self.selectedGameConfiguration)
                     self.overallAppState.currentScreen = .game
                 }
-                    .buttonStyle(DefaultButtonStyle())
+                    .keyboardShortcut(.defaultAction)
             }
         }
         .padding()
@@ -264,8 +271,9 @@ extension NewGameSetupView {
     ///
     /// - Parameter newConfiguration: The configuration which you want to be reflected in this view
     func configuration(_ newConfiguration: NewGameConfiguration) -> Self {
-        Self.init(customGameConfiguration: newConfiguration,
-                  selectedDifficulty: .inferred(from: newConfiguration))
+        Self.init(overallAppState: _overallAppState,
+            customGameConfiguration: newConfiguration,
+            selectedDifficulty: .inferred(from: newConfiguration))
         
         // I want to do this when the overall app state is first set, but I have no idea how:
 //        if let startingDifficulty = newConfiguration.inferredDifficulty(),
@@ -325,23 +333,26 @@ private extension NewGameSetupView {
 
 
 struct NewGameSetupView_Previews: PreviewProvider {
+    
+    private static let testAppState = Binding.constant(OverallAppState(game: .basicNewGame()))
+    
     static var previews: some View {
         Group {
-            NewGameSetupView()
+            NewGameSetupView(overallAppState: testAppState)
                 .previewDisplayName("Default")
             
             
-            NewGameSetupView().configuration(.easy)
+            NewGameSetupView(overallAppState: testAppState).configuration(.easy)
                 .previewDisplayName("Easy")
             
-            NewGameSetupView(customGameConfiguration: .intermediate, selectedDifficulty: .predefined(difficulty: .intermediate))
+            NewGameSetupView(overallAppState: testAppState, customGameConfiguration: .intermediate, selectedDifficulty: .predefined(difficulty: .intermediate))
                 .previewDisplayName("Intermediate")
             
-            NewGameSetupView().configuration(.advanced)
+            NewGameSetupView(overallAppState: testAppState).configuration(.advanced)
                 .previewDisplayName("Advanced")
             
             
-            NewGameSetupView().configuration(NewGameConfiguration(boardSize: Board.Size(width: 5, height: 30), numberOfMines: 2))
+            NewGameSetupView(overallAppState: testAppState).configuration(NewGameConfiguration(boardSize: Board.Size(width: 5, height: 30), numberOfMines: 2))
                 .previewDisplayName("Custom")
         }
         .previewLayout(.fixed(width: 400, height: 999))

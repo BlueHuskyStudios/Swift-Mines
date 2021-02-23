@@ -28,7 +28,7 @@ private let minimumNumberOfCharactersPerDisplay = 4
 public struct GameStatusBarView: View {
     
     /// The overall app state, which this view can both observe and modify
-    @EnvironmentObject
+    @Environment(\.overallAppState)
     var overallAppState: OverallAppState
     
     /// The function which is called when the New Game button is pressed
@@ -160,12 +160,13 @@ public struct GameStatusBarView: View {
 
 struct GameStatusBarView_Previews: PreviewProvider {
     
-    @EnvironmentObject
+    @Environment(\EnvironmentValues.overallAppState)
     static var overallAppState: OverallAppState
     
     static var previews: some View {
-        overallAppState.game = Game.new(size: Board.Size(width: 10, height: 10))
+//        overallAppState.game = .new(size: Board.Size(width: 10, height: 10))
         
-        return GameStatusBarView() {}
+        return GameStatusBarView(onNewGameButtonPressed: {})
+            .environment(\.overallAppState, overallAppState)
     }
 }

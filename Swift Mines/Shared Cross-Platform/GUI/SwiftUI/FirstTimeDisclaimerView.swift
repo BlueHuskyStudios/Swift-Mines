@@ -14,8 +14,13 @@ import Combine
 public struct FirstTimeDisclaimerView: View {
     
     /// This will be set to `.game` once the user is done reading the disclaimer
-    @EnvironmentObject
+    @Binding
     private var overallAppState: OverallAppState
+    
+    
+    init(overallAppState: Binding<OverallAppState>) {
+        self._overallAppState = overallAppState
+    }
     
 
     public var body: some View {
@@ -34,11 +39,10 @@ public struct FirstTimeDisclaimerView: View {
 
             HStack {
                 Spacer()
-                Toggle("Never show this again", isOn: Binding(
-                    get: { self.overallAppState.oobeState.skipFirstTimeDisclaimer },
-                    set: { self.overallAppState.oobeState.skipFirstTimeDisclaimer = $0 })
-                )
-                NativeButton("Play without \(phrase_secondaryClick)", keyEquivalent: .return) { self.overallAppState.currentScreen = .game }
+                Toggle("Never show this again", isOn: $overallAppState.oobeState.skipFirstTimeDisclaimer)
+                Button("Play without \(phrase_secondaryClick)") { overallAppState.currentScreen = .game }
+                    .keyboardShortcut(.defaultAction)
+//                NativeButton("Play without \(phrase_secondaryClick)", keyEquivalent: .return) { self.overallAppState.currentScreen = .game }
             }
         }
             // TODO: something like .onReceive(UserDefaults.standard.publisher(for: \UserDefaults.swapRightLeftMouseButton), perform: { print($0) })
@@ -79,7 +83,6 @@ private extension FirstTimeDisclaimerView {
 
 struct FirstTimeDisclaimerView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstTimeDisclaimerView()
-            .environmentObject(OverallAppState(game: Game(board: Board.empty(size: .zero).annotated(baseStyle: .default), playState: .notStarted)))
+        FirstTimeDisclaimerView(overallAppState: .constant(OverallAppState(game: Game(board: Board.empty(size: .zero).annotated(baseStyle: .default), playState: .notStarted))))
     }
 }
